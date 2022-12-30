@@ -2,7 +2,6 @@ Feature: Functionality Test For Travel Feature
 
   Scenario:Verify Travel Information Page
 
-    @tagTrav
     Given a valid url
     When user click travel option
     And user select person option
