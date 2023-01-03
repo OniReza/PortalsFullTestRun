@@ -7,47 +7,48 @@ import org.apache.commons.codec.binary.Hex;
 public class BaseData {
 
     public static String BaseUrlMain() {
-//        String username = "devs";
-//         String password = "super!power";
-//         String URL = "https://" + username + ":" + password + "@" + "member.dev.clubswan.com";
-//       // String URL = "https://" + username + ":" + password + "@" + "dev.plcumember.com";
-//        return URL;
 
-        String username = "sandbox";
-        String password = "test!easy";
-       //String URL = "https://" + username + ":" + password + "@" + "member.dev.clubswan.com";
-        String URL = "https://" + username + ":" + password + "@" + "member.tst.clubswan.com";
-       // String URL = "https://" + username + ":" + password + "@" + "sandbox.infinityclubcardmembers.com/";
-
+        String username = "devs";
+        String password = "super!power";
+        String URL = "https://" + username + ":" + password + "@" + "member.dev.clubswan.com";
+//        String URL = "https://" + username + ":" + password + "@" + "dev.plcumember.com";
         return URL;
+
+//        String username = "sandbox";
+//        String password = "test!easy";
+//        String URL = "https://" + username + ":" + password + "@" + "member.dev.clubswan.com";
+//        String URL = "https://" + username + ":" + password + "@" + "member.tst.clubswan.com";
+//        String URL = "https://" + username + ":" + password + "@" + "sandbox.infinityclubcardmembers.com/";
+//        return URL;
 
     }
 
     public static String BasePopUpUrl()
     {
-        String username = "devs";
-        String password = "super!power";
-        String PURL = "https://" + username + ":" + password + "@" + "member.dev.clubswan.com";
-        return PURL;
-
-//        String username = "sandbox";
-//        String password = "test!easy";
-//        String PURL = "https://" + username + ":" + password + "@" + "member.tst.clubswan.com";
-//       // String PURL = "https://" + username + ":" + password + "@" + "sandbox.infinityclubcardmembers.com/";
+//        String username = "devs";
+//        String password = "super!power";
+//        String PURL = "https://" + username + ":" + password + "@" + "member.dev.clubswan.com";
 //        return PURL;
+
+        String username = "sandbox";
+        String password = "test!easy";
+        String PURL = "https://" + username + ":" + password + "@" + "member.tst.clubswan.com";
+       // String PURL = "https://" + username + ":" + password + "@" + "sandbox.infinityclubcardmembers.com/";
+        return PURL;
     }
 
     public static String BaseEmail(){
-         //String Email="clubswan_non-us_devqyxx@mailinator.com";
-        String Email="rashed.mahmud@springrain.io";//Rashed
-        //String Email="clubswan_us_dev_marina@mailinator.com";
-        //String Email = "test_PLCU_dev@mailinator.com";
-        //String Email = "clubswan_us_tst_rtl_18@mailinator.com"; //cs tst
-        //String Email = "test_clubswan_US_tst@grr.la"; //cs tst
-        //String Email="stalin.icc.tst.3@mailinator.com";//Stalin
-       // String Email="testphp1@mailinator.com"; //php portal
-       // String Email="clubswan_us_devxmqo@mailinator.com";
-        return Email;
+//        String Email="clubswan_non-us_devqyxx@mailinator.com";
+//        String Email="rashed.mahmud@springrain.io";//Rashed
+//        String Email="clubswan_us_dev_marina@mailinator.com";
+//        String Email = "test_PLCU_dev@mailinator.com";
+//        String Email = "clubswan_us_tst_rtl_18@mailinator.com"; //cs tst
+//        String Email = "test_clubswan_US_tst@grr.la"; //cs tst
+//        String Email="stalin.icc.tst.3@mailinator.com";//Stalin
+//        String Email="testphp1@mailinator.com"; //php portal
+//        String Email="clubswan_us_devxmqo@mailinator.com";
+          String Email="clubswan_fra_dev_d31@mailinator.com";
+          return Email;
     }
     public static String BasePassword(){
        // String Password = "Tt123#123";
@@ -55,15 +56,16 @@ public class BaseData {
         return Password;
     }
     public static String BaseOtp() {
-        //String secretKey = "ROTBDJNQRXO3NUJMH5E37ZWBEA";
-       //String secretKey = "I3P7OM4QWVTAJMRFKWU5YCPB24"; //cs tst 18
-      // String secretKey = "I4BDIRMSMJUR6CWSEZ2DMF2I4E"; //cs dev
-       //String secretKey = "E2KW4F4D3P656NV7HYXVMSRSLY"; //PLC dev
-       //String secretKey = "XCFX7E3B6XFXSGKGMGRPQAIIEQ"; //rifa
-      String secretKey = "GMN2ETS35OSX575RNQFKLA3A5Y"; //rashed
-       // String secretKey="MFV5OMU7KCCKQN6SDJESMD3DKE"; //Club Swan
-     //String secretKey = "MW73YZSM5Q4YWTBGCY7X2ZWYXU";//Stalin
-       // String secretKey="ICQ3OLQHPQAEU7G2QHUK3DF5E4"; //Php Portal
+        String secretKey = "EXVXUQPBJMVWC7RUWEL2BIUOKI";
+
+//       String secretKey = "I3P7OM4QWVTAJMRFKWU5YCPB24"; //cs tst 18
+//       String secretKey = "I4BDIRMSMJUR6CWSEZ2DMF2I4E"; //cs dev
+//       String secretKey = "E2KW4F4D3P656NV7HYXVMSRSLY"; //PLC dev
+//       String secretKey = "XCFX7E3B6XFXSGKGMGRPQAIIEQ"; //rifa
+//       String secretKey = "GMN2ETS35OSX575RNQFKLA3A5Y"; //rashed
+//      String secretKey="MFV5OMU7KCCKQN6SDJESMD3DKE"; //Club Swan
+//       String secretKey = "MW73YZSM5Q4YWTBGCY7X2ZWYXU";//Stalin
+//       String secretKey="ICQ3OLQHPQAEU7G2QHUK3DF5E4"; //Php Portal
         String code = getTOTPCode(secretKey);
         return code;
 

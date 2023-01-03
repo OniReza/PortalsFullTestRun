@@ -3,7 +3,6 @@ package Pages;
 import Utility.BaseData;
 import Utility.CommonPageMethods;
 import Utility.Random_data;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -13,7 +12,6 @@ import org.openqa.selenium.support.PageFactory;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.NoSuchElementException;
 
 
 public class Accounts_Page extends CommonPageMethods {
@@ -26,13 +24,26 @@ public class Accounts_Page extends CommonPageMethods {
 
     //Accounts Move xpaths
     @FindBy(xpath = "(//p[contains(text(),'Available Balance')])[1]")
-    public WebElement wallet;
+    public WebElement usdWallet;
+    @FindBy(xpath = "//span[contains(text(),'Euro')]")
+    public WebElement euroWallet;
+    @FindBy(xpath = "//span[contains(text(),'Pound')]")
+    public WebElement gbpWallet;
+    @FindBy(xpath = "//span[contains(text(),'Yen')]")
+    public WebElement jpyWallet;
+    @FindBy(xpath = "//span[contains(text(),'Yuan')]")
+    public WebElement cnyWallet;
+    @FindBy(xpath = "//span[contains(text(),'Peso')]")
+    public WebElement phpWallet;
     @FindBy(xpath = "(//span[text()='Move'])")
     public WebElement moveTab;
     @FindBy(xpath = "//div[contains( text(),'Beneficiary')]")
     public WebElement selectBeneficiaryDropdown;
     @FindBy(xpath = "//Span[contains( text(),'€')]")
     public WebElement euroAcc;
+    @FindBy(xpath = "//Span[contains( text(),'$')]")
+    public WebElement usdAcc;
+
     @FindBy(xpath = "(//input[@type='number'])[1]")
     public WebElement sendAmount;
     @FindBy(xpath = "(//button[text()='Confirm'])")
@@ -56,10 +67,6 @@ public class Accounts_Page extends CommonPageMethods {
     public WebElement loadAmount;
     @FindBy(xpath = "//div[@class='CheckboxWithValidation']")
     public WebElement trAggrement;
-
-
-    @FindBy(xpath = "//*[@id=\"root\"]/div/div/div/div/main/div/div/div/div/div/div/div[2]/div/div/div/div/div[1]/div[2]/div[1]/div[2]/div/div[2]/div/div[5]/button")
-    public WebElement test;
     @FindBy(xpath = "(//span[text()='Transfer Summary'])")
     public WebElement summary;
     @FindBy(xpath = "(//span[contains(text(),'Expedite Fee')])")
@@ -70,6 +77,12 @@ public class Accounts_Page extends CommonPageMethods {
     public WebElement accountsTabUsd;
     @FindBy(xpath = "//span[contains(text(),'Local (US Bank)')]")
     public WebElement localUSBank;
+    @FindBy(xpath = "//span[contains(text(),'Local (UK Bank)')]")
+    public WebElement localUKBank;
+
+
+    @FindBy(xpath = "//span[contains(text(),'International')]")
+    public WebElement intlNonUKBank;
     @FindBy(xpath = "//*[@id=\"root\"]/div/div/div/div/main/div/div/div/div/div/div/div[2]/div/div/div/div/div[1]/div[2]/div/div/div/div[1]/div/div")
     public WebElement localUSBankBeneficiary;
     @FindBy(xpath = "//span[contains(text(),'Crypto Deposit')]")
@@ -245,20 +258,8 @@ public class Accounts_Page extends CommonPageMethods {
     @FindBy(xpath = "(//span[text()='PAY'])[3]")
     public WebElement anotherMemberPayBtn;
 
-    @FindBy(xpath = "//*[@id=\"root\"]/div/div/div/div/main/div/div/div/div/div/div/div/div/div[1]/div")
-    public WebElement msgUnSuccess;
-
-    @FindBy(xpath = "//*[@id=\"root\"]/div/div/div/div/main/div/div/div/div/div/div/div/div/div[2]/div/button")
-    public WebElement btnOk;
-
-    @FindBy(xpath = "/html/body/div[1]/div/div/div/div/div[2]/div/div/div/div[1]/div/div/div/div/span[1]")
-    public WebElement popup;
-
-    @FindBy(xpath = "//*[@id=\"root\"]/div/div/div/div/div[2]/div/div/div/div[1]/div/div/div/div/div/button[1]")
-    public WebElement btnCancel;
-
-    @FindBy(xpath = "//span[text()='Cards']")
-    public WebElement cardsMenuBtn;
+    @FindBy(xpath = "(//span[contains(text(),' No records')])[1]")
+    public WebElement noTransectionLabel;
 
     public Accounts_Page(WebDriver driver) {
         PageFactory.initElements(driver, this);
@@ -275,12 +276,15 @@ public class Accounts_Page extends CommonPageMethods {
     public void destinationBankCountry() throws InterruptedException {
         click(countryUS);
     }
+
     public void beneficiaryCurrencyClick() {
         click(currencyUSD);
     }
+
     public void nextBtnClick() {
         click(nextBtn);
     }
+
     public void withdrawBeneficiaryDetails() throws InterruptedException {
         click(countryUS);
         Thread.sleep(200);
@@ -413,6 +417,12 @@ public class Accounts_Page extends CommonPageMethods {
         click(localUSBank);
     }
 
+    public void intlNonUKBankClick() {
+        click(intlNonUKBank);
+    }
+    public void localUKBankClick() {
+        click(localUKBank);
+    }
     public boolean localUSBankBeneficiaryCheck() {
         return localUSBankBeneficiary.isDisplayed();
     }
@@ -438,8 +448,23 @@ public class Accounts_Page extends CommonPageMethods {
         click(accMenubtn);
     }
 
-    public void walletClick() {
-        click(wallet);
+    public void usdWalletClick() {
+        click(usdWallet);
+    }
+    public void euroWalletClick() {
+        click(euroWallet);
+    }
+    public void gbpWalletClick() {
+        click(gbpWallet);
+    }
+    public void jpyWalletClick() {
+        click(jpyWallet);
+    }
+    public void cnyWalletClick() {
+        click(cnyWallet);
+    }
+    public void phpWalletClick() {
+        click(phpWallet);
     }
 
     public void moveTabClick() {
@@ -452,6 +477,9 @@ public class Accounts_Page extends CommonPageMethods {
 
     public void euroAccClcik() {
         click(euroAcc);
+    }
+    public void usdAccClcik() {
+        click(usdAcc);
     }
 
     public void enterSendingAmount() {
@@ -497,32 +525,18 @@ public class Accounts_Page extends CommonPageMethods {
         loadAmount.sendKeys("50");
     }
 
-    public void aggrementClick()throws InterruptedException {
-
+    public void aggrementClick() {
         click(trAggrement);
-        //scrollDown();
     }
 
-
     public void checkSummary() {
-       click(summary);
+        click(summary);
     }
 
     public boolean checkExpeditSummary() {
         return expeditSummary.isDisplayed();
     }
 
-    /*Modify by: Abid Reza
-   12-20-2022
-   Update Method:isLoadUnSuccessMsg();
-   */
-    public boolean isLoadUnSuccessMsg(){
-        return msgUnSuccess.isDisplayed();
-    }
-
-    public void btnOkay(){
-        click(btnOk);
-    }
     public boolean checkLoadSuccessMsg() {
         return loadSucessMsg.isDisplayed();
     }
@@ -728,26 +742,15 @@ public class Accounts_Page extends CommonPageMethods {
         click(statementsTabBtn);
     }
     public boolean downloadBtnCheck(){
-        try{
             return downloadBtn.isDisplayed();
-        }
-        catch (NoSuchElementException e){
-
-        }
-
-        return false;
     }
+
     public void downloadBtnClick(){
         click(downloadBtn);
     }
 
+    public boolean noTranscetionLabelCheck(){
+        return noTransectionLabel.isDisplayed();
+    }
 
-    public Boolean IsPopup()
-    {
-        return popup.isDisplayed();
-    }
-    public void buttonCancel()
-    {
-        click(btnCancel);
-    }
 }

@@ -1,21 +1,14 @@
 package StepDefinations;
 
 import Pages.Accounts_Page;
-import Pages.LoginPage;
-import Utility.*;
-import io.cucumber.java.bs.A;
-import io.cucumber.java.en.*;
+import Utility.Hooks;
+import Utility.SmartWait;
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.junit.Assert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.NoAlertPresentException;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
-
-import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.util.Iterator;
-import java.util.Set;
-import java.util.concurrent.TimeUnit;
 
 public class Accounts_Step {
     public  WebDriver driver;
@@ -25,31 +18,61 @@ public class Accounts_Step {
     public Accounts_Step(){
         this.driver= Hooks.getDriver();
         accpage= new Accounts_Page(driver);
-
     }
 
     //Details Tab
     @When("user clicks on account button")
     public void user_clicks_on_account() throws InterruptedException {
-
-        try {
-            if (accpage.IsPopup()) {
-                accpage.buttonCancel();
-                accpage.accMenuClick();
-            }
-        }
-        catch(Exception e) {
-            accpage.accMenuClick();
-        }
+        System.out.println("Acc Page: " + driver);
+        accpage.accMenuClick();
+        System.out.println("Account menu clicked");
         smartWait.waitUntilPageIsLoaded(1);
     }
 
-    @And("user clicks on first wallet")
+    @And("user clicks on USD wallet")
     public void user_clicks_on_usd_wallet() throws InterruptedException {
-        accpage.walletClick();
+        user_clicks_on_account();
+        accpage.usdWalletClick();
         System.out.println("USD Wallet Clicked");
         smartWait.waitUntilPageIsLoaded(1);
     }
+    @And("user clicks on EURO wallet")
+    public void user_clicks_on_euro_wallet() throws InterruptedException {
+        user_clicks_on_account();
+        accpage.euroWalletClick();
+        System.out.println("USD Wallet Clicked");
+        smartWait.waitUntilPageIsLoaded(1);
+    }
+    @And("user clicks on GBP wallet")
+    public void user_clicks_on_gbp_wallet() throws InterruptedException {
+        user_clicks_on_account();
+        accpage.gbpWalletClick();
+        System.out.println("USD Wallet Clicked");
+        smartWait.waitUntilPageIsLoaded(1);
+    }
+    @And("user clicks on JPY wallet")
+    public void user_clicks_on_jpy_wallet() throws InterruptedException {
+        user_clicks_on_account();
+        accpage.jpyWalletClick();
+        System.out.println("USD Wallet Clicked");
+        smartWait.waitUntilPageIsLoaded(1);
+    }
+    @And("user clicks on CNY wallet")
+    public void user_clicks_on_cny_wallet() throws InterruptedException {
+        user_clicks_on_account();
+        accpage.cnyWalletClick();
+        System.out.println("USD Wallet Clicked");
+        smartWait.waitUntilPageIsLoaded(1);
+    }
+
+    @And("user clicks on PHP wallet")
+    public void user_clicks_on_php_wallet() throws InterruptedException {
+        user_clicks_on_account();
+        accpage.phpWalletClick();
+        System.out.println("USD Wallet Clicked");
+        smartWait.waitUntilPageIsLoaded(1);
+    }
+
 
     @Then("user should see a graph")
     public void user_should_see_a_graph() throws InterruptedException {
@@ -60,8 +83,6 @@ public class Accounts_Step {
     //Move Feature
     @And("user clicks on move tab")
     public void user_clicks_on_move_tab() throws InterruptedException {
-        user_clicks_on_account();
-        user_clicks_on_usd_wallet();
         System.out.println("User is in USD Wallet");
         accpage.moveTabClick();
         System.out.println("Move Page clicked");
@@ -81,24 +102,30 @@ public class Accounts_Step {
         smartWait.waitUntilPageIsLoaded(5);
     }
 
-    @When("user selects EUR wallet")
+    @And("user selects EUR wallet")
     public void user_selects_eur_wallet() throws InterruptedException {
         accpage.euroAccClcik();
         System.out.println("Euro Account Selected");
-        smartWait.waitUntilPageIsLoaded(1);
+        smartWait.waitUntilPageIsLoaded(5);
     }
-    @When("enter amount on sending amount box")
+    @And("user selects USD wallet")
+    public void user_selects_usd_wallet() throws InterruptedException {
+        accpage.usdAccClcik();
+        System.out.println("Euro Account Selected");
+        smartWait.waitUntilPageIsLoaded(5);
+    }
+    @And("enter amount on sending amount box")
     public void enter_amount_on_sending_amount_in_usd() throws InterruptedException {
         accpage.enterSendingAmount();
         System.out.println("Amount Entered");
-        smartWait.waitUntilPageIsLoaded(1);
+        smartWait.waitUntilPageIsLoaded(5);
     }
 
-    @When("user clicks confirm")
+    @And("user clicks confirm")
     public void user_clicks_confirm() throws InterruptedException {
         accpage.confirmBtnClick();
         System.out.println("Confirm Button Clicked");
-        smartWait.waitUntilPageIsLoaded(1);
+        smartWait.waitUntilPageIsLoaded(5);
     }
 
     @And("user enters secret code")
@@ -128,19 +155,17 @@ public class Accounts_Step {
         smartWait.waitUntilPageIsLoaded(5);
     }
 
-    @Then("user should redirect to USD wallet details tab")
+    @Then("user should redirect to wallet details tab")
     public void user_should_redirect_to_usd_wallet_details_tab() throws InterruptedException {
         smartWait.waitUntilPageIsLoaded(5);
         Assert.assertTrue("User is not in Details Tab", accpage.checkDetailsTab());
         Thread.sleep(1000);
         System.out.println("User is in Details Tab");
-        Thread.sleep(2000);
+
     }
     // Deposit Feature
     @And("user clicks on deposit")
     public void user_clicks_on_deposit() throws InterruptedException {
-        user_clicks_on_account();
-        user_clicks_on_usd_wallet();
         accpage.depositTabClick();
         System.out.println("Deposit clicked");
         smartWait.waitUntilPageIsLoaded(1);
@@ -170,17 +195,14 @@ public class Accounts_Step {
     public void user_clicks_agreement() throws InterruptedException {
         accpage.aggrementClick();
         System.out.println("Agreed transfer Aggrement");
-
-       // smartWait.waitUntilPageIsLoaded(5);
+        smartWait.waitUntilPageIsLoaded(5);
     }
 
     @And("summary should appear")
     public void user_checks_summary() throws InterruptedException {
         accpage.checkSummary();
         System.out.println("Summary appeared");
-        smartWait.waitUntilPageIsLoaded(5);
-
-
+        Thread.sleep(500);
     }
     @And("expedite fee should add in summary")
     public void expedite_fee_should_add_in_summary() throws InterruptedException {
@@ -194,33 +216,15 @@ public class Accounts_Step {
         accpage.confirmBtnClick();
         System.out.println("Confirm button clicked");
         smartWait.waitUntilPageIsLoaded(1);
-
-
     }
 
-    /*Modify by: Abid Reza
-      12-20-2022
-      Update Method:isLoadUnSuccessMsg();
-     */
     @And("user checks confirmation message")
     public void user_checks_confirmation_message() throws InterruptedException {
-
         Assert.assertTrue("Deposit Unsuccessfull", accpage.checkLoadSuccessMsg());
         System.out.println("Deposit Successful");
-        smartWait.waitUntilPageIsLoaded(10);
-
-//        if(accpage.isLoadUnSuccessMsg()) {
-//           System.out.println("transaction cannot be completed");
-//            smartWait.waitUntilPageIsLoaded(10);
-//          // accpage.btnOkay();
-//        }
-//        else
-//        {
-//            Assert.assertTrue("Deposit Unsuccessfull", accpage.checkLoadSuccessMsg());
-//            System.out.println("Deposit Successful");
-//            smartWait.waitUntilPageIsLoaded(1);
-//        }
+        Thread.sleep(1000);
     }
+
     @And("user clicks ok")
     public void user_clicks_ok() throws InterruptedException {
         accpage.clickOKbtn();
@@ -239,6 +243,16 @@ public class Accounts_Step {
     @And("user selects local\\(US Bank)")
     public void user_selects_local_us_bank() {
         accpage.localUSBankClick();
+        smartWait.waitUntilPageIsLoaded(5);
+    }
+    @And("user selects local\\(UK Bank)")
+    public void user_selects_local_uk_bank() {
+        accpage.localUKBankClick();
+        smartWait.waitUntilPageIsLoaded(5);
+    }
+    @And("user selects International\\(non UK Bank)")
+    public void user_selects_international_non_uk_bank() {
+        accpage.intlNonUKBankClick();
         smartWait.waitUntilPageIsLoaded(5);
     }
 
@@ -339,8 +353,6 @@ public class Accounts_Step {
     // Make payment to new individual
     @When("user clicks payments tab")
     public void user_clicks_payments_tab() throws InterruptedException {
-        user_clicks_on_account();
-        user_clicks_on_usd_wallet();
         accpage.paymentTabClick();
         smartWait.waitUntilPageIsLoaded(5);
     }
@@ -448,10 +460,8 @@ public class Accounts_Step {
     }
 
     //Transaction Tab
-    @When("user is in transaction tab")
+    @When("user click on transaction tab")
     public void user_is_in_transaction_tab() throws InterruptedException {
-        user_clicks_on_account();
-        user_clicks_on_usd_wallet();
         accpage.transactionsTabClick();
         smartWait.waitUntilPageIsLoaded(5);
 
@@ -459,9 +469,15 @@ public class Accounts_Step {
 
     @When("user should see latest pending transactions first\\(if any) in PENDING TRANSACTIONS")
     public void user_should_see_latest_pending_transactions_first_if_any_in_pending_transactions() throws InterruptedException {
+
         smartWait.waitUntilPageIsLoaded(5);
-        Assert.assertTrue("Latest pending transaction not found", accpage.pendingTransection());
-        Thread.sleep(2000);
+        try{
+            Assert.assertTrue("Latest pending transaction not found", accpage.pendingTransection());
+        }
+        catch (NoSuchElementException e){
+            Assert.assertTrue("Latest pending transaction not found", accpage.noTranscetionLabelCheck());
+        }
+
 
     }
 
@@ -471,21 +487,22 @@ public class Accounts_Step {
         Thread.sleep(2000);
     }
 
-    @When("user is in statements tab")
+    @When("user clicks on statements tab")
     public void user_is_in_statements_tab() throws InterruptedException {
-        user_clicks_on_account();
-        user_clicks_on_usd_wallet();
         accpage.statementsTabBtnClick();
 
     }
     @And("if any statement available user clicks on download button")
     public void if_any_statement_available_user_clicks_on_download_button(){
-        if (!accpage.downloadBtnCheck()) {
-            System.out.println("No downloadable statement available");
-        } else {
-            accpage.downloadBtnClick();
+        try {
+            if(accpage.downloadBtnCheck())
+                accpage.downloadBtnClick();
             smartWait.waitUntilPageIsLoaded(5);
         }
+        catch(Exception e) {
+            accpage.accMenuClick();
+        }
+
     }
     @Then("statement should be downloaded")
     public void statement_should_be_downloaded(){
