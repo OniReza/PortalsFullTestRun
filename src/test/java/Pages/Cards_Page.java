@@ -27,7 +27,7 @@ public class Cards_Page extends CommonPageMethods {
     public WebElement physicalCard;
     @FindBy(xpath = "//*[@id=\"root\"]/div/div/div/div/main/div/div/div/div/div/div[2]/div")
     public WebElement detailsTab;
-    @FindBy(xpath = "//span[contains(text(),'Statementsssss')]")
+    @FindBy(xpath = "//span[contains(text(),'Statements')]")
     public WebElement statementTab;
     @FindBy(xpath = "(//span[contains(text(),'DOWNLOAD')])[1]")
     public WebElement downloadBtn;

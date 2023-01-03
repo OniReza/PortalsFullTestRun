@@ -58,7 +58,7 @@ public class SmartWait extends AutomationBase {
     {
         await().
                 atMost(timer, TimeUnit.SECONDS).
-                pollDelay(5, TimeUnit.SECONDS).
+                pollDelay(1, TimeUnit.SECONDS).
                 pollInterval(1, TimeUnit.SECONDS).
                 ignoreExceptions().
                 untilAsserted (() -> Assertions.assertThat (((JavascriptExecutor) driver).executeScript ("return document.readyState").toString ()).
