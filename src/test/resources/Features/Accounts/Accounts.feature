@@ -81,7 +81,7 @@ Feature: Test Accounts Functionality
     And press ok
     Then user should redirect to details
 
-  @USD_common
+  @USD_common @Payment
   Scenario: Payments: Verify Make a payment to a New Individual from USD Wallet
     When user clicks on USD wallet
     And user clicks payments tab
