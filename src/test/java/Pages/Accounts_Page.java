@@ -33,7 +33,7 @@ public class Accounts_Page extends CommonPageMethods {
     public WebElement jpyWallet;
     @FindBy(xpath = "//span[contains(text(),'Yuan')]")
     public WebElement cnyWallet;
-    @FindBy(xpath = "//span[contains(text(),'Peso')]")
+    @FindBy(xpath = "//span[contains(text(),'Pdeso')]")
     public WebElement phpWallet;
     @FindBy(xpath = "(//span[text()='Move'])")
     public WebElement moveTab;
@@ -134,6 +134,13 @@ public class Accounts_Page extends CommonPageMethods {
     public WebElement postCode;
     @FindBy(xpath = "//input[@name='email']")
     public WebElement email;
+
+    @FindBy(xpath = "//div[@class='selected-flag']")
+    public WebElement phoneDropdown;
+    @FindBy(xpath = "//li[@class='search search-class']/input[@type='search']")
+    public WebElement phnSearchBox;
+    @FindBy(xpath = "//li[@data-country-code='us']")
+    public WebElement phnUS;
     @FindBy(xpath = "//input[@type='tel']")
     public WebElement phone;
     @FindBy(xpath = "//*[@id=\"mui-component-select-currency\"]/div/div[2]")
@@ -190,6 +197,8 @@ public class Accounts_Page extends CommonPageMethods {
     public WebElement transactionsTab;
     @FindBy(xpath = "//*[@id=\"root\"]/div/div/div/div/main/div/div/div/div/div/div/div[3]/div[2]/div/table/tbody/tr[1]/td[1]/a/span")
     public WebElement firstPTransaction;
+    @FindBy(xpath = "(//span[contains(text(),' No records')])[1]")
+    public WebElement noTransectionLabel;
     @FindBy(xpath = "//*[@id=\"root\"]/div/div/div/div/main/div/div/div/div/div/div/div[4]/div[3]/div[1]/table/tbody/tr[1]/td[1]")
     public WebElement firstCTransactions;
     @FindBy(xpath = "(//span[text()='Statements'])")
@@ -258,37 +267,34 @@ public class Accounts_Page extends CommonPageMethods {
     @FindBy(xpath = "(//span[text()='PAY'])[3]")
     public WebElement anotherMemberPayBtn;
 
-    @FindBy(xpath = "(//span[contains(text(),' No records')])[1]")
-    public WebElement noTransectionLabel;
-
     public Accounts_Page(WebDriver driver) {
         PageFactory.initElements(driver, this);
     }
 
     public void withdrawTabClick() {
-        click(withdrawTab);
+        withdrawTab.click();
     }
 
     public void addPersonalAccClick() {
-        click(addPersonalAccBtn);
+        addPersonalAccBtn.click();
     }
 
     public void destinationBankCountry() throws InterruptedException {
-        click(countryUS);
+        countryUS.click();
     }
 
     public void beneficiaryCurrencyClick() {
-        click(currencyUSD);
+        currencyUSD.click();
     }
 
     public void nextBtnClick() {
-        click(nextBtn);
+        nextBtn.click();
     }
 
     public void withdrawBeneficiaryDetails() throws InterruptedException {
-        click(countryUS);
+        countryUS.click();
         Thread.sleep(200);
-        click(stateColorado);
+        stateColorado.click();
         Thread.sleep(200);
         beneficiaryReference.sendKeys(Random_data.fullName());
         Thread.sleep(200);
@@ -312,21 +318,21 @@ public class Accounts_Page extends CommonPageMethods {
     }
 
     public void withdrawCheckBox() throws InterruptedException {
-        click(expediteFee);
+        expediteFee.click();
         Thread.sleep(3000);
-        click(withdrawTransferAggrement);
+        withdrawTransferAggrement.click();
     }
 
     public void payTabClick() {
-        click(payTab);
+        payTab.click();
     }
 
     public void ffPayBtnClick() {
-        click(ffPayBtn);
+        ffPayBtn.click();
     }
 
     public void paySomeoneNewBtnClick() {
-        click(paySomeoneNewBtn);
+        paySomeoneNewBtn.click();
     }
 
     public void payFriendorFamilyDetails() throws InterruptedException {
@@ -370,11 +376,11 @@ public class Accounts_Page extends CommonPageMethods {
     }
 
     public void businessPayBtnClick() {
-        click(businessPayBtn);
+        businessPayBtn.click();
     }
 
     public void payNewBusinessClick() {
-        click(paynewBusinessBtn);
+        paynewBusinessBtn.click();
     }
 
     public void payBusinessDetails() throws InterruptedException {
@@ -405,7 +411,7 @@ public class Accounts_Page extends CommonPageMethods {
     }
 
     public void anotherMemberPayBtnClick() {
-        click(anotherMemberPayBtn);
+        anotherMemberPayBtn.click();
     }
 
     public Boolean checkgraph() {
@@ -414,21 +420,21 @@ public class Accounts_Page extends CommonPageMethods {
     }
 
     public void localUSBankClick() {
-        click(localUSBank);
+        localUSBank.click();
     }
 
     public void intlNonUKBankClick() {
-        click(intlNonUKBank);
+        intlNonUKBank.click();
     }
     public void localUKBankClick() {
-        click(localUKBank);
+        localUKBank.click();
     }
     public boolean localUSBankBeneficiaryCheck() {
         return localUSBankBeneficiary.isDisplayed();
     }
 
     public void cryptoClick() {
-        click(crypto);
+        crypto.click();
     }
 
     public void enterCryptoSendAmount() {
@@ -436,7 +442,7 @@ public class Accounts_Page extends CommonPageMethods {
     }
 
     public void checkBoxClick() {
-        click(checkBox);
+        checkBox.click();
     }
 
     public boolean cryptoSummaryCheck() {
@@ -445,41 +451,41 @@ public class Accounts_Page extends CommonPageMethods {
     }
 
     public void accMenuClick() {
-        click(accMenubtn);
+        accMenubtn.click();
     }
 
     public void usdWalletClick() {
-        click(usdWallet);
+        usdWallet.click();
     }
     public void euroWalletClick() {
-        click(euroWallet);
+        euroWallet.click();
     }
     public void gbpWalletClick() {
-        click(gbpWallet);
+        gbpWallet.click();
     }
     public void jpyWalletClick() {
-        click(jpyWallet);
+        jpyWallet.click();
     }
     public void cnyWalletClick() {
-        click(cnyWallet);
+        cnyWallet.click();
     }
     public void phpWalletClick() {
-        click(phpWallet);
+        phpWallet.click();
     }
 
     public void moveTabClick() {
-        click(moveTab);
+        moveTab.click();
     }
 
     public void benDropdownClick() {
-        click(selectBeneficiaryDropdown);
+        selectBeneficiaryDropdown.click();
     }
 
     public void euroAccClcik() {
-        click(euroAcc);
+        euroAcc.click();
     }
     public void usdAccClcik() {
-        click(usdAcc);
+        usdAcc.click();
     }
 
     public void enterSendingAmount() {
@@ -488,7 +494,7 @@ public class Accounts_Page extends CommonPageMethods {
 
     public void confirmBtnClick() {
         confirmBtn.sendKeys(Keys.PAGE_DOWN);
-        click(confirmBtn);
+        confirmBtn.click();
     }
 
     public void enterSecretCode() {
@@ -502,7 +508,7 @@ public class Accounts_Page extends CommonPageMethods {
     }
 
     public void okBtnClick() {
-        click(okBtn);
+        okBtn.click();
     }
 
     public boolean checkDetailsTab() {
@@ -510,23 +516,23 @@ public class Accounts_Page extends CommonPageMethods {
     }
 
     public void depositTabClick() {
-        click(depositTab);
+        depositTab.click();
     }
 
     public void fromDropdwnClick() {
-        click(fromDropdwn);
+        fromDropdwn.click();
     }
 
     public void debitCardClick() {
-        click(debitCard);
+        debitCard.click();
     }
 
     public void enterloadAmount() {
-        loadAmount.sendKeys("50");
+        loadAmount.sendKeys("100");
     }
 
     public void aggrementClick() {
-        click(trAggrement);
+        trAggrement.click();
     }
 
     public void checkSummary() {
@@ -542,7 +548,7 @@ public class Accounts_Page extends CommonPageMethods {
     }
 
     public void clickOKbtn() {
-        click(okBtn);
+        okBtn.click();
     }
 
     public boolean checkAccountsTab() {
@@ -551,7 +557,7 @@ public class Accounts_Page extends CommonPageMethods {
     }
 
     public void paymentTabClick() {
-        click(paymentTabBtn);
+        paymentTabBtn.click();
     }
 
     public boolean paymentPage() {
@@ -559,32 +565,32 @@ public class Accounts_Page extends CommonPageMethods {
     }
 
     public void memberPayBtnClick() {
-        click(memberPayBtn);
+        memberPayBtn.click();
     }
 
     public void beneficiarySelect() {
-        click(beneficiary);
+        beneficiary.click();
     }
 
     public void enterPaymentRef() {
         paymentRef.sendKeys("Automation");
     }
 
-    public void checkTransferSummary() {
-        click(trnsSummary);
+    public boolean checkTransferSummary() {
+       return trnsSummary.isDisplayed();
     }
 
     public void makePaymentClick() throws InterruptedException {
-        click(makePayBtn);
+        makePayBtn.click();
         Thread.sleep(5000);
     }
 
     public void toIndividual() {
-        click(individual);
+        individual.click();
     }
 
     public void newBtnClick() {
-        click(newRecipient);
+        newRecipient.click();
     }
 
     public void recipientDetails() throws InterruptedException {
@@ -608,6 +614,11 @@ public class Accounts_Page extends CommonPageMethods {
         Thread.sleep(300);
         email.sendKeys(Random_data.email());
         Thread.sleep(300);
+        phoneDropdown.click();
+        Thread.sleep(500);
+        phnSearchBox.sendKeys("us");
+        Thread.sleep(500);
+        phnUS.click();
         phone.sendKeys("20255300169");
         Thread.sleep(300);
     }
@@ -661,19 +672,19 @@ public class Accounts_Page extends CommonPageMethods {
     }
 
     public void payClick() throws InterruptedException {
-        click(payBtn);
+        payBtn.click();
         Thread.sleep(5000);
     }
 
     public boolean checkReqAcceptMsg() throws InterruptedException {
         boolean msg = reqAcceptmsg.isDisplayed();
         Thread.sleep(300);
-        click(okBtn);
+        okBtn.click();
         return msg;
     }
 
     public void businessClick() {
-        click(business);
+        business.click();
     }
 
     public void recipientBusinessDetails() throws InterruptedException {
@@ -697,20 +708,25 @@ public class Accounts_Page extends CommonPageMethods {
         Thread.sleep(300);
         email.sendKeys(Random_data.email());
         Thread.sleep(300);
+        phoneDropdown.click();
+        Thread.sleep(500);
+        phnSearchBox.sendKeys("us");
+        Thread.sleep(500);
+        phnUS.click();
         phone.sendKeys("20255300169");
         Thread.sleep(300);
     }
 
     public void clickExisting() {
-        click(existing);
+        existing.click();
     }
 
     public void selectRecipients() {
-        click(select);
+        select.click();
     }
 
     public void transactionsTabClick() {
-        click(transactionsTab);
+        transactionsTab.click();
     }
 
     public boolean pendingTransection() {
@@ -724,6 +740,9 @@ public class Accounts_Page extends CommonPageMethods {
             return firstPTransaction.isDisplayed();
         }
         return false;
+    }
+    public boolean noTranscetionLabelCheck(){
+        return noTransectionLabel.isDisplayed();
     }
 
     public boolean completedTransection() {
@@ -739,18 +758,14 @@ public class Accounts_Page extends CommonPageMethods {
         return false;
     }
     public void statementsTabBtnClick(){
-        click(statementsTabBtn);
+        statementsTabBtn.click();
     }
     public boolean downloadBtnCheck(){
             return downloadBtn.isDisplayed();
     }
 
     public void downloadBtnClick(){
-        click(downloadBtn);
-    }
-
-    public boolean noTranscetionLabelCheck(){
-        return noTransectionLabel.isDisplayed();
+        downloadBtn.click();
     }
 
 }

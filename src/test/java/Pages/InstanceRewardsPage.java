@@ -9,7 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 public class InstanceRewardsPage extends CommonPageMethods {
 
 
-    @FindBy(xpath = "//*[@id=\"root\"]/div/div/div/div/div/div[1]/div/div/div[2]/ul[1]/div[9]")
+    @FindBy(xpath = "//span[text()='Instant Rewards']")
     public WebElement btnInstanceRewards;
 
     @FindBy(xpath = "//*[@id=\"root\"]/div/div/div/div/main/div/div/div/div/div/div/div/div/div[1]/div[1]/div/div")

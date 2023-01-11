@@ -3,15 +3,15 @@ package StepDefinations;
 import Pages.Cards_Page;
 import Utility.Hooks;
 import Utility.SmartWait;
-import io.cucumber.java.After;
-import io.cucumber.java.Scenario;
+import io.cucumber.java.bs.A;
 import io.cucumber.java.en.*;
 import org.junit.Assert;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.concurrent.TimeUnit;
 
 
 public class Cards_Step {
@@ -23,67 +23,50 @@ public class Cards_Step {
         this.driver = Hooks.getDriver();
         cardspage = new Cards_Page(driver);
     }
+    public void waitload(){
+        new WebDriverWait(driver, 30).until(
+                webDriver -> ((JavascriptExecutor) webDriver).executeScript("return document.readyState").equals("complete"));
+    }
 
-//    @After(order=1)
-//    public void takeScraenshotOnFailure(Scenario scenario) {
-//
-//        if (scenario.isFailed()) {
-//
-//            TakesScreenshot ts = (TakesScreenshot) driver;
-//            byte[] src = ts.getScreenshotAs(OutputType.BYTES);
-//            scenario.attach(src, "image/png", "screenshot");
-//        }
-//
-//    }
 
-    @When("user clicks on cards on side menu")
+    @And("user clicks on cards on side menu")
     public void user_clicks_on_Cards_on_side_menu() throws InterruptedException {
-
-        try {
-            if (cardspage.IsPopup()) {
-                cardspage.buttonCancel();
-                cardspage.cardsMenuClick();
-            }
-        }
-        catch(Exception e) {
-            cardspage.cardsMenuClick();
-        }
-       // cardspage.cardsMenuClick();
+        waitload();
+        cardspage.cardsMenuClick();
+        waitload();
     }
 
     @Then("physical cards page will appear")
     public void physical_cards_page_will_appear() {
+        waitload();
         Assert.assertTrue("Physical card didn't appear", cardspage.physicalCardCheck());
         System.out.println("Physical card appeared");
+        waitload();
     }
 
-    @And("user clicks on physical card")
+    @When("user clicks on physical card")
     public void user_clicks_on_physical_card() throws InterruptedException {
-        smartWait.waitUntilPageIsLoaded(10);
+        waitload();
         cardspage.physicalCardClick();
         Assert.assertTrue("We are not in details tab", cardspage.detailsTabCheck());
-        Thread.sleep(2000);
+        waitload();
     }
 
     @And("user clicks on statements Tab")
     public void user_is_in_details_tab_user_clicks_on_statements_tab() throws InterruptedException {
-//      clicks_on_virtual_card_tab_from_card_page();
-//      user_clicks_on_first_virtual_card();
-        smartWait.waitUntilPageIsLoaded(10);
+//        clicks_on_virtual_card_tab_from_card_page();
+//        user_clicks_on_first_virtual_card();
+        waitload();
         cardspage.statementTabClick();
-        Thread.sleep(2000);
+        waitload();
     }
 
-    /*Modify by: Abid Reza
-  12-19-2022
-  Update Method:isStatementAvailable();
-  */
     @And("user clicks on download button if any statement available")
     public void user_clicks_on_download_button_if_any_statement_available() throws InterruptedException {
         try {
             if(cardspage.isStatementAvailable())
-            cardspage.statementDownloadClick();
-            smartWait.waitUntilPageIsLoaded(5);
+                cardspage.statementDownloadClick();
+            waitload();
         }
         catch(Exception e) {
             cardspage.cardsMenuClick();
@@ -99,73 +82,73 @@ public class Cards_Step {
     public void user_clicks_on_transaction_tab() throws InterruptedException {
 //        clicks_on_virtual_card_tab_from_card_page();
 //        user_clicks_on_first_virtual_card();
-        smartWait.waitUntilPageIsLoaded(10);
+        waitload();
         cardspage.transactionTabClick();
-        smartWait.waitUntilPageIsLoaded(5);
+        waitload();
     }
 
     @And("latest transactions should appear in  your transactions section")
     public void latest_transactions_should_appear_in__your_transactions_section() throws InterruptedException {
-        smartWait.waitUntilPageIsLoaded(10);
+        waitload();
         Assert.assertTrue("Latest pending transaction not found", cardspage.latestTransectionCheck());
-        Thread.sleep(2000);
+        waitload();
     }
 
     @Then("user should be able to export transactions as pdf and csv")
     public void user_should_be_able_to_export_transactions_as_pdf_and_csv() throws InterruptedException {
-        smartWait.waitUntilPageIsLoaded(10);
+        waitload();
         cardspage.exportTransaction();
-        Thread.sleep(2000);
+        waitload();
     }
 
     @And("user clicks on load tab")
     public void user_clicks_on_load_tab() throws InterruptedException {
-        smartWait.waitUntilPageIsLoaded(10);
+        waitload();
         cardspage.loadTabClick();
-        Thread.sleep(2000);
+        waitload();
     }
 
-    @And("user enters amount to load")
+    @When("user enters amount to load")
     public void user_enters_amount_to_load() throws InterruptedException {
-        smartWait.waitUntilPageIsLoaded(10);
+        waitload();
         cardspage.enterLoadAmount();
-        smartWait.waitUntilPageIsLoaded(5);
+        waitload();
     }
 
-    @And("user checks overview")
+    @When("user checks overview")
     public void user_checks_overview() throws InterruptedException {
-        smartWait.waitUntilPageIsLoaded(10);
+        waitload();
         Assert.assertTrue("Overview didn't appeared", cardspage.overviewCheck());
-        Thread.sleep(2000);
+        waitload();
     }
 
-    @And("user clicks confirm button")
+    @When("user clicks confirm button")
     public void user_clicks_confirm_button() throws InterruptedException {
-        smartWait.waitUntilPageIsLoaded(10);
+        waitload();
         cardspage.confirmBtnClick();
-        Thread.sleep(2000);
+        waitload();
     }
 
-    @And("user provides otp and clicks confirm button again")
+    @When("user provides otp and clicks confirm button again")
     public void user_provides_otp_and_clicks_confirm_button_again() throws InterruptedException {
-        smartWait.waitUntilPageIsLoaded(10);
+        waitload();
         cardspage.enterOtp();
-        Thread.sleep(1000);
+        waitload();
         cardspage.otpConfirmBtnClick();
-        smartWait.waitUntilPageIsLoaded(5);
+        waitload();
     }
 
-    @And("user checks success message and press ok button")
+    @When("user checks success message and press ok button")
     public void user_checks_success_message_and_press_ok_button() throws InterruptedException {
-        smartWait.waitUntilPageIsLoaded(10);
+        waitload();
         Assert.assertTrue("Load unSuccessful", cardspage.sucessMsgCheck());
         cardspage.okBtnClick();
-        Thread.sleep(2000);
+        waitload();
     }
 
     @Then("user should redirect back to physical card page")
     public void user_should_redirect_back_to_physical_card_page() {
-        smartWait.waitUntilPageIsLoaded(10);
+        smartWait.waitUntilPageIsLoaded(2);
         Assert.assertTrue("Physical card didn't appear", cardspage.physicalCardCheck());
         System.out.println("Back to Physical card");
     }
@@ -174,29 +157,29 @@ public class Cards_Step {
     public void user_clicks_on_unload_tab() throws InterruptedException {
 //        user_clicks_on_Cards_on_side_menu();
 //        user_clicks_on_physical_card();
-        smartWait.waitUntilPageIsLoaded(10);
+        waitload();
         cardspage.unloadTabClick();
-        smartWait.waitUntilPageIsLoaded(5);
+        waitload();
     }
 
     @And("user enters amount to unload")
     public void user_enters_amount_to_unload() throws InterruptedException {
         cardspage.enterUnloadAmount();
-        smartWait.waitUntilPageIsLoaded(5);
+        waitload();
     }
 
     @And("user clicks on topup tab")
     public void user_clicks_on_topup_tab() throws InterruptedException {
 //        clicks_on_virtual_card_tab_from_card_page();
 //        user_clicks_on_first_virtual_card();
-        smartWait.waitUntilPageIsLoaded(10);
+        waitload();
         cardspage.topUpTabClick();
-        smartWait.waitUntilPageIsLoaded(5);
+        waitload();
     }
 
     @And("user selects amount to topup")
     public void user_selects_amount_to_topup() throws InterruptedException {
-        smartWait.waitUntilPageIsLoaded(10);
+        waitload();
         cardspage.topupAmountDropdownClick();
         Thread.sleep(1000);
         cardspage.topupAmountClick();
@@ -204,63 +187,114 @@ public class Cards_Step {
 
     @And("clicks on topup button")
     public void clicks_on_topup_button() throws InterruptedException {
-        smartWait.waitUntilPageIsLoaded(10);
+        waitload();
         cardspage.topupBtnClick();
-        smartWait.waitUntilPageIsLoaded(5);
+        waitload();
 
     }
 
     @And("user checks confirmation message and clicks ok")
     public void user_checks_confirmation_message_and_clicks_ok() throws InterruptedException {
-        smartWait.waitUntilPageIsLoaded(10);
+        waitload();
         Assert.assertTrue("Topup Failled", cardspage.sucessMsgCheck());
         Thread.sleep(1000);
         cardspage.OKbtnClick();
-        smartWait.waitUntilPageIsLoaded(5);
+        waitload();
 
     }
 
     @When("user checks summary")
     public void user_checks_summary() {
-        smartWait.waitUntilPageIsLoaded(10);
+        waitload();
         Assert.assertTrue("Topup Summary didn't appear", cardspage.summaryCheck());
+        waitload();
     }
 
     @When("user clicks confirm button for topup")
     public void user_clicks_confirm_button_for_topup() throws InterruptedException {
-        smartWait.waitUntilPageIsLoaded(10);
+        waitload();
         cardspage.topupConfirmBtnClick();
-        smartWait.waitUntilPageIsLoaded(5);
+        waitload();
     }
+
+
+//+++++++++++++++++++++++++++++++++++++++PIN++++++++++++++++++++++++++++++++++++++++
+    @And("user clicks on pin tab")
+    public void user_clicks_on_pin_tab() throws InterruptedException {
+        waitload();
+        cardspage.pinTabClick();
+        waitload();
+    }
+    @And("user inputs password")
+    public void user_inputs_password() throws InterruptedException {
+        waitload();
+        cardspage.enterPinPass();
+        waitload();
+    }
+    @And("user clicks on submit")
+    public void user_clicks_on_submit() throws InterruptedException {
+        waitload();
+        cardspage.pinSubmitClick();
+        waitload();
+    }
+    @Then("card pin should appear")
+    public void card_pin_should_appear() throws InterruptedException {
+        waitload();
+        Assert.assertTrue("Card Pin didn't appear",cardspage.viewedPinCheck());
+        waitload();
+    }
+//+++++++++++++++++++++++++++++++++++++++++++++++++PIN+++++++++++++++++++++++++++++++++++++++++++
+
+//+++++++++++++++++++++++++++++++++++++++++++++++++Digital Card+++++++++++++++++++++++++++++++++++++++++++
+    @And("user clicks on digital card tab")
+    public void user_clicks_on_digital_card_tab() throws InterruptedException {
+        waitload();
+        cardspage.digitalCardTabClick();
+        waitload();
+}
+    @And("user inputs otp")
+    public void user_inputs_otp() throws InterruptedException {
+        waitload();
+       cardspage.enterOtpDigitalCard();
+        waitload();
+
+    }
+    @And("user clicks on show card details button")
+    public void user_clicks_on_show_card_details_button() {
+        waitload();
+        cardspage.showCardDetailsBtnClick();
+        waitload();
+    }
+    @Then("card details should appear")
+    public void card_details_should_appear() {
+       driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        waitload();
+        Assert.assertTrue("Card details didn't appeared", cardspage.cardDetaisCheck());
+        waitload();
+    }
+
+//+++++++++++++++++++++++++++++++++++++++++++++++++Digital Card+++++++++++++++++++++++++++++++++++++++++++
 
     @When("clicks on virtual card tab from card page")
     public void clicks_on_virtual_card_tab_from_card_page() throws InterruptedException {
         user_clicks_on_Cards_on_side_menu();
-        smartWait.waitUntilPageIsLoaded(10);
+        waitload();
         cardspage.virtualCardTabClick();
-        Thread.sleep(2000);
+        waitload();
     }
 
     @And("user clicks on first virtual card")
     public void user_clicks_on_first_virtual_card() throws InterruptedException {
-        try {
-            if (!cardspage.createVCardBtnCheck()) {
-                cardspage.firstVCardClick();
-            } else {
-                System.out.println("No vcard");
-            }
-        } catch (NoSuchElementException e) {
 
-        } finally {
-            cardspage.firstVCardClick();
-        }
-        smartWait.waitUntilPageIsLoaded(5);
+        cardspage.firstVCardClick();
+        waitload();
     }
 
     @Then("user should redirect back to virtual card page")
     public void user_should_redirect_back_to_virtual_card_page() throws InterruptedException {
+        waitload();
         Assert.assertTrue("Didn't come back to virtual Card Page", cardspage.firstVCardCheck());
-        Thread.sleep(2000);
+        waitload();
     }
 
 }

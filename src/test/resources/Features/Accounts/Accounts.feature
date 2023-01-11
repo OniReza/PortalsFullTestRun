@@ -16,7 +16,7 @@ Feature: Test Accounts Functionality
     And user clicks on ok
     Then user should redirect to wallet details tab
 
-  @USD_common
+  @USD_us @Deposit
   Scenario: Deposit: Verify Card Deposit to USD Wallet
     When user clicks on USD wallet
     And user clicks on deposit
@@ -26,7 +26,7 @@ Feature: Test Accounts Functionality
     And user clicks agreement
     And summary should appear
     And clicks confirm
-    And enter card details in payment information
+    And enter card details in Stripe and clicks on pay
     And user checks confirmation message
     And user clicks ok
     Then user should redirect to accounts
@@ -38,6 +38,21 @@ Feature: Test Accounts Functionality
     And user expend from dropdown
     And user selects local(US Bank)
     Then user should see details of bank
+
+  @USD_non_us @Deposit
+  Scenario: Deposit: Verify Card Deposit to USD Wallet via Apexx
+    When user clicks on USD wallet
+    And user clicks on deposit
+    And user expend from dropdown
+    And user selects debit or credit card
+    And user enters amount to load in USD
+    And user clicks agreement
+    And summary should appear
+    And clicks confirm
+    And enter card details in Apexx and clicks on pay
+    And user checks confirmation message
+    And user clicks ok
+    Then user should redirect to accounts
 
   @USD_non_us
   Scenario: Deposit: Verify Local(UK Bank) Deposit to USD Wallet
@@ -81,7 +96,7 @@ Feature: Test Accounts Functionality
     And press ok
     Then user should redirect to details
 
-  @USD_common @Payment
+  @USD_common @pay
   Scenario: Payments: Verify Make a payment to a New Individual from USD Wallet
     When user clicks on USD wallet
     And user clicks payments tab
@@ -176,7 +191,7 @@ Feature: Test Accounts Functionality
     And user clicks on ok
     Then user should redirect to wallet details tab
 
-  @EURO_common
+  @EURO_us @Deposit
   Scenario: Deposit: Verify Card Deposit to Euro Wallet
     When user clicks on EURO wallet
     And user clicks on deposit
@@ -186,7 +201,7 @@ Feature: Test Accounts Functionality
     And user clicks agreement
     And summary should appear
     And clicks confirm
-    And enter card details in payment information
+    And enter card details in Stripe and clicks on pay
     And user checks confirmation message
     And user clicks ok
     Then user should redirect to accounts
@@ -198,6 +213,21 @@ Feature: Test Accounts Functionality
     And user expend from dropdown
     And user selects local(US Bank)
     Then user should see details of bank
+
+  @EURO_non_us @Deposit
+  Scenario: Deposit: Verify Card Deposit to Euro Wallet via Apexx
+    When user clicks on EURO wallet
+    And user clicks on deposit
+    And user expend from dropdown
+    And user selects debit or credit card
+    And user enters amount to load in USD
+    And user clicks agreement
+    And summary should appear
+    And clicks confirm
+    And enter card details in Apexx and clicks on pay
+    And user checks confirmation message
+    And user clicks ok
+    Then user should redirect to accounts
 
   @EURO_non_us
   Scenario: Deposit: Verify Local(UK Bank) Deposit to Euro Wallet
@@ -214,6 +244,7 @@ Feature: Test Accounts Functionality
     And user expend from dropdown
     And user selects International(non UK Bank)
     Then user should see details of bank
+
 
   @EURO_common
   Scenario: Deposit: Verify Crypto Deposit to Euro Wallet
@@ -336,7 +367,7 @@ Feature: Test Accounts Functionality
     And user clicks on ok
     Then user should redirect to wallet details tab
 
-  @GBP_common
+  @GBP_us @Deposit
   Scenario: Deposit: Verify Card Deposit to GBP Wallet
     When user clicks on GBP wallet
     And user clicks on deposit
@@ -346,7 +377,7 @@ Feature: Test Accounts Functionality
     And user clicks agreement
     And summary should appear
     And clicks confirm
-    And enter card details in payment information
+    And enter card details in Stripe and clicks on pay
     And user checks confirmation message
     And user clicks ok
     Then user should redirect to accounts
@@ -358,6 +389,21 @@ Feature: Test Accounts Functionality
     And user expend from dropdown
     And user selects local(US Bank)
     Then user should see details of bank
+
+  @GBP_non_us @DepositNN
+  Scenario: Deposit: Verify Card Deposit to GBP Wallet via Apexx
+    When user clicks on GBP wallet
+    And user clicks on deposit
+    And user expend from dropdown
+    And user selects debit or credit card
+    And user enters amount to load in USD
+    And user clicks agreement
+    And summary should appear
+    And clicks confirm
+    And enter card details in Apexx and clicks on pay
+    And user checks confirmation message
+    And user clicks ok
+    Then user should redirect to accounts
 
   @GBP_non_us
   Scenario: Deposit: Verify Local(UK Bank) Deposit to GBP Wallet
@@ -496,7 +542,7 @@ Feature: Test Accounts Functionality
     And user clicks on ok
     Then user should redirect to wallet details tab
 
-  @JPY_cs
+  @JPY_us @DepositJPY
   Scenario: Deposit: Verify Card Deposit to JPY Wallet
     When user clicks on JPY wallet
     And user clicks on deposit
@@ -506,7 +552,7 @@ Feature: Test Accounts Functionality
     And user clicks agreement
     And summary should appear
     And clicks confirm
-    And enter card details in payment information
+    And enter card details in Stripe and clicks on pay
     And user checks confirmation message
     And user clicks ok
     Then user should redirect to accounts
@@ -656,7 +702,7 @@ Feature: Test Accounts Functionality
     And user clicks on ok
     Then user should redirect to wallet details tab
 
-  @CNY_cs
+  @CNY_us @DepositCNY
   Scenario: Deposit: Verify Card Deposit to CNY Wallet
     When user clicks on CNY wallet
     And user clicks on deposit
@@ -666,7 +712,7 @@ Feature: Test Accounts Functionality
     And user clicks agreement
     And summary should appear
     And clicks confirm
-    And enter card details in payment information
+    And enter card details in Stripe and clicks on pay
     And user checks confirmation message
     And user clicks ok
     Then user should redirect to accounts
@@ -801,7 +847,6 @@ Feature: Test Accounts Functionality
     And if any statement available user clicks on download button
     Then statement should be downloaded
 #+++++++++++++++++++++++++++++++++++++++++++PHP wallet feature++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
   @PHP_non_us
   Scenario: Verify PHP Wallet to Euro Wallet Move
     When user clicks on PHP wallet
@@ -832,7 +877,7 @@ Feature: Test Accounts Functionality
     When user clicks on PHP wallet
     Then user should see a graph
 
-  @PHP_common
+  @PHP_common @Single
   Scenario: Verify Transaction Tab of PHP Wallet
     When user clicks on PHP wallet
     And user click on transaction tab

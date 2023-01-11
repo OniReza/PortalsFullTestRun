@@ -2,7 +2,6 @@ package Pages;
 
 import Utility.BaseData;
 import Utility.CommonPageMethods;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -13,14 +12,9 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+
 public class Cards_Page extends CommonPageMethods {
     public static WebDriver driver;
-
-    @FindBy(xpath = "/html/body/div[1]/div/div/div/div/div[2]/div/div/div/div[1]/div/div/div/div/span[1]")
-    public WebElement popup;
-
-    @FindBy(xpath = "//*[@id=\"root\"]/div/div/div/div/div[2]/div/div/div/div[1]/div/div/div/div/div/button[1]")
-    public WebElement btnCancel;
     @FindBy(xpath = "//span[text()='Cards']")
     public WebElement cardsMenuBtn;
     @FindBy(xpath = "//img[@class='cardImage']")
@@ -29,6 +23,8 @@ public class Cards_Page extends CommonPageMethods {
     public WebElement detailsTab;
     @FindBy(xpath = "//span[contains(text(),'Statements')]")
     public WebElement statementTab;
+    @FindBy(xpath = "//*[@id=\"root\"]/div/div/div/div/main/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div/div/table/tbody/tr[1]/td[2]/button")
+    public WebElement AssertPageStatement;
     @FindBy(xpath = "(//span[contains(text(),'DOWNLOAD')])[1]")
     public WebElement downloadBtn;
     @FindBy(xpath = "//span[contains(text(),'Load')]")
@@ -81,6 +77,52 @@ public class Cards_Page extends CommonPageMethods {
     @FindBy(xpath = "//button[contains(text(),'Confirm')]")
     public WebElement topupConfirmBtn;
 
+    //++++++++++++++++++++++++++++++++++++++PIN+++++++++++++++++++++++++++++++++++++++++
+    @FindBy(xpath = "//span[contains(text(),'Pin')]")
+    public WebElement pinTab;
+    @FindBy(name = "reEnterPassword")
+    WebElement pinPassword;
+    @FindBy(xpath = "//span[contains(text(),'SUBMIT') or contains(text(),'submit')]")
+    WebElement pinSubmit;
+    @FindBy(xpath = "//span[contains(text(),'Your pin is')]")
+    WebElement viwedPin;
+    //++++++++++++++++++++++++++++++++++++++PIN+++++++++++++++++++++++++++++++++++++++++
+
+    //++++++++++++++++++++++++++++++++++++++Digital card+++++++++++++++++++++++++++++++++++++++++
+    @FindBy(xpath = "//span[contains(text(),'Digital Card')]")
+    WebElement digitalCardTab;
+    @FindBy(id="code")
+    WebElement otp;
+    @FindBy(xpath = "//button[@type='submit']")
+    WebElement showCardDetailsBtn;
+    @FindBy(xpath = "//label[contains(text(),'Card Number')]")
+    WebElement viewedCardNum;
+    @FindBy(xpath = "//label[contains(text(),'Expire')]")
+    WebElement viewedExpDate;
+    @FindBy(xpath = "//label[contains(text(),'CVV')]")
+    WebElement viewedCVV;
+
+    //++++++++++++++++++++++++++++++++++++++Digital card+++++++++++++++++++++++++++++++++++++++++
+
+    //++++++++++++++++++++++++++++++++++++++Digital card+++++++++++++++++++++++++++++++++++++++++
+    public void digitalCardTabClick(){
+        click(digitalCardTab);
+    }
+    public void enterOtpDigitalCard(){
+        otp.sendKeys(BaseData.BaseOtp());
+    }
+    public void showCardDetailsBtnClick(){
+        showCardDetailsBtn.click();
+    }
+    public boolean cardDetaisCheck(){
+        return viewedCardNum.isDisplayed();
+    }
+
+
+    //++++++++++++++++++++++++++++++++++++++Digital card+++++++++++++++++++++++++++++++++++++++++
+
+
+
     @FindBy(xpath = "//span[contains(text(),'Transactions')]")
     public WebElement transactionsTab;
     @FindBy(xpath = "(//span[@class='Text undefined small undefined thin' and contains(text(),'-')])[1]")
@@ -101,50 +143,44 @@ public class Cards_Page extends CommonPageMethods {
     @FindBy(xpath = "(//p[contains(text(),'Available Balance')])[1]")
     public WebElement firstVCard;
 
-    @FindBy(xpath = "//*[@id=\"root\"]/div/div/div/div/main/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div/div/table/tbody/tr[1]/td[2]/button")
-    public WebElement AssertPageStatement;
-
     public Cards_Page(WebDriver driver) {
         PageFactory.initElements(driver, this);
     }
 
     public void cardsMenuClick() {
-        click(cardsMenuBtn);
+        cardsMenuBtn.click();
     }
-    public Boolean IsPopup()
-    {
-        return popup.isDisplayed();
-    }
-    public void buttonCancel()
-    {
-        click(btnCancel);
-    }
+
     public boolean physicalCardCheck() {
         return physicalCard.isDisplayed();
     }
 
     public void physicalCardClick() {
-        click(physicalCard);
+        physicalCard.click();
     }
 
     public boolean detailsTabCheck() {
         return detailsTab.isDisplayed();
+
     }
 
     public void statementTabClick() {
-            click(statementTab);
+        statementTab.click();
     }
 
-    public boolean availableStatement() {
-        return downloadBtn.isDisplayed();
-    }
+//    public boolean availableStatement() {
+//        return downloadBtn.isDisplayed();
+//    }
+public Boolean isStatementAvailable() {
+    return AssertPageStatement.isDisplayed();
+}
+
     public void statementDownloadClick() {
-        downloadBtn.sendKeys(Keys.PAGE_DOWN);
-        click(downloadBtn);
+        downloadBtn.click();
     }
 
     public void loadTabClick() {
-        click(loadTab);
+        loadTab.click();
     }
 
     public void enterLoadAmount() {
@@ -160,7 +196,7 @@ public class Cards_Page extends CommonPageMethods {
     }
 
     public void confirmBtnClick() {
-        click(confirmBtn);
+        confirmBtn.click();
     }
 
     public void enterOtp() {
@@ -168,7 +204,7 @@ public class Cards_Page extends CommonPageMethods {
     }
 
     public void otpConfirmBtnClick() {
-        click(otpConfirmBtn);
+        otpConfirmBtn.click();
     }
 
     public boolean sucessMsgCheck() {
@@ -176,27 +212,28 @@ public class Cards_Page extends CommonPageMethods {
     }
 
     public void okBtnClick() {
-        click(okBtn);
+       okBtn.click();
     }
 
     public void unloadTabClick() {
-        click(unloadTab);
+
+        unloadTab.click();
     }
 
     public void topUpTabClick() {
-        click(topupTab);
+        topupTab.click();
     }
 
     public void topupAmountDropdownClick() {
-        click(topupAmountDropdown);
+        topupAmountDropdown.click();
     }
 
     public void topupAmountClick() {
-        click(topupAmount);
+        topupAmount.click();
     }
 
     public void topupBtnClick() {
-        click(topupBtn);
+        topupBtn.click();
     }
 
     public boolean summaryCheck() {
@@ -204,15 +241,29 @@ public class Cards_Page extends CommonPageMethods {
     }
 
     public void topupConfirmBtnClick() {
-        click(topupConfirmBtn);
+        topupConfirmBtn.click();
     }
 
     public void OKbtnClick() {
-        click(OKBtn);
+       OKBtn.click();
     }
 
+    //++++++++++++++++++++PIN++++++++++++
+    public void pinTabClick(){
+        pinTab.click();
+    }
+    public void enterPinPass(){
+        pinPassword.sendKeys(BaseData.BasePassword());
+    }
+    public void pinSubmitClick(){
+        pinSubmit.click();
+    }
+    public boolean viewedPinCheck(){
+        return viwedPin.isDisplayed();
+    }
+//+++++++++++++++++++++++++++++++++++++PIN+++++++++++++++++++++++++++++++++
     public void transactionTabClick() {
-        click(transactionsTab);
+        transactionsTab.click();
     }
 
     public boolean latestTransectionCheck() {
@@ -229,13 +280,13 @@ public class Cards_Page extends CommonPageMethods {
     }
 
     public void exportTransaction() throws InterruptedException {
-        click(exportPdf);
+        exportPdf.click();
         Thread.sleep(1000);
-        click(exportCsv);
+        exportCsv.click();
     }
 
     public void virtualCardTabClick() {
-        click(virtualCardTab);
+        virtualCardTab.click();
     }
 
     public boolean createVCardBtnCheck() {
@@ -249,15 +300,7 @@ public class Cards_Page extends CommonPageMethods {
     }
 
     public void firstVCardClick() {
-        click(firstVCard);
-    }
-
-    /*Modify by: Abid Reza
-    12-19-2022
-    Update Method:isStatementAvailable();
-    */
-    public Boolean isStatementAvailable() {
-            return AssertPageStatement.isDisplayed();
+        firstVCard.click();
     }
 
 }

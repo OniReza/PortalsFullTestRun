@@ -8,8 +8,9 @@ import org.openqa.selenium.support.PageFactory;
 
 public class ShoppingPage extends CommonPageMethods {
 
-    @FindBy(xpath = "//*[@id=\"root\"]/div/div/div/div/div/div[1]/div/div/div[2]/ul[1]/div[8]")
+    @FindBy(xpath = "//span[text()='Shopping']")
     public WebElement btnShopping;
+
 
     @FindBy(xpath = "/html/body/div[1]/div/div/div/div/div[2]/div/div/div/div[1]/div/div/div/div/span[1]")
     public WebElement popup;
@@ -17,17 +18,16 @@ public class ShoppingPage extends CommonPageMethods {
     @FindBy(xpath = "//*[@id=\"root\"]/div/div/div/div/div[2]/div/div/div/div[1]/div/div/div/div/div/button[1]")
     public WebElement btnCancel;
 
-    @FindBy(xpath = "//*[@id=\"root\"]/div/div/div/div/main/div/div/div/div[1]/div/div[2]/div/div/form/div[1]/div/input")
+    @FindBy(xpath = "//input[@name='description']")
     public WebElement inputDescription;
-    @FindBy(xpath = "//*[@id=\"root\"]/div/div/div/div/main/div/div/div/div[1]/div/div[2]/div/div/form/div[2]/div/input")
+    @FindBy(xpath = "//input[@name='brand']")
     public WebElement inputBrand;
-    @FindBy(xpath = "//*[@id=\"root\"]/div/div/div/div/main/div/div/div/div[1]/div/div[2]/div/div/form/div[3]/div/input")
+    @FindBy(xpath = "//input[@name='style']")
     public WebElement inputStyle;
-    @FindBy(xpath = "//*[@id=\"root\"]/div/div/div/div/main/div/div/div/div[1]/div/div[2]/div/div/form/div[4]/div/input")
+    @FindBy(xpath = "//input[@name='colour']")
     public WebElement inputColor;
-    @FindBy(xpath = "//*[@id=\"root\"]/div/div/div/div/main/div/div/div/div[1]/div/div[2]/div/div/form/div[5]/div/input")
+    @FindBy(xpath = "//input[@name='weblink']")
     public WebElement inputWebLink;
-
     @FindBy(xpath = "(//i[@class='dropdown icon'])[1]")
     public WebElement searchReq;
 

@@ -57,46 +57,41 @@ public class BaseData {
 
     public static String BaseUrlMain() {
 
-        String username = "devs";
-        String password = "super!power";
-        String URL = "https://" + username + ":" + password + "@" + Digipro;
-//        String URL = "https://" + username + ":" + password + "@" + "dev.plcumember.com";
-        return URL;
-
-//        String username = "sandbox";
-//        String password = "test!easy";
-//        String URL = "https://" + username + ":" + password + "@" + "member.dev.clubswan.com";
-//        String URL = "https://" + username + ":" + password + "@" + "member.tst.clubswan.com";
-//        String URL = "https://" + username + ":" + password + "@" + "sandbox.infinityclubcardmembers.com/";
+//        String username = "devs";
+//        String password = "super!power";
+//        String URL = "https://" + username + ":" + password + "@" + Digipro;
 //        return URL;
+
+        String username = "sandbox";
+        String password = "test!easy";
+        String URL = "https://" + username + ":" + password + "@" + DigiproTst;
+        return URL;
 
     }
 
     public static String BasePopUpUrl()
     {
-//        String username = "devs";
-//        String password = "super!power";
-//        String PURL = "https://" + username + ":" + password + "@" + "member.dev.clubswan.com";
-//        return PURL;
-
-        String username = "sandbox";
-        String password = "test!easy";
-        String PURL = "https://" + username + ":" + password + "@" + DigiproTst;
-       // String PURL = "https://" + username + ":" + password + "@" + "sandbox.infinityclubcardmembers.com/";
+        String username = "devs";
+        String password = "super!power";
+        String PURL = "https://" + username + ":" + password + "@" + Digipro;
         return PURL;
+
+//        String username = "sandbox";
+//        String password = "test!easy";
+//        String PURL = "https://" + username + ":" + password + "@" + DigiproTst;
+//        return PURL;
     }
 
     public static String BaseEmail(){
-          String Email="lyopay_bd_dev_adalberto@mailinator.com";
+          String Email="lyopay_bd_tst_t1@mailinator.com";
           return Email;
     }
     public static String BasePassword(){
-       // String Password = "Tt123#128";
         String Password = "Tt123#123#";
         return Password;
     }
     public static String BaseOtp() {
-        String secretKey = "MYDYX42PUTO4I3Y2QQL23PEEJA";
+        String secretKey = "XEWKO5TR7VSOZQTCB4TC2ZQBXY";
 
         String code = getTOTPCode(secretKey);
         return code;

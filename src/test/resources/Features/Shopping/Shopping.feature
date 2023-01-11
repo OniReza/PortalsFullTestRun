@@ -3,7 +3,8 @@ Feature: Functionality Test For Shopping Feature
   Background:
     Given a valid url
 
-  Scenario: Verify Shopping New Request
+    @tagShopping
+    Scenario: Verify Shopping New Request
     When user click on shopping button
     And user input description
     And user input brand name
