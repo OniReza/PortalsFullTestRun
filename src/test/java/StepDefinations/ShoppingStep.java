@@ -7,7 +7,9 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ShoppingStep {
     public WebDriver driver;
@@ -16,6 +18,11 @@ public class ShoppingStep {
     public ShoppingStep(){
         this.driver= Hooks.getDriver();
         shoppingPage=new ShoppingPage(driver);
+    }
+
+    public void waitload(){
+        new WebDriverWait(driver, 30).until(
+                webDriver -> ((JavascriptExecutor) webDriver).executeScript("return document.readyState").equals("complete"));
     }
     @When("user click on shopping button")
     public void user_click_on_shopping_button() throws InterruptedException {
@@ -58,13 +65,13 @@ public class ShoppingStep {
 
     @And("user selects request and request status from search box")
     public void user_selects_request_and_request_status_from_search_box()throws InterruptedException {
-        smartWait.waitUntilPageIsLoaded(5);
+        waitload();
         shoppingPage.searchReqClick();
-        smartWait.waitUntilPageIsLoaded(5);
+        waitload();
         shoppingPage.allReqClick();
-        smartWait.waitUntilPageIsLoaded(5);
+        waitload();
         shoppingPage.reqStatusClick();
-        smartWait.waitUntilPageIsLoaded(5);
+        waitload();
         shoppingPage.inProgressStatusClick();
     }
     @Then("user should see the shopping request status")
