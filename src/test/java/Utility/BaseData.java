@@ -52,8 +52,13 @@ public class BaseData {
     static String  owlTst= "sandbox.owl-lifestyle.com";
     static String  dreamwalletDev= "dev.dreamwallet.clubswan.com";
     static String  dreamwalletTst= "tst.dreamwallet.clubswan.com";
-    static  String Digipro="dev.lyopaymembers.com/";
-    static  String DigiproTst="sandbox.lyopaymembers.com/";
+    static  String Digipro="dev.lyopaymembers.com/"; //https://dev.neurotrademember.com/
+    static  String DigiproTst="sandbox.lyopaymembers.com/";//https://sandbox.neurotrademember.com/
+
+    static  String Neurotrade="dev.neurotrademember.com/";
+    static  String NeurotradeTst="sandbox.neurotrademember.com/";
+
+
 
     public static String BaseUrlMain() {
 
@@ -64,16 +69,15 @@ public class BaseData {
 
         String username = "sandbox";
         String password = "test!easy";
-        String URL = "https://" + username + ":" + password + "@" + DigiproTst;
+        String URL = "https://" + username + ":" + password + "@" + NeurotradeTst;
         return URL;
-
     }
 
     public static String BasePopUpUrl()
     {
         String username = "devs";
         String password = "super!power";
-        String PURL = "https://" + username + ":" + password + "@" + Digipro;
+        String PURL = "https://" + username + ":" + password + "@" + Neurotrade;
         return PURL;
 
 //        String username = "sandbox";
@@ -83,7 +87,8 @@ public class BaseData {
     }
 
     public static String BaseEmail(){
-          String Email="lyopay_bd_tst_t1@mailinator.com";
+          String Email="stalin.neurotrade.tst.1@mailinator.com"; //Neotrade
+
           return Email;
     }
     public static String BasePassword(){
@@ -91,7 +96,7 @@ public class BaseData {
         return Password;
     }
     public static String BaseOtp() {
-        String secretKey = "XEWKO5TR7VSOZQTCB4TC2ZQBXY";
+        String secretKey = "6UNVY5GUBZIYMVIW4UZBLXTGO4";//Neotrade
 
         String code = getTOTPCode(secretKey);
         return code;
