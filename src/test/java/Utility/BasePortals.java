@@ -2,8 +2,9 @@ package Utility;
 
 public class BasePortals {
 
-    public static String portalsDEV()
+    public void PortalList()
     {
+
 //        static String  clubswanDev= "member.dev.clubswan.com";
 //        static String  clubswanTst= "member.tst.clubswan.com";
 //        static String  aubitpayDev = "dev.aubitpaymembers.com";
@@ -49,19 +50,34 @@ public class BasePortals {
 //        static String  owlDev= "dev.owl-lifestyle.com";
 //        static String  owlTst= "sandbox.owl-lifestyle.com";
 //        static String  dreamwalletDev= "dev.dreamwallet.clubswan.com";
-//       static String  dreamwalletTst= "tst.dreamwallet.clubswan.com";
-          String PortalDev="dev.lyopaymembers.com/"; //https://dev.neurotrademember.com/
+//        static String  dreamwalletTst= "tst.dreamwallet.clubswan.com";
+//         String PortalDev="dev.lyopaymembers.com/";
+//         String PortalTst="sandbox.lyopaymembers.com/";
 
 
-        return PortalDev;
+
+    }
+    public static String portalsDEV()
+    {
+
+        String PortalDev="dev.lyopaymembers.com/"; //https://dev.neurotrademember.com/
+
+        String username = "devs";
+        String password = "super!power";
+        String URLDEV = "https://" + username + ":" + password + "@" + PortalDev;
+        return URLDEV;
 
     }
 
     public static String portalsTST()
     {
         String PortalTst="sandbox.lyopaymembers.com/";//https://sandbox.neurotrademember.com/
-        return PortalTst;
-    }
 
+        String username = "sandbox";
+        String password = "test!easy";
+        String URLTST = "https://" + username + ":" + password + "@" + PortalTst;
+
+        return URLTST;
+    }
 
 }

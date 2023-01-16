@@ -67,14 +67,8 @@ public class BaseData {
         String PortalDev= BasePortals.portalsDEV();
         String PortalTst= BasePortals.portalsTST();
 
-//        String username = "devs";
-//        String password = "super!power";
-//        String URL = "https://" + username + ":" + password + "@" + PortalDev;
-//        return URL;
-
-        String username = "sandbox";
-        String password = "test!easy";
-        String URL = "https://" + username + ":" + password + "@" + PortalTst;
+//        String URL =PortalDev;
+        String URL =PortalTst;
         return URL;
     }
 
@@ -83,15 +77,9 @@ public class BaseData {
         String PortalDev= BasePortals.portalsDEV();
         String PortalTst= BasePortals.portalsTST();
 
-        String username = "devs";
-        String password = "super!power";
-        String PURL = "https://" + username + ":" + password + "@" + PortalDev;
+        String PURL = PortalDev;
+//        String PURL =PortalTst;
         return PURL;
-
-//        String username = "sandbox";
-//        String password = "test!easy";
-//        String PURL = "https://" + username + ":" + password + "@" + PortalTst;
-//        return PURL;
     }
 
     public static String BaseEmail(){
