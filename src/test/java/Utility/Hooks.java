@@ -7,6 +7,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import io.cucumber.java.Scenario;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.util.concurrent.TimeUnit;
@@ -20,15 +21,22 @@ public class Hooks {
     public static WebDriver getDriver() {
 
         if (null == driver) {
-            System.setProperty("webdriver.chrome.driver","Drivers/chromedriver.exe");
-            driver = new ChromeDriver();
-            driver.manage().window().maximize();
-            driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+//            System.setProperty("webdriver.chrome.driver","Drivers/chromedriver.exe"); //Google Chrome
+//            driver = new ChromeDriver();
+//            driver.manage().window().maximize();
+//            driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
-//            System.setProperty("webdriver.gecko.driver", "Drivers/geckodriver.exe");
+//            System.setProperty("webdriver.gecko.driver", "Drivers/geckodriver.exe"); //Fire Fox
 //            driver = new FirefoxDriver();
 //            driver.manage().window().maximize();
 //            driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+
+
+            System.setProperty("webdriver.edge.driver", "Drivers/msedgedriver.exe"); //MicroSoftEdge
+            driver = new EdgeDriver();
+            driver.manage().window().maximize();
+            driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+
         }
 
         return driver;
