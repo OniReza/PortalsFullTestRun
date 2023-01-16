@@ -74,7 +74,7 @@ Feature: Test functionality of Card page
     And latest transactions should appear in  your transactions section
     Then user should be able to export transactions as pdf and csv
 
-  @common
+  @common @pin1
   Scenario: Verify Load Functionality of Virtual Card
     When clicks on virtual card tab from card page
     And user clicks on first virtual card
@@ -86,7 +86,7 @@ Feature: Test functionality of Card page
     And user checks success message and press ok button
     Then user should redirect back to physical card page
 
-  @common
+  @common @pin
   Scenario: Verify UnLoad Functionality of Virtual Card
     When clicks on virtual card tab from card page
     And user clicks on first virtual card
@@ -111,7 +111,7 @@ Feature: Test functionality of Card page
     And user checks confirmation message and clicks ok
     Then user should redirect back to virtual card page
 
-  @common
+  @common @pin
   Scenario: Verify Pin Functionality of Virtual Card
     When clicks on virtual card tab from card page
     And user clicks on first virtual card
@@ -129,7 +129,7 @@ Feature: Test functionality of Card page
     And user clicks on show card details button
     Then card details should appear
 
-  @common
+  @common @pin
   Scenario: Verify Transaction Tab of Virtual Card
     When clicks on virtual card tab from card page
     And user clicks on first virtual card
@@ -137,7 +137,7 @@ Feature: Test functionality of Card page
     And latest transactions should appear in  your transactions section
     Then user should be able to export transactions as pdf and csv
 
-  @common
+  @common @pin
   Scenario: Verify Statement Tab of Virtual Card
     When clicks on virtual card tab from card page
     And user clicks on first virtual card

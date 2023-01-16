@@ -390,7 +390,7 @@ Feature: Test Accounts Functionality
     And user selects local(US Bank)
     Then user should see details of bank
 
-  @GBP_non_us @DepositNN
+  @GBP_non_us @DepositNN @tt
   Scenario: Deposit: Verify Card Deposit to GBP Wallet via Apexx
     When user clicks on GBP wallet
     And user clicks on deposit
@@ -405,7 +405,7 @@ Feature: Test Accounts Functionality
     And user clicks ok
     Then user should redirect to accounts
 
-  @GBP_non_us
+  @GBP_non_us @TestGBP @tt
   Scenario: Deposit: Verify Local(UK Bank) Deposit to GBP Wallet
     When user clicks on GBP wallet
     And user clicks on deposit
@@ -688,7 +688,7 @@ Feature: Test Accounts Functionality
     Then statement should be downloaded
 
 #+++++++++++++++++++++++++++++++++++++++++++CNY wallet feature++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-  @CNY_common
+  @CNY_common @cny
   Scenario: Verify CNY Wallet to USD Wallet Move
     When user clicks on CNY wallet
     And user clicks on move tab
