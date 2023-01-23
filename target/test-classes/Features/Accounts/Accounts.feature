@@ -2,22 +2,8 @@ Feature: Test Accounts Functionality
   Background:
     Given a valid url
 
-  @USD_common
-  Scenario: Verify USD Wallet to Euro Wallet Move
-    When user clicks on USD wallet
-    And user clicks on move tab
-    And user clicks on select beneficiary dropdown
-    And user selects EUR wallet
-    And enter amount on sending amount box
-    And user clicks confirm
-    And user enters secret code
-    And user clicks confirm again
-    And transfer successfully completed message is shown
-    And user clicks on ok
-    Then user should redirect to wallet details tab
-
-  @USD_us @Deposit
-  Scenario: Deposit: Verify Card Deposit to USD Wallet
+  @USD_us @Deposit_us
+  Scenario: Deposit: Verify Card Deposit to USD Wallet via Stripe
     When user clicks on USD wallet
     And user clicks on deposit
     And user expend from dropdown
@@ -27,19 +13,10 @@ Feature: Test Accounts Functionality
     And summary should appear
     And clicks confirm
     And enter card details in Stripe and clicks on pay
-    And user checks confirmation message
-    And user clicks ok
+    And user checks confirmation message and press ok
     Then user should redirect to accounts
 
-  @USD_us
-  Scenario: Deposit: Verify Local(US Bank) Deposit to USD Wallet
-    When user clicks on USD wallet
-    And user clicks on deposit
-    And user expend from dropdown
-    And user selects local(US Bank)
-    Then user should see details of bank
-
-  @USD_non_us @Deposit
+  @USD_non_us @Deposit_non_us
   Scenario: Deposit: Verify Card Deposit to USD Wallet via Apexx
     When user clicks on USD wallet
     And user clicks on deposit
@@ -50,9 +27,31 @@ Feature: Test Accounts Functionality
     And summary should appear
     And clicks confirm
     And enter card details in Apexx and clicks on pay
-    And user checks confirmation message
-    And user clicks ok
+    And user checks confirmation message and press ok
     Then user should redirect to accounts
+
+  @USD_common @USD_move @move
+  Scenario: Verify USD Wallet to JPY Wallet Move
+    When user clicks on USD wallet
+    And user clicks on move tab
+    And user clicks on select beneficiary dropdown
+    And user selects JPY wallet
+    And enter amount on sending amount box
+    And user clicks confirm
+    And user enters secret code
+    And user clicks confirm again
+    And transfer successfully completed message is shown
+    And user clicks on ok
+    Then user should redirect to wallet details tab
+
+
+  @USD_us @us_bank
+  Scenario: Deposit: Verify Local(US Bank) Deposit to USD Wallet
+    When user clicks on USD wallet
+    And user clicks on deposit
+    And user expend from dropdown
+    And user selects local(US Bank)
+    Then user should see details of bank
 
   @USD_non_us
   Scenario: Deposit: Verify Local(UK Bank) Deposit to USD Wallet
@@ -177,22 +176,8 @@ Feature: Test Accounts Functionality
     Then statement should be downloaded
 
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++EUR wallet++++++++++++++++++++++++++++++++++++++++++++++++++++++
-  @EURO_common
-  Scenario: Verify Euro Wallet to USD Wallet Move
-    When user clicks on EURO wallet
-    And user clicks on move tab
-    And user clicks on select beneficiary dropdown
-    And user selects USD wallet
-    And enter amount on sending amount box
-    And user clicks confirm
-    And user enters secret code
-    And user clicks confirm again
-    And transfer successfully completed message is shown
-    And user clicks on ok
-    Then user should redirect to wallet details tab
-
-  @EURO_us @Deposit
-  Scenario: Deposit: Verify Card Deposit to Euro Wallet
+  @EURO_us @Deposit_us
+  Scenario: Deposit: Verify Card Deposit to Euro Wallet via Stripe
     When user clicks on EURO wallet
     And user clicks on deposit
     And user expend from dropdown
@@ -202,19 +187,10 @@ Feature: Test Accounts Functionality
     And summary should appear
     And clicks confirm
     And enter card details in Stripe and clicks on pay
-    And user checks confirmation message
-    And user clicks ok
+    And user checks confirmation message and press ok
     Then user should redirect to accounts
 
-  @EURO_us
-  Scenario: Deposit: Verify Local(US Bank) Deposit to Euro Wallet
-    When user clicks on EURO wallet
-    And user clicks on deposit
-    And user expend from dropdown
-    And user selects local(US Bank)
-    Then user should see details of bank
-
-  @EURO_non_us @Deposit
+  @EURO_non_us @Deposit_non_us
   Scenario: Deposit: Verify Card Deposit to Euro Wallet via Apexx
     When user clicks on EURO wallet
     And user clicks on deposit
@@ -225,9 +201,31 @@ Feature: Test Accounts Functionality
     And summary should appear
     And clicks confirm
     And enter card details in Apexx and clicks on pay
-    And user checks confirmation message
-    And user clicks ok
+    And user checks confirmation message and press ok
     Then user should redirect to accounts
+
+  @EURO_common @EURO_move @move
+  Scenario: Verify Euro Wallet to CNY Wallet Move
+    When user clicks on EURO wallet
+    And user clicks on move tab
+    And user clicks on select beneficiary dropdown
+    And user selects CNY wallet
+    And enter amount on sending amount box
+    And user clicks confirm
+    And user enters secret code
+    And user clicks confirm again
+    And transfer successfully completed message is shown
+    And user clicks on ok
+    Then user should redirect to wallet details tab
+
+  @EURO_us @us_bank
+  Scenario: Deposit: Verify Local(US Bank) Deposit to Euro Wallet
+    When user clicks on EURO wallet
+    And user clicks on deposit
+    And user expend from dropdown
+    And user selects local(US Bank)
+    Then user should see details of bank
+
 
   @EURO_non_us
   Scenario: Deposit: Verify Local(UK Bank) Deposit to Euro Wallet
@@ -246,7 +244,7 @@ Feature: Test Accounts Functionality
     Then user should see details of bank
 
 
-  @EURO_common
+  @EURO_common @Euro_crypto @crypto
   Scenario: Deposit: Verify Crypto Deposit to Euro Wallet
     When user clicks on EURO wallet
     When user clicks on deposit
@@ -353,7 +351,35 @@ Feature: Test Accounts Functionality
     Then statement should be downloaded
 
 #+++++++++++++++++++++++++++++++++++++++++++GBP wallet feature++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-  @GBP_common
+  @GBP_us @Deposit_us
+  Scenario: Deposit: Verify Card Deposit to GBP Wallet via Stripe
+    When user clicks on GBP wallet
+    And user clicks on deposit
+    And user expend from dropdown
+    And user selects debit or credit card
+    And user enters amount to load in USD
+    And user clicks agreement
+    And summary should appear
+    And clicks confirm
+    And enter card details in Stripe and clicks on pay
+    And user checks confirmation message and press ok
+    Then user should redirect to accounts
+
+  @GBP_non_us @Deposit_non_us
+  Scenario: Deposit: Verify Card Deposit to GBP Wallet via Apexx
+    When user clicks on GBP wallet
+    And user clicks on deposit
+    And user expend from dropdown
+    And user selects debit or credit card
+    And user enters amount to load in USD
+    And user clicks agreement
+    And summary should appear
+    And clicks confirm
+    And enter card details in Apexx and clicks on pay
+    And user checks confirmation message and press ok
+    Then user should redirect to accounts
+
+  @GBP_common @GBP_move @move
   Scenario: Verify GBP Wallet to USD Wallet Move
     When user clicks on GBP wallet
     And user clicks on move tab
@@ -367,22 +393,7 @@ Feature: Test Accounts Functionality
     And user clicks on ok
     Then user should redirect to wallet details tab
 
-  @GBP_us @Deposit
-  Scenario: Deposit: Verify Card Deposit to GBP Wallet
-    When user clicks on GBP wallet
-    And user clicks on deposit
-    And user expend from dropdown
-    And user selects debit or credit card
-    And user enters amount to load in USD
-    And user clicks agreement
-    And summary should appear
-    And clicks confirm
-    And enter card details in Stripe and clicks on pay
-    And user checks confirmation message
-    And user clicks ok
-    Then user should redirect to accounts
-
-  @GBP_us
+  @GBP_us @us_bank
   Scenario: Deposit: Verify Local(US Bank) Deposit to GBP Wallet
     When user clicks on GBP wallet
     And user clicks on deposit
@@ -390,22 +401,8 @@ Feature: Test Accounts Functionality
     And user selects local(US Bank)
     Then user should see details of bank
 
-  @GBP_non_us @DepositNN @tt
-  Scenario: Deposit: Verify Card Deposit to GBP Wallet via Apexx
-    When user clicks on GBP wallet
-    And user clicks on deposit
-    And user expend from dropdown
-    And user selects debit or credit card
-    And user enters amount to load in USD
-    And user clicks agreement
-    And summary should appear
-    And clicks confirm
-    And enter card details in Apexx and clicks on pay
-    And user checks confirmation message
-    And user clicks ok
-    Then user should redirect to accounts
 
-  @GBP_non_us @TestGBP @tt
+  @GBP_non_us @TestGBP
   Scenario: Deposit: Verify Local(UK Bank) Deposit to GBP Wallet
     When user clicks on GBP wallet
     And user clicks on deposit
@@ -528,7 +525,21 @@ Feature: Test Accounts Functionality
     Then statement should be downloaded
 
 #+++++++++++++++++++++++++++++++++++++++++++JPY wallet feature++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-  @JPY_common
+  @JPY_us @Deposit_us
+  Scenario: Deposit: Verify Card Deposit to JPY Wallet via Stripe
+    When user clicks on JPY wallet
+    And user clicks on deposit
+    And user expend from dropdown
+    And user selects debit or credit card
+    And user enters amount to load in USD
+    And user clicks agreement
+    And summary should appear
+    And clicks confirm
+    And enter card details in Stripe and clicks on pay
+    And user checks confirmation message and press ok
+    Then user should redirect to accounts
+
+  @JPY_common @JPY_move @move
   Scenario: Verify JPY Wallet to USD Wallet Move
     When user clicks on JPY wallet
     And user clicks on move tab
@@ -542,22 +553,7 @@ Feature: Test Accounts Functionality
     And user clicks on ok
     Then user should redirect to wallet details tab
 
-  @JPY_us @DepositJPY
-  Scenario: Deposit: Verify Card Deposit to JPY Wallet
-    When user clicks on JPY wallet
-    And user clicks on deposit
-    And user expend from dropdown
-    And user selects debit or credit card
-    And user enters amount to load in USD
-    And user clicks agreement
-    And summary should appear
-    And clicks confirm
-    And enter card details in Stripe and clicks on pay
-    And user checks confirmation message
-    And user clicks ok
-    Then user should redirect to accounts
-
-  @JPY_us
+  @JPY_us @us_bank
   Scenario: Deposit: Verify Local(US Bank) Deposit to JPY Wallet
     When user clicks on JPY wallet
     And user clicks on deposit
@@ -688,7 +684,21 @@ Feature: Test Accounts Functionality
     Then statement should be downloaded
 
 #+++++++++++++++++++++++++++++++++++++++++++CNY wallet feature++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-  @CNY_common @cny
+  @CNY_us @Deposit_us
+  Scenario: Deposit: Verify Card Deposit to CNY Wallet via Stripe
+    When user clicks on CNY wallet
+    And user clicks on deposit
+    And user expend from dropdown
+    And user selects debit or credit card
+    And user enters amount to load in USD
+    And user clicks agreement
+    And summary should appear
+    And clicks confirm
+    And enter card details in Stripe and clicks on pay
+    And user checks confirmation message and press ok
+    Then user should redirect to accounts
+
+  @CNY_common @CNY_move @move
   Scenario: Verify CNY Wallet to USD Wallet Move
     When user clicks on CNY wallet
     And user clicks on move tab
@@ -702,22 +712,7 @@ Feature: Test Accounts Functionality
     And user clicks on ok
     Then user should redirect to wallet details tab
 
-  @CNY_us @DepositCNY
-  Scenario: Deposit: Verify Card Deposit to CNY Wallet
-    When user clicks on CNY wallet
-    And user clicks on deposit
-    And user expend from dropdown
-    And user selects debit or credit card
-    And user enters amount to load in USD
-    And user clicks agreement
-    And summary should appear
-    And clicks confirm
-    And enter card details in Stripe and clicks on pay
-    And user checks confirmation message
-    And user clicks ok
-    Then user should redirect to accounts
-
-  @CNY_us
+  @CNY_us @us_bank
   Scenario: Deposit: Verify Local(US Bank) Deposit to CNY Wallet
     When user clicks on CNY wallet
     And user clicks on deposit

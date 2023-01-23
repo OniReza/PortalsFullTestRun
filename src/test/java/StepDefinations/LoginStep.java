@@ -1,23 +1,15 @@
 package StepDefinations;
 
 import Pages.LoginPage;
-import Utility.*;
-
+import Utility.BaseData;
+import Utility.SmartWait;
 import io.cucumber.java.After;
 import io.cucumber.java.Scenario;
-import io.cucumber.java.bs.A;
-import io.cucumber.java.en.*;
-import io.cucumber.java.en_scouse.An;
+import io.cucumber.java.en.Given;
 import org.junit.Assert;
 import org.openqa.selenium.*;
-import org.openqa.selenium.remote.SessionId;
-import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import static Utility.Hooks.getDriver;
@@ -27,13 +19,18 @@ public class LoginStep {
     LoginPage loginPage;
     SmartWait smartWait = new SmartWait();
     PaymentGatewayStep paymentGatewayStep;
-    public LoginStep()
-    {
-        this.driver= getDriver();
-        loginPage=new LoginPage(driver);
+
+    public LoginStep() {
+        this.driver = getDriver();
+        loginPage = new LoginPage(driver);
     }
 
-    @After(order=1)
+    public void waitLoad() {
+        new WebDriverWait(driver, 40).until(
+                webDriver -> ((JavascriptExecutor) webDriver).executeScript("return document.readyState").equals("complete"));
+    }
+
+    @After(order = 1)
     public void takeScraenshotOnFailure(Scenario scenario) {
 
         if (scenario.isFailed()) {
@@ -44,43 +41,40 @@ public class LoginStep {
         }
 
     }
+
     /*Modify by: Abid Reza
      12-20-2022
 
     */
     @Given("a valid url")
     public void a_valid_url() throws InterruptedException {
-
-        String URL= BaseData.BaseUrlMain();
-        String PURL=BaseData.BasePopUpUrl();
-        driver.get(PURL);
+        String URL = BaseData.BaseUrlMain();
+        String PopURL = BaseData.BasePopUpUrl();
+        driver.get(PopURL);
         driver.get(URL);
         driver.manage().window().maximize();
         System.out.println("Valid Url Is Given");
         smartWait.waitUntilPageIsLoaded(5);
         loginPage.PageClass();
-        Thread.sleep(2000);
-        if (driver.getCurrentUrl().contains("risk")) {
-            System.out.println("in add");
-            addtionalInformation();
-            Thread.sleep(20000);
-            if (driver.getCurrentUrl().contains("lock-account")) {
-                System.out.println("In recurring after risk");
-                reSubByWallet();
-                //reSubByCard();
+        waitLoad();
+        try {
+            smartWait.waitUntilPageIsLoaded(5);
+            Assert.assertTrue("Dashboard didn't appeared", loginPage.recentTransectionSectionCheck());
+            System.out.println("Direct in Dashboard");
+        } catch (NoSuchElementException e) {
+            if (loginPage.addInformationLabelCheck()) {
+                System.out.println("In Additional Information page");
+                addtionalInformation();
                 Thread.sleep(20000);
-                driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
+                try {
+                    smartWait.waitUntilPageIsLoaded(5);
+                    Assert.assertTrue("Dashboard didn't appeared", loginPage.recentTransectionSectionCheck());
+                    System.out.println("In Dashboard after risk assessment");
+                } catch (Exception e1) {
+                    System.out.println("Couldn't find dashboard");
+                }
             }
-        } else if (driver.getCurrentUrl().contains("lock-account")) {
-            System.out.println("Direct In recurring");
-            reSubByWallet();
-            //reSubByCard();
-            Thread.sleep(10000);
-            driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
         }
-        smartWait.waitUntilPageIsLoaded(5);
-        System.out.println("In Dashboard");
-        Assert.assertTrue("Dashboard didn't appeared", loginPage.dashBoardCheck());
     }
 
     //Additional information page

@@ -39,11 +39,10 @@ public class Accounts_Page extends CommonPageMethods {
     public WebElement moveTab;
     @FindBy(xpath = "//div[contains( text(),'Beneficiary')]")
     public WebElement selectBeneficiaryDropdown;
-    @FindBy(xpath = "//Span[contains( text(),'€')]")
-    public WebElement euroAcc;
-    @FindBy(xpath = "//Span[contains( text(),'$')]")
-    public WebElement usdAcc;
-
+    @FindBy(xpath = "//span[contains( text(),'円')]")
+    public WebElement jpyAcc;
+    @FindBy(xpath = "//Span[contains( text(),'¥')]")
+    public WebElement cnyAcc;
     @FindBy(xpath = "(//input[@type='number'])[1]")
     public WebElement sendAmount;
     @FindBy(xpath = "(//button[text()='Confirm'])")
@@ -73,24 +72,25 @@ public class Accounts_Page extends CommonPageMethods {
     public WebElement expeditSummary;
     @FindBy(xpath = "//b[contains(text(),'Congratulations')]")
     public WebElement loadSucessMsg;
+    @FindBy(xpath = "//span[contains(text(),'Your payment request has been accepted.')]")
+    public WebElement sucessMsgUS;
     @FindBy(xpath = "//*[@id=\"root\"]/div/div/div/div/main/div/div/div/div/div/div/div[1]/div/div/div")
     public WebElement accountsTabUsd;
     @FindBy(xpath = "//span[contains(text(),'Local (US Bank)')]")
     public WebElement localUSBank;
     @FindBy(xpath = "//span[contains(text(),'Local (UK Bank)')]")
     public WebElement localUKBank;
-
-
     @FindBy(xpath = "//span[contains(text(),'International')]")
     public WebElement intlNonUKBank;
-    @FindBy(xpath = "//*[@id=\"root\"]/div/div/div/div/main/div/div/div/div/div/div/div[2]/div/div/div/div/div[1]/div[2]/div/div/div/div[1]/div/div")
+    @FindBy(xpath = "//div[contains(@class,'MuiGrid-root MuiGrid-container')]//parent::div[contains(@class,'MuiPaper-root wallet-card-layout')]")
     public WebElement localUSBankBeneficiary;
     @FindBy(xpath = "//span[contains(text(),'Crypto Deposit')]")
     public WebElement crypto;
     @FindBy(xpath = "(//input[@type='number'])[1]")
     public WebElement cryptoSendAmount;
     @FindBy(xpath = "//*[@id=\"root\"]/div/div/div/div/main/div/div/div/div/div/div/div[2]/div/div/div/div/div[1]/div[2]/div/div/div/div[3]/div[1]/div/div[2]/div[2]/div/div[1]/label")
-   // @FindBy(xpath = "//input[@class='hidden' and  @type='checkbox']")
+    //@FindBy(xpath = "//div[@class='ui checkbox Checkbox']//child::input")
+    //@FindBy(xpath = "//div[@class='ui checkbox Checkbox']//child::label")
     //@FindBy(xpath = "(//input[@class='hidden' and  @type='checkbox'])//self::input")
     public WebElement checkBox;
 
@@ -134,7 +134,6 @@ public class Accounts_Page extends CommonPageMethods {
     public WebElement postCode;
     @FindBy(xpath = "//input[@name='email']")
     public WebElement email;
-
     @FindBy(xpath = "//div[@class='selected-flag']")
     public WebElement phoneDropdown;
     @FindBy(xpath = "//li[@class='search search-class']/input[@type='search']")
@@ -441,8 +440,13 @@ public class Accounts_Page extends CommonPageMethods {
         cryptoSendAmount.sendKeys(".1");
     }
 
-    public void checkBoxClick() {
+    public void checkBoxClick() throws InterruptedException {
+        checkBox.sendKeys(Keys.PAGE_DOWN);
+        Thread.sleep(5000);
         checkBox.click();
+       // checkBox.sendKeys(Keys.CONTROL+Keys.getKeyFromUnicode("W"));
+
+
     }
 
     public boolean cryptoSummaryCheck() {
@@ -481,15 +485,15 @@ public class Accounts_Page extends CommonPageMethods {
         selectBeneficiaryDropdown.click();
     }
 
-    public void euroAccClcik() {
-        euroAcc.click();
+    public void jpyAccClcik() {
+        jpyAcc.click();
     }
-    public void usdAccClcik() {
-        usdAcc.click();
+    public void cnyAccClcik() {
+        cnyAcc.click();
     }
 
     public void enterSendingAmount() {
-        sendAmount.sendKeys("31");
+        sendAmount.sendKeys("1000");
     }
 
     public void confirmBtnClick() {
@@ -528,7 +532,7 @@ public class Accounts_Page extends CommonPageMethods {
     }
 
     public void enterloadAmount() {
-        loadAmount.sendKeys("100");
+        loadAmount.sendKeys("5000");
     }
 
     public void aggrementClick() {
@@ -547,6 +551,10 @@ public class Accounts_Page extends CommonPageMethods {
         return loadSucessMsg.isDisplayed();
     }
 
+    public boolean sucessMsgwithLoader(){
+        return sucessMsgUS.isDisplayed();
+
+    }
     public void clickOKbtn() {
         okBtn.click();
     }

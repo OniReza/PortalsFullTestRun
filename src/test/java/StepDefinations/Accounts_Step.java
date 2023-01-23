@@ -15,15 +15,16 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.concurrent.TimeUnit;
 
 public class Accounts_Step {
-    public  WebDriver driver;
+    public WebDriver driver;
     Accounts_Page accpage;
     SmartWait smartWait = new SmartWait();
 
-    public Accounts_Step(){
-        this.driver= Hooks.getDriver();
-        accpage= new Accounts_Page(driver);
+    public Accounts_Step() {
+        this.driver = Hooks.getDriver();
+        accpage = new Accounts_Page(driver);
     }
-    public void waitload(){
+
+    public void waitload() {
         new WebDriverWait(driver, 30).until(
                 webDriver -> ((JavascriptExecutor) webDriver).executeScript("return document.readyState").equals("complete"));
     }
@@ -44,39 +45,43 @@ public class Accounts_Step {
         user_clicks_on_account();
         accpage.usdWalletClick();
         System.out.println("USD Wallet Clicked");
-       waitload();
+        waitload();
     }
+
     @And("user clicks on EURO wallet")
     public void user_clicks_on_euro_wallet() throws InterruptedException {
         waitload();
         user_clicks_on_account();
         accpage.euroWalletClick();
         System.out.println("USD Wallet Clicked");
-       waitload();
+        waitload();
     }
+
     @And("user clicks on GBP wallet")
     public void user_clicks_on_gbp_wallet() throws InterruptedException {
         waitload();
         user_clicks_on_account();
         accpage.gbpWalletClick();
         System.out.println("USD Wallet Clicked");
-       waitload();
+        waitload();
     }
+
     @And("user clicks on JPY wallet")
     public void user_clicks_on_jpy_wallet() throws InterruptedException {
         waitload();
         user_clicks_on_account();
         accpage.jpyWalletClick();
         System.out.println("USD Wallet Clicked");
-       waitload();
+        waitload();
     }
+
     @And("user clicks on CNY wallet")
     public void user_clicks_on_cny_wallet() throws InterruptedException {
         waitload();
         user_clicks_on_account();
         accpage.cnyWalletClick();
         System.out.println("USD Wallet Clicked");
-       waitload();
+        waitload();
     }
 
     @And("user clicks on PHP wallet")
@@ -85,7 +90,7 @@ public class Accounts_Step {
         user_clicks_on_account();
         accpage.phpWalletClick();
         System.out.println("USD Wallet Clicked");
-       waitload();
+        waitload();
     }
 
 
@@ -96,6 +101,7 @@ public class Accounts_Step {
 
         waitload();
     }
+
     //Move Feature
     @And("user clicks on move tab")
     public void user_clicks_on_move_tab() throws InterruptedException {
@@ -122,32 +128,34 @@ public class Accounts_Step {
         waitload();
     }
 
-    @And("user selects EUR wallet")
+    @And("user selects JPY wallet")
     public void user_selects_eur_wallet() throws InterruptedException {
         waitload();
-        accpage.euroAccClcik();
-        System.out.println("Euro Account Selected");
+        accpage.jpyAccClcik();
+        System.out.println("JPY Account Selected");
         waitload();
     }
-    @And("user selects USD wallet")
+
+    @And("user selects CNY wallet")
     public void user_selects_usd_wallet() throws InterruptedException {
         waitload();
-        accpage.usdAccClcik();
-        System.out.println("Euro Account Selected");
+        accpage.cnyAccClcik();
+        System.out.println("CNY Account Selected");
         waitload();
     }
+
     @And("enter amount on sending amount box")
     public void enter_amount_on_sending_amount_in_usd() throws InterruptedException {
         waitload();
         accpage.enterSendingAmount();
-        Thread.sleep(2000);
+        waitload();
         System.out.println("Amount Entered");
         smartWait.waitUntilPageIsLoaded(10);
     }
 
     @And("user clicks confirm")
     public void user_clicks_confirm() throws InterruptedException {
-        waitload();
+        smartWait.waitUntilPageIsLoaded(10);
         accpage.confirmBtnClick();
         System.out.println("Confirm Button Clicked");
         waitload();
@@ -193,13 +201,14 @@ public class Accounts_Step {
         waitload();
 
     }
+
     // Deposit Feature
     @And("user clicks on deposit")
     public void user_clicks_on_deposit() throws InterruptedException {
         waitload();
         accpage.depositTabClick();
         System.out.println("Deposit clicked");
-       waitload();
+        waitload();
     }
 
     @And("user expend from dropdown")
@@ -207,14 +216,14 @@ public class Accounts_Step {
         waitload();
         accpage.fromDropdwnClick();
         System.out.println("From dropdown Expended");
-        Thread.sleep(500);
+        Thread.sleep(1000);
     }
 
     @And("user selects debit or credit card")
     public void user_selects_debit_or_credit_card() throws InterruptedException {
         waitload();
         accpage.debitCardClick();
-       waitload();
+        waitload();
     }
 
     @And("user enters amount to load in USD")
@@ -241,27 +250,42 @@ public class Accounts_Step {
         System.out.println("Summary appeared");
         Thread.sleep(500);
     }
+
     @And("expedite fee should add in summary")
     public void expedite_fee_should_add_in_summary() throws InterruptedException {
-        accpage=new Accounts_Page(driver);
+        accpage = new Accounts_Page(driver);
         waitload();
         Thread.sleep(1000);
-        Assert.assertTrue("Expedite fee didn't added in summary",accpage.checkExpeditSummary());
+        Assert.assertTrue("Expedite fee didn't added in summary", accpage.checkExpeditSummary());
         waitload();
     }
+
     @And("clicks confirm")
     public void clicks_confirm() throws InterruptedException {
         waitload();
         accpage.confirmBtnClick();
         System.out.println("Confirm button clicked");
-       waitload();
+        waitload();
     }
 
-    @And("user checks confirmation message")
+    @And("user checks confirmation message and press ok")
     public void user_checks_confirmation_message() throws InterruptedException {
+//        waitload();
+//        Assert.assertTrue("Deposit Unsuccessfull", accpage.checkLoadSuccessMsg());
+//        System.out.println("Deposit Successful");
+//        waitload();
+        System.out.println("1");
         waitload();
-        Assert.assertTrue("Deposit Unsuccessfull", accpage.checkLoadSuccessMsg());
-        System.out.println("Deposit Successful");
+        try {
+            Assert.assertTrue("Topup unsucessful", accpage.checkLoadSuccessMsg());
+        }
+        catch (NoSuchElementException e){
+            Assert.assertTrue("Topup unsucessful", accpage.sucessMsgwithLoader());
+        }
+        System.out.println("2");
+        Thread.sleep(2000);
+        accpage.clickOKbtn();
+        System.out.println("3");
         waitload();
     }
 
@@ -288,12 +312,14 @@ public class Accounts_Step {
         accpage.localUSBankClick();
         waitload();
     }
+
     @And("user selects local\\(UK Bank)")
     public void user_selects_local_uk_bank() {
         waitload();
         accpage.localUKBankClick();
         waitload();
     }
+
     @And("user selects International\\(non UK Bank)")
     public void user_selects_international_non_uk_bank() {
         waitload();
@@ -306,8 +332,10 @@ public class Accounts_Step {
         waitload();
         Assert.assertTrue("Local US Bank details didn't appears", accpage.localUSBankBeneficiaryCheck());
         waitload();
+        Thread.sleep(1500);
         System.out.println("Local US Bank details appeared");
     }
+
     // Crypto Deposit
     @When("user selects crypto deposit")
     public void user_selects_crypto_deposit() throws InterruptedException {
@@ -328,6 +356,7 @@ public class Accounts_Step {
         waitload();
         accpage.checkBoxClick();
         Thread.sleep(1000);
+
     }
 
     @Then("user should see a summary")
@@ -337,7 +366,7 @@ public class Accounts_Step {
         waitload();
     }
 
-// Transfer to new member
+    // Transfer to new member
     @And("user clicks on transfer to a member pay")
     public void user_clicks_on_pay() throws InterruptedException {
         waitload();
@@ -371,7 +400,7 @@ public class Accounts_Step {
     @And("user checks summary of transfer amount")
     public void user_checks_summary_of_transfer_amount() throws InterruptedException {
         waitload();
-      smartWait.waitUntilPageIsLoaded(10);
+        smartWait.waitUntilPageIsLoaded(10);
         Assert.assertTrue("No summary", accpage.checkTransferSummary());
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         waitload();
@@ -420,6 +449,7 @@ public class Accounts_Step {
         user_should_see_a_graph();
         waitload();
     }
+
     // Make payment to new individual
     @When("user clicks payments tab")
     public void user_clicks_payments_tab() throws InterruptedException {
@@ -566,11 +596,10 @@ public class Accounts_Step {
     @And("user should see latest pending transactions first\\(if any) in PENDING TRANSACTIONS")
     public void user_should_see_latest_pending_transactions_first_if_any_in_pending_transactions() throws InterruptedException {
         waitload();
-        try{
+        try {
             Assert.assertTrue("Latest pending transaction not found", accpage.pendingTransection());
             waitload();
-        }
-        catch (NoSuchElementException e){
+        } catch (NoSuchElementException e) {
             Assert.assertTrue("Latest pending transaction not found", accpage.noTranscetionLabelCheck());
             waitload();
         }
@@ -589,22 +618,23 @@ public class Accounts_Step {
         accpage.statementsTabBtnClick();
 
     }
+
     @And("if any statement available user clicks on download button")
-    public void if_any_statement_available_user_clicks_on_download_button(){
+    public void if_any_statement_available_user_clicks_on_download_button() {
         waitload();
         try {
-            if(accpage.downloadBtnCheck())
+            if (accpage.downloadBtnCheck())
                 accpage.downloadBtnClick();
             waitload();
-        }
-        catch(Exception e) {
+        } catch (Exception e) {
             accpage.accMenuClick();
             waitload();
         }
 
     }
+
     @Then("statement should be downloaded")
-    public void statement_should_be_downloaded(){
+    public void statement_should_be_downloaded() {
         System.out.println("Statement downloaded");
     }
 
@@ -619,12 +649,14 @@ public class Accounts_Step {
         waitload();
 
     }
+
     @And("user add personal account")
-     public void user_add_personal_account() throws InterruptedException {
+    public void user_add_personal_account() throws InterruptedException {
         waitload();
         accpage.addPersonalAccClick();
         waitload();
     }
+
     @And("user selects destination bank country and currency")
     public void user_selects_destination_bank_country() throws InterruptedException {
         waitload();
@@ -642,6 +674,7 @@ public class Accounts_Step {
         accpage.nextBtnClick();
         waitload();
     }
+
     @And("user input withdraw beneficiary details and press next")
     public void user_enter_withdraw_beneficiary_details_and_press_next() throws InterruptedException {
         waitload();
@@ -650,12 +683,14 @@ public class Accounts_Step {
         accpage.nextBtnClick();
         waitload();
     }
+
     @And("input sending amount in usd")
     public void input_sending_amount_in_usd() throws InterruptedException {
         waitload();
         accpage.enterSendingAmount();
         waitload();
     }
+
     @And("click on expedite fee and outbound transfer agreement")
     public void click_on_expedite_fee_and_outbound_transfer_agreement() throws InterruptedException {
         waitload();
@@ -663,6 +698,7 @@ public class Accounts_Step {
         waitload();
 
     }
+
     //Pay Family
     @When("user is in pay tab")
     public void user_is_in_pay_tab() throws InterruptedException {
@@ -672,18 +708,21 @@ public class Accounts_Step {
         accpage.payTabClick();
         waitload();
     }
+
     @And("user clicks pay button of friends or family")
     public void user_clicks_pay_button_of_friends_or_family() throws InterruptedException {
         waitload();
         accpage.ffPayBtnClick();
         waitload();
     }
+
     @And("user clicks on pay someone new")
     public void user_clicks_on_pay_someone_new() throws InterruptedException {
         waitload();
         accpage.paySomeoneNewBtnClick();
         waitload();
     }
+
     @And("user input pay\\(individual) beneficiary details and press next")
     public void user_input_pay_individual_beneficiary_details_and_press_next() throws InterruptedException {
         waitload();
@@ -692,6 +731,7 @@ public class Accounts_Step {
         accpage.nextBtnClick();
         waitload();
     }
+
     @And("input payment reference and reason")
     public void input_payment_reference_and_reason() throws InterruptedException {
         waitload();
@@ -700,19 +740,22 @@ public class Accounts_Step {
         accpage.paymentRef();
         waitload();
     }
-//Pay business
+
+    //Pay business
     @And("user clicks pay button a business or invoice")
     public void user_clicks_pay_button_a_business_or_invoice() throws InterruptedException {
         waitload();
         accpage.businessPayBtnClick();
         waitload();
     }
+
     @And("user clicks on pay to new business button")
     public void user_clicks_on_pay_to_new_business_button() throws InterruptedException {
         waitload();
         accpage.payNewBusinessClick();
         waitload();
     }
+
     @And("user input business beneficiary details and press next")
     public void user_input_business_beneficiary_details_and_press_next() throws InterruptedException {
         waitload();
@@ -730,6 +773,7 @@ public class Accounts_Step {
         accpage.anotherMemberPayBtnClick();
         waitload();
     }
+
     @And("input payment reference")
     public void input_payment_reference() throws InterruptedException {
         waitload();

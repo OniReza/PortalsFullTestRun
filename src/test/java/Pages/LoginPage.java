@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import java.security.PublicKey;
+
 import java.util.List;
 
 public class LoginPage extends CommonPageMethods {
@@ -74,6 +74,10 @@ public class LoginPage extends CommonPageMethods {
     WebElement submit;
     @FindBy(xpath = "//span[text()='Dashboard']")
     WebElement dashBoard;
+    @FindBy(xpath = "//span[contains(text(),'Recent transactions') or contains(text(),'Recent Transactions')]")
+    WebElement recentTransectionSection;
+    @FindBy(xpath = "//h5[text()='Additional Information']")
+    WebElement addInformationLabel;
 
     public LoginPage(WebDriver driver){
         PageFactory.initElements(driver,this);
@@ -108,7 +112,7 @@ public class LoginPage extends CommonPageMethods {
         Totp(Otp);
         Thread.sleep(1000);
         Submit();
-        Thread.sleep(5000);
+        //Thread.sleep(7000);
     }
 
        public Boolean isLandingPageAvailable() {
@@ -221,6 +225,12 @@ public boolean makePaymentChcek(){
     }
     public boolean dashBoardCheck(){
         return dashBoard.isDisplayed();
+    }
+    public boolean recentTransectionSectionCheck() {
+        return recentTransectionSection.isDisplayed();
+    }
+    public boolean addInformationLabelCheck() {
+        return addInformationLabel.isDisplayed();
     }
 
 }

@@ -3,8 +3,9 @@ package StepDefinations;
 import Pages.Cards_Page;
 import Utility.Hooks;
 import Utility.SmartWait;
-import io.cucumber.java.bs.A;
-import io.cucumber.java.en.*;
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
@@ -23,7 +24,8 @@ public class Cards_Step {
         this.driver = Hooks.getDriver();
         cardspage = new Cards_Page(driver);
     }
-    public void waitload(){
+
+    public void waitload() {
         new WebDriverWait(driver, 30).until(
                 webDriver -> ((JavascriptExecutor) webDriver).executeScript("return document.readyState").equals("complete"));
     }
@@ -64,11 +66,10 @@ public class Cards_Step {
     @And("user clicks on download button if any statement available")
     public void user_clicks_on_download_button_if_any_statement_available() throws InterruptedException {
         try {
-            if(cardspage.isStatementAvailable())
+            if (cardspage.isStatementAvailable())
                 cardspage.statementDownloadClick();
             waitload();
-        }
-        catch(Exception e) {
+        } catch (Exception e) {
             cardspage.cardsMenuClick();
         }
     }
@@ -138,11 +139,43 @@ public class Cards_Step {
         waitload();
     }
 
-    @When("user checks success message and press ok button")
-    public void user_checks_success_message_and_press_ok_button() throws InterruptedException {
+    @And("user checks transfer success message and press ok button")
+    public void user_checks_transfer_success_message_and_press_ok_button() throws InterruptedException {
         waitload();
-        Assert.assertTrue("Load unSuccessful", cardspage.sucessMsgCheck());
+        Assert.assertTrue("Load unSuccessful", cardspage.loadSucessMsgCheck());
         cardspage.okBtnClick();
+        waitload();
+    }
+
+    @And("user checks topup confirmation message and clicks ok button")
+    public void user_checks_topup_confirmation_message_and_clicks_ok_button() throws InterruptedException {
+        System.out.println("1");
+        waitload();
+        try {
+            Assert.assertTrue("Topup unsucessful", cardspage.checksucessMsgApexxLoad());
+        } catch (NoSuchElementException e) {
+            Assert.assertTrue("Topup unsucessful", cardspage.sucessMsgStripeLoad());
+        }
+        System.out.println("2");
+        Thread.sleep(2000);
+        cardspage.topupOKBtnClick();
+        System.out.println("3");
+        waitload();
+    }
+
+    @And("user checks topup confirmation message and clicks back button")
+    public void user_checks_topup_confirmation_message_and_clicks_back_button() throws InterruptedException {
+        System.out.println("1");
+        waitload();
+        try {
+            Assert.assertTrue("Topup unsucessful", cardspage.checksucessMsgApexxLoad());
+        } catch (NoSuchElementException e) {
+            Assert.assertTrue("Topup unsucessful", cardspage.sucessMsgStripeLoad());
+        }
+        System.out.println("2");
+        Thread.sleep(2000);
+        cardspage.topupBackBtnClick();
+        System.out.println("3");
         waitload();
     }
 
@@ -193,16 +226,6 @@ public class Cards_Step {
 
     }
 
-    @And("user checks confirmation message and clicks ok")
-    public void user_checks_confirmation_message_and_clicks_ok() throws InterruptedException {
-        waitload();
-        Assert.assertTrue("Topup Failled", cardspage.sucessMsgCheck());
-        Thread.sleep(1000);
-        cardspage.OKbtnClick();
-        waitload();
-
-    }
-
     @When("user checks summary")
     public void user_checks_summary() {
         waitload();
@@ -218,56 +241,62 @@ public class Cards_Step {
     }
 
 
-//+++++++++++++++++++++++++++++++++++++++PIN++++++++++++++++++++++++++++++++++++++++
+    //+++++++++++++++++++++++++++++++++++++++PIN++++++++++++++++++++++++++++++++++++++++
     @And("user clicks on pin tab")
     public void user_clicks_on_pin_tab() throws InterruptedException {
         waitload();
         cardspage.pinTabClick();
         waitload();
     }
+
     @And("user inputs password")
     public void user_inputs_password() throws InterruptedException {
         waitload();
         cardspage.enterPinPass();
         waitload();
     }
+
     @And("user clicks on submit")
     public void user_clicks_on_submit() throws InterruptedException {
         waitload();
         cardspage.pinSubmitClick();
         waitload();
     }
+
     @Then("card pin should appear")
     public void card_pin_should_appear() throws InterruptedException {
         waitload();
-        Assert.assertTrue("Card Pin didn't appear",cardspage.viewedPinCheck());
+        Assert.assertTrue("Card Pin didn't appear", cardspage.viewedPinCheck());
         waitload();
     }
 //+++++++++++++++++++++++++++++++++++++++++++++++++PIN+++++++++++++++++++++++++++++++++++++++++++
 
-//+++++++++++++++++++++++++++++++++++++++++++++++++Digital Card+++++++++++++++++++++++++++++++++++++++++++
+    //+++++++++++++++++++++++++++++++++++++++++++++++++Digital Card+++++++++++++++++++++++++++++++++++++++++++
     @And("user clicks on digital card tab")
     public void user_clicks_on_digital_card_tab() throws InterruptedException {
         waitload();
         cardspage.digitalCardTabClick();
         waitload();
-}
+    }
+
     @And("user inputs otp")
     public void user_inputs_otp() throws InterruptedException {
         waitload();
-       cardspage.enterOtpDigitalCard();
+        cardspage.enterOtpDigitalCard();
         waitload();
 
     }
+
     @And("user clicks on show card details button")
     public void user_clicks_on_show_card_details_button() {
         waitload();
         cardspage.showCardDetailsBtnClick();
         waitload();
     }
+
     @Then("card details should appear")
     public void card_details_should_appear() {
-       driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         waitload();
         Assert.assertTrue("Card details didn't appeared", cardspage.cardDetaisCheck());
         waitload();
@@ -285,8 +314,22 @@ public class Cards_Step {
 
     @And("user clicks on first virtual card")
     public void user_clicks_on_first_virtual_card() throws InterruptedException {
-
+        waitload();
         cardspage.firstVCardClick();
+        waitload();
+    }
+
+    @And("user clicks on second virtual card")
+    public void user_clicks_on_second_virtual_card() throws InterruptedException {
+        waitload();
+        cardspage.secondVCardClick();
+        waitload();
+    }
+
+    @And("user clicks on third virtual card")
+    public void user_clicks_on_Third_virtual_card() throws InterruptedException {
+        waitload();
+        cardspage.thirdVCardClick();
         waitload();
     }
 
