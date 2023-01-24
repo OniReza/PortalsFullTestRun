@@ -29,7 +29,7 @@ public class BaseData {
     }
 
     public static String BaseEmail(){
-          String Email="stalin.neurotrade.tst.1@mailinator.com"; //Neotrade
+          String Email="aurae_us_tst_t7@mailinator.com"; //Neotrade
 
           return Email;
     }
@@ -38,7 +38,7 @@ public class BaseData {
         return Password;
     }
     public static String BaseOtp() {
-        String secretKey = "6UNVY5GUBZIYMVIW4UZBLXTGO4";//Neotrade
+        String secretKey = "7HYQSPH3LT3SHLFO24KS6REV4E";//auri
 
         String code = getTOTPCode(secretKey);
         return code;

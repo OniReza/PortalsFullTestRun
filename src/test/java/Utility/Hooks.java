@@ -22,16 +22,16 @@ public class Hooks {
 
         if (null == driver) {
 
-//            System.setProperty("webdriver.chrome.driver","Drivers/chromedriver.exe"); //Google Chrome
-//            driver = new ChromeDriver();
-//            driver.manage().window().maximize();
-//            driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+            System.setProperty("webdriver.chrome.driver","Drivers/chromedriver.exe"); //Google Chrome
+            driver = new ChromeDriver();
+            driver.manage().window().maximize();
+            driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
 
-                System.setProperty("webdriver.gecko.driver", "Drivers/geckodriver.exe"); //Fire Fox
-                driver = new FirefoxDriver();
-                driver.manage().window().maximize();
-                driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+//                System.setProperty("webdriver.gecko.driver", "Drivers/geckodriver.exe"); //Fire Fox
+//                driver = new FirefoxDriver();
+//                driver.manage().window().maximize();
+//                driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
 
 //            System.setProperty("webdriver.edge.driver", "Drivers/msedgedriver.exe"); //MicroSoftEdge

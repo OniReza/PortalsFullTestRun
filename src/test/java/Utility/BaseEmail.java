@@ -5,7 +5,7 @@ public class BaseEmail {
     public static String BaseEmailList() {
 //        String Email="clubswan_non-us_devqyxx@mailinator.com";
 //        String Email="rashed.mahmud@springrain.io";//Rashed
-           String Email = "stalin.neurotrade.tst.1@mailinator.com"; //Neotrade
+          // String Email = "stalin.neurotrade.tst.1@mailinator.com"; //Neotrade
 //        String Email="clubswan_us_dev_marina@mailinator.com";
 //        String Email = "test_PLCU_dev@mailinator.com";
 //        String Email = "clubswan_us_tst_rtl_18@mailinator.com"; //cs tst
@@ -16,6 +16,7 @@ public class BaseEmail {
 
 //          String Email="hodl_us_dev_d9@mailinator.com";
 //        String Email="clubswan_fra_dev_d31@mailinator.com";
+        String Email="aurae_us_tst_t7@mailinator.com"; //Auriy
         return Email;
     }
 }

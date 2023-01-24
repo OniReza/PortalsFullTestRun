@@ -25,7 +25,7 @@ public class Accounts_Page extends CommonPageMethods {
     //Accounts Move xpaths
     @FindBy(xpath = "(//p[contains(text(),'Available Balance')])[1]")
     public WebElement usdWallet;
-    @FindBy(xpath = "//span[contains(text(),'Euro')]")
+    @FindBy(xpath = "(//span[contains(text(),'Euro')])[1]")
     public WebElement euroWallet;
     @FindBy(xpath = "//span[contains(text(),'Pound')]")
     public WebElement gbpWallet;

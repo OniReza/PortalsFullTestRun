@@ -17,7 +17,8 @@ public class BaseOTP {
 //        String secretKey="ZNPOHASCFTKK7W3YVQXAZY4XOE";//HODL
 //        String secretKey = "XEWKO5TR7VSOZQTCB4TC2ZQBXY";
         //String secretKey="RAQ36UGZ4N6ELJMKT6YVI6WQDU";
-        String secretKey = "6UNVY5GUBZIYMVIW4UZBLXTGO4";//Neotrade
+       // String secretKey = "6UNVY5GUBZIYMVIW4UZBLXTGO4";//Neotrade
+        String secretKey="7HYQSPH3LT3SHLFO24KS6REV4E"; //Auriy
         return secretKey;
     }
 }

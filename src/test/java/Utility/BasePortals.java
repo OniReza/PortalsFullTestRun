@@ -60,7 +60,7 @@ public class BasePortals {
     public static String portalsDEV()
     {
 
-        String PortalDev="dev.lyopaymembers.com/"; //https://dev.neurotrademember.com/
+        String PortalDev="member.dev.auraelifestyle.com/"; //https://dev.neurotrademember.com/
 
         String username = "devs";
         String password = "super!power";
@@ -71,7 +71,7 @@ public class BasePortals {
 
     public static String portalsTST()
     {
-        String PortalTst="sandbox.lyopaymembers.com/";//https://sandbox.neurotrademember.com/
+        String PortalTst="member.tst.auraelifestyle.com/";//https://sandbox.neurotrademember.com/
 
         String username = "sandbox";
         String password = "test!easy";
