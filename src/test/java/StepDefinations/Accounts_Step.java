@@ -36,6 +36,7 @@ public class Accounts_Step {
         waitload();
         accpage.accMenuClick();
         System.out.println("Account menu clicked");
+        Thread.sleep(2000);
         waitload();
     }
 
@@ -61,8 +62,13 @@ public class Accounts_Step {
     public void user_clicks_on_gbp_wallet() throws InterruptedException {
         waitload();
         user_clicks_on_account();
+        Thread.sleep(1000);
         accpage.gbpWalletClick();
+<<<<<<< HEAD
+        System.out.println("GBP Wallet Clicked");
+=======
         System.out.println("USD Wallet Clicked");
+>>>>>>> ea937520ff52d37d2f0577e1da88ebab62b77950
         waitload();
     }
 
@@ -71,7 +77,11 @@ public class Accounts_Step {
         waitload();
         user_clicks_on_account();
         accpage.jpyWalletClick();
+<<<<<<< HEAD
+        System.out.println("JPY Wallet Clicked");
+=======
         System.out.println("USD Wallet Clicked");
+>>>>>>> ea937520ff52d37d2f0577e1da88ebab62b77950
         waitload();
     }
 
@@ -80,7 +90,11 @@ public class Accounts_Step {
         waitload();
         user_clicks_on_account();
         accpage.cnyWalletClick();
+<<<<<<< HEAD
+        System.out.println("CNY Wallet Clicked");
+=======
         System.out.println("USD Wallet Clicked");
+>>>>>>> ea937520ff52d37d2f0577e1da88ebab62b77950
         waitload();
     }
 
@@ -89,7 +103,11 @@ public class Accounts_Step {
         waitload();
         user_clicks_on_account();
         accpage.phpWalletClick();
+<<<<<<< HEAD
+        System.out.println("PHP Wallet Clicked");
+=======
         System.out.println("USD Wallet Clicked");
+>>>>>>> ea937520ff52d37d2f0577e1da88ebab62b77950
         waitload();
     }
 
@@ -127,6 +145,9 @@ public class Accounts_Step {
         accpage.beneficiaryCLick();
         waitload();
     }
+<<<<<<< HEAD
+    @And("user selects USD wallet")
+=======
 
     @And("user selects JPY wallet")
     public void user_selects_eur_wallet() throws InterruptedException {
@@ -137,16 +158,42 @@ public class Accounts_Step {
     }
 
     @And("user selects CNY wallet")
+>>>>>>> ea937520ff52d37d2f0577e1da88ebab62b77950
     public void user_selects_usd_wallet() throws InterruptedException {
         waitload();
         accpage.cnyAccClcik();
         System.out.println("CNY Account Selected");
         waitload();
     }
+<<<<<<< HEAD
+    @And("user selects EUR wallet")
+    public void user_selects_eur_wallet() throws InterruptedException {
+        waitload();
+        accpage.euroAccClcik();
+        System.out.println("Euro Account Selected");
+        waitload();
+    }
+    @And("user selects JPY wallet")
+    public void user_selects_jpy_wallet() throws InterruptedException {
+        waitload();
+        accpage.jpyAccClcik();
+        System.out.println("JPY Account Selected");
+        waitload();
+    }
+
+    @And("user selects CNY wallet")
+    public void user_selects_cny_wallet() throws InterruptedException {
+        waitload();
+        accpage.cnyAccClcik();
+        System.out.println("CNY Account Selected");
+        waitload();
+    }
+=======
+>>>>>>> ea937520ff52d37d2f0577e1da88ebab62b77950
 
     @And("enter amount on sending amount box")
     public void enter_amount_on_sending_amount_in_usd() throws InterruptedException {
-        waitload();
+        smartWait.waitUntilPageIsLoaded(10);
         accpage.enterSendingAmount();
         waitload();
         System.out.println("Amount Entered");
@@ -275,7 +322,11 @@ public class Accounts_Step {
 //        System.out.println("Deposit Successful");
 //        waitload();
         System.out.println("1");
+<<<<<<< HEAD
+        smartWait.waitUntilPageIsLoaded(10);
+=======
         waitload();
+>>>>>>> ea937520ff52d37d2f0577e1da88ebab62b77950
         try {
             Assert.assertTrue("Topup unsucessful", accpage.checkLoadSuccessMsg());
         }
@@ -329,7 +380,7 @@ public class Accounts_Step {
 
     @Then("user should see details of bank")
     public void user_should_see_details_of_bank() throws InterruptedException {
-        waitload();
+        smartWait.waitUntilPageIsLoaded(10);
         Assert.assertTrue("Local US Bank details didn't appears", accpage.localUSBankBeneficiaryCheck());
         waitload();
         Thread.sleep(1500);

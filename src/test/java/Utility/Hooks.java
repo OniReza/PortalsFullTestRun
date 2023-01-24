@@ -21,11 +21,25 @@ public class Hooks {
     public static WebDriver getDriver() {
 
         if (null == driver) {
-
+<<<<<<< HEAD
             System.setProperty("webdriver.chrome.driver","Drivers/chromedriver.exe"); //Google Chrome
             driver = new ChromeDriver();
             driver.manage().window().maximize();
             driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+=======
+
+<<<<<<< HEAD
+            System.setProperty("webdriver.chrome.driver","Drivers/chromedriver.exe"); //Google Chrome
+            driver = new ChromeDriver();
+            driver.manage().window().maximize();
+            driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+=======
+//            System.setProperty("webdriver.chrome.driver","Drivers/chromedriver.exe"); //Google Chrome
+//            driver = new ChromeDriver();
+//            driver.manage().window().maximize();
+//            driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+>>>>>>> ea937520ff52d37d2f0577e1da88ebab62b77950
+>>>>>>> c6c01b960b978f1477abaedb8b41dbc27119fd03
 
 
 //                System.setProperty("webdriver.gecko.driver", "Drivers/geckodriver.exe"); //Fire Fox
@@ -39,6 +53,15 @@ public class Hooks {
 //            driver.manage().window().maximize();
 //            driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
+<<<<<<< HEAD
+//
+//            System.setProperty("webdriver.edge.driver", "Drivers/msedgedriver.exe"); //MicroSoftEdge
+//            driver = new EdgeDriver();
+//            driver.manage().window().maximize();
+//            driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+
+=======
+>>>>>>> ea937520ff52d37d2f0577e1da88ebab62b77950
         }
 
         return driver;

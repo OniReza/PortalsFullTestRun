@@ -190,7 +190,11 @@ Feature: Test Accounts Functionality
     And user checks confirmation message and press ok
     Then user should redirect to accounts
 
+<<<<<<< HEAD
+  @EURO_non_us @Deposit_non_us22
+=======
   @EURO_non_us @Deposit_non_us
+>>>>>>> ea937520ff52d37d2f0577e1da88ebab62b77950
   Scenario: Deposit: Verify Card Deposit to Euro Wallet via Apexx
     When user clicks on EURO wallet
     And user clicks on deposit
@@ -365,7 +369,11 @@ Feature: Test Accounts Functionality
     And user checks confirmation message and press ok
     Then user should redirect to accounts
 
+<<<<<<< HEAD
+  @GBP_non_us11 @Deposit_non_us
+=======
   @GBP_non_us @Deposit_non_us
+>>>>>>> ea937520ff52d37d2f0577e1da88ebab62b77950
   Scenario: Deposit: Verify Card Deposit to GBP Wallet via Apexx
     When user clicks on GBP wallet
     And user clicks on deposit
@@ -378,6 +386,32 @@ Feature: Test Accounts Functionality
     And enter card details in Apexx and clicks on pay
     And user checks confirmation message and press ok
     Then user should redirect to accounts
+<<<<<<< HEAD
+
+  @GBP_common @GBP_move @move
+  Scenario: Verify GBP Wallet to CNY Wallet Move
+    When user clicks on GBP wallet
+    And user clicks on move tab
+    And user clicks on select beneficiary dropdown
+    And user selects CNY wallet
+    And enter amount on sending amount box
+    And user clicks confirm
+    And user enters secret code
+    And user clicks confirm again
+    And transfer successfully completed message is shown
+    And user clicks on ok
+    Then user should redirect to wallet details tab
+
+  @GBP_us @us_bank
+  Scenario: Deposit: Verify Local(US Bank) Deposit to GBP Wallet
+    When user clicks on GBP wallet
+    And user clicks on deposit
+    And user expend from dropdown
+    And user selects local(US Bank)
+    Then user should see details of bank
+
+
+=======
 
   @GBP_common @GBP_move @move
   Scenario: Verify GBP Wallet to USD Wallet Move
@@ -402,6 +436,7 @@ Feature: Test Accounts Functionality
     Then user should see details of bank
 
 
+>>>>>>> ea937520ff52d37d2f0577e1da88ebab62b77950
   @GBP_non_us @TestGBP
   Scenario: Deposit: Verify Local(UK Bank) Deposit to GBP Wallet
     When user clicks on GBP wallet

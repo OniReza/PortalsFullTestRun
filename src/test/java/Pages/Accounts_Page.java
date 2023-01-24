@@ -9,6 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.nio.channels.Selector;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -27,8 +28,9 @@ public class Accounts_Page extends CommonPageMethods {
     public WebElement usdWallet;
     @FindBy(xpath = "(//span[contains(text(),'Euro')])[1]")
     public WebElement euroWallet;
-    @FindBy(xpath = "//span[contains(text(),'Pound')]")
+    @FindBy(xpath = "//span[contains(text(),'Pound Sterling')]")
     public WebElement gbpWallet;
+
     @FindBy(xpath = "//span[contains(text(),'Yen')]")
     public WebElement jpyWallet;
     @FindBy(xpath = "//span[contains(text(),'Yuan')]")
@@ -39,6 +41,13 @@ public class Accounts_Page extends CommonPageMethods {
     public WebElement moveTab;
     @FindBy(xpath = "//div[contains( text(),'Beneficiary')]")
     public WebElement selectBeneficiaryDropdown;
+<<<<<<< HEAD
+    @FindBy(xpath = "//Span[contains( text(),'$')]")
+    public WebElement usdAcc;
+    @FindBy(xpath = "//Span[contains( text(),'€')]")
+    public WebElement euroAcc;
+=======
+>>>>>>> ea937520ff52d37d2f0577e1da88ebab62b77950
     @FindBy(xpath = "//span[contains( text(),'円')]")
     public WebElement jpyAcc;
     @FindBy(xpath = "//Span[contains( text(),'¥')]")
@@ -144,7 +153,8 @@ public class Accounts_Page extends CommonPageMethods {
     public WebElement phone;
     @FindBy(xpath = "//*[@id=\"mui-component-select-currency\"]/div/div[2]")
     public WebElement currencyDropdown;
-    @FindBy(xpath = "(//span[contains(text(),'Dollar ')])[2]")
+    //@FindBy(xpath = "(//span[contains(text(),'Dollar ')])[2]")
+    @FindBy(xpath = "//*[@id=\"menu-currency\"]/div[3]/ul/li[1]/div/div[2]")
     public WebElement usd;
     @FindBy(xpath = "//*[@id=\"mui-component-select-bankCountry\"]")
     public WebElement bankCountry;
@@ -460,6 +470,12 @@ public class Accounts_Page extends CommonPageMethods {
 
     public void usdWalletClick() {
         usdWallet.click();
+    }
+    public void usdAccClcik() {
+        usdAcc.click();
+    }
+    public void euroAccClcik() {
+        euroAcc.click();
     }
     public void euroWalletClick() {
         euroWallet.click();

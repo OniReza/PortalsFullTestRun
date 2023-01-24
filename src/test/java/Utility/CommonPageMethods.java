@@ -6,6 +6,8 @@ import base.AutomationBase;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 
+import java.util.Map;
+
 
 /**
  * @author Muhemmet UYAR

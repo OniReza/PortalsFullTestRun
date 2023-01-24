@@ -29,7 +29,12 @@ public class BaseData {
     }
 
     public static String BaseEmail(){
+<<<<<<< HEAD
           String Email="aurae_us_tst_t7@mailinator.com"; //Neotrade
+=======
+         // String Email="clubswan_us_tst_rtl_19@mailinator.com"; //Neotrade
+          String Email=BaseEmail.BaseEmailList() ; //Neotrade
+>>>>>>> c6c01b960b978f1477abaedb8b41dbc27119fd03
 
           return Email;
     }
@@ -38,7 +43,11 @@ public class BaseData {
         return Password;
     }
     public static String BaseOtp() {
+<<<<<<< HEAD
         String secretKey = "7HYQSPH3LT3SHLFO24KS6REV4E";//auri
+=======
+        String secretKey = BaseOTP.BaseOTPList();//Neotrade
+>>>>>>> c6c01b960b978f1477abaedb8b41dbc27119fd03
 
         String code = getTOTPCode(secretKey);
         return code;

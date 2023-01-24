@@ -27,7 +27,11 @@ Feature: Test functionality of Card page
     Then user should redirect back to physical card page
 
     #Topup only for clubswan
+<<<<<<< HEAD
+  @clubswan_us
+=======
   @topup_us
+>>>>>>> ea937520ff52d37d2f0577e1da88ebab62b77950
   Scenario: Verify Topup Functionality of Physical Card for US members
     When user clicks on cards on side menu
     And user clicks on physical card
@@ -40,7 +44,11 @@ Feature: Test functionality of Card page
     And user checks topup confirmation message and clicks ok button
     Then user should redirect back to physical card page
 
+<<<<<<< HEAD
+  @clubswan_non_us
+=======
   @topup_non_us
+>>>>>>> ea937520ff52d37d2f0577e1da88ebab62b77950
   Scenario: Verify Topup Functionality of Physical Card for Non-US members
     When user clicks on cards on side menu
     And user clicks on physical card
@@ -112,7 +120,11 @@ Feature: Test functionality of Card page
     And user checks transfer success message and press ok button
     Then user should redirect back to physical card page
 
+<<<<<<< HEAD
+  @clubswan_us
+=======
   @topup_us
+>>>>>>> ea937520ff52d37d2f0577e1da88ebab62b77950
   Scenario: Verify Topup Functionality of First Virtual Card for US members
     When clicks on virtual card tab from card page
     And user clicks on first virtual card
@@ -125,7 +137,11 @@ Feature: Test functionality of Card page
     And user checks topup confirmation message and clicks ok button
     Then user should redirect back to virtual card page
 
+<<<<<<< HEAD
+  @clubswan_non_us
+=======
   @topup_non_us
+>>>>>>> ea937520ff52d37d2f0577e1da88ebab62b77950
   Scenario: Verify Topup Functionality of First Virtual Card for Non-US members
     When clicks on virtual card tab from card page
     And user clicks on first virtual card
@@ -196,7 +212,11 @@ Feature: Test functionality of Card page
     And user checks transfer success message and press ok button
     Then user should redirect back to physical card page
 
+<<<<<<< HEAD
+  @clubswan_us
+=======
   @topup_us
+>>>>>>> ea937520ff52d37d2f0577e1da88ebab62b77950
   Scenario: Verify Topup Functionality of Second Virtual Card for US members
     When clicks on virtual card tab from card page
     And user clicks on second virtual card
@@ -209,7 +229,11 @@ Feature: Test functionality of Card page
     And user checks topup confirmation message and clicks ok button
     Then user should redirect back to virtual card page
 
+<<<<<<< HEAD
+  @clubswan_non_us
+=======
   @topup_non_us
+>>>>>>> ea937520ff52d37d2f0577e1da88ebab62b77950
   Scenario: Verify Topup Functionality of Second Virtual Card for Non-US members
     When clicks on virtual card tab from card page
     And user clicks on second virtual card
@@ -281,7 +305,11 @@ Feature: Test functionality of Card page
     And user checks transfer success message and press ok button
     Then user should redirect back to physical card page
 
+<<<<<<< HEAD
+  @clubswan_us
+=======
   @topup_us
+>>>>>>> ea937520ff52d37d2f0577e1da88ebab62b77950
   Scenario: Verify Topup Functionality of Third Virtual Card for US members
     When clicks on virtual card tab from card page
     And user clicks on third virtual card
@@ -294,7 +322,11 @@ Feature: Test functionality of Card page
     And user checks topup confirmation message and clicks ok button
     Then user should redirect back to virtual card page
 
+<<<<<<< HEAD
+  @clubswan_non_us
+=======
   @topup_non_us
+>>>>>>> ea937520ff52d37d2f0577e1da88ebab62b77950
   Scenario: Verify Topup Functionality of Third Virtual Card for Non-US members
     When clicks on virtual card tab from card page
     And user clicks on third virtual card
