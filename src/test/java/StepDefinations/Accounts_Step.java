@@ -64,7 +64,11 @@ public class Accounts_Step {
         user_clicks_on_account();
         Thread.sleep(1000);
         accpage.gbpWalletClick();
+<<<<<<< HEAD
         System.out.println("GBP Wallet Clicked");
+=======
+        System.out.println("USD Wallet Clicked");
+>>>>>>> ea937520ff52d37d2f0577e1da88ebab62b77950
         waitload();
     }
 
@@ -73,7 +77,11 @@ public class Accounts_Step {
         waitload();
         user_clicks_on_account();
         accpage.jpyWalletClick();
+<<<<<<< HEAD
         System.out.println("JPY Wallet Clicked");
+=======
+        System.out.println("USD Wallet Clicked");
+>>>>>>> ea937520ff52d37d2f0577e1da88ebab62b77950
         waitload();
     }
 
@@ -82,7 +90,11 @@ public class Accounts_Step {
         waitload();
         user_clicks_on_account();
         accpage.cnyWalletClick();
+<<<<<<< HEAD
         System.out.println("CNY Wallet Clicked");
+=======
+        System.out.println("USD Wallet Clicked");
+>>>>>>> ea937520ff52d37d2f0577e1da88ebab62b77950
         waitload();
     }
 
@@ -91,7 +103,11 @@ public class Accounts_Step {
         waitload();
         user_clicks_on_account();
         accpage.phpWalletClick();
+<<<<<<< HEAD
         System.out.println("PHP Wallet Clicked");
+=======
+        System.out.println("USD Wallet Clicked");
+>>>>>>> ea937520ff52d37d2f0577e1da88ebab62b77950
         waitload();
     }
 
@@ -129,13 +145,27 @@ public class Accounts_Step {
         accpage.beneficiaryCLick();
         waitload();
     }
+<<<<<<< HEAD
     @And("user selects USD wallet")
-    public void user_selects_usd_wallet() throws InterruptedException {
+=======
+
+    @And("user selects JPY wallet")
+    public void user_selects_eur_wallet() throws InterruptedException {
         waitload();
-        accpage.usdAccClcik();
-        System.out.println("Euro Account Selected");
+        accpage.jpyAccClcik();
+        System.out.println("JPY Account Selected");
         waitload();
     }
+
+    @And("user selects CNY wallet")
+>>>>>>> ea937520ff52d37d2f0577e1da88ebab62b77950
+    public void user_selects_usd_wallet() throws InterruptedException {
+        waitload();
+        accpage.cnyAccClcik();
+        System.out.println("CNY Account Selected");
+        waitload();
+    }
+<<<<<<< HEAD
     @And("user selects EUR wallet")
     public void user_selects_eur_wallet() throws InterruptedException {
         waitload();
@@ -158,6 +188,8 @@ public class Accounts_Step {
         System.out.println("CNY Account Selected");
         waitload();
     }
+=======
+>>>>>>> ea937520ff52d37d2f0577e1da88ebab62b77950
 
     @And("enter amount on sending amount box")
     public void enter_amount_on_sending_amount_in_usd() throws InterruptedException {
@@ -290,7 +322,11 @@ public class Accounts_Step {
 //        System.out.println("Deposit Successful");
 //        waitload();
         System.out.println("1");
+<<<<<<< HEAD
         smartWait.waitUntilPageIsLoaded(10);
+=======
+        waitload();
+>>>>>>> ea937520ff52d37d2f0577e1da88ebab62b77950
         try {
             Assert.assertTrue("Topup unsucessful", accpage.checkLoadSuccessMsg());
         }

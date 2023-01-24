@@ -1,24 +1,20 @@
 package StepDefinations;
 
 import Pages.LoginPage;
-import Utility.*;
-
+import Utility.BaseData;
+import Utility.SmartWait;
 import io.cucumber.java.After;
 import io.cucumber.java.Scenario;
-import io.cucumber.java.bs.A;
-import io.cucumber.java.en.*;
-import io.cucumber.java.en_scouse.An;
+import io.cucumber.java.en.Given;
 import org.junit.Assert;
 import org.openqa.selenium.*;
+<<<<<<< HEAD
 import org.openqa.selenium.remote.SessionId;
 import org.openqa.selenium.support.PageFactory;
+=======
+>>>>>>> ea937520ff52d37d2f0577e1da88ebab62b77950
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import static Utility.Hooks.getDriver;

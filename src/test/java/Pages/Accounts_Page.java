@@ -41,10 +41,13 @@ public class Accounts_Page extends CommonPageMethods {
     public WebElement moveTab;
     @FindBy(xpath = "//div[contains( text(),'Beneficiary')]")
     public WebElement selectBeneficiaryDropdown;
+<<<<<<< HEAD
     @FindBy(xpath = "//Span[contains( text(),'$')]")
     public WebElement usdAcc;
     @FindBy(xpath = "//Span[contains( text(),'€')]")
     public WebElement euroAcc;
+=======
+>>>>>>> ea937520ff52d37d2f0577e1da88ebab62b77950
     @FindBy(xpath = "//span[contains( text(),'円')]")
     public WebElement jpyAcc;
     @FindBy(xpath = "//Span[contains( text(),'¥')]")
