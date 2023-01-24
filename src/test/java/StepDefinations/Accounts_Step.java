@@ -64,11 +64,7 @@ public class Accounts_Step {
         user_clicks_on_account();
         Thread.sleep(1000);
         accpage.gbpWalletClick();
-<<<<<<< HEAD
         System.out.println("GBP Wallet Clicked");
-=======
-        System.out.println("USD Wallet Clicked");
->>>>>>> ea937520ff52d37d2f0577e1da88ebab62b77950
         waitload();
     }
 
@@ -77,11 +73,7 @@ public class Accounts_Step {
         waitload();
         user_clicks_on_account();
         accpage.jpyWalletClick();
-<<<<<<< HEAD
         System.out.println("JPY Wallet Clicked");
-=======
-        System.out.println("USD Wallet Clicked");
->>>>>>> ea937520ff52d37d2f0577e1da88ebab62b77950
         waitload();
     }
 
@@ -90,11 +82,7 @@ public class Accounts_Step {
         waitload();
         user_clicks_on_account();
         accpage.cnyWalletClick();
-<<<<<<< HEAD
         System.out.println("CNY Wallet Clicked");
-=======
-        System.out.println("USD Wallet Clicked");
->>>>>>> ea937520ff52d37d2f0577e1da88ebab62b77950
         waitload();
     }
 
@@ -103,11 +91,7 @@ public class Accounts_Step {
         waitload();
         user_clicks_on_account();
         accpage.phpWalletClick();
-<<<<<<< HEAD
         System.out.println("PHP Wallet Clicked");
-=======
-        System.out.println("USD Wallet Clicked");
->>>>>>> ea937520ff52d37d2f0577e1da88ebab62b77950
         waitload();
     }
 
@@ -116,7 +100,6 @@ public class Accounts_Step {
     public void user_should_see_a_graph() throws InterruptedException {
         waitload();
         Assert.assertTrue("Graph is not Displayed", accpage.checkgraph());
-
         waitload();
     }
 
@@ -145,27 +128,14 @@ public class Accounts_Step {
         accpage.beneficiaryCLick();
         waitload();
     }
-<<<<<<< HEAD
-    @And("user selects USD wallet")
-=======
-
-    @And("user selects JPY wallet")
-    public void user_selects_eur_wallet() throws InterruptedException {
-        waitload();
-        accpage.jpyAccClcik();
-        System.out.println("JPY Account Selected");
-        waitload();
-    }
 
     @And("user selects CNY wallet")
->>>>>>> ea937520ff52d37d2f0577e1da88ebab62b77950
     public void user_selects_usd_wallet() throws InterruptedException {
         waitload();
         accpage.cnyAccClcik();
         System.out.println("CNY Account Selected");
         waitload();
     }
-<<<<<<< HEAD
     @And("user selects EUR wallet")
     public void user_selects_eur_wallet() throws InterruptedException {
         waitload();
@@ -181,15 +151,13 @@ public class Accounts_Step {
         waitload();
     }
 
-    @And("user selects CNY wallet")
+    @And("user selects USD wallet")
     public void user_selects_cny_wallet() throws InterruptedException {
         waitload();
-        accpage.cnyAccClcik();
+        accpage.usdAccClcik();
         System.out.println("CNY Account Selected");
         waitload();
     }
-=======
->>>>>>> ea937520ff52d37d2f0577e1da88ebab62b77950
 
     @And("enter amount on sending amount box")
     public void enter_amount_on_sending_amount_in_usd() throws InterruptedException {
@@ -322,12 +290,11 @@ public class Accounts_Step {
 //        System.out.println("Deposit Successful");
 //        waitload();
         System.out.println("1");
-<<<<<<< HEAD
         smartWait.waitUntilPageIsLoaded(10);
-=======
         waitload();
->>>>>>> ea937520ff52d37d2f0577e1da88ebab62b77950
+
         try {
+            driver.manage().timeouts().implicitlyWait(40,TimeUnit.SECONDS);
             Assert.assertTrue("Topup unsucessful", accpage.checkLoadSuccessMsg());
         }
         catch (NoSuchElementException e){
@@ -381,6 +348,7 @@ public class Accounts_Step {
     @Then("user should see details of bank")
     public void user_should_see_details_of_bank() throws InterruptedException {
         smartWait.waitUntilPageIsLoaded(10);
+        driver.manage().timeouts().implicitlyWait(40,TimeUnit.SECONDS);
         Assert.assertTrue("Local US Bank details didn't appears", accpage.localUSBankBeneficiaryCheck());
         waitload();
         Thread.sleep(1500);
@@ -477,7 +445,7 @@ public class Accounts_Step {
     public void user_clicks_confirm_button_again() throws InterruptedException {
         waitload();
         clicks_confirm_button();
-        waitload();
+        smartWait.waitUntilPageIsLoaded(10);
     }
 
     @And("user checks success message")

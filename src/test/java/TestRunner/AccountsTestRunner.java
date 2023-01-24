@@ -6,13 +6,14 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(features = "src/test/resources/Features/Accounts/Accounts.feature",glue = "StepDefinations",
-        tags = "@CNY_common or @CNY_non_us",
+        tags = "@Deposit_non_us11",
         plugin ={"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"})
 public class AccountsTestRunner {
 }
 
 /*::::::::::::::::::::::::::::::::::::Note for tags::::::::::::::::::::::::::::::::::
 
+1. For non us users: @USD_common or @EURO_common or @GBP_common or @CNY_common or @JPY_common or @USD_non_us or @EURO_non_us or @GBP_non_us or @JPY_non_us or @CNY_non_us
  @USD_common  --->  Common USD wallet features for both US and Non-US brands
  @EURO_common --->  Common EURO wallet features for both US and Non-US brands
  @GBP_common  --->  Common GBP wallet features for both US and Non-US brands

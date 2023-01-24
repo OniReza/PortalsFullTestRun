@@ -6,15 +6,10 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(features = "src/test/resources/Features",glue = "StepDefinations",
-<<<<<<< HEAD
+
         tags = "@topup_us or @card_common or @card_us or @beneficiary or @activate or @USD_us or @EURO_us or @GBP_us or @USD_common or @EURO_common or @GBP_common or @common or @tagReward or @tagShopping or @settings",
-=======
-<<<<<<< HEAD
-        tags = "@USD_non_us or @GBP_non_us or @JPY_non_us or @CNY_non_us or @USD_common or @GBP_common or @JPY_common or @CNY_common or @common or @tagReward or @tagShopping or @settings",
-=======
-        tags = "@topup_non_us or @card_common or @card_non_us or @beneficiary or @activate or @USD_non_us or @EURO_non_us or @GBP_non_us or @JPY_non_us or @CNY_non_us or @USD_common or @EURO_common or @GBP_common or @JPY_common or @CNY_common or @common or @tagReward or @tagShopping",
->>>>>>> ea937520ff52d37d2f0577e1da88ebab62b77950
->>>>>>> c6c01b960b978f1477abaedb8b41dbc27119fd03
+
+
         plugin ={"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"},
         monochrome = true)
 

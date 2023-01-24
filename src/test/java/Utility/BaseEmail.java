@@ -11,12 +11,12 @@ public class BaseEmail {
 //        String Email = "clubswan_us_tst_rtl_18@mailinator.com"; //cs tst
 //        String Email = "test_clubswan_US_tst@grr.la"; //cs tst
 //        String Email="stalin.icc.tst.3@mailinator.com";//Stalin
-//        String Email="testphp1@mailinator.com"; //php portal
+        String Email="clubswan_non-us_tst_wiley@mailinator.com"; //php portal
 //          String Email="infinity_uk_tst_aut_angie@mailinator.com";
 
 //          String Email="hodl_us_dev_d9@mailinator.com";
 //        String Email="clubswan_fra_dev_d31@mailinator.com";
-        String Email="aurae_us_tst_t7@mailinator.com"; //Auriy
+        //String Email="aurae_us_tst_t7@mailinator.com"; //Auriy
         return Email;
     }
 }

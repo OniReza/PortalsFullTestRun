@@ -41,13 +41,12 @@ public class Accounts_Page extends CommonPageMethods {
     public WebElement moveTab;
     @FindBy(xpath = "//div[contains( text(),'Beneficiary')]")
     public WebElement selectBeneficiaryDropdown;
-<<<<<<< HEAD
+
     @FindBy(xpath = "//Span[contains( text(),'$')]")
     public WebElement usdAcc;
     @FindBy(xpath = "//Span[contains( text(),'€')]")
     public WebElement euroAcc;
-=======
->>>>>>> ea937520ff52d37d2f0577e1da88ebab62b77950
+
     @FindBy(xpath = "//span[contains( text(),'円')]")
     public WebElement jpyAcc;
     @FindBy(xpath = "//Span[contains( text(),'¥')]")
@@ -471,9 +470,6 @@ public class Accounts_Page extends CommonPageMethods {
     public void usdWalletClick() {
         usdWallet.click();
     }
-    public void usdAccClcik() {
-        usdAcc.click();
-    }
     public void euroAccClcik() {
         euroAcc.click();
     }
@@ -506,6 +502,9 @@ public class Accounts_Page extends CommonPageMethods {
     }
     public void cnyAccClcik() {
         cnyAcc.click();
+    }
+    public void usdAccClcik() {
+        usdAcc.click();
     }
 
     public void enterSendingAmount() {
@@ -691,7 +690,7 @@ public class Accounts_Page extends CommonPageMethods {
         Thread.sleep(300);
         paymentReson.sendKeys("Payment Automation");
         Thread.sleep(300);
-        paymentNote.sendKeys("Payment to new Individual");
+        paymentNote.sendKeys("Make Payment Automation Note");
         Thread.sleep(300);
     }
 

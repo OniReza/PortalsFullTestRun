@@ -6,12 +6,7 @@ public class BasePortals {
     {
         Portals.dev dev = new Portals.dev();
 
-<<<<<<< HEAD
-        String PortalDev="member.dev.auraelifestyle.com/"; //https://dev.neurotrademember.com/
-
-=======
-        String PortalDev=dev.plcu(); //dev portal link
->>>>>>> c6c01b960b978f1477abaedb8b41dbc27119fd03
+        String PortalDev=dev.clubswan(); //dev portal link
         String username = "devs";
         String password = "super!power";
         String URLDEV = "https://" + username + ":" + password + "@" + PortalDev;
@@ -20,13 +15,9 @@ public class BasePortals {
 
     public static String portalsTST()
     {
-<<<<<<< HEAD
-        String PortalTst="member.tst.auraelifestyle.com/";//https://sandbox.neurotrademember.com/
-=======
-        Portals.tst tst = new Portals.tst();
->>>>>>> c6c01b960b978f1477abaedb8b41dbc27119fd03
 
-        String PortalTst = tst.plcu(); //tst portal link
+        Portals.tst tst = new Portals.tst();
+        String PortalTst = tst.clubswan(); //tst portal link
         String username = "sandbox";
         String password = "test!easy";
         String URLTST = "https://" + username + ":" + password + "@" + PortalTst;

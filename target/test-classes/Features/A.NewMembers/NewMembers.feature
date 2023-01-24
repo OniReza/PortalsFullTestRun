@@ -217,11 +217,8 @@ Feature: Test New Accounts Functionality
     When user clicks on cards on side menu
     And user clicks on physical card
     And user clicks activate tab
-<<<<<<< HEAD
     And user inputs last four digit "2816" of physical card
-=======
     And user inputs last four digit "2798" of physical card
->>>>>>> c6c01b960b978f1477abaedb8b41dbc27119fd03
     And user clicks verify button
     And user inputs password and clicks on confirm button
     And user press on back button

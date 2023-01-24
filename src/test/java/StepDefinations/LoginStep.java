@@ -8,11 +8,7 @@ import io.cucumber.java.Scenario;
 import io.cucumber.java.en.Given;
 import org.junit.Assert;
 import org.openqa.selenium.*;
-<<<<<<< HEAD
-import org.openqa.selenium.remote.SessionId;
-import org.openqa.selenium.support.PageFactory;
-=======
->>>>>>> ea937520ff52d37d2f0577e1da88ebab62b77950
+
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.concurrent.TimeUnit;
