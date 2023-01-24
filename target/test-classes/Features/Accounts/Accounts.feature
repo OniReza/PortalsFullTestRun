@@ -365,7 +365,7 @@ Feature: Test Accounts Functionality
     And user checks confirmation message and press ok
     Then user should redirect to accounts
 
-  @GBP_non_us @Deposit_non_us11
+  @GBP_non_us @Deposit_non_us
   Scenario: Deposit: Verify Card Deposit to GBP Wallet via Apexx
     When user clicks on GBP wallet
     And user clicks on deposit

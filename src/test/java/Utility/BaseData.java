@@ -22,7 +22,7 @@ public class BaseData {
     }
 
     public static String BaseEmail(){
-          String Email=BaseEmail.BaseEmailList() ; //Neotrade
+          String Email=BaseCredentials.BaseEmailList() ;
           return Email;
     }
     public static String BasePassword(){
@@ -30,7 +30,7 @@ public class BaseData {
         return Password;
     }
     public static String BaseOtp() {
-        String secretKey = BaseOTP.BaseOTPList();//Neotrade
+        String secretKey = BaseCredentials.BaseOTPList();
         String code = getTOTPCode(secretKey);
         return code;
 
