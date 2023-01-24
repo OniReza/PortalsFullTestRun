@@ -68,22 +68,22 @@ public class InstanceRewardsPage extends CommonPageMethods {
     }
     public void ClickInstanceBtn()
     {
-        click(btnInstanceRewards);
+       btnInstanceRewards.click();
     }
 
     public void SelectCard()throws InterruptedException
     {
-        click(cardDropList);
+        cardDropList.click();
         Thread.sleep(2000);
-        click(cardSelectEUR);
+        cardSelectEUR.click();
         Thread.sleep(3000);
-        click(cardDropList);
+        cardDropList.click();
         Thread.sleep(2000);
-        click(cardSelectUSD);
+        cardSelectUSD.click();
     }
     public void selectCardFromList()
     {
-        click(selectCardBtn);
+        selectCardBtn.click();
     }
     public Boolean isPaymentMethodAvailable() {
         return AssertRewardPage.isDisplayed();

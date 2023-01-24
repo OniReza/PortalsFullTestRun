@@ -7,7 +7,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import javax.swing.plaf.PanelUI;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -29,47 +28,38 @@ public class Cards_Page extends CommonPageMethods {
     public WebElement downloadBtn;
     @FindBy(xpath = "//span[contains(text(),'Load')]")
     public WebElement loadTab;
-
-    @FindBy(xpath = "//*[@id=\"root\"]/div/div/div/div/main/div/div/div/div/div/div[3]/div[1]/div/div[1]/div[1]/div/div/button/span[1]/span[1]")
-    public WebElement loadWalletDropdown;
-    @FindBy(xpath = "(//span[@class='MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock' and text()='USD'])[1]")
-    public WebElement usd;
-
     @FindBy(xpath = "(//input[contains(@inputmode,'decimal')])[1]")
     public WebElement loadAmount;
     @FindBy(xpath = "(//input[contains(@inputmode,'decimal')])[1]")
     public WebElement unLoadAmount;
-
     @FindBy(xpath = "//span[contains(text(),'CONFIRM')]")
     public WebElement confirmBtn;
-
     @FindBy(xpath = "//span[contains(text(),'Overview')]")
     public WebElement overview;
-
     @FindBy(xpath = "//input[@name='secretCode']")
     public WebElement otpInput;
-
     @FindBy(xpath = "//button[contains(text(),'Confirm')]")
     public WebElement otpConfirmBtn;
-
-    @FindBy(xpath = "//span[contains(text(),'successfully')]")
-    public WebElement sucessmsg;
+    @FindBy(xpath = "//b[contains(text(),'Congratulations')]")
+    public WebElement sucessMsgApexxLoad;
+    @FindBy(xpath = "//span[contains(text(),'Your payment request has been accepted.')]")
+    public WebElement sucessMsgStripeLoad;
+    @FindBy(xpath = "//span[contains(text(),'Transfer successfully completed')]")
+    public WebElement loadSucessMsg;
     @FindBy(xpath = "//span[@class='MuiButton-label' and text()='Ok']")
     public WebElement okBtn;
-
+    @FindBy(xpath = "//button[@role='button']")
+    public WebElement topupOKBtn;
+    @FindBy(xpath = "//span[text()='Back']")
+    public WebElement topupBackBtn;
     @FindBy(xpath = "//span[contains(text(),'Unload')]")
     public WebElement unloadTab;
-
-    @FindBy(xpath = "//*[@id=\"root\"]/div/div/div/div/main/div/div/div/div/div/div[3]/div[1]/div/div[2]/div[1]/div/div/button")
-    public WebElement unloadWalletDropdown;
-
     @FindBy(xpath = "//span[contains(text(),'Topup')]")
     public WebElement topupTab;
-    @FindBy(xpath = "//div[@role='button' and contains(text(),'$')]")
+    @FindBy(xpath = "//div[@role='button' and @aria-haspopup='listbox']")
     public WebElement topupAmountDropdown;
-    @FindBy(xpath = "//li[@role='option' and contains(text(),'$50')]")
+    @FindBy(xpath = "//li[@role='option' and @data-value='100']")
     public WebElement topupAmount;
-
     @FindBy(xpath = "//span[contains(text(),'TOPUP')]")
     public WebElement topupBtn;
     @FindBy(xpath = "//span[text()='Summary']")
@@ -80,18 +70,34 @@ public class Cards_Page extends CommonPageMethods {
     //++++++++++++++++++++++++++++++++++++++PIN+++++++++++++++++++++++++++++++++++++++++
     @FindBy(xpath = "//span[contains(text(),'Pin')]")
     public WebElement pinTab;
+    @FindBy(xpath = "//span[contains(text(),'Transactions')]")
+    public WebElement transactionsTab;
+    @FindBy(xpath = "(//span[@class='Text undefined small undefined thin' and contains(text(),'-')])[1]")
+    public WebElement latestTransection;
+    @FindBy(xpath = "(//span[@class='fa fa-external-link offset-right-10'])[1]")
+    public WebElement exportPdf;
+    @FindBy(xpath = "(//span[@class='fa fa-external-link offset-right-10'])[2]")
+    public WebElement exportCsv;
+    @FindBy(xpath = "(//button[@role='button' and text()='Ok' or text()='OK'])")
+    public WebElement OKBtn;
+    @FindBy(xpath = "//span[text()='Virtual Cards']")
+    public WebElement virtualCardTab;
+    @FindBy(xpath = "(//p[contains(text(),'Available Balance')])[1]")
+    public WebElement firstVCard;
+    @FindBy(xpath = "(//p[contains(text(),'Available Balance')])[2]")
+    public WebElement secondVCard;
+    @FindBy(xpath = "(//p[contains(text(),'Available Balance')])[3]")
+    public WebElement thirdVCard;
     @FindBy(name = "reEnterPassword")
     WebElement pinPassword;
     @FindBy(xpath = "//span[contains(text(),'SUBMIT') or contains(text(),'submit')]")
     WebElement pinSubmit;
     @FindBy(xpath = "//span[contains(text(),'Your pin is')]")
     WebElement viwedPin;
-    //++++++++++++++++++++++++++++++++++++++PIN+++++++++++++++++++++++++++++++++++++++++
-
     //++++++++++++++++++++++++++++++++++++++Digital card+++++++++++++++++++++++++++++++++++++++++
     @FindBy(xpath = "//span[contains(text(),'Digital Card')]")
     WebElement digitalCardTab;
-    @FindBy(id="code")
+    @FindBy(id = "code")
     WebElement otp;
     @FindBy(xpath = "//button[@type='submit']")
     WebElement showCardDetailsBtn;
@@ -101,47 +107,6 @@ public class Cards_Page extends CommonPageMethods {
     WebElement viewedExpDate;
     @FindBy(xpath = "//label[contains(text(),'CVV')]")
     WebElement viewedCVV;
-
-    //++++++++++++++++++++++++++++++++++++++Digital card+++++++++++++++++++++++++++++++++++++++++
-
-    //++++++++++++++++++++++++++++++++++++++Digital card+++++++++++++++++++++++++++++++++++++++++
-    public void digitalCardTabClick(){
-        click(digitalCardTab);
-    }
-    public void enterOtpDigitalCard(){
-        otp.sendKeys(BaseData.BaseOtp());
-    }
-    public void showCardDetailsBtnClick(){
-        showCardDetailsBtn.click();
-    }
-    public boolean cardDetaisCheck(){
-        return viewedCardNum.isDisplayed();
-    }
-
-
-    //++++++++++++++++++++++++++++++++++++++Digital card+++++++++++++++++++++++++++++++++++++++++
-
-
-
-    @FindBy(xpath = "//span[contains(text(),'Transactions')]")
-    public WebElement transactionsTab;
-    @FindBy(xpath = "(//span[@class='Text undefined small undefined thin' and contains(text(),'-')])[1]")
-    public WebElement latestTransection;
-    @FindBy(xpath = "(//span[@class='fa fa-external-link offset-right-10'])[1]")
-    public WebElement exportPdf;
-    @FindBy(xpath = "(//span[@class='fa fa-external-link offset-right-10'])[2]")
-    public WebElement exportCsv;
-
-    @FindBy(xpath = "(//button[@role='button' and text()='Ok' or text()='OK'])")
-    public WebElement OKBtn;
-
-    @FindBy(xpath = "//span[text()='Virtual Cards']")
-    public WebElement virtualCardTab;
-
-    @FindBy(xpath = "//span[contains(text(),'Create Virtual Card')]")
-    public WebElement createVcardBtn;
-    @FindBy(xpath = "(//p[contains(text(),'Available Balance')])[1]")
-    public WebElement firstVCard;
 
     public Cards_Page(WebDriver driver) {
         PageFactory.initElements(driver, this);
@@ -161,19 +126,18 @@ public class Cards_Page extends CommonPageMethods {
 
     public boolean detailsTabCheck() {
         return detailsTab.isDisplayed();
-
     }
 
     public void statementTabClick() {
         statementTab.click();
     }
 
-//    public boolean availableStatement() {
+    //    public boolean availableStatement() {
 //        return downloadBtn.isDisplayed();
 //    }
-public Boolean isStatementAvailable() {
-    return AssertPageStatement.isDisplayed();
-}
+    public Boolean isStatementAvailable() {
+        return AssertPageStatement.isDisplayed();
+    }
 
     public void statementDownloadClick() {
         downloadBtn.click();
@@ -184,7 +148,7 @@ public Boolean isStatementAvailable() {
     }
 
     public void enterLoadAmount() {
-        loadAmount.sendKeys("55");
+        loadAmount.sendKeys("110");
     }
 
     public void enterUnloadAmount() {
@@ -207,16 +171,31 @@ public Boolean isStatementAvailable() {
         otpConfirmBtn.click();
     }
 
-    public boolean sucessMsgCheck() {
-        return sucessmsg.isDisplayed();
+    public boolean loadSucessMsgCheck() {
+        return loadSucessMsg.isDisplayed();
+    }
+
+    public boolean checksucessMsgApexxLoad() {
+        return sucessMsgApexxLoad.isDisplayed();
+    }
+
+    public boolean sucessMsgStripeLoad() {
+        return sucessMsgStripeLoad.isDisplayed();
     }
 
     public void okBtnClick() {
-       okBtn.click();
+        okBtn.click();
+    }
+
+    public void topupOKBtnClick() {
+        topupOKBtn.click();
+    }
+
+    public void topupBackBtnClick() {
+        topupBackBtn.click();
     }
 
     public void unloadTabClick() {
-
         unloadTab.click();
     }
 
@@ -245,23 +224,43 @@ public Boolean isStatementAvailable() {
     }
 
     public void OKbtnClick() {
-       OKBtn.click();
+        OKBtn.click();
     }
 
-    //++++++++++++++++++++PIN++++++++++++
-    public void pinTabClick(){
+    //++++++++++++++++++++++++++++++++++++++++++++++PIN+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    public void pinTabClick() {
         pinTab.click();
     }
-    public void enterPinPass(){
+
+    public void enterPinPass() {
         pinPassword.sendKeys(BaseData.BasePassword());
     }
-    public void pinSubmitClick(){
+
+    public void pinSubmitClick() {
         pinSubmit.click();
     }
-    public boolean viewedPinCheck(){
+
+    public boolean viewedPinCheck() {
         return viwedPin.isDisplayed();
     }
-//+++++++++++++++++++++++++++++++++++++PIN+++++++++++++++++++++++++++++++++
+
+    //+++++++++++++++++++++++++++++++++++++PIN+++++++++++++++++++++++++++++++++
+    public void digitalCardTabClick() {
+        click(digitalCardTab);
+    }
+
+    public void enterOtpDigitalCard() {
+        otp.sendKeys(BaseData.BaseOtp());
+    }
+
+    public void showCardDetailsBtnClick() {
+        showCardDetailsBtn.click();
+    }
+
+    public boolean cardDetaisCheck() {
+        return viewedCardNum.isDisplayed();
+    }
+
     public void transactionTabClick() {
         transactionsTab.click();
     }
@@ -289,18 +288,20 @@ public Boolean isStatementAvailable() {
         virtualCardTab.click();
     }
 
-    public boolean createVCardBtnCheck() {
-        System.out.println("CreateBTN: " + createVcardBtn.isDisplayed());
-        return createVcardBtn.isDisplayed();
-
-    }
-
     public boolean firstVCardCheck() {
         return firstVCard.isDisplayed();
     }
 
     public void firstVCardClick() {
         firstVCard.click();
+    }
+
+    public void secondVCardClick() {
+        secondVCard.click();
+    }
+
+    public void thirdVCardClick() {
+        thirdVCard.click();
     }
 
 }
