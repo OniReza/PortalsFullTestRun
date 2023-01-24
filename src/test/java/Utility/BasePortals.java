@@ -15,7 +15,6 @@ public class BasePortals {
 
     public static String portalsTST()
     {
-
         Portals.tst tst = new Portals.tst();
         String PortalTst = tst.clubswan(); //tst portal link
         String username = "sandbox";

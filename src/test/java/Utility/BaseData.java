@@ -9,11 +9,7 @@ public class BaseData {
 
 
     public static String BaseUrlMain() {
-
-        String PortalDev= BasePortals.portalsDEV();
         String PortalTst= BasePortals.portalsTST();
-
-//        String URL =PortalDev;
         String URL =PortalTst;
         return URL;
     }
@@ -21,10 +17,7 @@ public class BaseData {
     public static String BasePopUpUrl()
     {
         String PortalDev= BasePortals.portalsDEV();
-        String PortalTst= BasePortals.portalsTST();
-
         String PURL = PortalDev;
-//        String PURL =PortalTst;
         return PURL;
     }
 
