@@ -39,4 +39,9 @@ public class BaseCredentials {
         String secretKey="2IALA7MZI24LTUFY7ABYX5W7PA"; //Auriy
         return secretKey;
     }
+
+    public static String BasePassword(){
+        String Password = "Tt123#123#";
+        return Password;
+    }
 }

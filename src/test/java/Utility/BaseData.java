@@ -26,7 +26,7 @@ public class BaseData {
           return Email;
     }
     public static String BasePassword(){
-        String Password = "Tt123#123#";
+        String Password = BaseCredentials.BasePassword(); 
         return Password;
     }
     public static String BaseOtp() {
