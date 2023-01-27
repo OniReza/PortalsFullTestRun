@@ -7,7 +7,7 @@ Feature: Test functionality of Card page
     When user clicks on cards on side menu
     And user clicks on physical card
     And user clicks on load tab
-    And user enters amount to load
+    And user enters amount to load "180"
     And user checks overview
     And user clicks confirm button
     And user provides otp and clicks confirm button again
@@ -93,7 +93,7 @@ Feature: Test functionality of Card page
     When clicks on virtual card tab from card page
     And user clicks on first virtual card
     And user clicks on load tab
-    And user enters amount to load
+    And user enters amount to load "550"
     And user checks overview
     And user clicks confirm button
     And user provides otp and clicks confirm button again
@@ -174,11 +174,12 @@ Feature: Test functionality of Card page
     Then a statement will be downloaded
 
 ##++++++++++++++++++++++++++++++++++++++++++++++++++++ Second Virtual Card +++++++++++++++++++++++++++++++++++++++++++++
+  @common
   Scenario: Verify Load Functionality of Second Virtual Card
     When clicks on virtual card tab from card page
     And user clicks on second virtual card
     And user clicks on load tab
-    And user enters amount to load
+    And user enters amount to load "350"
     And user checks overview
     And user clicks confirm button
     And user provides otp and clicks confirm button again
@@ -265,7 +266,7 @@ Feature: Test functionality of Card page
     When clicks on virtual card tab from card page
     And user clicks on third virtual card
     And user clicks on load tab
-    And user enters amount to load
+    And user enters amount to load "150"
     And user checks overview
     And user clicks confirm button
     And user provides otp and clicks confirm button again

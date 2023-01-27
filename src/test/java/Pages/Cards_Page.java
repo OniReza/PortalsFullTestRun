@@ -147,8 +147,8 @@ public class Cards_Page extends CommonPageMethods {
         loadTab.click();
     }
 
-    public void enterLoadAmount() {
-        loadAmount.sendKeys("110");
+    public void enterLoadAmount(String amt) {
+        loadAmount.sendKeys(amt);
     }
 
     public void enterUnloadAmount() {

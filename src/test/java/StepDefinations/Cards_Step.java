@@ -109,10 +109,10 @@ public class Cards_Step {
         waitload();
     }
 
-    @When("user enters amount to load")
-    public void user_enters_amount_to_load() throws InterruptedException {
+    @When("user enters amount to load {string}")
+    public void user_enters_amount_to_load(String amount) throws InterruptedException {
         waitload();
-        cardspage.enterLoadAmount();
+        cardspage.enterLoadAmount(amount);
         waitload();
     }
 
