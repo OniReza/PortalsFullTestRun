@@ -11,7 +11,7 @@ public class BaseCredentials {
 //        String Email = "clubswan_us_tst_rtl_18@mailinator.com"; //cs tst
 //        String Email = "test_clubswan_US_tst@grr.la"; //cs tst
 //        String Email="stalin.icc.tst.3@mailinator.com";//Stalin
-        String Email="clubswan_non-us_tst_wiley@mailinator.com"; //php portal
+        String Email="rashedmratul@gmail.com"; //php portal
 //          String Email="infinity_uk_tst_aut_angie@mailinator.com";
 
 //          String Email="hodl_us_dev_d9@mailinator.com";
@@ -36,7 +36,7 @@ public class BaseCredentials {
 //        String secretKey = "XEWKO5TR7VSOZQTCB4TC2ZQBXY";
         //String secretKey="RAQ36UGZ4N6ELJMKT6YVI6WQDU";
         // String secretKey = "6UNVY5GUBZIYMVIW4UZBLXTGO4";//Neotrade
-        String secretKey="2IALA7MZI24LTUFY7ABYX5W7PA"; //Auriy
+        String secretKey="KPNLRNOY545IWVSMO3KAHNSBFY"; //Auriy
         return secretKey;
     }
 

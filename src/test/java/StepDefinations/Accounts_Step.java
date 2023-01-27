@@ -32,7 +32,6 @@ public class Accounts_Step {
     //Details Tab
     @When("user clicks on account button")
     public void user_clicks_on_account() throws InterruptedException {
-        System.out.println("Acc Page: " + driver);
         waitload();
         accpage.accMenuClick();
         System.out.println("Account menu clicked");
@@ -133,6 +132,7 @@ public class Accounts_Step {
     public void user_selects_usd_wallet() throws InterruptedException {
         waitload();
         accpage.cnyAccClcik();
+        Thread.sleep(3000);
         System.out.println("CNY Account Selected");
         waitload();
     }
@@ -140,6 +140,7 @@ public class Accounts_Step {
     public void user_selects_eur_wallet() throws InterruptedException {
         waitload();
         accpage.euroAccClcik();
+        Thread.sleep(3000);
         System.out.println("Euro Account Selected");
         waitload();
     }
@@ -147,6 +148,7 @@ public class Accounts_Step {
     public void user_selects_jpy_wallet() throws InterruptedException {
         waitload();
         accpage.jpyAccClcik();
+        Thread.sleep(3000);
         System.out.println("JPY Account Selected");
         waitload();
     }
@@ -155,6 +157,7 @@ public class Accounts_Step {
     public void user_selects_cny_wallet() throws InterruptedException {
         waitload();
         accpage.usdAccClcik();
+        Thread.sleep(3000);
         System.out.println("CNY Account Selected");
         waitload();
     }

@@ -8,6 +8,7 @@ import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import javax.swing.plaf.PanelUI;
 import java.util.List;
 
 public class LoginPage extends CommonPageMethods {
@@ -76,6 +77,8 @@ public class LoginPage extends CommonPageMethods {
     WebElement dashBoard;
     @FindBy(xpath = "//span[contains(text(),'Recent transactions') or contains(text(),'Recent Transactions')]")
     WebElement recentTransectionSection;
+    @FindBy(xpath = "//p[contains(text(),'Total')]")
+    WebElement totalBalenceSection;
     @FindBy(xpath = "//h5[text()='Additional Information']")
     WebElement addInformationLabel;
 
@@ -228,6 +231,9 @@ public boolean makePaymentChcek(){
     }
     public boolean recentTransectionSectionCheck() {
         return recentTransectionSection.isDisplayed();
+    }
+    public boolean totalBalenceSectionCheck(){
+        return totalBalenceSection.isDisplayed();
     }
     public boolean addInformationLabelCheck() {
         return addInformationLabel.isDisplayed();
