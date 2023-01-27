@@ -60,7 +60,8 @@ public class LoginStep {
         waitLoad();
         try {
             smartWait.waitUntilPageIsLoaded(5);
-            Assert.assertTrue("Dashboard didn't appeared", loginPage.recentTransectionSectionCheck());
+            Assert.assertTrue("Recent transaction didn't appeared", loginPage.recentTransectionSectionCheck());
+            Assert.assertTrue("Total balances didn't appeared", loginPage.totalBalenceSectionCheck());
             System.out.println("Direct in Dashboard");
         } catch (NoSuchElementException e) {
             if (loginPage.addInformationLabelCheck()) {
@@ -69,7 +70,8 @@ public class LoginStep {
                 Thread.sleep(20000);
                 try {
                     smartWait.waitUntilPageIsLoaded(5);
-                    Assert.assertTrue("Dashboard didn't appeared", loginPage.recentTransectionSectionCheck());
+                    Assert.assertTrue("Recent transaction didn't appeared", loginPage.recentTransectionSectionCheck());
+                    Assert.assertTrue("Total balances didn't appeared", loginPage.totalBalenceSectionCheck());
                     System.out.println("In Dashboard after risk assessment");
                 } catch (Exception e1) {
                     System.out.println("Couldn't find dashboard");

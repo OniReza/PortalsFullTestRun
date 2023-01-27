@@ -16,6 +16,7 @@ import static org.openqa.selenium.OutputType.BYTES;
 
 public class Hooks {
     private static WebDriver driver;
+    private Scenario scenario;
 
     @Before
     public static WebDriver getDriver() {
@@ -54,7 +55,10 @@ public class Hooks {
 
         return driver;
     }
-
+    public void setScenario(Scenario scenario)
+    {
+        this.scenario = scenario;
+    }
     @After
     public void tearDown()
     {

@@ -7,8 +7,7 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(features = "src/test/resources/Features",glue = "StepDefinations",
 
-        tags = "@topup_us or @card_common or @card_us or @beneficiary or @activate or @USD_us or @EURO_us or @GBP_us or @USD_common or @EURO_common or @GBP_common or @common or @tagReward or @tagShopping or @settings",
-
+        tags = "@topup_non_us or @card_common or @card_non_us or @beneficiary or @activate or @USD_non_us or @GBP_non_us or @JPY_non_us or @CNY_non_us or @USD_common or @GBP_common or @JPY_common or @CNY_common or @common or @tagReward or @tagShopping or @settings",
 
         plugin ={"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"},
         monochrome = true)
@@ -18,11 +17,11 @@ public class FullTestRunner {
 }
 /*
 1. For us members Clubswan tags: @topup_us or @accounts or @beneficiary or @activate or @USD_us or @EURO_us or @GBP_us or @JPY_us or @CNY_us or @USD_common or @EURO_common or @GBP_common or @JPY_common or @CNY_common or @common or @topup_us or @tagReward or @tagShopping
-<<<<<<< HEAD
-2. For non-us members : @topup_non_us or @card_common or @card_non_us or @beneficiary or @activate or @USD_non_us or @EURO_non_us or @GBP_non_us or @JPY_non_us or @CNY_non_us or @USD_common or @EURO_common or @GBP_common or @JPY_common or @CNY_common or @common or @tagReward or @tagShopping
-=======
 
->>>>>>> ea937520ff52d37d2f0577e1da88ebab62b77950
+2. For non-us members : @topup_non_us or @card_common or @card_non_us or @beneficiary or @activate or @USD_non_us or @EURO_non_us or @GBP_non_us or @JPY_non_us or @CNY_non_us or @USD_common or @EURO_common or @GBP_common or @JPY_common or @CNY_common or @common or @tagReward or @tagShopping
+
+
+
 
 @USD_common  --->  Common USD wallet features for both US and Non-US brands
 @EURO_common --->  Common EURO wallet features for both US and Non-US brands

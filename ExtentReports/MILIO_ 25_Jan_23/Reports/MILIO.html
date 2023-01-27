@@ -35,7 +35,11 @@
 <a href="#"><span class="badge badge-primary"></span></a>
 </li>
 <li class="m-r-10">
+<<<<<<< HEAD
 <a href="#"><span class="badge badge-primary">Jan 25, 2023 11:25:10 AM</span></a>
+=======
+<a href="#"><span class="badge badge-primary">Jan 25, 2023 01:17:38 PM</span></a>
+>>>>>>> fa623bd2e5951b594a884e40d64ea6dd7fbef6ea
 </li>
 </ul>
 </div>
@@ -47,6 +51,14 @@
 <span class="ico"><i class="fa fa-list"></i></span>
 </a>
 </li>
+<<<<<<< HEAD
+=======
+<li class="nav-item dropdown" onclick="toggleView('exception-view')">
+<a id="nav-exception" class="dropdown-toggle" href="#">
+<span class="ico"><i class="fa fa-bug"></i></span>
+</a>
+</li>
+>>>>>>> fa623bd2e5951b594a884e40d64ea6dd7fbef6ea
 <li class="nav-item dropdown" onclick="toggleView('category-view')">
 <a id="nav-category" class="dropdown-toggle" href="#">
 <span class="ico"><i class="fa fa-tag"></i></span>
@@ -71,7 +83,11 @@
 <li class="dropdown">
 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-exclamation-circle"></i></a>
 <ul id="status-toggle" class="dropdown-menu dropdown-md p-v-0">
+<<<<<<< HEAD
 <a class="dropdown-item" status="pass" href="#"><span>Pass</span><span class="status success"></span></a>
+=======
+<a class="dropdown-item" status="fail" href="#"><span>Fail</span><span class="status danger"></span></a>
+>>>>>>> fa623bd2e5951b594a884e40d64ea6dd7fbef6ea
 <div class="dropdown-divider"></div>
 <a status="clear" class="dropdown-item" href="#"><span>Clear</span><span class="pull-right"><i class="fa fa-close"></i></span></a>
 </ul>
@@ -79,31 +95,51 @@
 <li class="dropdown">
 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-tag"></i></a>
 <ul id="tag-toggle" class="dropdown-menu dropdown-md p-v-0">
+<<<<<<< HEAD
 <a class="dropdown-item" href="#">@Deposit_non_us</a><a class="dropdown-item" href="#">@EURO_non_us</a><a class="dropdown-item" href="#">@GBP_non_us</a><a class="dropdown-item" href="#">@USD_non_us</a>
+=======
+<a class="dropdown-item" href="#">@EURO_non_us</a><a class="dropdown-item" href="#">@USD_non_us</a><a class="dropdown-item" href="#">@Deposit_non_us</a><a class="dropdown-item" href="#">@GBP_non_us</a>
+>>>>>>> fa623bd2e5951b594a884e40d64ea6dd7fbef6ea
 </ul>
 </li>
 </ul>
 </div>    <div class="test-list-wrapper scrollable">
       <ul class="test-list-item">
+<<<<<<< HEAD
         <li class="test-item"  status="pass" test-id="1"
+=======
+        <li class="test-item"  status="fail" test-id="1"
+>>>>>>> fa623bd2e5951b594a884e40d64ea6dd7fbef6ea
           author=""
           tag=""
           device="">
           <div class="test-detail">
             <p class="name">Test Accounts Functionality</p>
             <p class="text-sm">
+<<<<<<< HEAD
               <span>11:25:10 AM</span> / <span>00:04:28:856</span>
               <span class="badge pass-bg log float-right">Pass</span>
+=======
+              <span>1:17:38 PM</span> / <span>00:00:10:190</span>
+              <span class="badge fail-bg log float-right">Fail</span>
+>>>>>>> fa623bd2e5951b594a884e40d64ea6dd7fbef6ea
             </p>
           </div>
           <div class="test-contents d-none">
 <div class="detail-head">
 <div class="p-v-10">
 <div class="info">
+<<<<<<< HEAD
 <h5 class="test-status text-pass">Test Accounts Functionality</h5>
 <span class='badge badge-success'>01.25.2023 11:25:10 AM</span>
 <span class='badge badge-danger'>01.25.2023 11:29:39 AM</span>
 <span class='badge badge-default'>00:04:28:856</span>
+=======
+<h5 class="test-status text-fail">Test Accounts Functionality</h5>
+<span class='badge badge-success'>01.25.2023 1:17:38 PM</span>
+<span class='badge badge-danger'>01.25.2023 1:17:48 PM</span>
+<span class='badge badge-default'>00:00:10:190</span>
+>>>>>>> fa623bd2e5951b594a884e40d64ea6dd7fbef6ea
 &middot; <span class='uri-anchor badge badge-default'>#test-id=1</span>
 <span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
 <span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
@@ -115,6 +151,7 @@
   <div class="card">
     <div class="card-header" role="tab">
       <div class="card-title">
+<<<<<<< HEAD
         <div class="node" id="2"><span class="badge log pass-bg mr-2">Pass</span>Deposit: Verify Card Deposit to USD Wallet via Apexx</div>
       </div>
     </div>
@@ -178,6 +215,122 @@
               <div class="step pass-bg" title="StepDefinations.Accounts_Step.user_should_redirect_to_accounts()">
                 <span>Then user should redirect to accounts</span>
       <div>
+=======
+        <div class="node" id="2"><span class="badge log fail-bg mr-2">Fail</span>Deposit: Verify Card Deposit to USD Wallet via Apexx</div>
+      </div>
+    </div>
+        <div class="">
+          <div class="card-body">
+              <div class="step fail-bg" title="StepDefinations.LoginStep.a_valid_url()">
+                <span>Given a valid url</span>
+      <div>
+        <textarea disabled class="code-block">org.openqa.selenium.NoSuchWindowException: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=109.0.5414.75)
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'SR-LP-01001', ip: '192.168.1.101', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_261'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 109.0.5414.75, chrome: {chromedriverVersion: 109.0.5414.74 (e7c5703604da..., userDataDir: C:\Users\Rashed\AppData\Loc...}, goog:chromeOptions: {debuggerAddress: localhost:59013}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: 79113577372012c6c958f4c88f42469f
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+	at org.openqa.selenium.remote.RemoteWebDriver.get(RemoteWebDriver.java:277)
+	at StepDefinations.LoginStep.a_valid_url(LoginStep.java:55)
+	at ✽.a valid url(file:///D:/Portal%20Automation/Spring%20Rain/Full%20Test/PortalsFullTestRun/src/test/resources/Features/Accounts/Accounts.feature:3)
+</textarea>
+      
+      </div>
+              </div>
+              <div class="step skip-bg" title="StepDefinations.Accounts_Step.user_clicks_on_usd_wallet()">
+                <span>When user clicks on USD wallet</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="StepDefinations.Accounts_Step.user_clicks_on_deposit()">
+                <span>And user clicks on deposit</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="StepDefinations.Accounts_Step.user_expend_from_dropdown()">
+                <span>And user expend from dropdown</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="StepDefinations.Accounts_Step.user_selects_debit_or_credit_card()">
+                <span>And user selects debit or credit card</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="StepDefinations.Accounts_Step.user_enters_amount_to_load_in_usd()">
+                <span>And user enters amount to load in USD</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="StepDefinations.Accounts_Step.user_clicks_agreement()">
+                <span>And user clicks agreement</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="StepDefinations.Accounts_Step.user_checks_summary()">
+                <span>And summary should appear</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="StepDefinations.Accounts_Step.clicks_confirm()">
+                <span>And clicks confirm</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="StepDefinations.PaymentGatewayStep.enter_card_details_in_apexx_and_clicks_on_pay()">
+                <span>And enter card details in Apexx and clicks on pay</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="StepDefinations.Accounts_Step.user_checks_confirmation_message()">
+                <span>And user checks confirmation message and press ok</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="StepDefinations.Accounts_Step.user_should_redirect_to_accounts()">
+                <span>Then user should redirect to accounts</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step fail-bg" title="AFTER">
+                <span>StepDefinations.LoginStep.takeScraenshotOnFailure(io.cucumber.java.Scenario)</span>
+      <div>
+        <textarea disabled class="code-block">org.openqa.selenium.NoSuchWindowException: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=109.0.5414.75)
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'SR-LP-01001', ip: '192.168.1.101', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_261'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 109.0.5414.75, chrome: {chromedriverVersion: 109.0.5414.74 (e7c5703604da..., userDataDir: C:\Users\Rashed\AppData\Loc...}, goog:chromeOptions: {debuggerAddress: localhost:59013}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: 79113577372012c6c958f4c88f42469f
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:609)
+	at org.openqa.selenium.remote.RemoteWebDriver.getScreenshotAs(RemoteWebDriver.java:295)
+	at StepDefinations.LoginStep.takeScraenshotOnFailure(LoginStep.java:39)
+</textarea>
+      
+>>>>>>> fa623bd2e5951b594a884e40d64ea6dd7fbef6ea
       </div>
               </div>
           </div>
@@ -186,6 +339,7 @@
   <div class="card">
     <div class="card-header" role="tab">
       <div class="card-title">
+<<<<<<< HEAD
         <div class="node" id="16"><span class="badge log pass-bg mr-2">Pass</span>Deposit: Verify Card Deposit to Euro Wallet via Apexx</div>
       </div>
     </div>
@@ -249,6 +403,122 @@
               <div class="step pass-bg" title="StepDefinations.Accounts_Step.user_should_redirect_to_accounts()">
                 <span>Then user should redirect to accounts</span>
       <div>
+=======
+        <div class="node" id="16"><span class="badge log fail-bg mr-2">Fail</span>Deposit: Verify Card Deposit to Euro Wallet via Apexx</div>
+      </div>
+    </div>
+        <div class="">
+          <div class="card-body">
+              <div class="step fail-bg" title="StepDefinations.LoginStep.a_valid_url()">
+                <span>Given a valid url</span>
+      <div>
+        <textarea disabled class="code-block">org.openqa.selenium.NoSuchWindowException: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=109.0.5414.75)
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'SR-LP-01001', ip: '192.168.1.101', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_261'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 109.0.5414.75, chrome: {chromedriverVersion: 109.0.5414.74 (e7c5703604da..., userDataDir: C:\Users\Rashed\AppData\Loc...}, goog:chromeOptions: {debuggerAddress: localhost:59013}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: 79113577372012c6c958f4c88f42469f
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+	at org.openqa.selenium.remote.RemoteWebDriver.get(RemoteWebDriver.java:277)
+	at StepDefinations.LoginStep.a_valid_url(LoginStep.java:54)
+	at ✽.a valid url(file:///D:/Portal%20Automation/Spring%20Rain/Full%20Test/PortalsFullTestRun/src/test/resources/Features/Accounts/Accounts.feature:3)
+</textarea>
+      
+      </div>
+              </div>
+              <div class="step skip-bg" title="StepDefinations.Accounts_Step.user_clicks_on_euro_wallet()">
+                <span>When user clicks on EURO wallet</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="StepDefinations.Accounts_Step.user_clicks_on_deposit()">
+                <span>And user clicks on deposit</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="StepDefinations.Accounts_Step.user_expend_from_dropdown()">
+                <span>And user expend from dropdown</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="StepDefinations.Accounts_Step.user_selects_debit_or_credit_card()">
+                <span>And user selects debit or credit card</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="StepDefinations.Accounts_Step.user_enters_amount_to_load_in_usd()">
+                <span>And user enters amount to load in USD</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="StepDefinations.Accounts_Step.user_clicks_agreement()">
+                <span>And user clicks agreement</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="StepDefinations.Accounts_Step.user_checks_summary()">
+                <span>And summary should appear</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="StepDefinations.Accounts_Step.clicks_confirm()">
+                <span>And clicks confirm</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="StepDefinations.PaymentGatewayStep.enter_card_details_in_apexx_and_clicks_on_pay()">
+                <span>And enter card details in Apexx and clicks on pay</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="StepDefinations.Accounts_Step.user_checks_confirmation_message()">
+                <span>And user checks confirmation message and press ok</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="StepDefinations.Accounts_Step.user_should_redirect_to_accounts()">
+                <span>Then user should redirect to accounts</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step fail-bg" title="AFTER">
+                <span>StepDefinations.LoginStep.takeScraenshotOnFailure(io.cucumber.java.Scenario)</span>
+      <div>
+        <textarea disabled class="code-block">org.openqa.selenium.NoSuchWindowException: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=109.0.5414.75)
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'SR-LP-01001', ip: '192.168.1.101', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_261'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 109.0.5414.75, chrome: {chromedriverVersion: 109.0.5414.74 (e7c5703604da..., userDataDir: C:\Users\Rashed\AppData\Loc...}, goog:chromeOptions: {debuggerAddress: localhost:59013}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: 79113577372012c6c958f4c88f42469f
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:609)
+	at org.openqa.selenium.remote.RemoteWebDriver.getScreenshotAs(RemoteWebDriver.java:295)
+	at StepDefinations.LoginStep.takeScraenshotOnFailure(LoginStep.java:39)
+</textarea>
+      
+>>>>>>> fa623bd2e5951b594a884e40d64ea6dd7fbef6ea
       </div>
               </div>
           </div>
@@ -257,6 +527,7 @@
   <div class="card">
     <div class="card-header" role="tab">
       <div class="card-title">
+<<<<<<< HEAD
         <div class="node" id="30"><span class="badge log pass-bg mr-2">Pass</span>Deposit: Verify Card Deposit to GBP Wallet via Apexx</div>
       </div>
     </div>
@@ -320,6 +591,122 @@
               <div class="step pass-bg" title="StepDefinations.Accounts_Step.user_should_redirect_to_accounts()">
                 <span>Then user should redirect to accounts</span>
       <div>
+=======
+        <div class="node" id="30"><span class="badge log fail-bg mr-2">Fail</span>Deposit: Verify Card Deposit to GBP Wallet via Apexx</div>
+      </div>
+    </div>
+        <div class="">
+          <div class="card-body">
+              <div class="step fail-bg" title="StepDefinations.LoginStep.a_valid_url()">
+                <span>Given a valid url</span>
+      <div>
+        <textarea disabled class="code-block">org.openqa.selenium.NoSuchWindowException: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=109.0.5414.75)
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'SR-LP-01001', ip: '192.168.1.101', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_261'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 109.0.5414.75, chrome: {chromedriverVersion: 109.0.5414.74 (e7c5703604da..., userDataDir: C:\Users\Rashed\AppData\Loc...}, goog:chromeOptions: {debuggerAddress: localhost:59013}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: 79113577372012c6c958f4c88f42469f
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+	at org.openqa.selenium.remote.RemoteWebDriver.get(RemoteWebDriver.java:277)
+	at StepDefinations.LoginStep.a_valid_url(LoginStep.java:54)
+	at ✽.a valid url(file:///D:/Portal%20Automation/Spring%20Rain/Full%20Test/PortalsFullTestRun/src/test/resources/Features/Accounts/Accounts.feature:3)
+</textarea>
+      
+      </div>
+              </div>
+              <div class="step skip-bg" title="StepDefinations.Accounts_Step.user_clicks_on_gbp_wallet()">
+                <span>When user clicks on GBP wallet</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="StepDefinations.Accounts_Step.user_clicks_on_deposit()">
+                <span>And user clicks on deposit</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="StepDefinations.Accounts_Step.user_expend_from_dropdown()">
+                <span>And user expend from dropdown</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="StepDefinations.Accounts_Step.user_selects_debit_or_credit_card()">
+                <span>And user selects debit or credit card</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="StepDefinations.Accounts_Step.user_enters_amount_to_load_in_usd()">
+                <span>And user enters amount to load in USD</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="StepDefinations.Accounts_Step.user_clicks_agreement()">
+                <span>And user clicks agreement</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="StepDefinations.Accounts_Step.user_checks_summary()">
+                <span>And summary should appear</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="StepDefinations.Accounts_Step.clicks_confirm()">
+                <span>And clicks confirm</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="StepDefinations.PaymentGatewayStep.enter_card_details_in_apexx_and_clicks_on_pay()">
+                <span>And enter card details in Apexx and clicks on pay</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="StepDefinations.Accounts_Step.user_checks_confirmation_message()">
+                <span>And user checks confirmation message and press ok</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="StepDefinations.Accounts_Step.user_should_redirect_to_accounts()">
+                <span>Then user should redirect to accounts</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step fail-bg" title="AFTER">
+                <span>StepDefinations.LoginStep.takeScraenshotOnFailure(io.cucumber.java.Scenario)</span>
+      <div>
+        <textarea disabled class="code-block">org.openqa.selenium.NoSuchWindowException: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=109.0.5414.75)
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'SR-LP-01001', ip: '192.168.1.101', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_261'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 109.0.5414.75, chrome: {chromedriverVersion: 109.0.5414.74 (e7c5703604da..., userDataDir: C:\Users\Rashed\AppData\Loc...}, goog:chromeOptions: {debuggerAddress: localhost:59013}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: 79113577372012c6c958f4c88f42469f
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:609)
+	at org.openqa.selenium.remote.RemoteWebDriver.getScreenshotAs(RemoteWebDriver.java:295)
+	at StepDefinations.LoginStep.takeScraenshotOnFailure(LoginStep.java:39)
+</textarea>
+      
+>>>>>>> fa623bd2e5951b594a884e40d64ea6dd7fbef6ea
       </div>
               </div>
           </div>
@@ -337,7 +724,113 @@
 </div>
 <div class="test-content-detail"><div class="detail-body"></div></div>
 </div></div>
+<<<<<<< HEAD
 <div class="test-wrapper row view category-view attributes-view">
+=======
+<div class="test-wrapper row view exception-view attributes-view">
+<div class="test-list">
+<div class="test-list-tools">
+<ul class="tools pull-left"><li><a href=""><span class="font-size-14">Exception</span></a></li></ul>
+<ul class="tools text-right"><li><a href="#"><span class="badge badge-primary">1</span></a></li></ul>
+</div>
+<div class="test-list-wrapper scrollable">
+<ul class="test-list-item">
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log badge-danger'>6</span>
+</span>
+<p class="name">org.openqa.selenium.NoSuchWindowException</p>
+<p class="duration text-sm">6 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>org.openqa.selenium.NoSuchWindowException</h4>
+<span status="fail" class='badge log badge-danger'>6 failed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>13:17:38 PM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='3'>Given a valid url</a>
+<div class="">
+<span class="badge badge-default">Test Accounts Functionality.Deposit: Verify Card Deposit to USD Wallet via Apexx.Given a valid url</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>13:17:48 PM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='15'>StepDefinations.LoginStep.takeScraenshotOnFailure(io.cucumber.java.Scenario)</a>
+<div class="">
+<span class="badge badge-default">Test Accounts Functionality.Deposit: Verify Card Deposit to USD Wallet via Apexx.StepDefinations.LoginStep.takeScraenshotOnFailure(io.cucumber.java.Scenario)</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>13:17:48 PM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='17'>Given a valid url</a>
+<div class="">
+<span class="badge badge-default">Test Accounts Functionality.Deposit: Verify Card Deposit to Euro Wallet via Apexx.Given a valid url</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>13:17:48 PM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='29'>StepDefinations.LoginStep.takeScraenshotOnFailure(io.cucumber.java.Scenario)</a>
+<div class="">
+<span class="badge badge-default">Test Accounts Functionality.Deposit: Verify Card Deposit to Euro Wallet via Apexx.StepDefinations.LoginStep.takeScraenshotOnFailure(io.cucumber.java.Scenario)</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>13:17:48 PM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='31'>Given a valid url</a>
+<div class="">
+<span class="badge badge-default">Test Accounts Functionality.Deposit: Verify Card Deposit to GBP Wallet via Apexx.Given a valid url</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>13:17:48 PM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='43'>StepDefinations.LoginStep.takeScraenshotOnFailure(io.cucumber.java.Scenario)</a>
+<div class="">
+<span class="badge badge-default">Test Accounts Functionality.Deposit: Verify Card Deposit to GBP Wallet via Apexx.StepDefinations.LoginStep.takeScraenshotOnFailure(io.cucumber.java.Scenario)</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="test-content scrollable">
+<div class="test-content-detail">
+<div class="detail-body"></div>
+</div>
+</div>
+</div><div class="test-wrapper row view category-view attributes-view">
+>>>>>>> fa623bd2e5951b594a884e40d64ea6dd7fbef6ea
 <div class="test-list">
 <div class="test-list-tools">
 <ul class="tools pull-left"><li><a href=""><span class="font-size-14">Category</span></a></li></ul>
@@ -348,6 +841,7 @@
 <li class="test-item">
 <div class="test-detail">
 <span class="meta">
+<<<<<<< HEAD
 <span class='badge log pass-bg'>3</span>
 </span>
 <p class="name">@Deposit_non_us</p>
@@ -405,6 +899,9 @@
 <div class="test-detail">
 <span class="meta">
 <span class='badge log pass-bg'>1</span>
+=======
+<span class='badge log badge-danger'>1</span>
+>>>>>>> fa623bd2e5951b594a884e40d64ea6dd7fbef6ea
 </span>
 <p class="name">@EURO_non_us</p>
 <p class="duration text-sm">1 tests</p>
@@ -412,7 +909,11 @@
 <div class="test-contents d-none">
 <div class="info">
 <h4>@EURO_non_us</h4>
+<<<<<<< HEAD
 <span status="pass" class='badge log pass-bg'>1 passed</span>
+=======
+<span status="fail" class='badge log badge-danger'>1 failed</span>
+>>>>>>> fa623bd2e5951b594a884e40d64ea6dd7fbef6ea
 </div>
 <table class='table table-sm mt-4'>
 <thead>
@@ -423,9 +924,15 @@
 </tr>
 </thead>
 <tbody>
+<<<<<<< HEAD
 <tr class="tag-test-status" status="pass">
 <td><span class="badge log pass-bg">Pass</span></td>
 <td>11:26:52 AM</td>
+=======
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>13:17:48 PM</td>
+>>>>>>> fa623bd2e5951b594a884e40d64ea6dd7fbef6ea
 <td>
 <a href="#" class="linked" test-id='1' id='16'>Deposit: Verify Card Deposit to Euro Wallet via Apexx</a>
 <div class="">
@@ -440,15 +947,26 @@
 <li class="test-item">
 <div class="test-detail">
 <span class="meta">
+<<<<<<< HEAD
 <span class='badge log pass-bg'>1</span>
 </span>
 <p class="name">@GBP_non_us</p>
+=======
+<span class='badge log badge-danger'>1</span>
+</span>
+<p class="name">@USD_non_us</p>
+>>>>>>> fa623bd2e5951b594a884e40d64ea6dd7fbef6ea
 <p class="duration text-sm">1 tests</p>
 </div>
 <div class="test-contents d-none">
 <div class="info">
+<<<<<<< HEAD
 <h4>@GBP_non_us</h4>
 <span status="pass" class='badge log pass-bg'>1 passed</span>
+=======
+<h4>@USD_non_us</h4>
+<span status="fail" class='badge log badge-danger'>1 failed</span>
+>>>>>>> fa623bd2e5951b594a884e40d64ea6dd7fbef6ea
 </div>
 <table class='table table-sm mt-4'>
 <thead>
@@ -459,9 +977,71 @@
 </tr>
 </thead>
 <tbody>
+<<<<<<< HEAD
 <tr class="tag-test-status" status="pass">
 <td><span class="badge log pass-bg">Pass</span></td>
 <td>11:28:18 AM</td>
+=======
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>13:17:38 PM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='2'>Deposit: Verify Card Deposit to USD Wallet via Apexx</a>
+<div class="">
+<span class="badge badge-default">Test Accounts Functionality.Deposit: Verify Card Deposit to USD Wallet via Apexx</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log badge-danger'>3</span>
+</span>
+<p class="name">@Deposit_non_us</p>
+<p class="duration text-sm">3 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>@Deposit_non_us</h4>
+<span status="fail" class='badge log badge-danger'>3 failed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>13:17:38 PM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='2'>Deposit: Verify Card Deposit to USD Wallet via Apexx</a>
+<div class="">
+<span class="badge badge-default">Test Accounts Functionality.Deposit: Verify Card Deposit to USD Wallet via Apexx</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>13:17:48 PM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='16'>Deposit: Verify Card Deposit to Euro Wallet via Apexx</a>
+<div class="">
+<span class="badge badge-default">Test Accounts Functionality.Deposit: Verify Card Deposit to Euro Wallet via Apexx</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>13:17:48 PM</td>
+>>>>>>> fa623bd2e5951b594a884e40d64ea6dd7fbef6ea
 <td>
 <a href="#" class="linked" test-id='1' id='30'>Deposit: Verify Card Deposit to GBP Wallet via Apexx</a>
 <div class="">
@@ -476,15 +1056,26 @@
 <li class="test-item">
 <div class="test-detail">
 <span class="meta">
+<<<<<<< HEAD
 <span class='badge log pass-bg'>1</span>
 </span>
 <p class="name">@USD_non_us</p>
+=======
+<span class='badge log badge-danger'>1</span>
+</span>
+<p class="name">@GBP_non_us</p>
+>>>>>>> fa623bd2e5951b594a884e40d64ea6dd7fbef6ea
 <p class="duration text-sm">1 tests</p>
 </div>
 <div class="test-contents d-none">
 <div class="info">
+<<<<<<< HEAD
 <h4>@USD_non_us</h4>
 <span status="pass" class='badge log pass-bg'>1 passed</span>
+=======
+<h4>@GBP_non_us</h4>
+<span status="fail" class='badge log badge-danger'>1 failed</span>
+>>>>>>> fa623bd2e5951b594a884e40d64ea6dd7fbef6ea
 </div>
 <table class='table table-sm mt-4'>
 <thead>
@@ -495,6 +1086,7 @@
 </tr>
 </thead>
 <tbody>
+<<<<<<< HEAD
 <tr class="tag-test-status" status="pass">
 <td><span class="badge log pass-bg">Pass</span></td>
 <td>11:25:10 AM</td>
@@ -502,6 +1094,15 @@
 <a href="#" class="linked" test-id='1' id='2'>Deposit: Verify Card Deposit to USD Wallet via Apexx</a>
 <div class="">
 <span class="badge badge-default">Test Accounts Functionality.Deposit: Verify Card Deposit to USD Wallet via Apexx</span>
+=======
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>13:17:48 PM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='30'>Deposit: Verify Card Deposit to GBP Wallet via Apexx</a>
+<div class="">
+<span class="badge badge-default">Test Accounts Functionality.Deposit: Verify Card Deposit to GBP Wallet via Apexx</span>
+>>>>>>> fa623bd2e5951b594a884e40d64ea6dd7fbef6ea
 </div>
 </td>
 </tr>
@@ -522,25 +1123,41 @@
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Started</p>
+<<<<<<< HEAD
 <h3>Jan 25, 2023 11:25:10 AM</h3>
+=======
+<h3>Jan 25, 2023 01:17:38 PM</h3>
+>>>>>>> fa623bd2e5951b594a884e40d64ea6dd7fbef6ea
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Ended</p>
+<<<<<<< HEAD
 <h3>Jan 25, 2023 11:29:39 AM</h3>
+=======
+<h3>Jan 25, 2023 01:17:48 PM</h3>
+>>>>>>> fa623bd2e5951b594a884e40d64ea6dd7fbef6ea
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0 text-pass">Features Passed</p>
+<<<<<<< HEAD
 <h3>1</h3>
+=======
+<h3>0</h3>
+>>>>>>> fa623bd2e5951b594a884e40d64ea6dd7fbef6ea
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0 text-fail">Features Failed</p>
+<<<<<<< HEAD
 <h3>0</h3>
+=======
+<h3>1</h3>
+>>>>>>> fa623bd2e5951b594a884e40d64ea6dd7fbef6ea
 </div></div>
 </div>
 </div>
@@ -556,12 +1173,21 @@
 </div>
 </div>
 <div class="card-footer">
+<<<<<<< HEAD
 <div><small data-tooltip='100%'>
 <b>1</b> features passed
 </small>
 </div>
 <div>
 <small data-tooltip='0%'><b>0</b> features failed,
+=======
+<div><small data-tooltip='0%'>
+<b>0</b> features passed
+</small>
+</div>
+<div>
+<small data-tooltip='100%'><b>1</b> features failed,
+>>>>>>> fa623bd2e5951b594a884e40d64ea6dd7fbef6ea
 <b>0</b> skipped, <b data-tooltip='0%'>0</b> others
 </small>
 </div>
@@ -579,9 +1205,15 @@
 </div>
 </div>
 <div class="card-footer">
+<<<<<<< HEAD
 <div><small data-tooltip='100%'><b>3</b> scenarios passed</small></div>
 <div>
 <small data-tooltip='0%'><b>0</b> scenarios failed,
+=======
+<div><small data-tooltip='0%'><b>0</b> scenarios passed</small></div>
+<div>
+<small data-tooltip='100%'><b>3</b> scenarios failed,
+>>>>>>> fa623bd2e5951b594a884e40d64ea6dd7fbef6ea
 <b>0</b> skipped, <b data-tooltip='%'>0</b> others
 </small>
 </div>
@@ -599,10 +1231,17 @@
 </div>
 </div>
 <div class="card-footer">
+<<<<<<< HEAD
 <div><small data-tooltip='100%'><b>36</b> steps passed</small></div>
 <div>
 <small data-tooltip='0%'><b>0</b> steps failed,
 <b>0</b> skipped, <b data-tooltip='%'>0</b> others
+=======
+<div><small data-tooltip='0%'><b>0</b> steps passed</small></div>
+<div>
+<small data-tooltip='15%'><b>6</b> steps failed,
+<b>33</b> skipped, <b data-tooltip='%'>0</b> others
+>>>>>>> fa623bd2e5951b594a884e40d64ea6dd7fbef6ea
 </small>
 </div>
 </div>
@@ -618,7 +1257,11 @@
 </div></div>
 <script>
 var timeline = {
+<<<<<<< HEAD
 "Test Accounts Functionality":268.856
+=======
+"Test Accounts Functionality":10.19
+>>>>>>> fa623bd2e5951b594a884e40d64ea6dd7fbef6ea
 };
 </script>
 <div class="row">
@@ -628,6 +1271,7 @@ var timeline = {
 <div class="card-body pb-0 pt-0"><table class="table table-sm table-bordered">
 <thead><tr class="bg-gray"><th>Name</th><th>Passed</th><th>Failed</th><th>Skipped</th><th>Others</th><th>Passed %</th></tr></thead><tbody>
 <tr>
+<<<<<<< HEAD
 <td>@Deposit_non_us</td>
 <td>3</td>
 <td>0</td>
@@ -658,6 +1302,38 @@ var timeline = {
 <td>0</td>
 <td>0</td>
 <td>100%</td>
+=======
+<td>@EURO_non_us</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0%</td>
+</tr>
+<tr>
+<td>@USD_non_us</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0%</td>
+</tr>
+<tr>
+<td>@Deposit_non_us</td>
+<td>0</td>
+<td>3</td>
+<td>0</td>
+<td>0</td>
+<td>0%</td>
+</tr>
+<tr>
+<td>@GBP_non_us</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0%</td>
+>>>>>>> fa623bd2e5951b594a884e40d64ea6dd7fbef6ea
 </tr>
 </tbody>
 </table></div>
@@ -668,6 +1344,7 @@ var timeline = {
 <script>
 var statusGroup = {
 parentCount: 5,
+<<<<<<< HEAD
 passParent: 1,
 failParent: 0,
 warningParent: 0,
@@ -675,14 +1352,30 @@ skipParent: 0,
 childCount: 5,
 passChild: 3,
 failChild: 0,
+=======
+passParent: 0,
+failParent: 1,
+warningParent: 0,
+skipParent: 0,
+childCount: 5,
+passChild: 0,
+failChild: 3,
+>>>>>>> fa623bd2e5951b594a884e40d64ea6dd7fbef6ea
 warningChild: 0,
 skipChild: 0,
 infoChild: 0,
 grandChildCount: 5,
+<<<<<<< HEAD
 passGrandChild: 36,
 failGrandChild: 0,
 warningGrandChild: 0,
 skipGrandChild: 0,
+=======
+passGrandChild: 0,
+failGrandChild: 6,
+warningGrandChild: 0,
+skipGrandChild: 33,
+>>>>>>> fa623bd2e5951b594a884e40d64ea6dd7fbef6ea
 infoGrandChild: 0,
 eventsCount: 5,
 };
