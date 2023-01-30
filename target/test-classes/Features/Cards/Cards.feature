@@ -88,7 +88,7 @@ Feature: Test functionality of Card page
     Then user should be able to export transactions as pdf and csv
 
 ##++++++++++++++++++++++++++++++++++++++++++++++++++++ First Virtual Card ++++++++++++++++++++++++++++++++++++++++++++++
-  @common1
+  @common
   Scenario: Verify Load Functionality of First Virtual Card
     When clicks on virtual card tab from card page
     And user clicks on first virtual card
@@ -100,7 +100,7 @@ Feature: Test functionality of Card page
     And user checks transfer success message and press ok button
     Then user should redirect back to physical card page
 
-  @common1
+  @common
   Scenario: Verify UnLoad Functionality of First Virtual Card
     When clicks on virtual card tab from card page
     And user clicks on first virtual card
@@ -157,7 +157,7 @@ Feature: Test functionality of Card page
     And user clicks on show card details button
     Then card details should appear
 
-  @common1
+  @common
   Scenario: Verify Transaction Tab of First Virtual Card
     When clicks on virtual card tab from card page
     And user clicks on first virtual card
@@ -174,7 +174,7 @@ Feature: Test functionality of Card page
     Then a statement will be downloaded
 
 ##++++++++++++++++++++++++++++++++++++++++++++++++++++ Second Virtual Card +++++++++++++++++++++++++++++++++++++++++++++
-  @common1
+  @common
   Scenario: Verify Load Functionality of Second Virtual Card
     When clicks on virtual card tab from card page
     And user clicks on second virtual card
@@ -186,7 +186,7 @@ Feature: Test functionality of Card page
     And user checks transfer success message and press ok button
     Then user should redirect back to physical card page
 
-  @common1
+  @common
   Scenario: Verify UnLoad Functionality of Second Virtual Card
     When clicks on virtual card tab from card page
     And user clicks on second virtual card
@@ -244,7 +244,7 @@ Feature: Test functionality of Card page
     And user clicks on show card details button
     Then card details should appear
 
-  @common1
+  @common
   Scenario: Verify Transaction Tab of Second Virtual Card
     When clicks on virtual card tab from card page
     And user clicks on second virtual card
@@ -261,7 +261,7 @@ Feature: Test functionality of Card page
     Then a statement will be downloaded
 
     ##++++++++++++++++++++++++++++++++++++++++++++++++++++ Third Virtual Card +++++++++++++++++++++++++++++++++++++++++++++
-  @common1
+  @common
   Scenario: Verify Load Functionality of Third Virtual Card
     When clicks on virtual card tab from card page
     And user clicks on third virtual card
@@ -273,7 +273,7 @@ Feature: Test functionality of Card page
     And user checks transfer success message and press ok button
     Then user should redirect back to physical card page
 
-  @common1
+  @common
   Scenario: Verify UnLoad Functionality of Third Virtual Card
     When clicks on virtual card tab from card page
     And user clicks on third virtual card
@@ -331,7 +331,7 @@ Feature: Test functionality of Card page
     And user clicks on show card details button
     Then card details should appear
 
-  @common1
+  @common
   Scenario: Verify Transaction Tab of Third Virtual Card
     When clicks on virtual card tab from card page
     And user clicks on third virtual card
