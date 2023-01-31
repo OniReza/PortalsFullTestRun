@@ -2,7 +2,7 @@ Feature: Test Accounts Functionality
   Background:
     Given a valid url
 
-  @USD_us @Deposit_us
+  @USD_us @Deposit_us @Test
   Scenario: Deposit: Verify Card Deposit to USD Wallet via Stripe
     When user clicks on USD wallet
     And user clicks on deposit
@@ -30,7 +30,7 @@ Feature: Test Accounts Functionality
     And user checks confirmation message and press ok
     Then user should redirect to accounts
 
-  @USD_common @USD_move @move
+  @USD_common1 @USD_move @move
   Scenario: Verify USD Wallet to JPY Wallet Move
     When user clicks on USD wallet
     And user clicks on move tab
@@ -204,7 +204,7 @@ Feature: Test Accounts Functionality
     And user checks confirmation message and press ok
     Then user should redirect to accounts
 
-  @EURO_common @EURO_move @move
+  @EURO_common1 @EURO_move @move
   Scenario: Verify Euro Wallet to CNY Wallet Move
     When user clicks on EURO wallet
     And user clicks on move tab

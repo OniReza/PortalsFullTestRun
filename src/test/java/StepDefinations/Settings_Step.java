@@ -63,7 +63,7 @@ public class Settings_Step {
     }
 
     @And("user inputs otp and clicks on confirm button")
-    public void user_inputs_otp_and_clicks_on_confirm_button() throws InterruptedException {
+    public void user_inputs_otp_and_clicks_on_confirm_button() throws Exception {
         waitload();
         settingsPage.inputOtp();
         Thread.sleep(500);
@@ -77,7 +77,7 @@ public class Settings_Step {
     }
 
     @And("user should be able to login using new password")
-    public void user_should_be_able_to_login_using_new_password() throws InterruptedException {
+    public void user_should_be_able_to_login_using_new_password() throws Exception {
         smartWait.waitUntilPageIsLoaded(10);
         settingsPage.logoutandLogin();
         smartWait.waitUntilPageIsLoaded(10);
@@ -85,7 +85,7 @@ public class Settings_Step {
     }
 
     @Then("user will change password again")
-    public void user_will_change_password_again() throws InterruptedException {
+    public void user_will_change_password_again() throws Exception {
         waitload();
         settingsPage.backtoPrevious();
         waitload();

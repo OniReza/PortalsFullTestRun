@@ -516,7 +516,7 @@ public class Accounts_Page extends CommonPageMethods {
         confirmBtn.click();
     }
 
-    public void enterSecretCode() {
+    public void enterSecretCode()throws Exception {
         String Otp = BaseData.BaseOtp();
         System.out.println("Move: " + Otp);
         secretCode.sendKeys(Otp);

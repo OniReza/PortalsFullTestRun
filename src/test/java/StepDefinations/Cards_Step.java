@@ -131,7 +131,7 @@ public class Cards_Step {
     }
 
     @When("user provides otp and clicks confirm button again")
-    public void user_provides_otp_and_clicks_confirm_button_again() throws InterruptedException {
+    public void user_provides_otp_and_clicks_confirm_button_again()throws Exception {
         waitload();
         cardspage.enterOtp();
         waitload();
@@ -250,7 +250,7 @@ public class Cards_Step {
     }
 
     @And("user inputs password")
-    public void user_inputs_password() throws InterruptedException {
+    public void user_inputs_password() throws Exception {
         waitload();
         cardspage.enterPinPass();
         waitload();
@@ -280,7 +280,7 @@ public class Cards_Step {
     }
 
     @And("user inputs otp")
-    public void user_inputs_otp() throws InterruptedException {
+    public void user_inputs_otp() throws Exception {
         waitload();
         cardspage.enterOtpDigitalCard();
         waitload();

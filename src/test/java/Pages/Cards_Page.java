@@ -163,7 +163,7 @@ public class Cards_Page extends CommonPageMethods {
         confirmBtn.click();
     }
 
-    public void enterOtp() {
+    public void enterOtp()throws Exception {
         otpInput.sendKeys(BaseData.BaseOtp());
     }
 
@@ -232,7 +232,7 @@ public class Cards_Page extends CommonPageMethods {
         pinTab.click();
     }
 
-    public void enterPinPass() {
+    public void enterPinPass()throws Exception {
         pinPassword.sendKeys(BaseData.BasePassword());
     }
 
@@ -249,7 +249,7 @@ public class Cards_Page extends CommonPageMethods {
         click(digitalCardTab);
     }
 
-    public void enterOtpDigitalCard() {
+    public void enterOtpDigitalCard()throws Exception {
         otp.sendKeys(BaseData.BaseOtp());
     }
 

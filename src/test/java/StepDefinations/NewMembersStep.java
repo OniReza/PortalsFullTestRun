@@ -193,7 +193,7 @@ public class NewMembersStep {
     }
 
     @And("user enter otp and click activate button")
-    public void user_enter_otp_and_click_activate_button() throws InterruptedException {
+    public void user_enter_otp_and_click_activate_button() throws Exception {
         waitload();
         newMemberPage.enterOtp();
         Thread.sleep(1000);
@@ -237,7 +237,7 @@ public class NewMembersStep {
         waitload();
     }
     @And("user enter otp and click purchase button")
-    public void user_enter_otp_and_click_purchase_button() throws InterruptedException {
+    public void user_enter_otp_and_click_purchase_button() throws Exception {
         waitload();
         newMemberPage.enterPurchaseOtp();
         Thread.sleep(500);
@@ -304,7 +304,7 @@ public class NewMembersStep {
         waitload();
     }
     @And("user inputs password and clicks on confirm button")
-    public void user_inputs_password_and_clicks_on_confirm_button() throws InterruptedException {
+    public void user_inputs_password_and_clicks_on_confirm_button() throws Exception {
         waitload();
         newMemberPage.enterPassword();
         Thread.sleep(500);

@@ -2,7 +2,7 @@ Feature: Test functionality of Card page
   Background:
     Given a valid url
 
-  @common
+  @common @test
   Scenario: Verify Load Functionality of Physical Card
     When user clicks on cards on side menu
     And user clicks on physical card

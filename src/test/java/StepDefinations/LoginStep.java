@@ -48,7 +48,7 @@ public class LoginStep {
 
     */
     @Given("a valid url")
-    public void a_valid_url() throws InterruptedException {
+    public void a_valid_url() throws Exception {
         String URL = BaseData.BaseUrlMain();
         String PopURL = BaseData.BasePopUpUrl();
         driver.get(PopURL);

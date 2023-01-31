@@ -21,15 +21,15 @@ public class BaseData {
         return PURL;
     }
 
-    public static String BaseEmail(){
+    public static String BaseEmail()throws Exception{
           String Email=BaseCredentials.BaseEmailList() ;
           return Email;
     }
-    public static String BasePassword(){
+    public static String BasePassword()throws Exception{
         String Password = BaseCredentials.BasePassword(); 
         return Password;
     }
-    public static String BaseOtp() {
+    public static String BaseOtp()throws Exception {
         String secretKey = BaseCredentials.BaseOTPList();
         String code = getTOTPCode(secretKey);
         return code;

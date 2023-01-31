@@ -99,7 +99,7 @@ public class LoginPage extends CommonPageMethods {
         Submit.click();
     }
 
-    public void PageClass()throws InterruptedException
+    public void PageClass()throws Exception
     {
         String Email = BaseData.BaseEmail();
         String Pass=BaseData.BasePassword();

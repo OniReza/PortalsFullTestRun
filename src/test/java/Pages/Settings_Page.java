@@ -143,7 +143,7 @@ public class Settings_Page extends CommonPageMethods {
         Thread.sleep(2000);
     }
 
-    public void inputOtp() {
+    public void inputOtp()throws Exception {
         otp.sendKeys(BaseData.BaseOtp());
     }
 
@@ -151,7 +151,7 @@ public class Settings_Page extends CommonPageMethods {
         otpConfirmBtn.click();
     }
 
-    public void logoutandLogin() throws InterruptedException {
+    public void logoutandLogin() throws Exception {
         logoutBtn.click();
         Thread.sleep(3000);
         email.sendKeys(BaseData.BaseEmail());
@@ -168,7 +168,7 @@ public class Settings_Page extends CommonPageMethods {
         Thread.sleep(9000);
     }
 
-    public void backtoPrevious() throws InterruptedException {
+    public void backtoPrevious() throws Exception {
         settingsBtn.click();
         Thread.sleep(2000);
         changePass.click();

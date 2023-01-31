@@ -54,6 +54,7 @@ public class Accounts_Step {
         user_clicks_on_account();
         accpage.euroWalletClick();
         System.out.println("USD Wallet Clicked");
+
         waitload();
     }
 
@@ -180,7 +181,7 @@ public class Accounts_Step {
     }
 
     @And("user enters secret code")
-    public void user_enters_secret_code() throws InterruptedException {
+    public void user_enters_secret_code() throws Exception {
         waitload();
         accpage.enterSecretCode();
         Thread.sleep(50);
@@ -437,7 +438,7 @@ public class Accounts_Step {
     }
 
     @And("enter otp for transfer")
-    public void enter_otp_for_transfer() throws InterruptedException {
+    public void enter_otp_for_transfer() throws Exception {
         waitload();
         accpage.enterSecretCode();
         Thread.sleep(50);

@@ -118,7 +118,7 @@ public class NewMembersPage extends CommonPageMethods {
     public void verifyBtnClick(){
         verifyBtn.click();
     }
-    public void enterPassword(){
+    public void enterPassword()throws Exception{
         password.sendKeys(BaseData.BasePassword());
     }
     public void passConfirmBtnClick(){
@@ -233,7 +233,7 @@ public class NewMembersPage extends CommonPageMethods {
         confirmBtn.click();
     }
 
-    public void enterOtp() {
+    public void enterOtp()throws Exception {
         otp.click();
         otp.sendKeys(BaseData.BaseOtp());
     }
@@ -283,7 +283,7 @@ public class NewMembersPage extends CommonPageMethods {
         agreementCheckBox.click();
     }
 
-    public void enterPurchaseOtp() {
+    public void enterPurchaseOtp()throws Exception {
         purchaseOtp.sendKeys(BaseData.BaseOtp());
     }
 
