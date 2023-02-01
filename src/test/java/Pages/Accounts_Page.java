@@ -570,6 +570,7 @@ public class Accounts_Page extends CommonPageMethods {
     }
 
     public boolean checkSummary() {
+        confirmBtn.sendKeys(Keys.PAGE_DOWN);
         DecimalFormat df = new DecimalFormat("#.##");
         String sAmt = sendingAmount.getText();
         String fAmt = feeAmount.getText();
