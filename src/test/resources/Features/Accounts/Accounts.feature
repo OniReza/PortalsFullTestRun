@@ -8,7 +8,7 @@ Feature: Test Accounts Functionality
     And user clicks on deposit
     And user expend from dropdown
     And user selects debit or credit card
-    And user enters amount to load in USD
+    And user enters amount to deposit "5000"
     And user clicks agreement
     And summary should appear
     And clicks confirm
@@ -22,7 +22,7 @@ Feature: Test Accounts Functionality
     And user clicks on deposit
     And user expend from dropdown
     And user selects debit or credit card
-    And user enters amount to load in USD
+    And user enters amount to deposit "5000"
     And user clicks agreement
     And summary should appear
     And clicks confirm
@@ -182,7 +182,7 @@ Feature: Test Accounts Functionality
     And user clicks on deposit
     And user expend from dropdown
     And user selects debit or credit card
-    And user enters amount to load in USD
+    And user enters amount to deposit "5000"
     And user clicks agreement
     And summary should appear
     And clicks confirm
@@ -196,7 +196,7 @@ Feature: Test Accounts Functionality
     And user clicks on deposit
     And user expend from dropdown
     And user selects debit or credit card
-    And user enters amount to load in USD
+    And user enters amount to deposit "5000"
     And user clicks agreement
     And summary should appear
     And clicks confirm
@@ -357,7 +357,7 @@ Feature: Test Accounts Functionality
     And user clicks on deposit
     And user expend from dropdown
     And user selects debit or credit card
-    And user enters amount to load in USD
+    And user enters amount to deposit "5000"
     And user clicks agreement
     And summary should appear
     And clicks confirm
@@ -371,7 +371,7 @@ Feature: Test Accounts Functionality
     And user clicks on deposit
     And user expend from dropdown
     And user selects debit or credit card
-    And user enters amount to load in USD
+    And user enters amount to deposit "5000"
     And user clicks agreement
     And summary should appear
     And clicks confirm
@@ -553,7 +553,7 @@ Feature: Test Accounts Functionality
     And user clicks on deposit
     And user expend from dropdown
     And user selects debit or credit card
-    And user enters amount to load in USD
+    And user enters amount to deposit "30000"
     And user clicks agreement
     And summary should appear
     And clicks confirm
@@ -712,7 +712,7 @@ Feature: Test Accounts Functionality
     And user clicks on deposit
     And user expend from dropdown
     And user selects debit or credit card
-    And user enters amount to load in USD
+    And user enters amount to deposit "30000"
     And user clicks agreement
     And summary should appear
     And clicks confirm
