@@ -2,7 +2,7 @@ Feature: Test Accounts Functionality
   Background:
     Given a valid url
 
-  @USD_us @Deposit_us1 @Test
+  @USD_us @Deposit_us @Test
   Scenario: Deposit: Verify Card Deposit to USD Wallet via Stripe
     When user clicks on USD wallet
     And user clicks on deposit

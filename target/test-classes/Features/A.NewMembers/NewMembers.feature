@@ -28,8 +28,8 @@ Feature: Test New Accounts Functionality
   Scenario: Verify first virtual card Activation(USD) for US members using debit card
     When user clicks on cards on side menu
     And user clicks on virtual cards tab
-    And user clicks on create virtual card button
-    And user selects first card
+    #And user clicks on create virtual card button
+    #And user selects first card
     And user selects debit card for topup for activation
     And user enters sending amount and click checkBox
     And user click on continue button
@@ -110,7 +110,7 @@ Feature: Test New Accounts Functionality
     And user checks purchase success message and press on back button
     Then user should redirect back to virtual card page
 
-  @card_us @pound_card_activate_us_dc
+  @card_us @pound_card_activate_us_dc @test1
   Scenario: Verify Pound Sterling virtual card Activation for US members using debit card
     When user clicks on cards on side menu
     And user clicks on virtual cards tab
@@ -119,8 +119,8 @@ Feature: Test New Accounts Functionality
     And user enters sending amount and click checkBox
     And user click on continue button
     And user checks summary and press confirm
-    And user enter otp and click activate button
     And enter card details in Stripe and clicks on pay
+    And user enter otp and click activate button
     And user checks success message with loader and press Ok
     Then user should redirect back to virtual card page
 
@@ -217,7 +217,7 @@ Feature: Test New Accounts Functionality
     When user clicks on cards on side menu
     And user clicks on physical card
     And user clicks activate tab
-    And user inputs last four digit "9485" of physical card
+    And user inputs last four digit "2677" of physical card
     And user clicks verify button
     And user inputs password and clicks on confirm button
     And user press on back button

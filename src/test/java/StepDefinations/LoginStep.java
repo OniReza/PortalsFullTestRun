@@ -49,10 +49,10 @@ public class LoginStep {
     */
     @Given("a valid url")
     public void a_valid_url() throws Exception {
-        String URL = BaseData.BaseUrlMain();
+        //String URL = BaseData.BaseUrlMain();
         String PopURL = BaseData.BasePopUpUrl();
         driver.get(PopURL);
-        driver.get(URL);
+       // driver.get(URL);
         driver.manage().window().maximize();
         System.out.println("Valid Url Is Given");
         smartWait.waitUntilPageIsLoaded(5);
