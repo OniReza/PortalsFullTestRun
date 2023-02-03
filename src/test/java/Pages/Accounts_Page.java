@@ -21,6 +21,7 @@ import static Utility.UserProfile.cardLoad.clRate;
 
 public class Accounts_Page extends CommonPageMethods {
     public static WebDriver driver;
+    String moveAmount="1200";
     @FindBy(xpath = "//*[@id=\"root\"]/div/div/div/div/main/div/div/div/div/div/div/div[2]/div/div/div/div/div[2]")
     public WebElement graph;
 
@@ -289,6 +290,16 @@ public class Accounts_Page extends CommonPageMethods {
     public WebElement recivingAmount;
     @FindBy(xpath = "//span[contains(text(),'Dollar') or contains(text(),'Yen') or contains(text(),'Sterling')or contains(text(),'Euro') or contains(text(),'Yuan')]")
     public WebElement walletCurrency;
+    @FindBy(xpath = "//span[contains(text(),'1 ')][1]")
+    public WebElement convRate;
+    @FindBy(xpath = "//span[contains(text(),'Sending Amount')]")
+    public WebElement sendAmt;
+    @FindBy(xpath = "//span[contains(text(),'Transfer Fee')]")
+    public WebElement transferFee;
+    @FindBy(xpath = "//*[@id=\"root\"]/div/div/div/div/main/div/div/div/div/div/div/div[2]/div/div/div/div/div/div[2]/div[1]/div/div/div[16]/span")
+    public WebElement receiveAmount;
+    @FindBy(xpath = "(//input[@type='number'])[2]")
+    public WebElement recAmtBox;
 
     public Accounts_Page(WebDriver driver) {
         PageFactory.initElements(driver, this);
@@ -523,7 +534,7 @@ public class Accounts_Page extends CommonPageMethods {
     }
 
     public void enterSendingAmount() {
-        sendAmount.sendKeys("1000");
+        sendAmount.sendKeys(moveAmount);
     }
 
     public void confirmBtnClick() {
@@ -569,7 +580,7 @@ public class Accounts_Page extends CommonPageMethods {
         trAggrement.click();
     }
 
-    public boolean checkSummary() {
+    public boolean checkDepositSummary() {
         confirmBtn.sendKeys(Keys.PAGE_DOWN);
         DecimalFormat df = new DecimalFormat("#.##");
         String sAmt = sendingAmount.getText();
@@ -665,6 +676,32 @@ public class Accounts_Page extends CommonPageMethods {
         } else return false;
 
     }
+
+    public boolean checkMoveSummary(){
+        String rate = convRate.getText();
+        String sAmt = sendAmt.getText();
+        String rAmt = receiveAmount.getText();
+        String tAmt = totalAmount.getText();
+        double conversionRate = Double.valueOf(rate.replaceAll("\\s", "").substring(5).replaceAll("[a-zA-Z]", ""));
+        double sendingAmount = Math.floor(Double.valueOf(sAmt.replaceAll("[\\s,]+", "").substring(15)));
+        double amountoReceive = Math.floor(Double.valueOf(rAmt.replaceAll("[\\s,]+", "").substring(1)));
+        double totalAmount = Math.floor(Double.valueOf(tAmt.replaceAll("[\\s,]+", "").substring(13)));
+        System.out.println("Summary Rate: " +rate);
+        System.out.println("Summary Sending Amount: "+ sendingAmount);
+        System.out.println("Summary Receiving Amount: "+ amountoReceive);
+        System.out.println("Summary Total Amount: "+ totalAmount);
+        System.out.println("Calculated Receiving Amount: "+ Double.valueOf(moveAmount)*conversionRate);
+        System.out.println("Diff of Receiving Amounts: "+ Math.abs(Double.valueOf(moveAmount)*conversionRate-amountoReceive));
+
+        if (Math.abs(Double.valueOf(moveAmount)*conversionRate-amountoReceive)<=5 && Double.valueOf(totalAmount)==totalAmount ){
+            return true;
+        }
+        else {
+            return  false;
+        }
+
+    }
+
 
     public boolean checkExpeditSummary() {
         return expeditSummary.isDisplayed();

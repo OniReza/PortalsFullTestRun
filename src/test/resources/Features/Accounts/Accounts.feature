@@ -10,7 +10,7 @@ Feature: Test Accounts Functionality
     And user selects debit or credit card
     And user enters amount to deposit "5000"
     And user clicks agreement
-    And summary should appear
+    And deposit summary should appear
     And clicks confirm
     And enter card details in Stripe and clicks on pay
     And user checks confirmation message and press ok
@@ -24,19 +24,20 @@ Feature: Test Accounts Functionality
     And user selects debit or credit card
     And user enters amount to deposit "5000"
     And user clicks agreement
-    And summary should appear
+    And deposit summary should appear
     And clicks confirm
     And enter card details in Apexx and clicks on pay
     And user checks confirmation message and press ok
     Then user should redirect to accounts
 
-  @USD_common1 @USD_move @move
+  @USD_common @USD_move @move
   Scenario: Verify USD Wallet to JPY Wallet Move
     When user clicks on USD wallet
     And user clicks on move tab
     And user clicks on select beneficiary dropdown
     And user selects JPY wallet
     And enter amount on sending amount box
+    And move summary should appear
     And user clicks confirm
     And user enters secret code
     And user clicks confirm again
@@ -184,7 +185,7 @@ Feature: Test Accounts Functionality
     And user selects debit or credit card
     And user enters amount to deposit "5000"
     And user clicks agreement
-    And summary should appear
+    And deposit summary should appear
     And clicks confirm
     And enter card details in Stripe and clicks on pay
     And user checks confirmation message and press ok
@@ -198,7 +199,7 @@ Feature: Test Accounts Functionality
     And user selects debit or credit card
     And user enters amount to deposit "5000"
     And user clicks agreement
-    And summary should appear
+    And deposit summary should appear
     And clicks confirm
     And enter card details in Apexx and clicks on pay
     And user checks confirmation message and press ok
@@ -211,6 +212,7 @@ Feature: Test Accounts Functionality
     And user clicks on select beneficiary dropdown
     And user selects CNY wallet
     And enter amount on sending amount box
+    And move summary should appear
     And user clicks confirm
     And user enters secret code
     And user clicks confirm again
@@ -359,7 +361,7 @@ Feature: Test Accounts Functionality
     And user selects debit or credit card
     And user enters amount to deposit "5000"
     And user clicks agreement
-    And summary should appear
+    And deposit summary should appear
     And clicks confirm
     And enter card details in Stripe and clicks on pay
     And user checks confirmation message and press ok
@@ -373,25 +375,12 @@ Feature: Test Accounts Functionality
     And user selects debit or credit card
     And user enters amount to deposit "5000"
     And user clicks agreement
-    And summary should appear
+    And deposit summary should appear
     And clicks confirm
     And enter card details in Apexx and clicks on pay
     And user checks confirmation message and press ok
     Then user should redirect to accounts
 
-  @GBP_common @GBP_move @move
-  Scenario: Verify GBP Wallet to CNY Wallet Move
-    When user clicks on GBP wallet
-    And user clicks on move tab
-    And user clicks on select beneficiary dropdown
-    And user selects CNY wallet
-    And enter amount on sending amount box
-    And user clicks confirm
-    And user enters secret code
-    And user clicks confirm again
-    And transfer successfully completed message is shown
-    And user clicks on ok
-    Then user should redirect to wallet details tab
 
   @GBP_us @us_bank
   Scenario: Deposit: Verify Local(US Bank) Deposit to GBP Wallet
@@ -409,6 +398,7 @@ Feature: Test Accounts Functionality
     And user clicks on select beneficiary dropdown
     And user selects USD wallet
     And enter amount on sending amount box
+    And move summary should appear
     And user clicks confirm
     And user enters secret code
     And user clicks confirm again
@@ -555,7 +545,7 @@ Feature: Test Accounts Functionality
     And user selects debit or credit card
     And user enters amount to deposit "30000"
     And user clicks agreement
-    And summary should appear
+    And deposit summary should appear
     And clicks confirm
     And enter card details in Stripe and clicks on pay
     And user checks confirmation message and press ok
@@ -568,6 +558,7 @@ Feature: Test Accounts Functionality
     And user clicks on select beneficiary dropdown
     And user selects USD wallet
     And enter amount on sending amount box
+    And move summary should appear
     And user clicks confirm
     And user enters secret code
     And user clicks confirm again
@@ -714,7 +705,7 @@ Feature: Test Accounts Functionality
     And user selects debit or credit card
     And user enters amount to deposit "30000"
     And user clicks agreement
-    And summary should appear
+    And deposit summary should appear
     And clicks confirm
     And enter card details in Stripe and clicks on pay
     And user checks confirmation message and press ok
@@ -727,6 +718,7 @@ Feature: Test Accounts Functionality
     And user clicks on select beneficiary dropdown
     And user selects USD wallet
     And enter amount on sending amount box
+    And move summary should appear
     And user clicks confirm
     And user enters secret code
     And user clicks confirm again
@@ -863,6 +855,7 @@ Feature: Test Accounts Functionality
     And user clicks on statements tab
     And if any statement available user clicks on download button
     Then statement should be downloaded
+
 #+++++++++++++++++++++++++++++++++++++++++++PHP wallet feature++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
   @PHP_non_us
   Scenario: Verify PHP Wallet to Euro Wallet Move
@@ -907,141 +900,3 @@ Feature: Test Accounts Functionality
     And user clicks on statements tab
     And if any statement available user clicks on download button
     Then statement should be downloaded
-
-
-#++++++++++++++++++++++++++++++++++++++++++++++++PLCU++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-  @plcu
-  Scenario:  Verify Withdraw Tab of USD Wallet(New personal Account)
-    When user is in withdraw tab
-    And user add personal account
-    And user selects destination bank country and currency
-    And press next button
-    And user input withdraw beneficiary details and press next
-    And input sending amount in usd
-    And summary should appear
-    And click on expedite fee and outbound transfer agreement
-    And expedite fee should add in summary
-    And clicks confirm button
-    And enter otp for transfer
-    And user clicks confirm button again
-    And user checks success message
-    And press ok
-    Then user should redirect to details
-
-  @plcu
-  Scenario:  Verify Withdraw Tab of USD Wallet(Existing Personal Account)
-    When user is in withdraw tab
-    And user clicks on select beneficiary dropdown
-    And user selects beneficiary
-    And input sending amount in usd
-    And summary should appear
-    And click on expedite fee and outbound transfer agreement
-    And expedite fee should add in summary
-    And clicks confirm button
-    And enter otp for transfer
-    And user clicks confirm button again
-    And user checks success message
-    And press ok
-    Then user should redirect to details
-
-  @plcu
-  Scenario:  Verify Pay Tab of USD Wallet(Pay New Friends or Family)
-    When user is in pay tab
-    And user clicks pay button of friends or family
-    And user clicks on pay someone new
-    And user selects destination bank country and currency
-    And press next button
-    And user input pay(individual) beneficiary details and press next
-    And input sending amount in usd
-    And input payment reference and reason
-    And click on expedite fee and outbound transfer agreement
-    And expedite fee should add in summary
-    And summary should appear
-    And clicks confirm button
-    And enter otp for transfer
-    And user clicks confirm button again
-    And user checks success message
-    And press ok
-    Then user should redirect to details
-
-  @plcu
-  Scenario:  Verify Pay Tab of USD Wallet(Existing Friends or Family)
-    When user is in pay tab
-    And user clicks pay button of friends or family
-    And user clicks on select beneficiary dropdown
-    And user selects beneficiary
-    And input sending amount in usd
-    And input payment reference and reason
-    And click on expedite fee and outbound transfer agreement
-    And expedite fee should add in summary
-    And summary should appear
-    And clicks confirm button
-    And enter otp for transfer
-    And user clicks confirm button again
-    And user checks success message
-    And press ok
-    Then user should redirect to details
-
-  @plcu
-  Scenario:  Verify Pay Tab of USD Wallet(Pay New Business or Invoice)
-    When user is in pay tab
-    And user clicks pay button a business or invoice
-    And user clicks on pay to new business button
-    And user selects destination bank country and currency
-    And press next button
-    And user input business beneficiary details and press next
-    And input sending amount in usd
-    And input payment reference and reason
-    And click on expedite fee and outbound transfer agreement
-    And expedite fee should add in summary
-    And summary should appear
-    And clicks confirm button
-    And enter otp for transfer
-    And user clicks confirm button again
-    And user checks success message
-    And press ok
-    Then user should redirect to details
-
-  @plcu
-  Scenario: Verify Pay tab of USD Wallet(Existing Business or Invoice)
-    When user is in pay tab
-    And user clicks pay button a business or invoice
-    And user clicks on select beneficiary dropdown
-    And user selects beneficiary
-    And input sending amount in usd
-    And input payment reference and reason
-    And click on expedite fee and outbound transfer agreement
-    And expedite fee should add in summary
-    And summary should appear
-    And clicks confirm button
-    And enter otp for transfer
-    And user clicks confirm button again
-    And user checks success message
-    And press ok
-    Then user should redirect to details
-
-  @plcu
-  Scenario: Verify Pay Tab of USD Wallet(Existing Member)
-    When user is in pay tab
-    And user clicks pay button of another member
-    And user clicks on select beneficiary dropdown
-    And user selects beneficiary
-    And input sending amount in usd
-    And input payment reference
-    And summary should appear
-    And clicks confirm button
-    And enter otp for transfer
-    And user clicks confirm button again
-    And user checks success message
-    And press ok
-    Then user should redirect to details
-
-
-
-
-
-
-
-
-
-

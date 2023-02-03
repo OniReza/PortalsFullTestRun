@@ -265,10 +265,17 @@ public class Accounts_Step {
         waitload();
     }
 
-    @And("summary should appear")
-    public void user_checks_summary() throws InterruptedException {
+    @And("deposit summary should appear")
+    public void deposit_summary_should_appear() throws InterruptedException {
         waitload();
-        Assert.assertTrue("Summary didn't appear as expected",accpage.checkSummary());
+        Assert.assertTrue("Summary didn't appear as expected",accpage.checkDepositSummary());
+        System.out.println("Summary appeared");
+        Thread.sleep(500);
+    }
+    @And("move summary should appear")
+    public void move_summary_should_appear() throws InterruptedException {
+        waitload();
+        Assert.assertTrue("Summary didn't appear as expected",accpage.checkMoveSummary());
         System.out.println("Summary appeared");
         Thread.sleep(500);
     }
