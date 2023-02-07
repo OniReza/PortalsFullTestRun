@@ -18,7 +18,6 @@ import java.util.concurrent.TimeUnit;
 public class Accounts_Step {
     public WebDriver driver;
     Accounts_Page accpage;
-    API.CurrencyExchangeRate cr = new API.CurrencyExchangeRate();
     SmartWait smartWait = new SmartWait();
 
     public Accounts_Step() {
@@ -34,7 +33,6 @@ public class Accounts_Step {
     //Details Tab
     @When("user clicks on account button")
     public void user_clicks_on_account() throws InterruptedException {
-        cr.rates();
         waitload();
         accpage.accMenuClick();
         System.out.println("Account menu clicked");

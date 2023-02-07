@@ -1,5 +1,6 @@
 package Pages;
 
+import Utility.API;
 import Utility.BaseData;
 import Utility.CommonPageMethods;
 import Utility.Random_data;
@@ -581,6 +582,8 @@ public class Accounts_Page extends CommonPageMethods {
     }
 
     public boolean checkDepositSummary() {
+        API.CurrencyExchangeRate cr = new API.CurrencyExchangeRate();
+        cr.rates();
         confirmBtn.sendKeys(Keys.PAGE_DOWN);
         DecimalFormat df = new DecimalFormat("#.##");
         String sAmt = sendingAmount.getText();

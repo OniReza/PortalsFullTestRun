@@ -186,7 +186,8 @@ public class NewMembersStep {
     @And("user checks summary and press confirm")
     public void user_checks_summary_and_press_confirm() throws InterruptedException {
         waitload();
-        Assert.assertTrue("No summary",newMemberPage.summaryCheck());
+        Accounts_Step ac = new Accounts_Step();
+        ac.deposit_summary_should_appear();
         Thread.sleep(1000);
         newMemberPage.confirmBtnClick();
         waitload();

@@ -6,7 +6,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(features = "src/test/resources/Features/A.NewMembers/NewMembers.feature",glue = "StepDefinations",
-        tags="@activate",
+        tags="@first_card_us_dc",
         plugin ={"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"})
 public class A_NewMembersRunner {
 }

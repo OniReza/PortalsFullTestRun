@@ -28,8 +28,8 @@ Feature: Test New Accounts Functionality
   Scenario: Verify first virtual card Activation(USD) for US members using debit card
     When user clicks on cards on side menu
     And user clicks on virtual cards tab
-    #And user clicks on create virtual card button
-    #And user selects first card
+    And user clicks on create virtual card button
+    And user selects first card
     And user selects debit card for topup for activation
     And user enters sending amount and click checkBox
     And user click on continue button
