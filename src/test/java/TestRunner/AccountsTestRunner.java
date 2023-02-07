@@ -6,11 +6,6 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(features = "src/test/resources/Features/Accounts/Accounts.feature",glue = "StepDefinations",
-<<<<<<< HEAD
-        tags = "@Test",
-=======
-        tags = "@TestGBP",
->>>>>>> 8615502488d6681ce754e5dcad0f1c3446edec76
         plugin ={"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"})
 public class AccountsTestRunner {
 }
