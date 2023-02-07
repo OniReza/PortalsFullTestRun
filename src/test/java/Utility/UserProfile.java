@@ -8,7 +8,7 @@ public class UserProfile {
     //public static String planCurrency = "GBP";
 
     public static class cardLoad {
-        public static double clRate = 0.0198;
+        public static double clRate = 0.0400;
         public static double clMin = 0;
         public static double clMax = 0;
     }

@@ -135,6 +135,11 @@ public class Portals {
             String url = "dev.ledgerscorecard.com";
             return url;
         }
+
+        public String debtboxDv() {
+            String url = "dev.thedebtboxmembers.com";
+            return url;
+        }
     }
 
     public static class tst {
@@ -268,6 +273,11 @@ public class Portals {
         }
         public String ladgerScore() {
             String url = "sandbox.ledgerscorecard.com";
+            return url;
+        }
+
+        public String debtbox() {
+            String url = "sandbox.thedebtboxmembers.com";
             return url;
         }
     }
