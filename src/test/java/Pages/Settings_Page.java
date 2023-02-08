@@ -86,12 +86,8 @@ public class Settings_Page extends CommonPageMethods {
 //    public WebElement selectCard;
     @FindBy(xpath = "(//span[contains(text(),'XX')])")
     public WebElement savedCard;
-
     @FindBy(xpath = "//tr[@class='MuiTableRow-root tableRow '][last()]")
     public WebElement newlyAddedCard;
-//    @FindBy(xpath = "(//span[@class='MuiButton-label'])[2]")
-//    public WebElement saveCardNumber;
-//    String selCardNum=null;
     @FindBy(id = "secret_code")
     WebElement otp;
     @FindBy(xpath = "//span[text()='CONFIRM']")

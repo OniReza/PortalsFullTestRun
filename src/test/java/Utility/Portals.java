@@ -136,8 +136,20 @@ public class Portals {
             return url;
         }
 
-        public String debtboxDv() {
+        public String debtbox() {
             String url = "dev.thedebtboxmembers.com";
+            return url;
+        }
+        public String novemGold() {
+            String url = "dev.novemgoldmembers.com";
+            return url;
+        }
+        public String globalCard() {
+            String url = "dev.globalcardmembers.com";
+            return url;
+        }
+        public String seacret() {
+            String url = "dev.seacretmembers.com";
             return url;
         }
     }
@@ -278,6 +290,18 @@ public class Portals {
 
         public String debtbox() {
             String url = "sandbox.thedebtboxmembers.com";
+            return url;
+        }
+        public String novemGold() {
+            String url = "sandbox.novemgoldmembers.com";
+            return url;
+        }
+        public String globalCard() {
+            String url = "sandbox.globalcardmembers.com";
+            return url;
+        }
+        public String seacret() {
+            String url = "sandbox.seacretmembers.com";
             return url;
         }
     }
