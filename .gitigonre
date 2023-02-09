@@ -1,1 +1,6 @@
 ExtentReports/
+TestRunner/
+BasePortals.java/
+UserProfile.java/
+config.properties/
+extent.properties/
