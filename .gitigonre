@@ -1,6 +1,6 @@
 /ExtentReports
 /TestRunner
-/src/test/java/Utility/BasePortals.java
-/src/test/java/Utility/UserProfile.java
-/src/test/resources/config.properties
-/src/test/resources/extent.properties
+/src/test/java/Utility/BasePortals
+/src/test/java/Utility/UserProfile
+/src/test/resources/config
+/src/test/resources/extent
