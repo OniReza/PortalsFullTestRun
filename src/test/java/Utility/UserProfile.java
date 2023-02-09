@@ -3,9 +3,11 @@ package Utility;
 public class UserProfile {
     public static String environment = null;
     public static String planName = null;
-    public static String planCurrency = "USD";
+    //public static String planCurrency = "USD";
     //public static String planCurrency = "Euro";
-    //public static String planCurrency = "GBP";
+    //public static String planCurrency = "Euro";
+    // public static String planCurrency = "Euro";
+    public static String planCurrency = "GBP";
 
     public static class cardLoad {
         public static double clRate = 0.0300;

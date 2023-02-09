@@ -34,6 +34,7 @@ public class SmartWait extends AutomationBase {
 
     //This method allows to wait until the specific page load
     public  void waitUntilPageIsLoaded (int timer)
+
     {
         ExpectedCondition<Boolean> expectation = new ExpectedCondition<Boolean>()
         {
