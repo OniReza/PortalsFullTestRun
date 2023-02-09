@@ -3,6 +3,7 @@ package StepDefinations;
 import Pages.NewMembersPage;
 import Utility.Hooks;
 import Utility.SmartWait;
+import io.cucumber.java.bs.A;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -123,6 +124,13 @@ public class NewMembersStep {
         waitload();
         newMemberPage.firstVcardCreation();
         waitload();
+    }
+    @Then("virtual card activation page will appear")
+    public void virtual_card_activation_page_will_appear(){
+        waitload();
+        Assert.assertTrue("Virtual card activation page didn't appeared",newMemberPage.vCardActivateFirstMsgCheck());
+        Assert.assertTrue("Virtual card activation page didn't appeared",newMemberPage.vCardActivateSecondMsgCheck());
+
     }
     @And("user selects accounts for topup for activation")
     public void user_selects_accounts_for_topup_for_activation() throws InterruptedException {

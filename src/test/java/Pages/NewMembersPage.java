@@ -42,6 +42,21 @@ public class NewMembersPage extends CommonPageMethods {
     public WebElement createVcardBtn;
     @FindBy(xpath = "(//p[contains(text(),'US') or contains(text(),'Euro') or contains(text(),'Pound')])[1]")
     public WebElement firstCurrencyCard;
+
+    @FindBy(xpath = "//p[contains(text(),'Before enjoying all the benefits')]")
+    public WebElement vCardActivatePagemsg1;
+    @FindBy(xpath = "//p[contains(text(),'To activate your Virtual Card')]")
+    public WebElement vCardActivatePagemsg2;
+
+    public boolean vCardActivateFirstMsgCheck() {
+        return vCardActivatePagemsg1.isDisplayed();
+    }
+    public boolean vCardActivateSecondMsgCheck() {
+        return vCardActivatePagemsg2.isDisplayed();
+    }
+
+
+
     @FindBy(xpath = "//div[@role='button' and text()='Selected']")
     public WebElement methodDropdown;
     @FindBy(xpath = "//li[@data-value='card']")
@@ -197,6 +212,7 @@ public class NewMembersPage extends CommonPageMethods {
     public void firstVcardCreation() {
         firstCurrencyCard.click();
     }
+
 
     public void methodWalletSelect() throws InterruptedException {
         methodDropdown.click();

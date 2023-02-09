@@ -24,12 +24,19 @@ Feature: Test New Accounts Functionality
     Then user should see the Home page
 
     ##+++++++++++++++++++++++++++++++++++++++++++++++++ First Card +++++++++++++++++++++++++++++++++++++++++++++++++++++
-  @card_us @first_card_us_dc
-  Scenario: Verify first virtual card Activation(USD) for US members using debit card
+    @first_card_purchase @card_common
+  Scenario: Verify first virtual card purchase
     When user clicks on cards on side menu
     And user clicks on virtual cards tab
     And user clicks on create virtual card button
     And user selects first card
+    Then virtual card activation page will appear
+
+
+  @card_us  @first_card_activate_us_dc
+    Scenario: Verify first virtual card Activation(USD) for US members using debit card
+    When user clicks on cards on side menu
+    And user clicks on virtual cards tab
     And user selects debit card for topup for activation
     And user enters sending amount and click checkBox
     And user click on continue button
@@ -39,12 +46,10 @@ Feature: Test New Accounts Functionality
     And user checks success message with loader and press Ok
     Then user should redirect back to virtual card page
 
-  @card_non_us @first_card_non_us_dc
+  @card_non_us @first_card_activate_non_us_dc
   Scenario: Verify first virtual card Activation(USD) for Non-US members using debit card
     When user clicks on cards on side menu
     And user clicks on virtual cards tab
-    And user clicks on create virtual card button
-    And user selects first card
     And user selects debit card for topup for activation
     And user enters sending amount and click checkBox
     And user click on continue button
@@ -145,6 +150,12 @@ Feature: Test New Accounts Functionality
     And user clicks on virtual cards tab
     And user clicks on create virtual card button
     And user selects first card
+    Then virtual card activation page will appear
+
+  @first_card_purchase_acc
+  Scenario: Verify first virtual card Activation(USD) for US members using Wallet
+    When user clicks on cards on side menu
+    And user clicks on virtual cards tab
     And user selects accounts for topup for activation
     And user enters sending amount and click continue button
     And user clicks on confirm button
