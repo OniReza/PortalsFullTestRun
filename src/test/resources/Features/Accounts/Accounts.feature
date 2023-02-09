@@ -11,10 +11,10 @@ Feature: Test Accounts Functionality
     And user enters amount to deposit "5000"
     And user clicks agreement
     And deposit summary should appear
-#    And clicks confirm
-#    And enter card details in Stripe and clicks on pay
-#    And user checks confirmation message and press ok
-#    Then user should redirect to accounts
+    And clicks confirm
+    And enter card details in Stripe and clicks on pay
+    And user checks confirmation message and press ok
+    Then user should redirect to accounts
 
   @USD_non_us @Deposit_non_us
   Scenario: Deposit: Verify Card Deposit to USD Wallet via Apexx
