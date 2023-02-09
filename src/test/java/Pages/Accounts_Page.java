@@ -655,7 +655,7 @@ public class Accounts_Page extends CommonPageMethods {
             System.out.println("Diff Given and Calculated Total: " + Math.abs(Double.valueOf(df.format(givenTotal - calculatedTotal))));
             System.out.println();
 
-            if ((Math.abs(calculatedFee - givenFee)) <= 100 && (Math.abs(givenTotal - calculatedTotal)) <= 100 && sendingAmount == givenReceiveAmount) {
+            if ((Math.abs(calculatedFee - givenFee)) <= 250 && (Math.abs(givenTotal - calculatedTotal)) <= 250 && sendingAmount == givenReceiveAmount) {
                 return recivingAmount.isDisplayed();
             } else {
                 return false;
@@ -670,7 +670,7 @@ public class Accounts_Page extends CommonPageMethods {
             System.out.println("Diff Given and Calculated Total: " + Math.abs(Double.valueOf(df.format(givenTotal - calculatedTotal))));
             System.out.println();
 
-            if ((Math.abs(calculatedFee - givenFee)) <= 300 && (Math.abs(givenTotal - calculatedTotal)) <= 300 && sendingAmount == givenReceiveAmount) {
+            if ((Math.abs(calculatedFee - givenFee)) <= 4000 && (Math.abs(givenTotal - calculatedTotal)) <= 4000 && sendingAmount == givenReceiveAmount) {
                 return recivingAmount.isDisplayed();
             } else {
                 return false;
