@@ -192,7 +192,7 @@ public class NewMembersStep {
         waitload();
     }
     @And("user checks summary and press confirm")
-    public void user_checks_summary_and_press_confirm() throws InterruptedException {
+    public void user_checks_summary_and_press_confirm() throws Exception {
         waitload();
         Accounts_Step ac = new Accounts_Step();
         ac.deposit_summary_should_appear();

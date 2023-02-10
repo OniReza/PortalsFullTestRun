@@ -264,7 +264,7 @@ public class Accounts_Step {
     }
 
     @And("deposit summary should appear")
-    public void deposit_summary_should_appear() throws InterruptedException {
+    public void deposit_summary_should_appear() throws Exception {
         waitload();
         Assert.assertTrue("Summary didn't appear as expected",accpage.checkDepositSummary());
         System.out.println("Summary appeared");

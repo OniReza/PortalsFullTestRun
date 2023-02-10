@@ -1,9 +1,6 @@
 package Pages;
 
-import Utility.API;
-import Utility.BaseData;
-import Utility.CommonPageMethods;
-import Utility.Random_data;
+import Utility.*;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -581,9 +578,9 @@ public class Accounts_Page extends CommonPageMethods {
         trAggrement.click();
     }
 
-    public boolean checkDepositSummary() {
+    public boolean checkDepositSummary() throws Exception {
         API.CurrencyExchangeRate cr = new API.CurrencyExchangeRate();
-        cr.rates();
+        cr.getRate();
         confirmBtn.sendKeys(Keys.PAGE_DOWN);
         DecimalFormat df = new DecimalFormat("#.##");
         String sAmt = sendingAmount.getText();
