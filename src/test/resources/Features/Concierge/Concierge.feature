@@ -1,6 +1,6 @@
 Feature: Functionality Test For Concierge Feature
 
-@Con
+ @concierge @others @all_us @all_non_us
   Scenario:Verify Concierge Page
     Given a valid url
     When user click on concierge button

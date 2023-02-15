@@ -2,14 +2,15 @@ Feature: Functionality Test For Instance Rewards Feature
 
   Background:
   Given a valid url
-  @tagReward
+
+  @inst_reward_feature @others @all_us @all_non_us
   Scenario: Verify Instance Rewards Option
   When user click on instance rewards options
   And user will choose card from card option
   And user will click select button from the card list
   Then user should see the payment method page
 
-  @tagReward
+  @inst_reward_feature @others @all_us @all_non_us
   Scenario: Verify Payment Methode Work Perfectly
   When user in the payment methode
   And user input some text if need
@@ -18,7 +19,7 @@ Feature: Functionality Test For Instance Rewards Feature
   And user click on see order button
   Then user should see the order successful page
 
-  @tagReward
+  @inst_reward_feature @others @all_us @all_non_us
   Scenario:Verify Reward Is Successfully Done
     When user in successful rewards page
     And  user click on close button

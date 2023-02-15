@@ -228,6 +228,7 @@ public class Accounts_Step {
         waitload();
         accpage.depositTabClick();
         System.out.println("Deposit clicked");
+        Thread.sleep(3000);
         waitload();
     }
 

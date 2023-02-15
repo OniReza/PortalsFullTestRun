@@ -2,7 +2,7 @@ Feature: Test Accounts Functionality
   Background:
     Given a valid url
 
-  @USD_us @Deposit_us @Test
+  @card_deposit_usd_us @usd_all_features_us @all_wallet_features_us @all_us
   Scenario: Deposit: Verify Card Deposit to USD Wallet via Stripe
     When user clicks on USD wallet
     And user clicks on deposit
@@ -16,7 +16,7 @@ Feature: Test Accounts Functionality
     And user checks confirmation message and press ok
     Then user should redirect to accounts
 
-  @USD_non_us @Deposit_non_us
+  @card_deposit_usd_non_us @usd_all_features_non_us @all_non_us @all_wallet_features_non_us
   Scenario: Deposit: Verify Card Deposit to USD Wallet via Apexx
     When user clicks on USD wallet
     And user clicks on deposit
@@ -30,7 +30,7 @@ Feature: Test Accounts Functionality
     And user checks confirmation message and press ok
     Then user should redirect to accounts
 
-  @USD_common @USD_move @move
+  @usd_move @usd_all_features_us @usd_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
   Scenario: Verify USD Wallet to JPY Wallet Move
     When user clicks on USD wallet
     And user clicks on move tab
@@ -46,7 +46,7 @@ Feature: Test Accounts Functionality
     Then user should redirect to wallet details tab
 
 
-  @USD_us @us_bank
+  @usd_us_bank @usd_all_features_us @all_wallet_features_us @all_us
   Scenario: Deposit: Verify Local(US Bank) Deposit to USD Wallet
     When user clicks on USD wallet
     And user clicks on deposit
@@ -54,7 +54,7 @@ Feature: Test Accounts Functionality
     And user selects local(US Bank)
     Then user should see details of bank
 
-  @USD_non_us
+  @usd_uk_bank @usd_all_features_non_us @all_non_us @all_wallet_features_non_us
   Scenario: Deposit: Verify Local(UK Bank) Deposit to USD Wallet
     When user clicks on USD wallet
     And user clicks on deposit
@@ -62,7 +62,7 @@ Feature: Test Accounts Functionality
     And user selects local(UK Bank)
     Then user should see details of bank
 
-  @USD_non_us
+  @usd_intl_bank @usd_all_features_non_us @all_non_us @all_wallet_features_non_us
   Scenario: Deposit: Verify International (non UK Bank) Deposit to USD Wallet
     When user clicks on USD wallet
     And user clicks on deposit
@@ -70,7 +70,7 @@ Feature: Test Accounts Functionality
     And user selects International(non UK Bank)
     Then user should see details of bank
 
-  @USD_common
+  @usd_crypto @usd_all_features_us @usd_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
   Scenario: Deposit: Verify Crypto Deposit to USD Wallet
     When user clicks on USD wallet
     When user clicks on deposit
@@ -81,8 +81,8 @@ Feature: Test Accounts Functionality
     And user clicks confirm
     Then user should see a summary
 
-  @USD_common
-  Scenario:Payments: Verify Transfer to an Existing Member from USD Wallet
+  @usd_m2m @usd_all_features_us @usd_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
+  Scenario:Payments: Verify Transfer to an Existing Member(m2m) from USD Wallet
     When user clicks on USD wallet
     And user clicks payments tab
     And user clicks on transfer to a member pay
@@ -96,7 +96,7 @@ Feature: Test Accounts Functionality
     And press ok
     Then user should redirect to details
 
-  @USD_common @pay
+  @usd_make_payment @usd_all_features_us @usd_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
   Scenario: Payments: Verify Make a payment to a New Individual from USD Wallet
     When user clicks on USD wallet
     And user clicks payments tab
@@ -112,7 +112,7 @@ Feature: Test Accounts Functionality
     And check request success message and press ok
     Then if payment is complete user should redirect to payments tab
 
-  @USD_common
+  @usd_make_payment @usd_all_features_us @usd_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
   Scenario: Payments: Verify Make a payment to Existing Individual from USD Wallet
     When user clicks on USD wallet
     And user clicks payments tab
@@ -127,7 +127,7 @@ Feature: Test Accounts Functionality
     And check request success message and press ok
     Then if payment is complete user should redirect to payments tab
 
-  @USD_common
+  @usd_make_payment @usd_all_features_us @usd_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
   Scenario: Payments: Verify Make a Payment to New Business from USD Wallet
     When user clicks on USD wallet
     And user clicks payments tab
@@ -143,7 +143,7 @@ Feature: Test Accounts Functionality
     And check request success message and press ok
     Then if payment is complete user should redirect to payments tab
 
-  @USD_common
+  @usd_make_payment @usd_all_features_us @usd_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
   Scenario: Payments: Verify Make a Payment to Existing Business from USD Wallet
     When user clicks on USD wallet
     And user clicks payments tab
@@ -158,26 +158,27 @@ Feature: Test Accounts Functionality
     And check request success message and press ok
     Then if payment is complete user should redirect to payments tab
 
-  @USD_common
+  @usd_details @usd_all_features_us @usd_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
   Scenario: Verify Details Tab Graph of USD Wallet
     When user clicks on USD wallet
     Then user should see a graph
 
-  @USD_common
+  @usd_transaction @usd_all_features_us @usd_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
   Scenario: Verify Transaction Tab of USD Wallet
     When user clicks on USD wallet
     And user click on transaction tab
     And user should see latest pending transactions first(if any) in PENDING TRANSACTIONS
     Then user after scroll down should see latest cleared transaction first in YOUR TRANSACTIONS
-  @USD_common
+
+  @usd_statement @usd_all_features_us @usd_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
   Scenario: Verify Statement Tab of USD Wallet
     When user clicks on USD wallet
     And user clicks on statements tab
     And if any statement available user clicks on download button
     Then statement should be downloaded
 
-#+++++++++++++++++++++++++++++++++++++++++++++++++++++++EUR wallet++++++++++++++++++++++++++++++++++++++++++++++++++++++
-  @EURO_us @Deposit_us
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++EURO wallet++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  @card_deposit_euro_us @euro_all_features_us @all_wallet_features_us @all_us
   Scenario: Deposit: Verify Card Deposit to Euro Wallet via Stripe
     When user clicks on EURO wallet
     And user clicks on deposit
@@ -191,7 +192,7 @@ Feature: Test Accounts Functionality
     And user checks confirmation message and press ok
     Then user should redirect to accounts
 
-  @EURO_non_us @Deposit_non_us
+  @card_deposit_euro_non_us @euro_all_features_non_us @all_non_us @all_wallet_features_non_us
   Scenario: Deposit: Verify Card Deposit to Euro Wallet via Apexx
     When user clicks on EURO wallet
     And user clicks on deposit
@@ -205,7 +206,7 @@ Feature: Test Accounts Functionality
     And user checks confirmation message and press ok
     Then user should redirect to accounts
 
-  @EURO_common1 @EURO_move @move
+  @euro_move @euro_all_features_us @euro_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
   Scenario: Verify Euro Wallet to CNY Wallet Move
     When user clicks on EURO wallet
     And user clicks on move tab
@@ -220,7 +221,7 @@ Feature: Test Accounts Functionality
     And user clicks on ok
     Then user should redirect to wallet details tab
 
-  @EURO_us @us_bank
+  @euro_us_bank @euro_all_features_us @all_wallet_features_us @all_us
   Scenario: Deposit: Verify Local(US Bank) Deposit to Euro Wallet
     When user clicks on EURO wallet
     And user clicks on deposit
@@ -229,7 +230,7 @@ Feature: Test Accounts Functionality
     Then user should see details of bank
 
 
-  @EURO_non_us
+  @euro_uk_bank @euro_all_features_non_us @all_non_us @all_wallet_features_non_us
   Scenario: Deposit: Verify Local(UK Bank) Deposit to Euro Wallet
     When user clicks on EURO wallet
     And user clicks on deposit
@@ -237,7 +238,7 @@ Feature: Test Accounts Functionality
     And user selects local(UK Bank)
     Then user should see details of bank
 
-  @EURO_non_us
+  @euro_intl_bank @euro_all_features_non_us @all_non_us @all_wallet_features_non_us
   Scenario: Deposit: Verify International (non UK Bank) Deposit to Euro Wallet
     When user clicks on EURO wallet
     And user clicks on deposit
@@ -246,7 +247,7 @@ Feature: Test Accounts Functionality
     Then user should see details of bank
 
 
-  @EURO_common @Euro_crypto @crypto
+  @euro_crypto @euro_all_features_us @euro_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
   Scenario: Deposit: Verify Crypto Deposit to Euro Wallet
     When user clicks on EURO wallet
     When user clicks on deposit
@@ -257,8 +258,8 @@ Feature: Test Accounts Functionality
     And user clicks confirm
     Then user should see a summary
 
-  @EURO_common
-  Scenario:Payments: Verify Transfer to an Existing Member from Euro Wallet
+  @euro_m2m @euro_all_features_us @euro_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
+  Scenario:Payments: Verify Transfer to an Existing Member(m2m) from Euro Wallet
     When user clicks on EURO wallet
     And user clicks payments tab
     And user clicks on transfer to a member pay
@@ -272,7 +273,7 @@ Feature: Test Accounts Functionality
     And press ok
     Then user should redirect to details
 
-  @EURO_common
+  @euro_make_payment @euro_all_features_us @euro_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
   Scenario: Payments: Verify Make a payment to a New Individual from Euro Wallet
     When user clicks on EURO wallet
     And user clicks payments tab
@@ -288,7 +289,7 @@ Feature: Test Accounts Functionality
     And check request success message and press ok
     Then if payment is complete user should redirect to payments tab
 
-  @EURO_common
+  @euro_make_payment @euro_all_features_us @euro_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
   Scenario: Payments: Verify Make a payment to Existing Individual from Euro Wallet
     When user clicks on EURO wallet
     And user clicks payments tab
@@ -303,7 +304,7 @@ Feature: Test Accounts Functionality
     And check request success message and press ok
     Then if payment is complete user should redirect to payments tab
 
-  @EURO_common
+  @euro_make_payment @euro_all_features_us @euro_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
   Scenario: Payments: Verify Make a Payment to New Business from Euro Wallet
     When user clicks on EURO wallet
     And user clicks payments tab
@@ -319,7 +320,7 @@ Feature: Test Accounts Functionality
     And check request success message and press ok
     Then if payment is complete user should redirect to payments tab
 
-  @EURO_common
+  @euro_make_payment @euro_all_features_us @euro_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
   Scenario: Payments: Verify Make a Payment to Existing Business from Euro Wallet
     When user clicks on EURO wallet
     And user clicks payments tab
@@ -334,18 +335,19 @@ Feature: Test Accounts Functionality
     And check request success message and press ok
     Then if payment is complete user should redirect to payments tab
 
-  @EURO_common
+  @euro_details @euro_all_features_us @euro_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
   Scenario: Verify Details Tab Graph of Euro Wallet
     When user clicks on EURO wallet
     Then user should see a graph
 
-  @EURO_common
+  @euro_transaction @euro_all_features_us @euro_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
   Scenario: Verify Transaction Tab of Euro Wallet
     When user clicks on EURO wallet
     And user click on transaction tab
     And user should see latest pending transactions first(if any) in PENDING TRANSACTIONS
     Then user after scroll down should see latest cleared transaction first in YOUR TRANSACTIONS
-  @EURO_common
+
+  @euro_statement @euro_all_features_us @euro_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
   Scenario: Verify Statement Tab of Euro Wallet
     When user clicks on EURO wallet
     And user clicks on statements tab
@@ -353,7 +355,7 @@ Feature: Test Accounts Functionality
     Then statement should be downloaded
 
 #+++++++++++++++++++++++++++++++++++++++++++GBP wallet feature++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-  @GBP_us @Deposit_us
+  @card_deposit_gbp_us @gbp_all_features_us @all_wallet_features_us @all_us
   Scenario: Deposit: Verify Card Deposit to GBP Wallet via Stripe
     When user clicks on GBP wallet
     And user clicks on deposit
@@ -367,7 +369,7 @@ Feature: Test Accounts Functionality
     And user checks confirmation message and press ok
     Then user should redirect to accounts
 
-  @GBP_non_us @Deposit_non_us
+  @GBP_non_us @Deposit_non_us @gbp_all_features_non_us @all_non_us @all_wallet_features_non_us
   Scenario: Deposit: Verify Card Deposit to GBP Wallet via Apexx
     When user clicks on GBP wallet
     And user clicks on deposit
@@ -381,17 +383,7 @@ Feature: Test Accounts Functionality
     And user checks confirmation message and press ok
     Then user should redirect to accounts
 
-
-  @GBP_us @us_bank
-  Scenario: Deposit: Verify Local(US Bank) Deposit to GBP Wallet
-    When user clicks on GBP wallet
-    And user clicks on deposit
-    And user expend from dropdown
-    And user selects local(US Bank)
-    Then user should see details of bank
-
-
-  @GBP_common @GBP_move @move
+  @gbp_move @gbp_all_features_us @gbp_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
   Scenario: Verify GBP Wallet to USD Wallet Move
     When user clicks on GBP wallet
     And user clicks on move tab
@@ -406,7 +398,7 @@ Feature: Test Accounts Functionality
     And user clicks on ok
     Then user should redirect to wallet details tab
 
-  @GBP_us @us_bank
+  @gbp_us_bank @gbp_all_features_us @all_wallet_features_us @all_us
   Scenario: Deposit: Verify Local(US Bank) Deposit to GBP Wallet
     When user clicks on GBP wallet
     And user clicks on deposit
@@ -414,7 +406,7 @@ Feature: Test Accounts Functionality
     And user selects local(US Bank)
     Then user should see details of bank
 
-  @GBP_non_us @TestGBP
+  @gbp_uk_bank @gbp_all_features_non_us @all_non_us @all_wallet_features_non_us
   Scenario: Deposit: Verify Local(UK Bank) Deposit to GBP Wallet
     When user clicks on GBP wallet
     And user clicks on deposit
@@ -422,7 +414,7 @@ Feature: Test Accounts Functionality
     And user selects local(UK Bank)
     Then user should see details of bank
 
-  @GBP_non_us
+  @gbp_intl_bank @gbp_all_features_non_us @all_non_us @all_wallet_features_non_us
   Scenario: Deposit: Verify International (non UK Bank) Deposit to GBP Wallet
     When user clicks on GBP wallet
     And user clicks on deposit
@@ -430,7 +422,7 @@ Feature: Test Accounts Functionality
     And user selects International(non UK Bank)
     Then user should see details of bank
 
-  @GBP_common
+  @gbp_crypto @gbp_all_features_us @gbp_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
   Scenario: Deposit: Verify Crypto Deposit to GBP Wallet
     When user clicks on GBP wallet
     When user clicks on deposit
@@ -441,8 +433,8 @@ Feature: Test Accounts Functionality
     And user clicks confirm
     Then user should see a summary
 
-  @GBP_common
-  Scenario:Payments: Verify Transfer to an Existing Member from GBP Wallet
+  @gbp_m2m @gbp_all_features_us @gbp_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
+  Scenario:Payments: Verify Transfer to an Existing Member(m2m) from GBP Wallet
     When user clicks on GBP wallet
     And user clicks payments tab
     And user clicks on transfer to a member pay
@@ -456,7 +448,7 @@ Feature: Test Accounts Functionality
     And press ok
     Then user should redirect to details
 
-  @GBP_common
+  @gbp_make_payment @gbp_all_features_us @gbp_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
   Scenario: Payments: Verify Make a payment to a New Individual from GBP Wallet
     When user clicks on GBP wallet
     And user clicks payments tab
@@ -472,7 +464,7 @@ Feature: Test Accounts Functionality
     And check request success message and press ok
     Then if payment is complete user should redirect to payments tab
 
-  @GBP_common
+  @gbp_make_payment @gbp_all_features_us @gbp_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
   Scenario: Payments: Verify Make a payment to Existing Individual from GBP Wallet
     When user clicks on GBP wallet
     And user clicks payments tab
@@ -487,7 +479,7 @@ Feature: Test Accounts Functionality
     And check request success message and press ok
     Then if payment is complete user should redirect to payments tab
 
-  @GBP_common
+  @gbp_make_payment @gbp_all_features_us @gbp_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
   Scenario: Payments: Verify Make a Payment to New Business from GBP Wallet
     When user clicks on GBP wallet
     And user clicks payments tab
@@ -503,7 +495,7 @@ Feature: Test Accounts Functionality
     And check request success message and press ok
     Then if payment is complete user should redirect to payments tab
 
-  @GBP_common
+  @gbp_make_payment @gbp_all_features_us @gbp_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
   Scenario: Payments: Verify Make a Payment to Existing Business from GBP Wallet
     When user clicks on GBP wallet
     And user clicks payments tab
@@ -518,18 +510,19 @@ Feature: Test Accounts Functionality
     And check request success message and press ok
     Then if payment is complete user should redirect to payments tab
 
-  @GBP_common
+  @gbp_details @gbp_all_features_us @gbp_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
   Scenario: Verify Details Tab Graph of GBP Wallet
     When user clicks on GBP wallet
     Then user should see a graph
 
-  @GBP_common
+  @gbp_transaction @gbp_all_features_us @gbp_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
   Scenario: Verify Transaction Tab of GBP Wallet
     When user clicks on GBP wallet
     And user click on transaction tab
     And user should see latest pending transactions first(if any) in PENDING TRANSACTIONS
     Then user after scroll down should see latest cleared transaction first in YOUR TRANSACTIONS
-  @GBP_common
+
+  @gbp_statement @gbp_all_features_us @gbp_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
   Scenario: Verify Statement Tab of GBP Wallet
     When user clicks on GBP wallet
     And user clicks on statements tab
@@ -537,7 +530,7 @@ Feature: Test Accounts Functionality
     Then statement should be downloaded
 
 #+++++++++++++++++++++++++++++++++++++++++++JPY wallet feature++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-  @JPY_us @Deposit_us
+  @card_deposit_jpy_us @jpy_all_features_us @all_wallet_features_us @all_us
   Scenario: Deposit: Verify Card Deposit to JPY Wallet via Stripe
     When user clicks on JPY wallet
     And user clicks on deposit
@@ -551,7 +544,7 @@ Feature: Test Accounts Functionality
     And user checks confirmation message and press ok
     Then user should redirect to accounts
 
-  @JPY_common @JPY_move @move
+  @jpy_move @jpy_all_features_us @jpy_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
   Scenario: Verify JPY Wallet to USD Wallet Move
     When user clicks on JPY wallet
     And user clicks on move tab
@@ -566,7 +559,7 @@ Feature: Test Accounts Functionality
     And user clicks on ok
     Then user should redirect to wallet details tab
 
-  @JPY_us @us_bank
+  @jpy_us_bank @jpy_all_features_us @all_wallet_features_us @all_us
   Scenario: Deposit: Verify Local(US Bank) Deposit to JPY Wallet
     When user clicks on JPY wallet
     And user clicks on deposit
@@ -574,7 +567,7 @@ Feature: Test Accounts Functionality
     And user selects local(US Bank)
     Then user should see details of bank
 
-  @JPY_non_us
+  @jpy_uk_bank @jpy_all_features_non_us @all_non_us @all_wallet_features_non_us @all_non_us @all_wallet_features_non_us
   Scenario: Deposit: Verify Local(UK Bank) Deposit to JPY Wallet
     When user clicks on JPY wallet
     And user clicks on deposit
@@ -582,7 +575,7 @@ Feature: Test Accounts Functionality
     And user selects local(UK Bank)
     Then user should see details of bank
 
-  @JPY_non_us
+  @jpy_intl_bank @jpy_all_features_non_us @all_non_us @all_wallet_features_non_us
   Scenario: Deposit: Verify International (non UK Bank) Deposit to JPY Wallet
     When user clicks on JPY wallet
     And user clicks on deposit
@@ -590,7 +583,7 @@ Feature: Test Accounts Functionality
     And user selects International(non UK Bank)
     Then user should see details of bank
 
-  @JPY_common
+  @jpy_crypto @jpy_all_features_us @jpy_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
   Scenario: Deposit: Verify Crypto Deposit to JPY Wallet
     When user clicks on JPY wallet
     When user clicks on deposit
@@ -601,8 +594,8 @@ Feature: Test Accounts Functionality
     And user clicks confirm
     Then user should see a summary
 
-  @JPY_common
-  Scenario:Payments: Verify Transfer to an Existing Member from JPY Wallet
+  @jpy_m2m @jpy_all_features_us @jpy_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
+  Scenario:Payments: Verify Transfer to an Existing Member(m2m) from JPY Wallet
     When user clicks on JPY wallet
     And user clicks payments tab
     And user clicks on transfer to a member pay
@@ -616,7 +609,7 @@ Feature: Test Accounts Functionality
     And press ok
     Then user should redirect to details
 
-  @JPY_common
+  @jpy_make_payment @jpy_all_features_us @jpy_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
   Scenario: Payments: Verify Make a payment to a New Individual from JPY Wallet
     When user clicks on JPY wallet
     And user clicks payments tab
@@ -632,7 +625,7 @@ Feature: Test Accounts Functionality
     And check request success message and press ok
     Then if payment is complete user should redirect to payments tab
 
-  @JPY_common
+  @jpy_make_payment @jpy_all_features_us @jpy_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
   Scenario: Payments: Verify Make a payment to Existing Individual from JPY Wallet
     When user clicks on JPY wallet
     And user clicks payments tab
@@ -647,7 +640,7 @@ Feature: Test Accounts Functionality
     And check request success message and press ok
     Then if payment is complete user should redirect to payments tab
 
-  @JPY_common
+  @jpy_make_payment @jpy_all_features_us @jpy_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
   Scenario: Payments: Verify Make a Payment to New Business from JPY Wallet
     When user clicks on JPY wallet
     And user clicks payments tab
@@ -663,7 +656,7 @@ Feature: Test Accounts Functionality
     And check request success message and press ok
     Then if payment is complete user should redirect to payments tab
 
-  @JPY_common
+  @jpy_make_payment @jpy_all_features_us @jpy_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
   Scenario: Payments: Verify Make a Payment to Existing Business from JPY Wallet
     When user clicks on JPY wallet
     And user clicks payments tab
@@ -678,18 +671,19 @@ Feature: Test Accounts Functionality
     And check request success message and press ok
     Then if payment is complete user should redirect to payments tab
 
-  @JPY_common
+  @jpy_details @jpy_all_features_us @jpy_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
   Scenario: Verify Details Tab Graph of JPY Wallet
     When user clicks on JPY wallet
     Then user should see a graph
 
-  @JPY_common
+  @jpy_transaction @jpy_all_features_us @jpy_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
   Scenario: Verify Transaction Tab of JPY Wallet
     When user clicks on JPY wallet
     And user click on transaction tab
     And user should see latest pending transactions first(if any) in PENDING TRANSACTIONS
     Then user after scroll down should see latest cleared transaction first in YOUR TRANSACTIONS
-  @JPY_common
+
+  @jpy_statement @jpy_all_features_us @jpy_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
   Scenario: Verify Statement Tab of JPY Wallet
     When user clicks on JPY wallet
     And user clicks on statements tab
@@ -697,7 +691,7 @@ Feature: Test Accounts Functionality
     Then statement should be downloaded
 
 #+++++++++++++++++++++++++++++++++++++++++++CNY wallet feature++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-  @CNY_us @Deposit_us
+  @card_deposit_cny_us @cny_all_features_us @all_wallet_features_us @all_us
   Scenario: Deposit: Verify Card Deposit to CNY Wallet via Stripe
     When user clicks on CNY wallet
     And user clicks on deposit
@@ -711,7 +705,7 @@ Feature: Test Accounts Functionality
     And user checks confirmation message and press ok
     Then user should redirect to accounts
 
-  @CNY_common @CNY_move @move
+  @cny_move @cny_all_features_us @cny_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
   Scenario: Verify CNY Wallet to USD Wallet Move
     When user clicks on CNY wallet
     And user clicks on move tab
@@ -726,7 +720,7 @@ Feature: Test Accounts Functionality
     And user clicks on ok
     Then user should redirect to wallet details tab
 
-  @CNY_us @us_bank
+  @cny_us_bank @cny_all_features_us @all_wallet_features_us @all_us
   Scenario: Deposit: Verify Local(US Bank) Deposit to CNY Wallet
     When user clicks on CNY wallet
     And user clicks on deposit
@@ -734,7 +728,7 @@ Feature: Test Accounts Functionality
     And user selects local(US Bank)
     Then user should see details of bank
 
-  @CNY_non_us
+  @cny_uk_bank @cny_all_features_non_us @all_non_us @all_wallet_features_non_us
   Scenario: Deposit: Verify Local(UK Bank) Deposit to CNY Wallet
     When user clicks on CNY wallet
     And user clicks on deposit
@@ -742,7 +736,7 @@ Feature: Test Accounts Functionality
     And user selects local(UK Bank)
     Then user should see details of bank
 
-  @CNY_non_us
+  @cny_intl_bank @cny_all_features_non_us @all_non_us @all_wallet_features_non_us
   Scenario: Deposit: Verify International (non UK Bank) Deposit to CNY Wallet
     When user clicks on CNY wallet
     And user clicks on deposit
@@ -750,7 +744,7 @@ Feature: Test Accounts Functionality
     And user selects International(non UK Bank)
     Then user should see details of bank
 
-  @CNY_common
+  @cny_crypto @cny_all_features_us @cny_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
   Scenario: Deposit: Verify Crypto Deposit to CNY Wallet
     When user clicks on CNY wallet
     When user clicks on deposit
@@ -761,8 +755,8 @@ Feature: Test Accounts Functionality
     And user clicks confirm
     Then user should see a summary
 
-  @CNY_common
-  Scenario:Payments: Verify Transfer to an Existing Member from CNY Wallet
+  @cny_m2m @cny_all_features_us @cny_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
+  Scenario:Payments: Verify Transfer to an Existing Member(m2m) from CNY Wallet
     When user clicks on CNY wallet
     And user clicks payments tab
     And user clicks on transfer to a member pay
@@ -776,7 +770,7 @@ Feature: Test Accounts Functionality
     And press ok
     Then user should redirect to details
 
-  @CNY_common
+  @cny_make_payment @cny_all_features_us @cny_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
   Scenario: Payments: Verify Make a payment to a New Individual from CNY Wallet
     When user clicks on CNY wallet
     And user clicks payments tab
@@ -792,7 +786,7 @@ Feature: Test Accounts Functionality
     And check request success message and press ok
     Then if payment is complete user should redirect to payments tab
 
-  @CNY_common
+  @cny_make_payment @cny_all_features_us @cny_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
   Scenario: Payments: Verify Make a payment to Existing Individual from CNY Wallet
     When user clicks on CNY wallet
     And user clicks payments tab
@@ -807,7 +801,7 @@ Feature: Test Accounts Functionality
     And check request success message and press ok
     Then if payment is complete user should redirect to payments tab
 
-  @CNY_common
+  @cny_make_payment @cny_all_features_us @cny_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
   Scenario: Payments: Verify Make a Payment to New Business from CNY Wallet
     When user clicks on CNY wallet
     And user clicks payments tab
@@ -823,7 +817,7 @@ Feature: Test Accounts Functionality
     And check request success message and press ok
     Then if payment is complete user should redirect to payments tab
 
-  @CNY_common
+  @cny_make_payment @cny_all_features_us @cny_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
   Scenario: Payments: Verify Make a Payment to Existing Business from CNY Wallet
     When user clicks on CNY wallet
     And user clicks payments tab
@@ -838,23 +832,29 @@ Feature: Test Accounts Functionality
     And check request success message and press ok
     Then if payment is complete user should redirect to payments tab
 
-  @CNY_common
+  @cny_details @cny_all_features_us @cny_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
   Scenario: Verify Details Tab Graph of CNY Wallet
     When user clicks on CNY wallet
     Then user should see a graph
 
-  @CNY_common
+  @cny_transaction @cny_all_features_us @cny_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
   Scenario: Verify Transaction Tab of CNY Wallet
     When user clicks on CNY wallet
     And user click on transaction tab
     And user should see latest pending transactions first(if any) in PENDING TRANSACTIONS
     Then user after scroll down should see latest cleared transaction first in YOUR TRANSACTIONS
-  @CNY_common
+
+  @cny_statement @cny_all_features_us @cny_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
   Scenario: Verify Statement Tab of CNY Wallet
     When user clicks on CNY wallet
     And user clicks on statements tab
     And if any statement available user clicks on download button
     Then statement should be downloaded
+
+
+
+
+
 
 #+++++++++++++++++++++++++++++++++++++++++++PHP wallet feature++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
   @PHP_non_us

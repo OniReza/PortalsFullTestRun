@@ -30,8 +30,6 @@ public class LoginPage extends CommonPageMethods {
 
     @FindBy(xpath = "//h5[text()='Additional Information']")
     WebElement additionalInfo;
-
-
     @FindBy(xpath = "//button[text()='Make Payment']")
     WebElement makepayment;
     @FindBy(xpath = "//*[@id=\"root\"]/div/div/div/div/div[2]/div/div/div/div[1]/div/div/div[1]/div/div[3]/div/div")

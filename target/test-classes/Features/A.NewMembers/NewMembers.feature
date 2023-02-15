@@ -3,7 +3,7 @@ Feature: Test New Accounts Functionality
   Background:
     Given a valid url
   ##+++++++++++++++++++++++++++++++++++++++++++++++++ Topup Popup ++++++++++++++++++++++++++++++++++++++++++++++++++++++
-  @topup_us
+  @pop_topup_us @new_member_dc_us
   Scenario: Verify Topup popup for US members
     When topup popup appears
     And user inputs topup amount
@@ -13,7 +13,7 @@ Feature: Test New Accounts Functionality
     And user checks success message with loader and press Ok
     Then user should see the Home page
 
-  @topup_non_us
+  @pop_topup_non_us @new_member_dc_non_us
   Scenario: Verify Topup popup for Non-US members
     When topup popup appears
     And user inputs topup amount
@@ -23,8 +23,18 @@ Feature: Test New Accounts Functionality
     And user checks sucess message and press Ok
     Then user should see the Home page
 
-    ##+++++++++++++++++++++++++++++++++++++++++++++++++ First Card +++++++++++++++++++++++++++++++++++++++++++++++++++++
-    @first_card_purchase @card_common
+  @new_member_acc
+  Scenario: Verify Topup popup for US or Non-US members
+    When topup popup appears
+    And user inputs topup amount
+    And user click on checkbox
+    And click proceed button
+    And enter card details and clicks on pay
+    And user checks sucess message and press Ok
+    Then user should see the Home page
+
+    ##+++++++++++++++++++++++++++++++++++++++++++++++++ First Card(Free) +++++++++++++++++++++++++++++++++++++++++++++++++++++
+    @first_card_purchase @new_member_dc_us @new_member_dc_non_us @card_common
   Scenario: Verify first virtual card purchase
     When user clicks on cards on side menu
     And user clicks on virtual cards tab
@@ -33,7 +43,7 @@ Feature: Test New Accounts Functionality
     Then virtual card activation page will appear
 
 
-  @card_us  @first_card_activate_us_dc
+    @first_card_activate_us_dc @new_member_dc_us @card_us
     Scenario: Verify first virtual card Activation(USD) for US members using debit card
     When user clicks on cards on side menu
     And user clicks on virtual cards tab
@@ -46,7 +56,7 @@ Feature: Test New Accounts Functionality
     And user checks success message with loader and press Ok
     Then user should redirect back to virtual card page
 
-  @card_non_us @first_card_activate_non_us_dc
+  @first_card_activate_non_us_dc @new_member_dc_non_us @card_non_us
   Scenario: Verify first virtual card Activation(USD) for Non-US members using debit card
     When user clicks on cards on side menu
     And user clicks on virtual cards tab
@@ -59,8 +69,8 @@ Feature: Test New Accounts Functionality
     And user checks activation success message and press on back button
     Then user should redirect back to virtual card page
 
-    ##++++++++++++++++++++++++++++++++++++++++++++++ Euro Card +++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-  @card_common @euro_card_purchase_dc
+    ##++++++++++++++++++++++++++++++++++++++++++++++ Euro Card(Pay $3) +++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  @euro_card_purchase_dc @new_member_dc_us @new_member_dc_non_us @card_common
   Scenario: Verify Euro virtual card Purchase using debit card
     When user clicks on cards on side menu
     And user clicks on virtual cards tab
@@ -73,7 +83,7 @@ Feature: Test New Accounts Functionality
     And user checks purchase success message and press on back button
     Then user should redirect back to virtual card page
 
-  @card_us @euro_card_activate_us_dc
+  @euro_card_activate_us_dc @new_member_dc_us @card_us
   Scenario: Verify Euro virtual card Activation for US members using debit card
     When user clicks on cards on side menu
     And user clicks on virtual cards tab
@@ -87,7 +97,7 @@ Feature: Test New Accounts Functionality
     And user checks success message with loader and press Ok
     Then user should redirect back to virtual card page
 
-  @card_non_us @euro_card_activate_non_us_dc
+  @euro_card_activate_non_us_dc @new_member_dc_non_us @card_non_us
   Scenario: Verify Euro virtual card Activation for Non-US members using debit card
     When user clicks on cards on side menu
     And user clicks on virtual cards tab
@@ -101,8 +111,8 @@ Feature: Test New Accounts Functionality
     And user checks activation success message and press on back button
     Then user should redirect back to virtual card page
 
-##+++++++++++++++++++++++++++++++++++++++++++++++++++++++ Pound Card +++++++++++++++++++++++++++++++++++++++++++++++++++
-  @card_common @pound_card_purchase_dc
+##+++++++++++++++++++++++++++++++++++++++++++++++++++++++ Pound Card( Pay $3) +++++++++++++++++++++++++++++++++++++++++++++++++++
+  @gbp_card_purchase_dc @new_member_dc_us @new_member_dc_non_us @card_common
   Scenario: Verify Pound Sterling virtual card Purchase using debit card
     When user clicks on cards on side menu
     And user clicks on virtual cards tab
@@ -115,7 +125,7 @@ Feature: Test New Accounts Functionality
     And user checks purchase success message and press on back button
     Then user should redirect back to virtual card page
 
-  @card_us @pound_card_activate_us_dc @test1
+  @gbp_card_activate_us_dc @new_member_dc_us @card_us
   Scenario: Verify Pound Sterling virtual card Activation for US members using debit card
     When user clicks on cards on side menu
     And user clicks on virtual cards tab
@@ -129,7 +139,7 @@ Feature: Test New Accounts Functionality
     And user checks success message with loader and press Ok
     Then user should redirect back to virtual card page
 
-  @card_non_us @pound_card_activate_non_us_dc
+  @gbp_card_activate_non_us_dc @new_member_dc_non_us @card_non_us
   Scenario: Verify Pound Sterling virtual card Activation for Non-US members using debit card
     When user clicks on cards on side menu
     And user clicks on virtual cards tab
@@ -144,15 +154,16 @@ Feature: Test New Accounts Functionality
     Then user should redirect back to virtual card page
 
     ##+++++++++++++++++++++++++++++++++++++++++++++++++++++ Accounts +++++++++++++++++++++++++++++++++++++++++++++++++++
-  @accounts @first_card_acc
-  Scenario: Verify first virtual card Activation using Wallet
+
+  @first_card_purchase_acc @new_member_acc
+  Scenario: Verify first virtual card purchase using Wallet
     When user clicks on cards on side menu
     And user clicks on virtual cards tab
     And user clicks on create virtual card button
     And user selects first card
     Then virtual card activation page will appear
 
-  @first_card_purchase_acc
+  @first_card_activate_acc @new_member_acc
   Scenario: Verify first virtual card Activation(USD) for US members using Wallet
     When user clicks on cards on side menu
     And user clicks on virtual cards tab
@@ -163,7 +174,7 @@ Feature: Test New Accounts Functionality
     And user checks activation success message and press on back button
     Then user should redirect back to virtual card page
 
-  @accounts @euro_card_purchase_accounts
+  @euro_card_purchase_acc @new_member_acc
   Scenario: Verify Euro virtual card purchase using Wallet
     When user clicks on cards on side menu
     And user clicks on virtual cards tab
@@ -175,7 +186,7 @@ Feature: Test New Accounts Functionality
     And user checks purchase success message and press on back button
     Then user should redirect back to virtual card page
 
-  @accounts @euro_card_activate_accounts
+  @euro_card_activate_acc @new_member_acc
   Scenario: Verify Euro virtual card Activation using Wallet
     When user clicks on cards on side menu
     And user clicks on virtual cards tab
@@ -187,7 +198,7 @@ Feature: Test New Accounts Functionality
     And user checks activation success message and press on back button
     Then user should redirect back to virtual card page
 
-  @accounts @pound_card_purchase_accounts
+  @gbp_card_purchase_acc @new_member_acc
   Scenario: Verify Pound virtual card Purchase using Wallet
     When user clicks on cards on side menu
     And user clicks on virtual cards tab
@@ -199,7 +210,7 @@ Feature: Test New Accounts Functionality
     And user checks purchase success message and press on back button
     Then user should redirect back to virtual card page
 
-  @accounts @pound_card_activate_accounts
+  @gbp_card_activate_acc @new_member_acc
   Scenario: Verify Pound virtual card Activation using Wallet
     When user clicks on cards on side menu
     And user clicks on virtual cards tab
@@ -210,8 +221,9 @@ Feature: Test New Accounts Functionality
     And user enter otp and click activate button
     And user checks activation success message and press on back button
     Then user should redirect back to virtual card page
+
 ##++++++++++++++++++++++++++++++++++++++++++++++++++++ Beneficiary and Activate ++++++++++++++++++++++++++++++++++++++++
-  @beneficiary
+  @beneficiary @new_member_dc_us @new_member_dc_non_us @new_member_acc
   Scenario: Verify Beneficiary creation for Transfer to another member in Payment
     When user clicks on account button
     And user clicks on USD wallet
@@ -223,8 +235,8 @@ Feature: Test New Accounts Functionality
     And user clicks on next button
     Then saved beneficiary wallet number should appear in summary section
 
-  @activate
-  Scenario: Verify Physical card Activation
+  @phy_card_activate @new_member_dc_us @new_member_dc_non_us @new_member_acc
+  Scenario: Verify Physical card Activation(If members subscription doesn't have physical card this Scenario must fail)
     When user clicks on cards on side menu
     And user clicks on physical card
     And user clicks activate tab

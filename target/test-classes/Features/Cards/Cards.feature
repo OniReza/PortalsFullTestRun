@@ -2,7 +2,8 @@ Feature: Test functionality of Card page
   Background:
     Given a valid url
 
-  @common @test
+
+  @phy_card_load @all_phy_card_feature @all_card_features @all_us @all_non_us
   Scenario: Verify Load Functionality of Physical Card
     When user clicks on cards on side menu
     And user clicks on physical card
@@ -14,7 +15,7 @@ Feature: Test functionality of Card page
     And user checks transfer success message and press ok button
     Then user should redirect back to physical card page
 
-  @common
+  @phy_card_unload @all_phy_card_feature @all_card_features @all_us @all_non_us
   Scenario: Verify Unload Functionality of Physical Card
     When user clicks on cards on side menu
     And user clicks on physical card
@@ -27,7 +28,7 @@ Feature: Test functionality of Card page
     Then user should redirect back to physical card page
 
     #Topup only for clubswan
-  @clubswan_us
+  @cs_phy_card_topup_us @cs_card_topup_us
   Scenario: Verify Topup Functionality of Physical Card for US members
     When user clicks on cards on side menu
     And user clicks on physical card
@@ -40,7 +41,8 @@ Feature: Test functionality of Card page
     And user checks topup confirmation message and clicks ok button
     Then user should redirect back to physical card page
 
-  @clubswan_non_us
+    #Topup only for clubswan
+  @cs_phy_card_topup_non_us @cs_card_topup_non_us
   Scenario: Verify Topup Functionality of Physical Card for Non-US members
     When user clicks on cards on side menu
     And user clicks on physical card
@@ -53,7 +55,7 @@ Feature: Test functionality of Card page
     And user checks topup confirmation message and clicks ok button
     Then user should redirect back to physical card page
 
-  @common
+  @phy_card_pin @all_phy_card_feature @all_card_features @all_us @all_non_us
   Scenario: Verify Pin Functionality of Physical Card
     When user clicks on cards on side menu
     And user clicks on physical card
@@ -62,7 +64,7 @@ Feature: Test functionality of Card page
     And user clicks on submit
     Then card pin should appear
 
-  @common
+  @phy_card_dgCard @all_phy_card_feature @all_card_features @all_us @all_non_us
   Scenario: Verify Digital Card Functionality of Physical Card
     When user clicks on cards on side menu
     And user clicks on physical card
@@ -71,7 +73,7 @@ Feature: Test functionality of Card page
     And user clicks on show card details button
     Then card details should appear
 
-  @common
+  @phy_card_statement @all_phy_card_feature @all_card_features @all_us @all_non_us
   Scenario: Verify Statement Tab of Physical Card
     When user clicks on cards on side menu
     And user clicks on physical card
@@ -79,7 +81,7 @@ Feature: Test functionality of Card page
     And user clicks on download button if any statement available
     Then a statement will be downloaded
 
-  @common
+  @phy_card_transaction @all_phy_card_feature @all_card_features @all_us @all_non_us
   Scenario: Verify Transaction Tab of Physical Card
     When user clicks on cards on side menu
     And user clicks on physical card
@@ -88,7 +90,7 @@ Feature: Test functionality of Card page
     Then user should be able to export transactions as pdf and csv
 
 ##++++++++++++++++++++++++++++++++++++++++++++++++++++ First Virtual Card ++++++++++++++++++++++++++++++++++++++++++++++
-  @common
+  @first_Vcard_load @all_first_Vcard_feature @all_card_features @all_Vcard_features @all_us @all_non_us
   Scenario: Verify Load Functionality of First Virtual Card
     When clicks on virtual card tab from card page
     And user clicks on first virtual card
@@ -100,7 +102,7 @@ Feature: Test functionality of Card page
     And user checks transfer success message and press ok button
     Then user should redirect back to physical card page
 
-  @common
+  @first_Vcard_unload @all_first_Vcard_feature @all_card_features @all_Vcard_features @all_us @all_non_us
   Scenario: Verify UnLoad Functionality of First Virtual Card
     When clicks on virtual card tab from card page
     And user clicks on first virtual card
@@ -112,7 +114,7 @@ Feature: Test functionality of Card page
     And user checks transfer success message and press ok button
     Then user should redirect back to physical card page
 
-  @clubswan_us
+  @cs_first_Vcard_topup_us @cs_card_topup_us
   Scenario: Verify Topup Functionality of First Virtual Card for US members
     When clicks on virtual card tab from card page
     And user clicks on first virtual card
@@ -126,7 +128,7 @@ Feature: Test functionality of Card page
     Then user should redirect back to virtual card page
 
 
-  @clubswan_non_us
+  @cs_first_Vcard_topup_non_us @cs_card_topup_non_us
   Scenario: Verify Topup Functionality of First Virtual Card for Non-US members
     When clicks on virtual card tab from card page
     And user clicks on first virtual card
@@ -139,7 +141,7 @@ Feature: Test functionality of Card page
     And user checks topup confirmation message and clicks back button
     Then user should redirect back to virtual card page
 
-  @common
+  @first_Vcard_pin @all_first_Vcard_feature @all_card_features @all_Vcard_features @all_us @all_non_us
   Scenario: Verify Pin Functionality of First Virtual Card
     When clicks on virtual card tab from card page
     And user clicks on first virtual card
@@ -148,7 +150,7 @@ Feature: Test functionality of Card page
     And user clicks on submit
     Then card pin should appear
 
-  @common
+  @first_Vcard_dgCard @all_first_Vcard_feature @all_card_features @all_Vcard_features @all_us @all_non_us
   Scenario: Verify Digital Card Functionality of  First Virtual Card
     When clicks on virtual card tab from card page
     And user clicks on first virtual card
@@ -157,7 +159,7 @@ Feature: Test functionality of Card page
     And user clicks on show card details button
     Then card details should appear
 
-  @common
+  @first_Vcard_transaction @all_first_Vcard_feature @all_card_features @all_Vcard_features @all_us @all_non_us
   Scenario: Verify Transaction Tab of First Virtual Card
     When clicks on virtual card tab from card page
     And user clicks on first virtual card
@@ -165,7 +167,7 @@ Feature: Test functionality of Card page
     And latest transactions should appear in  your transactions section
     Then user should be able to export transactions as pdf and csv
 
-  @common
+  @first_Vcard_statement @all_first_Vcard_feature @all_card_features @all_Vcard_features @all_us @all_non_us
   Scenario: Verify Statement Tab of First Virtual Card
     When clicks on virtual card tab from card page
     And user clicks on first virtual card
@@ -174,7 +176,7 @@ Feature: Test functionality of Card page
     Then a statement will be downloaded
 
 ##++++++++++++++++++++++++++++++++++++++++++++++++++++ Second Virtual Card +++++++++++++++++++++++++++++++++++++++++++++
-  @common
+  @second_Vcard_load @all_second_Vcard_feature @all_card_features @all_Vcard_features @all_us @all_non_us
   Scenario: Verify Load Functionality of Second Virtual Card
     When clicks on virtual card tab from card page
     And user clicks on second virtual card
@@ -186,7 +188,7 @@ Feature: Test functionality of Card page
     And user checks transfer success message and press ok button
     Then user should redirect back to physical card page
 
-  @common
+  @second_Vcard_unload @all_second_Vcard_feature @all_card_features @all_Vcard_features @all_us @all_non_us
   Scenario: Verify UnLoad Functionality of Second Virtual Card
     When clicks on virtual card tab from card page
     And user clicks on second virtual card
@@ -199,7 +201,7 @@ Feature: Test functionality of Card page
     Then user should redirect back to physical card page
 
 
-  @clubswan_us
+  @cs_second_Vcard_topup_us @cs_card_topup_us
   Scenario: Verify Topup Functionality of Second Virtual Card for US members
     When clicks on virtual card tab from card page
     And user clicks on second virtual card
@@ -213,7 +215,7 @@ Feature: Test functionality of Card page
     Then user should redirect back to virtual card page
 
 
-  @clubswan_non_us
+  @cs_second_Vcard_topup_non_us @cs_card_topup_non_us
   Scenario: Verify Topup Functionality of Second Virtual Card for Non-US members
     When clicks on virtual card tab from card page
     And user clicks on second virtual card
@@ -226,7 +228,7 @@ Feature: Test functionality of Card page
     And user checks topup confirmation message and clicks back button
     Then user should redirect back to virtual card page
 
-  @common
+  @second_Vcard_pin @all_second_Vcard_feature @all_card_features @all_Vcard_features @all_us @all_non_us
   Scenario: Verify Pin Functionality of Second Virtual Card
     When clicks on virtual card tab from card page
     And user clicks on second virtual card
@@ -235,7 +237,7 @@ Feature: Test functionality of Card page
     And user clicks on submit
     Then card pin should appear
 
-  @common
+  @second_Vcard_dgCard @all_second_Vcard_feature @all_card_features @all_Vcard_features @all_us @all_non_us
   Scenario: Verify Digital Card Functionality of  Second Virtual Card
     When clicks on virtual card tab from card page
     And user clicks on second virtual card
@@ -244,7 +246,7 @@ Feature: Test functionality of Card page
     And user clicks on show card details button
     Then card details should appear
 
-  @common
+  @second_Vcard_transaction @all_second_Vcard_feature @all_card_features @all_Vcard_features @all_us @all_non_us
   Scenario: Verify Transaction Tab of Second Virtual Card
     When clicks on virtual card tab from card page
     And user clicks on second virtual card
@@ -252,7 +254,7 @@ Feature: Test functionality of Card page
     And latest transactions should appear in  your transactions section
     Then user should be able to export transactions as pdf and csv
 
-  @common
+  @second_Vcard_statement @all_second_Vcard_feature @all_card_features @all_Vcard_features @all_us @all_non_us
   Scenario: Verify Statement Tab of Second Virtual Card
     When clicks on virtual card tab from card page
     And user clicks on second virtual card
@@ -261,7 +263,7 @@ Feature: Test functionality of Card page
     Then a statement will be downloaded
 
     ##++++++++++++++++++++++++++++++++++++++++++++++++++++ Third Virtual Card +++++++++++++++++++++++++++++++++++++++++++++
-  @common
+  @third_Vcard_load @all_third_Vcard_feature @all_card_features @all_Vcard_features @all_us @all_non_us
   Scenario: Verify Load Functionality of Third Virtual Card
     When clicks on virtual card tab from card page
     And user clicks on third virtual card
@@ -273,7 +275,7 @@ Feature: Test functionality of Card page
     And user checks transfer success message and press ok button
     Then user should redirect back to physical card page
 
-  @common
+  @third_Vcard_unload @all_third_Vcard_feature @all_card_features @all_Vcard_features @all_us @all_non_us
   Scenario: Verify UnLoad Functionality of Third Virtual Card
     When clicks on virtual card tab from card page
     And user clicks on third virtual card
@@ -286,7 +288,7 @@ Feature: Test functionality of Card page
     Then user should redirect back to physical card page
 
 
-  @clubswan_us
+  @cs_third_Vcard_topup_us @cs_card_topup_us
   Scenario: Verify Topup Functionality of Third Virtual Card for US members
     When clicks on virtual card tab from card page
     And user clicks on third virtual card
@@ -300,7 +302,7 @@ Feature: Test functionality of Card page
     Then user should redirect back to virtual card page
 
 
-  @clubswan_non_us
+  @cs_third_Vcard_topup_non_us @cs_card_topup_non_us
   Scenario: Verify Topup Functionality of Third Virtual Card for Non-US members
     When clicks on virtual card tab from card page
     And user clicks on third virtual card
@@ -313,7 +315,7 @@ Feature: Test functionality of Card page
     And user checks topup confirmation message and clicks back button
     Then user should redirect back to virtual card page
 
-  @common
+  @third_Vcard_pin @all_third_Vcard_feature @all_card_features @all_Vcard_features @all_us @all_non_us
   Scenario: Verify Pin Functionality of Third Virtual Card
     When clicks on virtual card tab from card page
     And user clicks on third virtual card
@@ -322,7 +324,7 @@ Feature: Test functionality of Card page
     And user clicks on submit
     Then card pin should appear
 
-  @common
+  @third_Vcard_dgCard @all_third_Vcard_feature @all_card_features @all_Vcard_features @all_us @all_non_us
   Scenario: Verify Digital Card Functionality of  Third Virtual Card
     When clicks on virtual card tab from card page
     And user clicks on third virtual card
@@ -331,7 +333,7 @@ Feature: Test functionality of Card page
     And user clicks on show card details button
     Then card details should appear
 
-  @common
+  @third_Vcard_transaction @all_third_Vcard_feature @all_card_features @all_Vcard_features @all_us @all_non_us
   Scenario: Verify Transaction Tab of Third Virtual Card
     When clicks on virtual card tab from card page
     And user clicks on third virtual card
@@ -339,7 +341,7 @@ Feature: Test functionality of Card page
     And latest transactions should appear in  your transactions section
     Then user should be able to export transactions as pdf and csv
 
-  @common
+  @third_Vcard_statement @all_third_Vcard_feature @all_card_features @all_Vcard_features @all_us @all_non_us
   Scenario: Verify Statement Tab of Third Virtual Card
     When clicks on virtual card tab from card page
     And user clicks on third virtual card

@@ -6,6 +6,7 @@ import Utility.SmartWait;
 import io.cucumber.java.en.And;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -71,6 +72,18 @@ public class PaymentGatewayStep {
         Thread.sleep(25000);
         String windowHandle = driver.getWindowHandle(); //save the original window handle
         driver.switchTo().window(windowHandle);
+        waitload();
+
+    }
+
+    @And("enter card details and clicks on pay")
+    public void enter_card_details_and_clicks_on_pay() throws InterruptedException {
+        waitload();
+        try {
+            enter_card_details_in_payment_information();
+        }catch (NoSuchElementException e){
+            enter_card_details_in_apexx_and_clicks_on_pay();
+        }
         waitload();
 
     }

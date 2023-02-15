@@ -3,7 +3,7 @@ Feature: Functionality Test For Shopping Feature
   Background:
     Given a valid url
 
-    @tagShopping
+    @shopping @others @all_us @all_non_us
     Scenario: Verify Shopping New Request
     When user click on shopping button
     And user click on new request tab
@@ -15,7 +15,7 @@ Feature: Functionality Test For Shopping Feature
     And user hit the create request button
     Then user should see the created shopping request and status should be 'Search in progress'
 
-    @tagShopping
+    @shopping @others @all_us @all_non_us
     Scenario: Verify dropdown functionalities in Shopping page
       When user is on shopping tab
       And user selects in progress from status dropdown
