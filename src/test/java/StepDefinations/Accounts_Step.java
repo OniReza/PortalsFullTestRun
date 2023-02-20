@@ -347,7 +347,7 @@ public class Accounts_Step {
         }
         waitload();
         accpage.transactionsTabClick();
-        Assert.assertTrue("Latest transaction data is not available in USD wallet transaction of tab! ", accpage.transDateCheck());
+        Assert.assertTrue("Latest transaction data is not available in "+preWallet+" wallet transaction of tab! ", accpage.transDateCheck());
         Assert.assertTrue("Transaction data didn't match as expected!", accpage.depositTransectionCheck());
         accpage.usdWalletClick();
         waitload();
