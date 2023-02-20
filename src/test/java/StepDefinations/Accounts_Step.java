@@ -326,8 +326,8 @@ public class Accounts_Step {
         waitload();
     }
 
-    @Then("user should see available balance and post transaction balance are equal in transactions tab")
-    public void transaction_data_should_be_available_in_transaction_tab_usd_wallet() throws InterruptedException {
+    @Then("user should see post transaction balance is equal to available balance")
+    public void user_should_see_post_transaction_balance_is_equal_to_available_balance() throws InterruptedException {
         driver.navigate().refresh();
         Thread.sleep(2000);
         System.out.println("Working Wallet:  " + preWallet);

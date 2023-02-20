@@ -8,13 +8,13 @@ Feature: Test Accounts Functionality
     And user clicks on deposit
     And user expend from dropdown
     And user selects debit or credit card
-    And user enters amount to deposit "102"
+    And user enters amount to deposit "5000"
     And user clicks agreement
     And deposit summary should appear
     And clicks confirm
     And enter card details in Stripe and clicks on pay
     And user checks confirmation message and press ok
-    Then user should see available balance and post transaction balance are equal in transactions tab
+    Then user should see post transaction balance is equal to available balance
 
   @card_deposit_usd_non_us @usd_all_features_non_us @all_non_us @all_wallet_features_non_us
   Scenario: Deposit: Verify Card Deposit to USD Wallet via Apexx
@@ -22,13 +22,13 @@ Feature: Test Accounts Functionality
     And user clicks on deposit
     And user expend from dropdown
     And user selects debit or credit card
-    And user enters amount to deposit "102"
+    And user enters amount to deposit "5000"
     And user clicks agreement
     And deposit summary should appear
     And clicks confirm
     And enter card details in Apexx and clicks on pay
     And user checks confirmation message and press ok
-    Then user should see available balance and post transaction balance are equal in transactions tab
+    Then user should see post transaction balance is equal to available balance
 
   @usd_move @usd_all_features_us @usd_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
   Scenario: Verify USD Wallet to JPY Wallet Move
@@ -44,7 +44,7 @@ Feature: Test Accounts Functionality
     And transfer successfully completed message is shown
     And user clicks on ok
     Then user should redirect to wallet details tab
-    Then user should see available balance and post transaction balance are equal in transactions tab
+    Then user should see post transaction balance is equal to available balance
 
 
   @usd_us_bank @usd_all_features_us @all_wallet_features_us @all_us
@@ -179,13 +179,13 @@ Feature: Test Accounts Functionality
     And user clicks on deposit
     And user expend from dropdown
     And user selects debit or credit card
-    And user enters amount to deposit "102"
+    And user enters amount to deposit "5000"
     And user clicks agreement
     And deposit summary should appear
     And clicks confirm
     And enter card details in Stripe and clicks on pay
     And user checks confirmation message and press ok
-    Then user should see available balance and post transaction balance are equal in transactions tab
+    Then user should see post transaction balance is equal to available balance
 
   @card_deposit_euro_non_us @euro_all_features_non_us @all_non_us @all_wallet_features_non_us
   Scenario: Deposit: Verify Card Deposit to Euro Wallet via Apexx
@@ -193,13 +193,13 @@ Feature: Test Accounts Functionality
     And user clicks on deposit
     And user expend from dropdown
     And user selects debit or credit card
-    And user enters amount to deposit "102"
+    And user enters amount to deposit "5000"
     And user clicks agreement
     And deposit summary should appear
     And clicks confirm
     And enter card details in Apexx and clicks on pay
     And user checks confirmation message and press ok
-    Then user should see available balance and post transaction balance are equal in transactions tab
+    Then user should see post transaction balance is equal to available balance
 
 
   @euro_move @euro_all_features_us @euro_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
@@ -350,13 +350,13 @@ Feature: Test Accounts Functionality
     And user clicks on deposit
     And user expend from dropdown
     And user selects debit or credit card
-    And user enters amount to deposit "102"
+    And user enters amount to deposit "5000"
     And user clicks agreement
     And deposit summary should appear
     And clicks confirm
     And enter card details in Stripe and clicks on pay
     And user checks confirmation message and press ok
-    Then user should see available balance and post transaction balance are equal in transactions tab
+    Then user should see post transaction balance is equal to available balance
 
   @card_deposit_gbp_non_us @gbp_all_features_non_us @all_non_us @all_wallet_features_non_us
   Scenario: Deposit: Verify Card Deposit to GBP Wallet via Apexx
@@ -364,13 +364,13 @@ Feature: Test Accounts Functionality
     And user clicks on deposit
     And user expend from dropdown
     And user selects debit or credit card
-    And user enters amount to deposit "102"
+    And user enters amount to deposit "5000"
     And user clicks agreement
     And deposit summary should appear
     And clicks confirm
     And enter card details in Apexx and clicks on pay
     And user checks confirmation message and press ok
-    Then user should see available balance and post transaction balance are equal in transactions tab
+    Then user should see post transaction balance is equal to available balance
 
 
   @gbp_move @gbp_all_features_us @gbp_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
@@ -526,7 +526,7 @@ Feature: Test Accounts Functionality
     And clicks confirm
     And enter card details in Stripe and clicks on pay
     And user checks confirmation message and press ok
-    Then user should see available balance and post transaction balance are equal in transactions tab
+    Then user should see post transaction balance is equal to available balance
 
   @jpy_move @jpy_all_features_us @jpy_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
   Scenario: Verify JPY Wallet to USD Wallet Move
@@ -680,7 +680,7 @@ Feature: Test Accounts Functionality
     And clicks confirm
     And enter card details in Stripe and clicks on pay
     And user checks confirmation message and press ok
-    Then user should see available balance and post transaction balance are equal in transactions tab
+    Then user should see post transaction balance is equal to available balance
 
   @cny_move @cny_all_features_us @cny_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
   Scenario: Verify CNY Wallet to USD Wallet Move
