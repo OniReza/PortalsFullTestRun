@@ -7,7 +7,7 @@ public class BasePortals {
         Portals.dev dev = new Portals.dev();
         Portals.tst tst = new Portals.tst();
 
-        String PortalDev=dev.clubswan(); //dev portal link
+        String PortalDev=dev.plcu(); //dev portal link
         String username = "devs";
         String password = "super!power";
         String URLDEV = "https://" + username + ":" + password + "@" + PortalDev;
@@ -19,7 +19,7 @@ public class BasePortals {
         Portals.dev dev = new Portals.dev();
         Portals.tst tst = new Portals.tst();
 
-        String PortalTst = tst.clubswan();//tst portal link
+        String PortalTst = tst.plcu();//tst portal link
         String username = "sandbox";
         String password = "test!easy";
         String URLTST = "https://" + username + ":" + password + "@" + PortalTst;

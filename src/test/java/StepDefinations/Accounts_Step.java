@@ -19,6 +19,7 @@ public class Accounts_Step {
     public WebDriver driver;
     Accounts_Page accpage;
     SmartWait smartWait = new SmartWait();
+    String preWallet = null;
 
     public Accounts_Step() {
         this.driver = Hooks.getDriver();
@@ -138,6 +139,7 @@ public class Accounts_Step {
         System.out.println("CNY Account Selected");
         waitload();
     }
+
     @And("user selects EUR wallet")
     public void user_selects_eur_wallet() throws InterruptedException {
         waitload();
@@ -146,6 +148,7 @@ public class Accounts_Step {
         System.out.println("Euro Account Selected");
         waitload();
     }
+
     @And("user selects JPY wallet")
     public void user_selects_jpy_wallet() throws InterruptedException {
         waitload();
@@ -227,6 +230,7 @@ public class Accounts_Step {
     public void user_clicks_on_deposit() throws InterruptedException {
         waitload();
         accpage.depositTabClick();
+        preWallet = accpage.findWorkingWalletCheck();
         System.out.println("Deposit clicked");
         Thread.sleep(3000);
         waitload();
@@ -248,7 +252,7 @@ public class Accounts_Step {
     }
 
     @And("user enters amount to deposit {string}")
-    public void user_enters_amount_to_deposit(String amt )  throws InterruptedException {
+    public void user_enters_amount_to_deposit(String amt) throws InterruptedException {
         waitload();
         accpage.enterloadAmount(amt);
         System.out.println("Load amount Entered");
@@ -267,14 +271,15 @@ public class Accounts_Step {
     @And("deposit summary should appear")
     public void deposit_summary_should_appear() throws Exception {
         waitload();
-        Assert.assertTrue("Summary didn't appear as expected",accpage.checkDepositSummary());
+        Assert.assertTrue("Summary didn't appear as expected", accpage.checkDepositSummary());
         System.out.println("Summary appeared");
         Thread.sleep(500);
     }
+
     @And("move summary should appear")
     public void move_summary_should_appear() throws InterruptedException {
         waitload();
-        Assert.assertTrue("Summary didn't appear as expected",accpage.checkMoveSummary());
+        Assert.assertTrue("Summary didn't appear as expected", accpage.checkMoveSummary());
         System.out.println("Summary appeared");
         Thread.sleep(500);
     }
@@ -298,23 +303,19 @@ public class Accounts_Step {
 
     @And("user checks confirmation message and press ok")
     public void user_checks_confirmation_message() throws InterruptedException {
-//        waitload();
-//        Assert.assertTrue("Deposit Unsuccessfull", accpage.checkLoadSuccessMsg());
-//        System.out.println("Deposit Successful");
-//        waitload();
         smartWait.waitUntilPageIsLoaded(10);
         waitload();
 
         try {
-            driver.manage().timeouts().implicitlyWait(40,TimeUnit.SECONDS);
+            driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
             Assert.assertTrue("Topup unsucessful", accpage.checkLoadSuccessMsg());
-        }
-        catch (NoSuchElementException e){
+        } catch (NoSuchElementException e) {
             Assert.assertTrue("Topup unsucessful", accpage.sucessMsgwithLoader());
         }
         Thread.sleep(2000);
         accpage.clickOKbtn();
         waitload();
+
     }
 
     @And("user clicks ok")
@@ -325,12 +326,32 @@ public class Accounts_Step {
         waitload();
     }
 
-    @Then("user should redirect to accounts")
-    public void user_should_redirect_to_accounts() throws InterruptedException {
+    @Then("user should see available balance and post transaction balance are equal in transactions tab")
+    public void transaction_data_should_be_available_in_transaction_tab_usd_wallet() throws InterruptedException {
+        driver.navigate().refresh();
+        Thread.sleep(2000);
+        System.out.println("Working Wallet:  " + preWallet);
+
+        if (preWallet.contains("USD")) {
+            accpage.usdWalletClick();
+        } else if (preWallet.contains("EUR")) {
+            accpage.euroWalletClick();
+        } else if (preWallet.contains("GBP")) {
+            accpage.gbpWalletClick();
+        } else if (preWallet.contains("JPY")) {
+            accpage.jpyWalletClick();
+        } else if (preWallet.contains("CNY")) {
+            accpage.cnyWalletClick();
+        } else {
+            System.out.println("Wallet doesn't matched!!");
+        }
         waitload();
-        Assert.assertTrue("Didn't redirected to Accounts Tab", accpage.checkAccountsTab());
-        System.out.println("Redirected to Accounts");
+        accpage.transactionsTabClick();
+        Assert.assertTrue("Latest transaction data is not available in USD wallet transaction of tab! ", accpage.transDateCheck());
+        Assert.assertTrue("Transaction data didn't match as expected!", accpage.depositTransectionCheck());
+        accpage.usdWalletClick();
         waitload();
+
     }
 
     // Deposit local us bank
@@ -358,7 +379,7 @@ public class Accounts_Step {
     @Then("user should see details of bank")
     public void user_should_see_details_of_bank() throws InterruptedException {
         smartWait.waitUntilPageIsLoaded(10);
-        driver.manage().timeouts().implicitlyWait(40,TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
         Assert.assertTrue("Local US Bank details didn't appears", accpage.localUSBankBeneficiaryCheck());
         waitload();
         Thread.sleep(1500);
@@ -521,6 +542,7 @@ public class Accounts_Step {
         waitload();
     }
 
+
     @And("user enters amount")
     public void user_enters_amount() throws InterruptedException {
         waitload();
@@ -610,34 +632,6 @@ public class Accounts_Step {
         accpage.businessClick();
         Thread.sleep(1000);
         accpage.clickExisting();
-        waitload();
-    }
-
-    //Transaction Tab
-    @When("user click on transaction tab")
-    public void user_is_in_transaction_tab() throws InterruptedException {
-        waitload();
-        accpage.transactionsTabClick();
-        waitload();
-
-    }
-
-    @And("user should see latest pending transactions first\\(if any) in PENDING TRANSACTIONS")
-    public void user_should_see_latest_pending_transactions_first_if_any_in_pending_transactions() throws InterruptedException {
-        waitload();
-        try {
-            Assert.assertTrue("Latest pending transaction not found", accpage.pendingTransection());
-            waitload();
-        } catch (NoSuchElementException e) {
-            Assert.assertTrue("Latest pending transaction not found", accpage.noTranscetionLabelCheck());
-            waitload();
-        }
-    }
-
-    @When("user after scroll down should see latest cleared transaction first in YOUR TRANSACTIONS")
-    public void user_after_scroll_down_should_see_latest_cleared_transaction_first_in_your_transactions() throws InterruptedException {
-        waitload();
-        Assert.assertTrue("Latest Completed transaction not found", accpage.completedTransection());
         waitload();
     }
 

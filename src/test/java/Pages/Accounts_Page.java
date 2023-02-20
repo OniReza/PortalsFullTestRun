@@ -7,10 +7,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import javax.sound.midi.Soundbank;
 import java.nio.channels.Selector;
 import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
+import java.time.temporal.TemporalAmount;
 import java.util.Calendar;
 
 import static Utility.API.CurrencyExchangeRate.*;
@@ -19,13 +21,11 @@ import static Utility.UserProfile.cardLoad.clRate;
 
 public class Accounts_Page extends CommonPageMethods {
     public static WebDriver driver;
-    String moveAmount="1200";
+    String preWallet = null;
     @FindBy(xpath = "//*[@id=\"root\"]/div/div/div/div/main/div/div/div/div/div/div/div[2]/div/div/div/div/div[2]")
     public WebElement graph;
-
     @FindBy(xpath = "(//span[text()='Accounts'])[1]")
     public WebElement accMenubtn;
-
     //Accounts Move xpaths
     @FindBy(xpath = "(//p[contains(text(),'Available Balance')])[1]")
     public WebElement usdWallet;
@@ -33,7 +33,6 @@ public class Accounts_Page extends CommonPageMethods {
     public WebElement euroWallet;
     @FindBy(xpath = "//span[contains(text(),'Pound Sterling')]")
     public WebElement gbpWallet;
-
     @FindBy(xpath = "//span[contains(text(),'Yen')]")
     public WebElement jpyWallet;
     @FindBy(xpath = "//span[contains(text(),'Yuan')]")
@@ -44,12 +43,10 @@ public class Accounts_Page extends CommonPageMethods {
     public WebElement moveTab;
     @FindBy(xpath = "//div[contains( text(),'Beneficiary')]")
     public WebElement selectBeneficiaryDropdown;
-
     @FindBy(xpath = "//Span[contains( text(),'$')]")
     public WebElement usdAcc;
     @FindBy(xpath = "//Span[contains( text(),'€')]")
     public WebElement euroAcc;
-
     @FindBy(xpath = "//span[contains( text(),'円')]")
     public WebElement jpyAcc;
     @FindBy(xpath = "//Span[contains( text(),'¥')]")
@@ -100,11 +97,7 @@ public class Accounts_Page extends CommonPageMethods {
     @FindBy(xpath = "(//input[@type='number'])[1]")
     public WebElement cryptoSendAmount;
     @FindBy(xpath = "//*[@id=\"root\"]/div/div/div/div/main/div/div/div/div/div/div/div[2]/div/div/div/div/div[1]/div[2]/div/div/div/div[3]/div[1]/div/div[2]/div[2]/div/div[1]/label")
-    //@FindBy(xpath = "//div[@class='ui checkbox Checkbox']//child::input")
-    //@FindBy(xpath = "//div[@class='ui checkbox Checkbox']//child::label")
-    //@FindBy(xpath = "(//input[@class='hidden' and  @type='checkbox'])//self::input")
     public WebElement checkBox;
-
     @FindBy(xpath = "//*[@id=\"root\"]/div/div/div/div/main/div/div/div/div/div/div/div[2]/div/div/div/div/div[1]/div[2]/div/div/div/div[3]/div[1]/div/div[2]/div[1]/div/div")
     public WebElement cryptoSummary;
     @FindBy(xpath = "(//span[text()='Payments'])")
@@ -133,6 +126,8 @@ public class Accounts_Page extends CommonPageMethods {
     public WebElement countryDropdown;
     @FindBy(xpath = "//li[contains(text(),'America')]")
     public WebElement america;
+    @FindBy(xpath = "//li[contains(text(),'United Kingdom')]")
+    public WebElement uk;
     @FindBy(xpath = "//input[@name='addressLine1']")
     public WebElement addressLine;
     @FindBy(xpath = "//input[@name='city']")
@@ -155,9 +150,10 @@ public class Accounts_Page extends CommonPageMethods {
     public WebElement phone;
     @FindBy(xpath = "//*[@id=\"mui-component-select-currency\"]/div/div[2]")
     public WebElement currencyDropdown;
-    //@FindBy(xpath = "(//span[contains(text(),'Dollar ')])[2]")
     @FindBy(xpath = "//*[@id=\"menu-currency\"]/div[3]/ul/li[1]/div/div[2]")
     public WebElement usd;
+    @FindBy(xpath = "//li[@role='option' and @data-value='GBP']")
+    public WebElement gbp;
     @FindBy(xpath = "//*[@id=\"mui-component-select-bankCountry\"]")
     public WebElement bankCountry;
     @FindBy(xpath = "//input[@name='bankName']")
@@ -172,6 +168,8 @@ public class Accounts_Page extends CommonPageMethods {
     public WebElement bankState;
     @FindBy(xpath = "//input[@name='bankPostCode']")
     public WebElement bankPostCode;
+    @FindBy(xpath = "//input[@name='bankSortCode']")
+    public WebElement bankSortCode;
     @FindBy(xpath = "//input[@name='bankRoutingNumber']")
     public WebElement bankRountingNum;
     @FindBy(xpath = "//input[@name='bankAccountNumber']")
@@ -210,12 +208,16 @@ public class Accounts_Page extends CommonPageMethods {
     public WebElement firstPTransaction;
     @FindBy(xpath = "(//span[contains(text(),' No records')])[1]")
     public WebElement noTransectionLabel;
-    @FindBy(xpath = "//*[@id=\"root\"]/div/div/div/div/main/div/div/div/div/div/div/div[4]/div[3]/div[1]/table/tbody/tr[1]/td[1]")
-    public WebElement firstCTransactions;
     @FindBy(xpath = "(//span[text()='Statements'])")
     public WebElement statementsTabBtn;
     @FindBy(xpath = "(//button[contains(text(),'DOWNLOAD')])[1]")
     public WebElement downloadBtn;
+    @FindBy(xpath = "(//a[contains(text(),'Export')])[1]")
+    public WebElement exportPdf;
+    @FindBy(xpath = "(//a[contains(text(),'Export')])[2]")
+    public WebElement exportCsv;
+    @FindBy(xpath = "//input[@placeholder=\"End Date\"]")
+    public WebElement endDateCal;
     @FindBy(xpath = "(//span[text()='Withdraw'])")
     public WebElement withdrawTab;
     @FindBy(xpath = "(//div[@role=\"option\"])[1]")
@@ -298,6 +300,30 @@ public class Accounts_Page extends CommonPageMethods {
     public WebElement receiveAmount;
     @FindBy(xpath = "(//input[@type='number'])[2]")
     public WebElement recAmtBox;
+    //Transaction Assertion
+    @FindBy(xpath = "(//table)[2]/tbody/tr[1]/th")
+    public WebElement transDate;
+    @FindBy(xpath = "(//table)[2]/tbody/tr[1]/td[1]")
+    public WebElement transtype;
+    @FindBy(xpath = "(//table)[2]/tbody/tr[1]/td[2]")
+    public WebElement transRef;
+    @FindBy(xpath = "(//table)[2]/tbody/tr[1]/td[3]")
+    public WebElement transAmt;
+    @FindBy(xpath = "(//table)[2]/tbody/tr[1]/td[4]")
+    public WebElement postTransBalance;
+    @FindBy(xpath = "(//table)[2]/tbody/tr[1]/td[5]")
+    public WebElement transDescription;
+    @FindBy(xpath = "(//table)[2]/tbody/tr[1]/td[6]")
+    public WebElement fee;
+    String moveAmount = "1200";
+    String depositAmount = "";
+    @FindBy(xpath = "(//div/p/..)[1]/p")
+    WebElement CurrentwalletCurrency;
+
+    @FindBy(xpath = "(//div/p/..)[1]/p")
+    WebElement findWorkingWallet;
+    @FindBy(xpath = "//div/p[contains(text(), \"Available Balance\")]/../p[2]")
+    WebElement currentWalletBalance;
 
     public Accounts_Page(WebDriver driver) {
         PageFactory.initElements(driver, this);
@@ -458,9 +484,11 @@ public class Accounts_Page extends CommonPageMethods {
     public void intlNonUKBankClick() {
         intlNonUKBank.click();
     }
+
     public void localUKBankClick() {
         localUKBank.click();
     }
+
     public boolean localUSBankBeneficiaryCheck() {
         return localUSBankBeneficiary.isDisplayed();
     }
@@ -477,7 +505,7 @@ public class Accounts_Page extends CommonPageMethods {
         checkBox.sendKeys(Keys.PAGE_DOWN);
         Thread.sleep(5000);
         checkBox.click();
-       // checkBox.sendKeys(Keys.CONTROL+Keys.getKeyFromUnicode("W"));
+        // checkBox.sendKeys(Keys.CONTROL+Keys.getKeyFromUnicode("W"));
 
 
     }
@@ -494,21 +522,27 @@ public class Accounts_Page extends CommonPageMethods {
     public void usdWalletClick() {
         usdWallet.click();
     }
+
     public void euroAccClcik() {
         euroAcc.click();
     }
+
     public void euroWalletClick() {
         euroWallet.click();
     }
+
     public void gbpWalletClick() {
         gbpWallet.click();
     }
+
     public void jpyWalletClick() {
         jpyWallet.click();
     }
+
     public void cnyWalletClick() {
         cnyWallet.click();
     }
+
     public void phpWalletClick() {
         phpWallet.click();
     }
@@ -524,9 +558,11 @@ public class Accounts_Page extends CommonPageMethods {
     public void jpyAccClcik() {
         jpyAcc.click();
     }
+
     public void cnyAccClcik() {
         cnyAcc.click();
     }
+
     public void usdAccClcik() {
         usdAcc.click();
     }
@@ -540,7 +576,7 @@ public class Accounts_Page extends CommonPageMethods {
         confirmBtn.click();
     }
 
-    public void enterSecretCode()throws Exception {
+    public void enterSecretCode() throws Exception {
         String Otp = BaseData.BaseOtp();
         System.out.println("Move: " + Otp);
         secretCode.sendKeys(Otp);
@@ -571,6 +607,7 @@ public class Accounts_Page extends CommonPageMethods {
     }
 
     public void enterloadAmount(String amount) {
+        depositAmount = amount;
         loadAmount.sendKeys(amount);
     }
 
@@ -599,7 +636,7 @@ public class Accounts_Page extends CommonPageMethods {
         double givenReceiveAmount = Double.valueOf(p1[3]);
         if (loadWalletCurrency.contains("$")) {
             System.out.println("In USD Wallet");
-            double calculatedFee = Double.valueOf(df.format(sendingAmount * clRate*ToUSD));
+            double calculatedFee = Double.valueOf(df.format(sendingAmount * clRate * ToUSD));
             double calculatedTotal = Double.valueOf(sendingAmount + calculatedFee);
             System.out.println("Calculated Fee: " + calculatedFee);
             System.out.println("Calculated Total Amount: " + calculatedTotal);
@@ -672,12 +709,10 @@ public class Accounts_Page extends CommonPageMethods {
             } else {
                 return false;
             }
-
         } else return false;
-
     }
 
-    public boolean checkMoveSummary(){
+    public boolean checkMoveSummary() {
         String rate = convRate.getText();
         String sAmt = sendAmt.getText();
         String rAmt = receiveAmount.getText();
@@ -686,22 +721,19 @@ public class Accounts_Page extends CommonPageMethods {
         double sendingAmount = Math.floor(Double.valueOf(sAmt.replaceAll("[\\s,]+", "").substring(15)));
         double amountoReceive = Math.floor(Double.valueOf(rAmt.replaceAll("[\\s,]+", "").substring(1)));
         double totalAmount = Math.floor(Double.valueOf(tAmt.replaceAll("[\\s,]+", "").substring(13)));
-        System.out.println("Summary Rate: " +rate);
-        System.out.println("Summary Sending Amount: "+ sendingAmount);
-        System.out.println("Summary Receiving Amount: "+ amountoReceive);
-        System.out.println("Summary Total Amount: "+ totalAmount);
-        System.out.println("Calculated Receiving Amount: "+ Double.valueOf(moveAmount)*conversionRate);
-        System.out.println("Diff of Receiving Amounts: "+ Math.abs(Double.valueOf(moveAmount)*conversionRate-amountoReceive));
+        System.out.println("Summary Rate: " + rate);
+        System.out.println("Summary Sending Amount: " + sendingAmount);
+        System.out.println("Summary Receiving Amount: " + amountoReceive);
+        System.out.println("Summary Total Amount: " + totalAmount);
+        System.out.println("Calculated Receiving Amount: " + Double.valueOf(moveAmount) * conversionRate);
+        System.out.println("Diff of Receiving Amounts: " + Math.abs(Double.valueOf(moveAmount) * conversionRate - amountoReceive));
 
-        if (Math.abs(Double.valueOf(moveAmount)*conversionRate-amountoReceive)<=1.5 && Double.valueOf(totalAmount)==totalAmount ){
+        if (Math.abs(Double.valueOf(moveAmount) * conversionRate - amountoReceive) <= 1.5 && Double.valueOf(totalAmount) == totalAmount) {
             return true;
+        } else {
+            return false;
         }
-        else {
-            return  false;
-        }
-
     }
-
 
     public boolean checkExpeditSummary() {
         return expeditSummary.isDisplayed();
@@ -711,17 +743,16 @@ public class Accounts_Page extends CommonPageMethods {
         return loadSucessMsg.isDisplayed();
     }
 
-    public boolean sucessMsgwithLoader(){
+    public boolean sucessMsgwithLoader() {
         return sucessMsgUS.isDisplayed();
-
     }
+
     public void clickOKbtn() {
         okBtn.click();
     }
 
     public boolean checkAccountsTab() {
         return accountsTabUsd.isDisplayed();
-
     }
 
     public void paymentTabClick() {
@@ -745,7 +776,7 @@ public class Accounts_Page extends CommonPageMethods {
     }
 
     public boolean checkTransferSummary() {
-       return trnsSummary.isDisplayed();
+        return trnsSummary.isDisplayed();
     }
 
     public void makePaymentClick() throws InterruptedException {
@@ -794,7 +825,7 @@ public class Accounts_Page extends CommonPageMethods {
     public void bankDetails() throws InterruptedException {
         click(currencyDropdown);
         Thread.sleep(1000);
-        click(usd);
+        usd.click();
         Thread.sleep(300);
         click(bankCountry);
         Thread.sleep(1000);
@@ -819,7 +850,6 @@ public class Accounts_Page extends CommonPageMethods {
         bankAccName.sendKeys(Random_data.fullName());
         Thread.sleep(300);
     }
-
 
     public void amount() throws InterruptedException {
         payAmount.sendKeys("20");
@@ -909,31 +939,82 @@ public class Accounts_Page extends CommonPageMethods {
         }
         return false;
     }
-    public boolean noTranscetionLabelCheck(){
+
+    public boolean noTranscetionLabelCheck() {
         return noTransectionLabel.isDisplayed();
     }
 
-    public boolean completedTransection() {
+
+    public void statementsTabBtnClick() {
+        statementsTabBtn.click();
+    }
+
+    public boolean downloadBtnCheck() {
+        return downloadBtn.isDisplayed();
+    }
+
+    public void downloadBtnClick() {
+        downloadBtn.click();
+    }
+
+    //Transection Assertion deposit
+    public String findWorkingWalletCheck(){
+       return findWorkingWallet.getText();
+    }
+    public boolean transDateCheck() {
         DateFormat dateFormat = new SimpleDateFormat("dd-MMM-yy");
         Calendar cal = Calendar.getInstance();
         String dt = dateFormat.format(cal.getTime());
-        String str = firstCTransactions.getText();
-        System.out.println("get text: " + str);
-        System.out.println("date: " + dt);
-        if (firstCTransactions.getText().trim().equals(dt.trim())) {
-            return firstCTransactions.isDisplayed();
+        String str = transDate.getText();
+        System.out.println("Given date: " + str);
+        System.out.println("Today's date: " + dt);
+        if (transDate.getText().trim().equals(dt.trim())) {
+            return transDate.isDisplayed();
         }
         return false;
     }
-    public void statementsTabBtnClick(){
-        statementsTabBtn.click();
-    }
-    public boolean downloadBtnCheck(){
-            return downloadBtn.isDisplayed();
-    }
 
-    public void downloadBtnClick(){
-        downloadBtn.click();
+    public boolean depositTransectionCheck() {
+        String type = transtype.getText().trim();
+        String reference = transRef.getText().trim();
+        String tAmount = transAmt.getText().replaceAll("\\s", "");
+        String postTAmount = postTransBalance.getText().trim();
+        String description = transDescription.getText().trim();
+        String feeAmt = fee.getText().trim();
+        String currWalletBalance = currentWalletBalance.getText().trim();
+
+        if (CurrentwalletCurrency.getText().contains("USD")) {
+            if (type.contains("Received") && reference.contains("TOPUP - Wallet Load from Card") && tAmount.contains("$") && tAmount.replaceAll("[,]", "").contains(depositAmount) && postTAmount.equals(currWalletBalance) && description.equals("debit or credit card load") & feeAmt.contains("_"))
+                return true;
+            else
+                return false;
+        } else if (CurrentwalletCurrency.getText().contains("EUR")) {
+            if (type.contains("Received") && reference.contains("TOPUP - Wallet Load from Card") && tAmount.contains("€") && tAmount.replaceAll("[,]", "").contains(depositAmount) && postTAmount.equals(currWalletBalance) && description.equals("debit or credit card load") & feeAmt.contains("_"))
+                return true;
+            else
+                return false;
+        } else if (CurrentwalletCurrency.getText().contains("GBP")) {
+            if (type.contains("Received") && reference.contains("TOPUP - Wallet Load from Card") && tAmount.contains("£") && tAmount.replaceAll("[,]", "").contains(depositAmount) && postTAmount.equals(currWalletBalance) && description.equals("debit or credit card load") & feeAmt.contains("_"))
+                return true;
+            else
+                return false;
+        } else if (CurrentwalletCurrency.getText().contains("CNY")) {
+            if (type.contains("Received") && reference.contains("TOPUP - Wallet Load from Card") && tAmount.contains("¥") && tAmount.replaceAll("[,]", "").contains(depositAmount) && postTAmount.equals(currWalletBalance) && description.equals("debit or credit card load") & feeAmt.contains("_"))
+                return true;
+            else
+                return false;
+        } else if (CurrentwalletCurrency.getText().contains("JPY")) {
+            if (type.contains("Received") && reference.contains("TOPUP - Wallet Load from Card") && tAmount.contains("¥") && tAmount.replaceAll("[,]", "").contains(depositAmount) && postTAmount.equals(currWalletBalance) && description.equals("debit or credit card load") & feeAmt.contains("_"))
+                return true;
+            else
+                return false;
+        } else {
+            System.out.println("Curent wallet currency is diffrent");
+            return false;
+        }
     }
+    //Transection Assertion move
+
+
 
 }

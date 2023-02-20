@@ -14,7 +14,7 @@ Feature: Test Accounts Functionality
     And clicks confirm
     And enter card details in Stripe and clicks on pay
     And user checks confirmation message and press ok
-    Then user should redirect to accounts
+    Then user should see available balance and post transaction balance are equal in transactions tab
 
   @card_deposit_usd_non_us @usd_all_features_non_us @all_non_us @all_wallet_features_non_us
   Scenario: Deposit: Verify Card Deposit to USD Wallet via Apexx
@@ -28,7 +28,7 @@ Feature: Test Accounts Functionality
     And clicks confirm
     And enter card details in Apexx and clicks on pay
     And user checks confirmation message and press ok
-    Then user should redirect to accounts
+    Then user should see available balance and post transaction balance are equal in transactions tab
 
   @usd_move @usd_all_features_us @usd_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
   Scenario: Verify USD Wallet to JPY Wallet Move
@@ -44,6 +44,7 @@ Feature: Test Accounts Functionality
     And transfer successfully completed message is shown
     And user clicks on ok
     Then user should redirect to wallet details tab
+    Then user should see available balance and post transaction balance are equal in transactions tab
 
 
   @usd_us_bank @usd_all_features_us @all_wallet_features_us @all_us
@@ -163,12 +164,6 @@ Feature: Test Accounts Functionality
     When user clicks on USD wallet
     Then user should see a graph
 
-  @usd_transaction @usd_all_features_us @usd_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
-  Scenario: Verify Transaction Tab of USD Wallet
-    When user clicks on USD wallet
-    And user click on transaction tab
-    And user should see latest pending transactions first(if any) in PENDING TRANSACTIONS
-    Then user after scroll down should see latest cleared transaction first in YOUR TRANSACTIONS
 
   @usd_statement @usd_all_features_us @usd_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
   Scenario: Verify Statement Tab of USD Wallet
@@ -190,7 +185,7 @@ Feature: Test Accounts Functionality
     And clicks confirm
     And enter card details in Stripe and clicks on pay
     And user checks confirmation message and press ok
-    Then user should redirect to accounts
+    Then user should see available balance and post transaction balance are equal in transactions tab
 
   @card_deposit_euro_non_us @euro_all_features_non_us @all_non_us @all_wallet_features_non_us
   Scenario: Deposit: Verify Card Deposit to Euro Wallet via Apexx
@@ -204,7 +199,8 @@ Feature: Test Accounts Functionality
     And clicks confirm
     And enter card details in Apexx and clicks on pay
     And user checks confirmation message and press ok
-    Then user should redirect to accounts
+    Then user should see available balance and post transaction balance are equal in transactions tab
+
 
   @euro_move @euro_all_features_us @euro_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
   Scenario: Verify Euro Wallet to CNY Wallet Move
@@ -340,13 +336,6 @@ Feature: Test Accounts Functionality
     When user clicks on EURO wallet
     Then user should see a graph
 
-  @euro_transaction @euro_all_features_us @euro_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
-  Scenario: Verify Transaction Tab of Euro Wallet
-    When user clicks on EURO wallet
-    And user click on transaction tab
-    And user should see latest pending transactions first(if any) in PENDING TRANSACTIONS
-    Then user after scroll down should see latest cleared transaction first in YOUR TRANSACTIONS
-
   @euro_statement @euro_all_features_us @euro_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
   Scenario: Verify Statement Tab of Euro Wallet
     When user clicks on EURO wallet
@@ -367,9 +356,9 @@ Feature: Test Accounts Functionality
     And clicks confirm
     And enter card details in Stripe and clicks on pay
     And user checks confirmation message and press ok
-    Then user should redirect to accounts
+    Then user should see available balance and post transaction balance are equal in transactions tab
 
-  @GBP_non_us @Deposit_non_us @gbp_all_features_non_us @all_non_us @all_wallet_features_non_us
+  @card_deposit_gbp_non_us @gbp_all_features_non_us @all_non_us @all_wallet_features_non_us
   Scenario: Deposit: Verify Card Deposit to GBP Wallet via Apexx
     When user clicks on GBP wallet
     And user clicks on deposit
@@ -381,7 +370,8 @@ Feature: Test Accounts Functionality
     And clicks confirm
     And enter card details in Apexx and clicks on pay
     And user checks confirmation message and press ok
-    Then user should redirect to accounts
+    Then user should see available balance and post transaction balance are equal in transactions tab
+
 
   @gbp_move @gbp_all_features_us @gbp_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
   Scenario: Verify GBP Wallet to USD Wallet Move
@@ -515,12 +505,6 @@ Feature: Test Accounts Functionality
     When user clicks on GBP wallet
     Then user should see a graph
 
-  @gbp_transaction @gbp_all_features_us @gbp_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
-  Scenario: Verify Transaction Tab of GBP Wallet
-    When user clicks on GBP wallet
-    And user click on transaction tab
-    And user should see latest pending transactions first(if any) in PENDING TRANSACTIONS
-    Then user after scroll down should see latest cleared transaction first in YOUR TRANSACTIONS
 
   @gbp_statement @gbp_all_features_us @gbp_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
   Scenario: Verify Statement Tab of GBP Wallet
@@ -542,7 +526,7 @@ Feature: Test Accounts Functionality
     And clicks confirm
     And enter card details in Stripe and clicks on pay
     And user checks confirmation message and press ok
-    Then user should redirect to accounts
+    Then user should see available balance and post transaction balance are equal in transactions tab
 
   @jpy_move @jpy_all_features_us @jpy_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
   Scenario: Verify JPY Wallet to USD Wallet Move
@@ -676,13 +660,6 @@ Feature: Test Accounts Functionality
     When user clicks on JPY wallet
     Then user should see a graph
 
-  @jpy_transaction @jpy_all_features_us @jpy_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
-  Scenario: Verify Transaction Tab of JPY Wallet
-    When user clicks on JPY wallet
-    And user click on transaction tab
-    And user should see latest pending transactions first(if any) in PENDING TRANSACTIONS
-    Then user after scroll down should see latest cleared transaction first in YOUR TRANSACTIONS
-
   @jpy_statement @jpy_all_features_us @jpy_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
   Scenario: Verify Statement Tab of JPY Wallet
     When user clicks on JPY wallet
@@ -703,7 +680,7 @@ Feature: Test Accounts Functionality
     And clicks confirm
     And enter card details in Stripe and clicks on pay
     And user checks confirmation message and press ok
-    Then user should redirect to accounts
+    Then user should see available balance and post transaction balance are equal in transactions tab
 
   @cny_move @cny_all_features_us @cny_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
   Scenario: Verify CNY Wallet to USD Wallet Move
@@ -837,21 +814,12 @@ Feature: Test Accounts Functionality
     When user clicks on CNY wallet
     Then user should see a graph
 
-  @cny_transaction @cny_all_features_us @cny_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
-  Scenario: Verify Transaction Tab of CNY Wallet
-    When user clicks on CNY wallet
-    And user click on transaction tab
-    And user should see latest pending transactions first(if any) in PENDING TRANSACTIONS
-    Then user after scroll down should see latest cleared transaction first in YOUR TRANSACTIONS
-
   @cny_statement @cny_all_features_us @cny_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
   Scenario: Verify Statement Tab of CNY Wallet
     When user clicks on CNY wallet
     And user clicks on statements tab
     And if any statement available user clicks on download button
     Then statement should be downloaded
-
-
 
 
 
