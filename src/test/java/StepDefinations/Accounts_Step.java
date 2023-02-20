@@ -351,6 +351,7 @@ public class Accounts_Step {
         Assert.assertTrue("Transaction data didn't match as expected!", accpage.depositTransectionCheck());
         accpage.usdWalletClick();
         waitload();
+        System.out.println("HHHHHHHH");
 
     }
 
