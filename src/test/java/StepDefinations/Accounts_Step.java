@@ -805,4 +805,17 @@ public class Accounts_Step {
         waitload();
     }
 
+    public void DepositAmt() throws Exception {
+        PaymentGatewayStep paymentGatewayStep = new PaymentGatewayStep();
+        user_clicks_on_usd_wallet();
+        user_clicks_on_deposit();
+        user_expend_from_dropdown();
+        user_selects_debit_or_credit_card();
+        user_enters_amount_to_deposit("50000");
+        user_clicks_agreement();
+        deposit_summary_should_appear();
+        clicks_confirm();
+        paymentGatewayStep.enter_card_details_in_apexx_and_clicks_on_pay();
+        user_checks_confirmation_message();
+    }
 }
