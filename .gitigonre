@@ -1,6 +1,1 @@
-/ExtentReports
-/src/test/java/TestRunner
-/src/test/java/Utility/BasePortals.java
-/src/test/java/Utility/UserProfile.java
-/src/test/resources/config.properties
-/src/test/resources/extent.properties
+ExtentReports/
