@@ -1,7 +1,7 @@
 Feature: Functionality Test For Instance Rewards Feature
 
   Background:
-  Given a valid url
+  Given user has logged into the portal
 
   @inst_reward_feature @others @all_us @all_non_us
   Scenario: Verify Instance Rewards Option

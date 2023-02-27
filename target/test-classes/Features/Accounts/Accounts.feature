@@ -1,14 +1,14 @@
 Feature: Test Accounts Functionality
   Background:
-    Given a valid url
+    Given user has logged into the portal
 
-  @card_deposit_usd_us @usd_all_features_us @all_wallet_features_us @all_us
+  @card_deposit_usd_us @card_deposit_us @usd_all_features_us @all_wallet_features_us @all_us
   Scenario: Deposit: Verify Card Deposit to USD Wallet via Stripe
     When user clicks on USD wallet
     And user clicks on deposit
     And user expend from dropdown
     And user selects debit or credit card
-    And user enters amount to deposit "5000"
+    And user enters amount to deposit "1000"
     And user clicks agreement
     And deposit summary should appear
     And clicks confirm
@@ -16,13 +16,13 @@ Feature: Test Accounts Functionality
     And user checks confirmation message and press ok
     Then user should see post transaction balance is equal to available balance
 
-  @card_deposit_usd_non_us @usd_all_features_non_us @all_non_us @all_wallet_features_non_us
+  @card_deposit_usd_non_us @card_deposit_non_us @usd_all_features_non_us @all_non_us @all_wallet_features_non_us
   Scenario: Deposit: Verify Card Deposit to USD Wallet via Apexx
     When user clicks on USD wallet
     And user clicks on deposit
     And user expend from dropdown
     And user selects debit or credit card
-    And user enters amount to deposit "5000"
+    And user enters amount to deposit "1000"
     And user clicks agreement
     And deposit summary should appear
     And clicks confirm
@@ -30,21 +30,20 @@ Feature: Test Accounts Functionality
     And user checks confirmation message and press ok
     Then user should see post transaction balance is equal to available balance
 
-  @usd_move @usd_all_features_us @usd_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
-  Scenario: Verify USD Wallet to JPY Wallet Move
+  @usd_move @move @usd_all_features_us @usd_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
+  Scenario: Verify USD Wallet to GBP Wallet Move
     When user clicks on USD wallet
     And user clicks on move tab
     And user clicks on select beneficiary dropdown
-    And user selects JPY wallet
-    And enter amount on sending amount box
+    And user selects GBP wallet
+    And enter amount on sending amount box "200"
     And move summary should appear
     And user clicks confirm
     And user enters secret code
     And user clicks confirm again
     And transfer successfully completed message is shown
     And user clicks on ok
-    Then user should redirect to wallet details tab
-    Then user should see post transaction balance is equal to available balance
+    Then user should see post transaction balance after move is equal to available balance
 
 
   @usd_us_bank @usd_all_features_us @all_wallet_features_us @all_us
@@ -173,13 +172,13 @@ Feature: Test Accounts Functionality
     Then statement should be downloaded
 
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++EURO wallet++++++++++++++++++++++++++++++++++++++++++++++++++++++
-  @card_deposit_euro_us @euro_all_features_us @all_wallet_features_us @all_us
+  @card_deposit_euro_us @card_deposit_us @euro_all_features_us @all_wallet_features_us @all_us
   Scenario: Deposit: Verify Card Deposit to Euro Wallet via Stripe
     When user clicks on EURO wallet
     And user clicks on deposit
     And user expend from dropdown
     And user selects debit or credit card
-    And user enters amount to deposit "5000"
+    And user enters amount to deposit "1000"
     And user clicks agreement
     And deposit summary should appear
     And clicks confirm
@@ -187,13 +186,13 @@ Feature: Test Accounts Functionality
     And user checks confirmation message and press ok
     Then user should see post transaction balance is equal to available balance
 
-  @card_deposit_euro_non_us @euro_all_features_non_us @all_non_us @all_wallet_features_non_us
+  @card_deposit_euro_non_us @card_deposit_non_us @euro_all_features_non_us @all_non_us @all_wallet_features_non_us
   Scenario: Deposit: Verify Card Deposit to Euro Wallet via Apexx
     When user clicks on EURO wallet
     And user clicks on deposit
     And user expend from dropdown
     And user selects debit or credit card
-    And user enters amount to deposit "5000"
+    And user enters amount to deposit "1000"
     And user clicks agreement
     And deposit summary should appear
     And clicks confirm
@@ -202,20 +201,20 @@ Feature: Test Accounts Functionality
     Then user should see post transaction balance is equal to available balance
 
 
-  @euro_move @euro_all_features_us @euro_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
-  Scenario: Verify Euro Wallet to CNY Wallet Move
+  @euro_move @move @euro_all_features_us @euro_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
+  Scenario: Verify Euro Wallet to USD Wallet Move
     When user clicks on EURO wallet
     And user clicks on move tab
     And user clicks on select beneficiary dropdown
-    And user selects CNY wallet
-    And enter amount on sending amount box
+    And user selects USD wallet
+    And enter amount on sending amount box "200"
     And move summary should appear
     And user clicks confirm
     And user enters secret code
     And user clicks confirm again
     And transfer successfully completed message is shown
     And user clicks on ok
-    Then user should redirect to wallet details tab
+    Then user should see post transaction balance after move is equal to available balance
 
   @euro_us_bank @euro_all_features_us @all_wallet_features_us @all_us
   Scenario: Deposit: Verify Local(US Bank) Deposit to Euro Wallet
@@ -344,13 +343,13 @@ Feature: Test Accounts Functionality
     Then statement should be downloaded
 
 #+++++++++++++++++++++++++++++++++++++++++++GBP wallet feature++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-  @card_deposit_gbp_us @gbp_all_features_us @all_wallet_features_us @all_us
+  @card_deposit_gbp_us @card_deposit_us @gbp_all_features_us @all_wallet_features_us @all_us
   Scenario: Deposit: Verify Card Deposit to GBP Wallet via Stripe
     When user clicks on GBP wallet
     And user clicks on deposit
     And user expend from dropdown
     And user selects debit or credit card
-    And user enters amount to deposit "5000"
+    And user enters amount to deposit "1000"
     And user clicks agreement
     And deposit summary should appear
     And clicks confirm
@@ -358,13 +357,13 @@ Feature: Test Accounts Functionality
     And user checks confirmation message and press ok
     Then user should see post transaction balance is equal to available balance
 
-  @card_deposit_gbp_non_us @gbp_all_features_non_us @all_non_us @all_wallet_features_non_us
+  @card_deposit_gbp_non_us @card_deposit_non_us @gbp_all_features_non_us @all_non_us @all_wallet_features_non_us
   Scenario: Deposit: Verify Card Deposit to GBP Wallet via Apexx
     When user clicks on GBP wallet
     And user clicks on deposit
     And user expend from dropdown
     And user selects debit or credit card
-    And user enters amount to deposit "5000"
+    And user enters amount to deposit "1000"
     And user clicks agreement
     And deposit summary should appear
     And clicks confirm
@@ -373,20 +372,20 @@ Feature: Test Accounts Functionality
     Then user should see post transaction balance is equal to available balance
 
 
-  @gbp_move @gbp_all_features_us @gbp_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
-  Scenario: Verify GBP Wallet to USD Wallet Move
+  @gbp_move @move @gbp_all_features_us @gbp_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
+  Scenario: Verify GBP Wallet to EURO Wallet Move
     When user clicks on GBP wallet
     And user clicks on move tab
     And user clicks on select beneficiary dropdown
-    And user selects USD wallet
-    And enter amount on sending amount box
+    And user selects EUR wallet
+    And enter amount on sending amount box "200"
     And move summary should appear
     And user clicks confirm
     And user enters secret code
     And user clicks confirm again
     And transfer successfully completed message is shown
     And user clicks on ok
-    Then user should redirect to wallet details tab
+    Then user should see post transaction balance after move is equal to available balance
 
   @gbp_us_bank @gbp_all_features_us @all_wallet_features_us @all_us
   Scenario: Deposit: Verify Local(US Bank) Deposit to GBP Wallet
@@ -514,13 +513,13 @@ Feature: Test Accounts Functionality
     Then statement should be downloaded
 
 #+++++++++++++++++++++++++++++++++++++++++++JPY wallet feature++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-  @card_deposit_jpy_us @jpy_all_features_us @all_wallet_features_us @all_us
+  @card_deposit_jpy_us @card_deposit_us @jpy_all_features_us @all_wallet_features_us @all_us
   Scenario: Deposit: Verify Card Deposit to JPY Wallet via Stripe
     When user clicks on JPY wallet
     And user clicks on deposit
     And user expend from dropdown
     And user selects debit or credit card
-    And user enters amount to deposit "30000"
+    And user enters amount to deposit "5000"
     And user clicks agreement
     And deposit summary should appear
     And clicks confirm
@@ -528,20 +527,34 @@ Feature: Test Accounts Functionality
     And user checks confirmation message and press ok
     Then user should see post transaction balance is equal to available balance
 
-  @jpy_move @jpy_all_features_us @jpy_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
-  Scenario: Verify JPY Wallet to USD Wallet Move
+  @jpy_move @jpy_all_features_non_us @all_non_us @all_wallet_features_non_us
+  Scenario: Verify USD Wallet to JPY Wallet Move
+    When user clicks on USD wallet
+    And user clicks on move tab
+    And user clicks on select beneficiary dropdown
+    And user selects JPY wallet
+    And enter amount on sending amount box "1000"
+    And move summary should appear
+    And user clicks confirm
+    And user enters secret code
+    And user clicks confirm again
+    Then transfer successfully completed message should appear
+
+
+  @jpy_move @move @jpy_all_features_us @jpy_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
+  Scenario: Verify JPY Wallet to GBP Wallet Move
     When user clicks on JPY wallet
     And user clicks on move tab
     And user clicks on select beneficiary dropdown
-    And user selects USD wallet
-    And enter amount on sending amount box
+    And user selects GBP wallet
+    And enter amount on sending amount box "2000"
     And move summary should appear
     And user clicks confirm
     And user enters secret code
     And user clicks confirm again
     And transfer successfully completed message is shown
     And user clicks on ok
-    Then user should redirect to wallet details tab
+    Then user should see post transaction balance after move is equal to available balance
 
   @jpy_us_bank @jpy_all_features_us @all_wallet_features_us @all_us
   Scenario: Deposit: Verify Local(US Bank) Deposit to JPY Wallet
@@ -668,13 +681,13 @@ Feature: Test Accounts Functionality
     Then statement should be downloaded
 
 #+++++++++++++++++++++++++++++++++++++++++++CNY wallet feature++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-  @card_deposit_cny_us @cny_all_features_us @all_wallet_features_us @all_us
+  @card_deposit_cny_us @card_deposit_us @cny_all_features_us @all_wallet_features_us @all_us
   Scenario: Deposit: Verify Card Deposit to CNY Wallet via Stripe
     When user clicks on CNY wallet
     And user clicks on deposit
     And user expend from dropdown
     And user selects debit or credit card
-    And user enters amount to deposit "30000"
+    And user enters amount to deposit "5000"
     And user clicks agreement
     And deposit summary should appear
     And clicks confirm
@@ -682,20 +695,33 @@ Feature: Test Accounts Functionality
     And user checks confirmation message and press ok
     Then user should see post transaction balance is equal to available balance
 
-  @cny_move @cny_all_features_us @cny_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
+  @cny_move @cny_all_features_non_us @all_non_us @all_wallet_features_non_us
+  Scenario: Verify USD Wallet to CNY Wallet Move
+    When user clicks on USD wallet
+    And user clicks on move tab
+    And user clicks on select beneficiary dropdown
+    And user selects CNY wallet
+    And enter amount on sending amount box "1000"
+    And move summary should appear
+    And user clicks confirm
+    And user enters secret code
+    And user clicks confirm again
+    Then transfer successfully completed message should appear
+
+  @cny_move @move @cny_all_features_us @cny_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
   Scenario: Verify CNY Wallet to USD Wallet Move
     When user clicks on CNY wallet
     And user clicks on move tab
     And user clicks on select beneficiary dropdown
     And user selects USD wallet
-    And enter amount on sending amount box
+    And enter amount on sending amount box "500"
     And move summary should appear
     And user clicks confirm
     And user enters secret code
     And user clicks confirm again
     And transfer successfully completed message is shown
     And user clicks on ok
-    Then user should redirect to wallet details tab
+    Then user should see post transaction balance after move is equal to available balance
 
   @cny_us_bank @cny_all_features_us @all_wallet_features_us @all_us
   Scenario: Deposit: Verify Local(US Bank) Deposit to CNY Wallet

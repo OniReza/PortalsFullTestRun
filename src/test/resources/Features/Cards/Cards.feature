@@ -1,6 +1,6 @@
 Feature: Test functionality of Card page
   Background:
-    Given a valid url
+    Given user has logged into the portal
 
 
   @phy_card_load @all_phy_card_feature @all_card_features @all_us @all_non_us

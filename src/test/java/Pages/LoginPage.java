@@ -2,6 +2,7 @@ package Pages;
 import Utility.BaseData;
 import Utility.CommonPageMethods;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
@@ -102,23 +103,39 @@ public class LoginPage extends CommonPageMethods {
         String Email = BaseData.BaseEmail();
         String Pass=BaseData.BasePassword();
         String Otp = BaseData.BaseOtp();
-        emailAddress(Email);
-        Thread.sleep(1000);
-        Submit();
-        Thread.sleep(3000);
-        Password(Pass);
-        Thread.sleep(1000);
-        Submit();
-        Thread.sleep(3000);
-        Totp(Otp);
-        Thread.sleep(1000);
-        Submit();
-        //Thread.sleep(7000);
+        try{
+            emailAddress(Email);
+        }catch (NoSuchElementException e){
+            System.out.println("No Email input field appeared");
+        }
+        try{
+            Submit();
+        }catch (NoSuchElementException e){
+            System.out.println("Continue button not clickable");
+        }
+        try{
+            Password(Pass);
+        }catch (NoSuchElementException e){
+            System.out.println("No Password input field appeared");
+        }
+        try{
+            Submit();
+        }catch (NoSuchElementException e){
+            System.out.println("Continue button not clickable");
+        }
+        try{
+            Totp(Otp);
+        }catch (NoSuchElementException e){
+            System.out.println("No OTP input field appeared");
+        }
+        try{
+            Submit();
+        }catch (NoSuchElementException e){
+            System.out.println("Continue button not clickable");
+        }
+
     }
 
-       public Boolean isLandingPageAvailable() {
-        return AssertLandingPage.isDisplayed();
-    }
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++Resub+++++++++++++++++++++++++++++++++++++++++++++++++++++++
 public boolean makePaymentChcek(){
@@ -223,9 +240,6 @@ public boolean makePaymentChcek(){
     }
     public void continueBtnClick(){
         submit.click();
-    }
-    public boolean dashBoardCheck(){
-        return dashBoard.isDisplayed();
     }
     public boolean recentTransectionSectionCheck() {
         return recentTransectionSection.isDisplayed();

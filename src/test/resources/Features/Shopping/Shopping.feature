@@ -1,7 +1,7 @@
 Feature: Functionality Test For Shopping Feature
 
   Background:
-    Given a valid url
+    Given user has logged into the portal
 
     @shopping @others @all_us @all_non_us
     Scenario: Verify Shopping New Request

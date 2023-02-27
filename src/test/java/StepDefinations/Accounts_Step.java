@@ -20,6 +20,7 @@ public class Accounts_Step {
     Accounts_Page accpage;
     SmartWait smartWait = new SmartWait();
     String preWallet = null;
+    String moveWalletNum = null;
 
     public Accounts_Step() {
         this.driver = Hooks.getDriver();
@@ -111,6 +112,7 @@ public class Accounts_Step {
         waitload();
         System.out.println("User is in USD Wallet");
         accpage.moveTabClick();
+        preWallet = accpage.findWorkingWalletCheck();
         System.out.println("Move Page clicked");
         waitload();
     }
@@ -167,10 +169,20 @@ public class Accounts_Step {
         waitload();
     }
 
-    @And("enter amount on sending amount box")
-    public void enter_amount_on_sending_amount_in_usd() throws InterruptedException {
+    @And("user selects GBP wallet")
+    public void user_selects_gbp_wallet() throws InterruptedException {
+        waitload();
+        accpage.gbpAccClcik();
+        Thread.sleep(3000);
+        System.out.println("CNY Account Selected");
+        waitload();
+    }
+
+    @And("enter amount on sending amount box {string}")
+    public void enter_amount_on_sending_amount_in_usd(String amount) throws InterruptedException {
         smartWait.waitUntilPageIsLoaded(10);
-        accpage.enterSendingAmount();
+        accpage.getMoveAccountNumber();
+        accpage.enterSendingAmount(amount);
         waitload();
         System.out.println("Amount Entered");
         smartWait.waitUntilPageIsLoaded(10);
@@ -192,7 +204,7 @@ public class Accounts_Step {
     }
 
     @And("user clicks confirm again")
-    public void user_clicks_confirm_again() throws InterruptedException {
+    public void user_clicks_confirm_again() throws Exception {
         waitload();
         accpage.confirmBtnClick();
         System.out.println("Confirm Button Clicked again");
@@ -200,9 +212,41 @@ public class Accounts_Step {
     }
 
     @And("transfer successfully completed message is shown")
-    public void transfer_successfully_completed_message_is_shown() throws InterruptedException {
+    public void transfer_successfully_completed_message_is_shown() throws Exception {
         waitload();
-        Assert.assertTrue("Transfer Unsuccessful.", accpage.checkSuccessMsg());
+        try{
+            Assert.assertTrue("Transfer Unsuccessful.", accpage.checkSuccessMsg());
+        }
+        catch (NoSuchElementException e){
+            accpage.cancelBtnClick();
+            Thread.sleep(1000);
+            accpage.confirmBtnClick();
+            accpage.enterSecretCode();
+            Thread.sleep(300);
+            accpage.confirmBtnClick();
+            waitload();
+            Assert.assertTrue("Transfer Unsuccessful.", accpage.checkSuccessMsg());
+        }
+        System.out.println("Transfer Done");
+        waitload();
+    }
+
+    @And("transfer successfully completed message should appear")
+    public void transfer_successfully_completed_message_should_appear() throws Exception {
+        waitload();
+        try{
+            Assert.assertTrue("Transfer Unsuccessful.", accpage.checkSuccessMsg());
+        }
+        catch (NoSuchElementException e){
+            accpage.cancelBtnClick();
+            Thread.sleep(1000);
+            accpage.confirmBtnClick();
+            accpage.enterSecretCode();
+            Thread.sleep(300);
+            accpage.confirmBtnClick();
+            waitload();
+            Assert.assertTrue("Transfer Unsuccessful.", accpage.checkSuccessMsg());
+        }
         System.out.println("Transfer Done");
         waitload();
     }
@@ -212,6 +256,7 @@ public class Accounts_Step {
         waitload();
         accpage.okBtnClick();
         System.out.println("Clicked on OK");
+        Thread.sleep(5000);
         waitload();
     }
 
@@ -315,6 +360,7 @@ public class Accounts_Step {
         Thread.sleep(2000);
         accpage.clickOKbtn();
         waitload();
+        Thread.sleep(3000);
 
     }
 
@@ -346,13 +392,41 @@ public class Accounts_Step {
             System.out.println("Wallet doesn't matched!!");
         }
         waitload();
+        Thread.sleep(2000);
         accpage.transactionsTabClick();
-        Assert.assertTrue("Latest transaction data is not available in "+preWallet+" wallet transaction of tab! ", accpage.transDateCheck());
-        Assert.assertTrue("Transaction data didn't match as expected!", accpage.depositTransectionCheck());
-        accpage.usdWalletClick();
         waitload();
-        System.out.println("HHHHHHHH");
+        Assert.assertTrue("Latest transaction data is not available in " + preWallet + " wallet transaction of tab! ", accpage.transDateCheck());
+        Assert.assertTrue("Transaction data didn't match as expected!", accpage.depositTransectionCheck());
+        waitload();
+    }
 
+    @Then("user should see post transaction balance after move is equal to available balance")
+    public void user_should_see_post_transaction_balance_after_move_is_equal_to_available_balance() throws InterruptedException {
+        driver.navigate().refresh();
+        Thread.sleep(2000);
+        System.out.println("Working Wallet:  " + preWallet);
+
+        if (preWallet.contains("USD")) {
+            accpage.usdWalletClick();
+        } else if (preWallet.contains("EUR")) {
+            accpage.euroWalletClick();
+        } else if (preWallet.contains("GBP")) {
+            accpage.gbpWalletClick();
+        } else if (preWallet.contains("JPY")) {
+            accpage.jpyWalletClick();
+        } else if (preWallet.contains("CNY")) {
+            accpage.cnyWalletClick();
+        } else {
+            System.out.println("Wallet doesn't matched!!");
+        }
+        waitload();
+        Thread.sleep(2500);
+        accpage.transactionsTabClick();
+        waitload();
+        Thread.sleep(2500);
+        Assert.assertTrue("Latest transaction data is not available in " + preWallet + " wallet transaction of tab! ", accpage.transDateCheck());
+        Assert.assertTrue("Transaction data didn't match as expected!", accpage.moveTransectionCheck());
+        waitload();
     }
 
     // Deposit local us bank

@@ -5,9 +5,8 @@ public class BasePortals {
     public static String portalsDEV()
     {
         Portals.dev dev = new Portals.dev();
-        Portals.tst tst = new Portals.tst();
 
-        String PortalDev=dev.plcu(); //dev portal link
+        String PortalDev=dev.debtbox(); //dev portal link
         String username = "devs";
         String password = "super!power";
         String URLDEV = "https://" + username + ":" + password + "@" + PortalDev;
@@ -16,10 +15,9 @@ public class BasePortals {
 
     public static String portalsTST()
     {
-        Portals.dev dev = new Portals.dev();
         Portals.tst tst = new Portals.tst();
 
-        String PortalTst = tst.plcu();//tst portal link
+        String PortalTst = tst.debtbox();//tst portal link
         String username = "sandbox";
         String password = "test!easy";
         String URLTST = "https://" + username + ":" + password + "@" + PortalTst;

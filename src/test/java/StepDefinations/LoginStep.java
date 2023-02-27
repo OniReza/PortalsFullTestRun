@@ -48,7 +48,7 @@ public class LoginStep {
      12-20-2022
 
     */
-    @Given("a valid url")
+    @Given("user has logged into the portal")
     public void a_valid_url() throws Exception {
         String URL = BaseData.BaseUrlMain();
         String PopURL = BaseData.BasePopUpUrl();

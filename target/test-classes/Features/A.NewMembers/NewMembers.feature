@@ -1,7 +1,7 @@
 Feature: Test New Accounts Functionality
 
   Background:
-    Given a valid url
+    Given user has logged into the portal
   ##+++++++++++++++++++++++++++++++++++++++++++++++++ Topup Popup ++++++++++++++++++++++++++++++++++++++++++++++++++++++
   @pop_topup_us @new_member_dc_us
   Scenario: Verify Topup popup for US members

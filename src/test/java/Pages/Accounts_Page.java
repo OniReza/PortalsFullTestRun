@@ -21,7 +21,8 @@ import static Utility.UserProfile.cardLoad.clRate;
 
 public class Accounts_Page extends CommonPageMethods {
     public static WebDriver driver;
-    String preWallet = null;
+    public double[] moveData = new double[3];
+    ;
     @FindBy(xpath = "//*[@id=\"root\"]/div/div/div/div/main/div/div/div/div/div/div/div[2]/div/div/div/div/div[2]")
     public WebElement graph;
     @FindBy(xpath = "(//span[text()='Accounts'])[1]")
@@ -45,6 +46,8 @@ public class Accounts_Page extends CommonPageMethods {
     public WebElement selectBeneficiaryDropdown;
     @FindBy(xpath = "//Span[contains( text(),'$')]")
     public WebElement usdAcc;
+    @FindBy(xpath = "//Span[contains( text(),'£')]")
+    public WebElement gbpAcc;
     @FindBy(xpath = "//Span[contains( text(),'€')]")
     public WebElement euroAcc;
     @FindBy(xpath = "//span[contains( text(),'円')]")
@@ -55,6 +58,8 @@ public class Accounts_Page extends CommonPageMethods {
     public WebElement sendAmount;
     @FindBy(xpath = "(//button[text()='Confirm'])")
     public WebElement confirmBtn;
+    @FindBy(xpath = "//button[@role='button' and text()='Cancel' or text()='Cancel' ]")
+    public WebElement cancelBtn;
     @FindBy(xpath = "(//input[@type='text' and @name='secretCode'])")
     public WebElement secretCode;
     @FindBy(xpath = "(//span[contains(text(),'successfully')])")
@@ -282,6 +287,10 @@ public class Accounts_Page extends CommonPageMethods {
     //FEE  Calculation
     @FindBy(xpath = "//span[contains(text(),'Sending amount')]")
     public WebElement sendingAmount;
+    @FindBy(xpath = "//span[contains(text(),'To Account')]")
+    public WebElement moveAccNum;
+    @FindBy(xpath = "//span[contains(text(),'Beneficiary Name:')]")
+    public WebElement moveBeneficiary;
     @FindBy(xpath = "//span[contains(text(),'Fee amount')]")
     public WebElement feeAmount;
     @FindBy(xpath = "//span[contains(text(),'Total Amount')]")
@@ -307,15 +316,21 @@ public class Accounts_Page extends CommonPageMethods {
     public WebElement transtype;
     @FindBy(xpath = "(//table)[2]/tbody/tr[1]/td[2]")
     public WebElement transRef;
-    @FindBy(xpath = "(//table)[2]/tbody/tr[1]/td[3]")
+    // @FindBy(xpath = "(//table)[2]/tbody/tr[1]/td[3]")
+    @FindBy(xpath = "(//table)[2]/tbody/tr[1]/td[3]/span")
     public WebElement transAmt;
+    @FindBy(xpath = "(((//table)[2]/tbody/tr)[1]/td/span/span)[2]")
+    public WebElement moreBtn;
+    @FindBy(xpath = "(//table)[2]/tbody/tr[1]/td[3]/div")
+    public WebElement reciverdetails;
     @FindBy(xpath = "(//table)[2]/tbody/tr[1]/td[4]")
     public WebElement postTransBalance;
     @FindBy(xpath = "(//table)[2]/tbody/tr[1]/td[5]")
     public WebElement transDescription;
     @FindBy(xpath = "(//table)[2]/tbody/tr[1]/td[6]")
     public WebElement fee;
-    String moveAmount = "1200";
+    String[] moveBenDetails = new String[3];
+    String moveAmount = "300";
     String depositAmount = "";
     @FindBy(xpath = "(//div/p/..)[1]/p")
     WebElement CurrentwalletCurrency;
@@ -567,7 +582,17 @@ public class Accounts_Page extends CommonPageMethods {
         usdAcc.click();
     }
 
+    public void gbpAccClcik() {
+        gbpAcc.click();
+    }
+
     public void enterSendingAmount() {
+        System.out.println("I am in Normal");
+        sendAmount.sendKeys(moveAmount);
+    }
+    public void enterSendingAmount(String amt) {
+        System.out.println("I am in overload");
+        moveAmount=amt;
         sendAmount.sendKeys(moveAmount);
     }
 
@@ -575,10 +600,13 @@ public class Accounts_Page extends CommonPageMethods {
         confirmBtn.sendKeys(Keys.PAGE_DOWN);
         confirmBtn.click();
     }
+    public void cancelBtnClick() {
+        cancelBtn.click();
+    }
 
     public void enterSecretCode() throws Exception {
         String Otp = BaseData.BaseOtp();
-        System.out.println("Move: " + Otp);
+//        System.out.println("Move: " + Otp);
         secretCode.sendKeys(Otp);
     }
 
@@ -617,7 +645,9 @@ public class Accounts_Page extends CommonPageMethods {
 
     public boolean checkDepositSummary() throws Exception {
         API.CurrencyExchangeRate cr = new API.CurrencyExchangeRate();
-        cr.getRate();
+        if (clRate != 0){
+            cr.getRate();
+        }
         confirmBtn.sendKeys(Keys.PAGE_DOWN);
         DecimalFormat df = new DecimalFormat("#.##");
         String sAmt = sendingAmount.getText();
@@ -712,14 +742,27 @@ public class Accounts_Page extends CommonPageMethods {
         } else return false;
     }
 
+    public void getMoveAccountNumber() {
+        String mA = moveAccNum.getText();
+        String mB = moveBeneficiary.getText();
+        String[] mA1 = mA.split(":");
+        String[] mB1 = mB.split(":");
+        moveBenDetails[0] = mA1[1].replaceAll("[^0-9]", "").trim();// To move acc number
+        moveBenDetails[1] = mA1[1].replaceAll("[0-9()]", "").trim(); // To move Currency
+        moveBenDetails[2] = mB1[1].replaceAll("[0-9()]", "").trim();// Move Beneficiary Name
+
+    }
+
     public boolean checkMoveSummary() {
         String rate = convRate.getText();
         String sAmt = sendAmt.getText();
         String rAmt = receiveAmount.getText();
         String tAmt = totalAmount.getText();
         double conversionRate = Double.valueOf(rate.replaceAll("\\s", "").substring(5).replaceAll("[a-zA-Z]", ""));
+        moveData[0] = conversionRate;
         double sendingAmount = Math.floor(Double.valueOf(sAmt.replaceAll("[\\s,]+", "").substring(15)));
         double amountoReceive = Math.floor(Double.valueOf(rAmt.replaceAll("[\\s,]+", "").substring(1)));
+        moveData[1] = amountoReceive;
         double totalAmount = Math.floor(Double.valueOf(tAmt.replaceAll("[\\s,]+", "").substring(13)));
         System.out.println("Summary Rate: " + rate);
         System.out.println("Summary Sending Amount: " + sendingAmount);
@@ -734,6 +777,239 @@ public class Accounts_Page extends CommonPageMethods {
             return false;
         }
     }
+    public String findWorkingWalletCheck() {
+        return findWorkingWallet.getText();
+    }
+
+    //Transection Assertion move
+    public boolean moveTransectionCheck() throws InterruptedException {
+        moreBtn.click();
+        String type = transtype.getText().trim();
+        String reference = transRef.getText().trim();
+        String tAmount = transAmt.getText().replaceAll("[\\s,]", "");
+        String postTAmount = postTransBalance.getText().trim().replaceAll("[^\\d.]+", "").replaceAll("\\.\\d+", "");
+        String description = transDescription.getText().trim();
+        String feeAmt = fee.getText().trim();
+        String currWalletBalance = currentWalletBalance.getText().trim().replaceAll("[^\\d.]+", "").replaceAll("\\.\\d+", "");
+        String reciverDetails = reciverdetails.getText();
+        String[] tr = reciverdetails.getText().replaceAll("[\\s,]", "").split("@");
+        double rate = Double.valueOf(tr[1]);
+        String[] reciverAmt = reciverDetails.replaceAll("[,]", "").split(" ");
+        double reciverAmount = Double.valueOf(reciverAmt[1]);
+        double reciveAmt = rate * (Double.parseDouble(moveAmount));
+
+        int decimalPlaces = 2;
+        DecimalFormat df = new DecimalFormat("#." + new String(new char[decimalPlaces]).replace("\0", "0"));
+        double calReciveAmount = Double.parseDouble(df.format(reciveAmt));
+        if (CurrentwalletCurrency.getText().contains("USD")) {
+            boolean a = type.contains("Sent");
+            boolean b = reference.contains("CCX - Wallet Transfer");
+            boolean c = tAmount.contains("$");
+            boolean d = tAmount.contains(String.valueOf(moveAmount));
+            boolean e = reciverDetails.contains("GBP");
+            boolean f = Math.abs(calReciveAmount - reciverAmount)< 0.1;
+            boolean g = postTAmount.equals(currWalletBalance);
+            boolean h = reference.contains(moveBenDetails[2]);
+            boolean i = reference.contains(moveBenDetails[1]);
+            boolean j = description.contains(moveBenDetails[0]);
+            boolean k = reciverDetails.contains("@");
+            boolean l = feeAmt.contains("_");
+
+            System.out.println("Type: " + a);
+            System.out.println("Ref Static: " + b);
+            System.out.println("Transfer Amount Currency: " + c);
+            System.out.println("Transfer Amount: " + d);
+            System.out.println("Receiver Currency: " + e);
+            System.out.println("Amount calculation: " + f);
+            System.out.println("Post balance in wallet and Transaction: " + g);
+            System.out.println("Move Beneficiary Name: " + h);
+            System.out.println("Move Beneficiary Currency: " + i);
+            System.out.println("Move Beneficiary Acc Num: " + j);
+            System.out.println("'@' is Present: " + k);
+            System.out.println("Fee matched: " + l);
+            System.out.println("Calculated receiver Amt: "+calReciveAmount);
+            System.out.println("Given receiver Amt: "+reciverAmount);
+            System.out.println("postTAmount: " + postTAmount);
+            System.out.println("currWalletBalance: " + currWalletBalance);
+
+            if (type.contains("Sent") && reference.contains("CCX - Wallet Transfer") && reference.contains(moveBenDetails[2])
+                    && reference.contains(moveBenDetails[1]) && tAmount.contains("$") && tAmount.contains(String.valueOf(moveAmount)) &&
+                    reciverDetails.contains("GBP") && reciverDetails.contains("@") && Math.abs(calReciveAmount - reciverAmount)< 0.1 && postTAmount.equals(currWalletBalance) &&
+                    description.contains("USD wallet to wallet") && description.contains(moveBenDetails[0]) && feeAmt.contains("_"))
+
+                return true;
+            else
+                return false;
+        } else if (CurrentwalletCurrency.getText().contains("EUR")) {
+            boolean a = type.contains("Sent");
+            boolean b = reference.contains("CCX - Wallet Transfer");
+            boolean c = tAmount.contains("€");
+            boolean d = tAmount.contains(String.valueOf(moveAmount));
+            boolean e = reciverDetails.contains("USD");
+            boolean f = Math.abs(calReciveAmount - reciverAmount)< 0.1;
+            boolean g = postTAmount.equals(currWalletBalance);
+            boolean h = reference.contains(moveBenDetails[2]);
+            boolean i = reference.contains(moveBenDetails[1]);
+            boolean j = description.contains(moveBenDetails[0]);
+            boolean k = reciverDetails.contains("@");
+            boolean l = feeAmt.contains("_");
+
+            System.out.println("Type: " + a);
+            System.out.println("Ref Static: " + b);
+            System.out.println("Transfer Amount Currency: " + c);
+            System.out.println("Transfer Amount: " + d);
+
+            System.out.println("Receiver Currency: " + e);
+            System.out.println("Amount calculation: " + f);
+            System.out.println("Post balance in wallet and Transaction: " + g);
+            System.out.println("Move Beneficiary Name: " + h);
+            System.out.println("Move Beneficiary Currency: " + i);
+            System.out.println("Move Beneficiary Acc Num: " + j);
+            System.out.println("'@' is Present: " + k);
+            System.out.println("Fee matched: " + l);
+            System.out.println("Calculated receiver Amt: "+calReciveAmount);
+            System.out.println("Given receiver Amt: "+reciverAmount);
+            System.out.println("postTAmount: " + postTAmount);
+            System.out.println("currWalletBalance: " + currWalletBalance);
+
+
+            if (type.contains("Sent") && reference.contains("CCX - Wallet Transfer") && reference.contains(moveBenDetails[2])
+                    && reference.contains(moveBenDetails[1]) && tAmount.contains("€") && tAmount.contains(String.valueOf(moveAmount)) &&
+                    reciverDetails.contains("USD") && reciverDetails.contains("@") && Math.abs(calReciveAmount - reciverAmount)< 0.1 && postTAmount.equals(currWalletBalance) &&
+                    description.contains("EUR wallet to wallet") && description.contains(moveBenDetails[0]) && feeAmt.contains("_"))
+                return true;
+            else
+                return false;
+
+        } else if (CurrentwalletCurrency.getText().contains("GBP")) {
+            boolean a = type.contains("Sent");
+            boolean b = reference.contains("CCX - Wallet Transfer");
+            boolean c = tAmount.contains("£");
+            boolean d = tAmount.contains(String.valueOf(moveAmount));
+            boolean e = reciverDetails.contains("EUR");
+            boolean f = Math.abs(calReciveAmount - reciverAmount)< 0.1;
+            boolean g = postTAmount.equals(currWalletBalance);
+            boolean h = reference.contains(moveBenDetails[2]);
+            boolean i = reference.contains(moveBenDetails[1]);
+            boolean j = description.contains(moveBenDetails[0]);
+            boolean k = reciverDetails.contains("@");
+            boolean l = feeAmt.contains("_");
+
+            System.out.println("Type: " + a);
+            System.out.println("Ref Static: " + b);
+            System.out.println("Transfer Amount Currency: " + c);
+            System.out.println("Transfer Amount: " + d);
+            System.out.println("Receiver Currency: " + e);
+            System.out.println("Amount calculation: " + f);
+            System.out.println("Post balance in wallet and Transaction: " + g);
+            System.out.println("Move Beneficiary Name: " + h);
+            System.out.println("Move Beneficiary Currency: " + i);
+            System.out.println("Move Beneficiary Acc Num: " + j);
+            System.out.println("'@' is Present: " + k);
+            System.out.println("Fee matched: " + l);
+            System.out.println("Calculated receiver Amt: "+calReciveAmount);
+            System.out.println("Given receiver Amt: "+reciverAmount);
+            System.out.println("postTAmount: " + postTAmount);
+            System.out.println("currWalletBalance: " + currWalletBalance);
+
+            if (type.contains("Sent") && reference.contains("CCX - Wallet Transfer") && reference.contains(moveBenDetails[2])
+                    && reference.contains(moveBenDetails[1]) && tAmount.contains("£") && tAmount.contains(String.valueOf(moveAmount)) &&
+                    reciverDetails.contains("EUR") && reciverDetails.contains("@") && Math.abs(calReciveAmount - reciverAmount)< 0.1 && postTAmount.equals(currWalletBalance) &&
+                    description.contains("GBP wallet to wallet") && description.contains(moveBenDetails[0]) && feeAmt.contains("_"))
+                return true;
+            else
+                return false;
+
+
+        } else if (CurrentwalletCurrency.getText().contains("CNY")) {
+            boolean a = type.contains("Sent");
+            boolean b = reference.contains("CCX - Wallet Transfer");
+            boolean c = tAmount.contains("¥");
+            boolean d = tAmount.contains(String.valueOf(moveAmount));
+            boolean e = reciverDetails.contains("USD");
+            boolean f = Math.abs(calReciveAmount - reciverAmount)< 0.1;
+            boolean g = postTAmount.equals(currWalletBalance);
+            boolean h = reference.contains(moveBenDetails[2]);
+            boolean i = reference.contains(moveBenDetails[1]);
+            boolean j = description.contains(moveBenDetails[0]);
+            boolean k = reciverDetails.contains("@");
+            boolean l = feeAmt.contains("_");
+
+            System.out.println("Type: " + a);
+            System.out.println("Ref Static: " + b);
+            System.out.println("Transfer Amount Currency: " + c);
+            System.out.println("Transfer Amount: " + d);
+            System.out.println("Receiver Currency: " + e);
+            System.out.println("Amount calculation: " + f);
+            System.out.println("Post balance in wallet and Transaction: " + g);
+            System.out.println("Move Beneficiary Name: " + h);
+            System.out.println("Move Beneficiary Currency: " + i);
+            System.out.println("Move Beneficiary Acc Num: " + j);
+            System.out.println("'@' is Present: " + k);
+            System.out.println("Fee matched: " + l);
+            System.out.println("Calculated receiver Amt: "+calReciveAmount);
+            System.out.println("Given receiver Amt: "+reciverAmount);
+            System.out.println("postTAmount: " + postTAmount);
+            System.out.println("currWalletBalance: " + currWalletBalance);
+
+
+            if (type.contains("Sent") && reference.contains("CCX - Wallet Transfer") && reference.contains(moveBenDetails[2])
+                    && reference.contains(moveBenDetails[1]) && tAmount.contains("¥") && tAmount.contains(String.valueOf(moveAmount)) &&
+                    reciverDetails.contains("USD") && reciverDetails.contains("@") && Math.abs(calReciveAmount - reciverAmount)< 0.1 && postTAmount.equals(currWalletBalance) &&
+                    description.contains("CNY wallet to wallet") && description.contains(moveBenDetails[0]) && feeAmt.contains("_"))
+                return true;
+            else
+                return false;
+
+        } else if (CurrentwalletCurrency.getText().contains("JPY")) {
+            boolean a = type.contains("Sent");
+            boolean b = reference.contains("CCX - Wallet Transfer");
+            boolean c = tAmount.contains("¥");
+            boolean d = tAmount.contains(String.valueOf(moveAmount));
+            boolean e = reciverDetails.contains("GBP");
+            boolean f = Math.abs(calReciveAmount - reciverAmount)< 0.1;
+            boolean g = postTAmount.equals(currWalletBalance);
+            boolean h = reference.contains(moveBenDetails[2]);
+            boolean i = reference.contains(moveBenDetails[1]);
+            boolean j = description.contains(moveBenDetails[0]);
+            boolean k = reciverDetails.contains("@");
+            boolean l = feeAmt.contains("_");
+
+            System.out.println("Type: " + a);
+            System.out.println("Ref Static: " + b);
+            System.out.println("Transfer Amount Currency: " + c);
+            System.out.println("Transfer Amount: " + d);
+            System.out.println("Receiver Currency: " + e);
+            System.out.println("Amount calculation: " + f);
+            System.out.println("JPY calReciveAmount: "+calReciveAmount);
+            System.out.println("JPY reciverAmount: "+ reciverAmount);
+
+
+            System.out.println("Post balance in wallet and Transaction: " + g);
+            System.out.println("Move Beneficiary Name: " + h);
+            System.out.println("Move Beneficiary Currency: " + i);
+            System.out.println("Move Beneficiary Acc Num: " + j);
+            System.out.println("'@' is Present: " + k);
+            System.out.println("Fee matched: " + l);
+            System.out.println("Calculated receiver Amt: "+calReciveAmount);
+            System.out.println("Given receiver Amt: "+reciverAmount);
+            System.out.println("postTAmount: " + postTAmount);
+            System.out.println("currWalletBalance: " + currWalletBalance);
+
+            if (type.contains("Sent") && reference.contains("CCX - Wallet Transfer") && reference.contains(moveBenDetails[2])
+                    && reference.contains(moveBenDetails[1]) && tAmount.contains("¥") && tAmount.contains(String.valueOf(moveAmount)) &&
+                    reciverDetails.contains("GBP") && reciverDetails.contains("@") && Math.abs(calReciveAmount - reciverAmount)< 0.1 && postTAmount.equals(currWalletBalance) &&
+                    description.contains("JPY wallet to wallet") && description.contains(moveBenDetails[0]) && feeAmt.contains("_"))
+                return true;
+            else
+                return false;
+
+        } else {
+            System.out.println("Curent wallet currency is diffrent");
+            return false;
+        }
+    }
+
 
     public boolean checkExpeditSummary() {
         return expeditSummary.isDisplayed();
@@ -944,7 +1220,6 @@ public class Accounts_Page extends CommonPageMethods {
         return noTransectionLabel.isDisplayed();
     }
 
-
     public void statementsTabBtnClick() {
         statementsTabBtn.click();
     }
@@ -957,10 +1232,7 @@ public class Accounts_Page extends CommonPageMethods {
         downloadBtn.click();
     }
 
-    //Transection Assertion deposit
-    public String findWorkingWalletCheck(){
-       return findWorkingWallet.getText();
-    }
+    //Transection Assertion Date
     public boolean transDateCheck() {
         DateFormat dateFormat = new SimpleDateFormat("dd-MMM-yy");
         Calendar cal = Calendar.getInstance();
@@ -977,34 +1249,119 @@ public class Accounts_Page extends CommonPageMethods {
     public boolean depositTransectionCheck() {
         String type = transtype.getText().trim();
         String reference = transRef.getText().trim();
-        String tAmount = transAmt.getText().replaceAll("\\s", "");
+        String tAmount = transAmt.getText().replaceAll("[\\s,]", "");
         String postTAmount = postTransBalance.getText().trim();
         String description = transDescription.getText().trim();
         String feeAmt = fee.getText().trim();
         String currWalletBalance = currentWalletBalance.getText().trim();
+        double postBalDiff = Double.valueOf(postTAmount.replaceAll("[^0-9.]", "")) - Double.valueOf(currWalletBalance.replaceAll("[^0-9.]", ""));
+
 
         if (CurrentwalletCurrency.getText().contains("USD")) {
-            if (type.contains("Received") && reference.contains("TOPUP - Wallet Load from Card") && tAmount.contains("$") && tAmount.replaceAll("[,]", "").contains(depositAmount) && postTAmount.equals(currWalletBalance) && description.equals("debit or credit card load") & feeAmt.contains("_"))
+            boolean a = type.contains("Received");
+            boolean b = reference.contains("TOPUP - Wallet Load from Card");
+            boolean c = tAmount.contains("$");
+            boolean d = tAmount.replaceAll("[,]", "").contains(depositAmount);
+            boolean e = postBalDiff< 0.2;
+            boolean f = description.equals("debit or credit card load");
+            boolean g = feeAmt.contains("_");
+            System.out.println("Type: " + a);
+            System.out.println("Reference " + b);
+            System.out.println("Amount Currency: " + c);
+            System.out.println("Deposit Amount: " + d);
+            System.out.println("Post transection Balance: " + e);
+            System.out.println("Description: " + f);
+            System.out.println("Fee Amount: " + g);
+
+
+
+            if (type.contains("Received") && reference.contains("TOPUP - Wallet Load from Card") && tAmount.contains("$") && tAmount.replaceAll("[,]", "").contains(depositAmount) && postBalDiff<0.02 && description.equals("debit or credit card load") & feeAmt.contains("_"))
                 return true;
             else
                 return false;
         } else if (CurrentwalletCurrency.getText().contains("EUR")) {
-            if (type.contains("Received") && reference.contains("TOPUP - Wallet Load from Card") && tAmount.contains("€") && tAmount.replaceAll("[,]", "").contains(depositAmount) && postTAmount.equals(currWalletBalance) && description.equals("debit or credit card load") & feeAmt.contains("_"))
+            boolean a = type.contains("Received");
+            boolean b = reference.contains("TOPUP - Wallet Load from Card");
+            boolean c = tAmount.contains("€");
+            boolean d = tAmount.replaceAll("[,]", "").contains(depositAmount);
+            boolean e = postBalDiff<0.02;
+            boolean f = description.equals("debit or credit card load");
+            boolean g = feeAmt.contains("_");
+            System.out.println("Type: " + a);
+            System.out.println("Reference " + b);
+            System.out.println("Amount Currency: " + c);
+            System.out.println("Deposit Amount: " + d);
+            System.out.println("Post transection Balance: " + e);
+            System.out.println("Description: " + f);
+            System.out.println("Fee Amount: " + g);
+
+            if (type.contains("Received") && reference.contains("TOPUP - Wallet Load from Card") && tAmount.contains("€") && tAmount.replaceAll("[,]", "").contains(depositAmount) && postBalDiff<0.02 && description.equals("debit or credit card load") & feeAmt.contains("_"))
                 return true;
             else
                 return false;
         } else if (CurrentwalletCurrency.getText().contains("GBP")) {
-            if (type.contains("Received") && reference.contains("TOPUP - Wallet Load from Card") && tAmount.contains("£") && tAmount.replaceAll("[,]", "").contains(depositAmount) && postTAmount.equals(currWalletBalance) && description.equals("debit or credit card load") & feeAmt.contains("_"))
+            boolean a = type.contains("Received");
+            boolean b = reference.contains("TOPUP - Wallet Load from Card");
+            boolean c = tAmount.contains("£");
+            boolean d = tAmount.replaceAll("[,]", "").contains(depositAmount);
+            boolean e = postBalDiff<0.02;
+            boolean f = description.equals("debit or credit card load");
+            boolean g = feeAmt.contains("_");
+            System.out.println("Type: " + a);
+            System.out.println("Reference " + b);
+            System.out.println("Amount Currency: " + c);
+            System.out.println("Deposit Amount: " + d);
+            System.out.println("Post transection Balance: " + e);
+            System.out.println("Description: " + f);
+            System.out.println("Fee Amount: " + g);
+
+            if (type.contains("Received") && reference.contains("TOPUP - Wallet Load from Card") && tAmount.contains("£") && tAmount.replaceAll("[,]", "").contains(depositAmount) && postBalDiff<0.02 && description.equals("debit or credit card load") & feeAmt.contains("_"))
                 return true;
             else
                 return false;
         } else if (CurrentwalletCurrency.getText().contains("CNY")) {
-            if (type.contains("Received") && reference.contains("TOPUP - Wallet Load from Card") && tAmount.contains("¥") && tAmount.replaceAll("[,]", "").contains(depositAmount) && postTAmount.equals(currWalletBalance) && description.equals("debit or credit card load") & feeAmt.contains("_"))
+            boolean a = type.contains("Received");
+            boolean b = reference.contains("TOPUP - Wallet Load from Card");
+            boolean c = tAmount.contains("¥");
+            boolean d = tAmount.replaceAll("[,]", "").contains(depositAmount);
+            boolean e = postBalDiff<0.02;
+            boolean f = description.equals("debit or credit card load");
+            boolean g = feeAmt.contains("_");
+            System.out.println("Type: " + a);
+            System.out.println("Reference " + b);
+            System.out.println("Amount Currency: " + c);
+            System.out.println("Deposit Amount: " + d);
+            System.out.println("Post transection Balance: " + e);
+            System.out.println("Description: " + f);
+            System.out.println("Fee Amount: " + g);
+
+            if (type.contains("Received") && reference.contains("TOPUP - Wallet Load from Card") && tAmount.contains("¥") && tAmount.replaceAll("[,]", "").contains(depositAmount) && postBalDiff<0.02 && description.equals("debit or credit card load") & feeAmt.contains("_"))
                 return true;
             else
                 return false;
         } else if (CurrentwalletCurrency.getText().contains("JPY")) {
-            if (type.contains("Received") && reference.contains("TOPUP - Wallet Load from Card") && tAmount.contains("¥") && tAmount.replaceAll("[,]", "").contains(depositAmount) && postTAmount.equals(currWalletBalance) && description.equals("debit or credit card load") & feeAmt.contains("_"))
+            boolean a = type.contains("Received");
+            boolean b = reference.contains("TOPUP - Wallet Load from Card");
+            boolean c = tAmount.contains("¥");
+            boolean d = tAmount.replaceAll("[,]", "").contains(depositAmount);
+            boolean e = postBalDiff<0.02;
+            boolean f = description.equals("debit or credit card load");
+            boolean g = feeAmt.contains("_");
+            System.out.println("Type: " + a);
+            System.out.println("Reference " + b);
+            System.out.println("Amount Currency: " + c);
+            System.out.println("Deposit Amount: " + d);
+            System.out.println("Post transection Balance: " + e);
+
+
+            System.out.println("JPY postTAmount: "+ postTAmount);
+            System.out.println("JPY Curr wall balence: "+currWalletBalance);
+
+
+            System.out.println("Description: " + f);
+            System.out.println("Fee Amount: " + g);
+
+            if (type.contains("Received") && reference.contains("TOPUP - Wallet Load from Card") && tAmount.contains("¥") && tAmount.replaceAll("[,]", "").contains(depositAmount) && postBalDiff<0.02 && description.equals("debit or credit card load") & feeAmt.contains("_"))
                 return true;
             else
                 return false;
@@ -1013,8 +1370,6 @@ public class Accounts_Page extends CommonPageMethods {
             return false;
         }
     }
-    //Transection Assertion move
-
 
 
 }

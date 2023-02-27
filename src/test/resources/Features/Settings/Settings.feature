@@ -1,6 +1,7 @@
 Feature: Test Settings Functionality
   Background:
-    Given a valid url
+    Given user has logged into the portal
+
   @settings @others @all_us @all_non_us
   Scenario: Verify Password Change Functionality
     When user clicks on settings button

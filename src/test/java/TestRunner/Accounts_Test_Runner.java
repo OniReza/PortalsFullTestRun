@@ -6,7 +6,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(features = "src/test/resources/Features/Accounts/Accounts.feature",glue = "StepDefinations",
-        tags="@card_deposit_usd_non_us or @card_deposit_euro_non_us or @card_deposit_gbp_non_us",
+        tags="@cny_all_features_non_us ",
         plugin ={"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"})
 public class Accounts_Test_Runner {
 }

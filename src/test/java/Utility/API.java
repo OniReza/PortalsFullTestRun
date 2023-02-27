@@ -10,28 +10,28 @@ import org.apache.commons.codec.binary.Hex;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 
+import static Utility.UserProfile.cardLoad.clRate;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
 public class API {
 
     public static class CurrencyExchangeRate {
-        public static double ToUSD;
-        public static double ToEuro;
-        public static double ToGBP;
-        public static double ToJPY;
-        public static double ToCNY;
-        public static double ToPHP;
+        public static double ToUSD = 1;
+        public static double ToEuro = 1;
+        public static double ToGBP = 1;
+        public static double ToJPY = 1;
+        public static double ToCNY = 1;
+        public static double ToPHP = 1;
 
         public static void getRate() throws Exception {
+
             String email = BaseData.BaseEmail();
             String password = BaseData.BasePassword();
             String code = BaseData.BaseOtp();
-
             String fromCurrency = UserProfile.planCurrency;
             String[] toCurrency = {"USD", "EUR", "GBP", "JPY", "CNY", "PHP"};
             double[] trate = new double[toCurrency.length];
-
             //CSRF API Call
             RestAssured.baseURI = "https://api.tst.auws.cloud";
             Response response = given().headers(
@@ -111,23 +111,8 @@ public class API {
                 ToCNY = trate[4];
                 ToPHP = trate[5];
 
-
             }
-//
-//            System.out.println("ToUSD "+ToUSD);
-//            System.out.println("ToEuro "+ToEuro);
-//            System.out.println("ToEuro "+ ToGBP);
-//            System.out.println("ToJPY "+ ToJPY);
-//            System.out.println("ToCNY "+ToCNY);
-        }
 
-        private static String getTOTPCode(String secretKey) {
-            Base32 base32 = new Base32();
-            byte[] bytes = base32.decode(secretKey);
-            String hexKey = Hex.encodeHexString(bytes);
-            String x = TOTP.getOTP(hexKey);
-            //System.out.println("Totp: "+ TOTP.getOTP(hexKey));
-            return TOTP.getOTP(hexKey);
         }
 
     }
