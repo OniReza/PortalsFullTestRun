@@ -3,7 +3,7 @@ Feature: Functionality Test For Instance Rewards Feature
   Background:
   Given user has logged into the portal
 
-  @inst_reward_feature @others @all_us @all_non_us
+  @inst_reward_feature @others @all_us @all_non_us @tt
   Scenario: Verify Instance Rewards Option
   When user click on instance rewards options
   And user will choose card from card option

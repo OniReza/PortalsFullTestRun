@@ -31,13 +31,14 @@ public class InstanceRewardsStep{
     public void user_click_instance_option() throws InterruptedException {
 
         try {
+            instanceRewardsPage.ClickInstanceBtn();
+        }
+        catch(Exception e) {
+
             if (instanceRewardsPage.IsPopup()) {
                 instanceRewardsPage.buttonCancel();
                 instanceRewardsPage.ClickInstanceBtn();
             }
-        }
-        catch(Exception e) {
-            instanceRewardsPage.ClickInstanceBtn();
         }
 
     }

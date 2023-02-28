@@ -12,19 +12,24 @@ public class InstanceRewardsPage extends CommonPageMethods {
     @FindBy(xpath = "//span[text()='Instant Rewards']")
     public WebElement btnInstanceRewards;
 
-    @FindBy(xpath = "//*[@id=\"root\"]/div/div/div/div/main/div/div/div/div/div/div/div/div/div[1]/div[1]/div/div")
+   // @FindBy(xpath = "//*[@id=\"root\"]/div/div/div/div/main/div/div/div/div/div/div/div/div/div[1]/div[1]/div/div")
+    @FindBy(xpath = "(//span[text()='SEARCH' or text()='Search']/../../../div)[1]")
     public WebElement cardDropList;
 
-       @FindBy(xpath = "//*[@id=\"menu-\"]/div[3]/ul/li[2]")
+       ///@FindBy(xpath = "//*[@id=\"menu-\"]/div[3]/ul/li[2]")
+       @FindBy(xpath = "(//li)[2]")
     public WebElement cardSelectEUR;
 
-    @FindBy(xpath = "//*[@id=\"menu-\"]/div[3]/ul/li[1]")
+    //@FindBy(xpath = "//*[@id=\"menu-\"]/div[3]/ul/li[1]")
+    @FindBy(xpath = "(//li)[1]")
     public WebElement cardSelectUSD;
 
-    @FindBy(xpath = "//*[@id=\"enhanced-table-checkbox-0\"]/div/div[4]/button")
+//    @FindBy(xpath = "//*[@id=\"enhanced-table-checkbox-0\"]/div/div[4]/button")
+    @FindBy(xpath = "((//th/div/.)[1]/div)[4]/button")
     public WebElement selectCardBtn;
 
-    @FindBy(xpath = "//*[@id=\"root\"]/div/div/div/div/main/div/div/div/div/div/div/div/div[2]/div[1]/div[2]/div[1]/h3")
+   // @FindBy(xpath = "//*[@id=\"root\"]/div/div/div/div/main/div/div/div/div/div/div/div/div[2]/div[1]/div[2]/div[1]/h3")
+    @FindBy(xpath = "//div/h3[text()='Payment Method']")
     public WebElement AssertRewardPage;
 
     @FindBy(xpath = "/html/body/div[1]/div/div/div/div/main/div/div/div/div/div/div/div/div[2]/div[1]/div[1]/div[7]/textarea[1]")

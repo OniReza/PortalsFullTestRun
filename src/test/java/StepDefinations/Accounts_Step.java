@@ -12,14 +12,15 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.util.concurrent.TimeUnit;
 
 public class Accounts_Step {
     public WebDriver driver;
     Accounts_Page accpage;
     SmartWait smartWait = new SmartWait();
-    String preWallet = null;
+    String senderWallet = null;
+    String receiverWallet = null;
+    String receivingAmount = null;
     String moveWalletNum = null;
 
     public Accounts_Step() {
@@ -57,7 +58,6 @@ public class Accounts_Step {
         user_clicks_on_account();
         accpage.euroWalletClick();
         System.out.println("USD Wallet Clicked");
-
         waitload();
     }
 
@@ -112,7 +112,7 @@ public class Accounts_Step {
         waitload();
         System.out.println("User is in USD Wallet");
         accpage.moveTabClick();
-        preWallet = accpage.findWorkingWalletCheck();
+        senderWallet = accpage.findSenderWallet();
         System.out.println("Move Page clicked");
         waitload();
     }
@@ -174,14 +174,15 @@ public class Accounts_Step {
         waitload();
         accpage.gbpAccClcik();
         Thread.sleep(3000);
-        System.out.println("CNY Account Selected");
+        System.out.println("GBP Account Selected");
         waitload();
     }
 
     @And("enter amount on sending amount box {string}")
     public void enter_amount_on_sending_amount_in_usd(String amount) throws InterruptedException {
         smartWait.waitUntilPageIsLoaded(10);
-        accpage.getMoveAccountNumber();
+        accpage.getMoveAccountDetails();
+        receiverWallet = accpage.findRecieverWallet();
         accpage.enterSendingAmount(amount);
         waitload();
         System.out.println("Amount Entered");
@@ -214,10 +215,9 @@ public class Accounts_Step {
     @And("transfer successfully completed message is shown")
     public void transfer_successfully_completed_message_is_shown() throws Exception {
         waitload();
-        try{
+        try {
             Assert.assertTrue("Transfer Unsuccessful.", accpage.checkSuccessMsg());
-        }
-        catch (NoSuchElementException e){
+        } catch (NoSuchElementException e) {
             accpage.cancelBtnClick();
             Thread.sleep(1000);
             accpage.confirmBtnClick();
@@ -234,10 +234,9 @@ public class Accounts_Step {
     @And("transfer successfully completed message should appear")
     public void transfer_successfully_completed_message_should_appear() throws Exception {
         waitload();
-        try{
+        try {
             Assert.assertTrue("Transfer Unsuccessful.", accpage.checkSuccessMsg());
-        }
-        catch (NoSuchElementException e){
+        } catch (NoSuchElementException e) {
             accpage.cancelBtnClick();
             Thread.sleep(1000);
             accpage.confirmBtnClick();
@@ -275,7 +274,7 @@ public class Accounts_Step {
     public void user_clicks_on_deposit() throws InterruptedException {
         waitload();
         accpage.depositTabClick();
-        preWallet = accpage.findWorkingWalletCheck();
+        senderWallet = accpage.findSenderWallet();
         System.out.println("Deposit clicked");
         Thread.sleep(3000);
         waitload();
@@ -326,6 +325,7 @@ public class Accounts_Step {
         waitload();
         Assert.assertTrue("Summary didn't appear as expected", accpage.checkMoveSummary());
         System.out.println("Summary appeared");
+        accpage.getRecieverAmount();
         Thread.sleep(500);
     }
 
@@ -361,7 +361,6 @@ public class Accounts_Step {
         accpage.clickOKbtn();
         waitload();
         Thread.sleep(3000);
-
     }
 
     @And("user clicks ok")
@@ -376,17 +375,17 @@ public class Accounts_Step {
     public void user_should_see_post_transaction_balance_is_equal_to_available_balance() throws InterruptedException {
         driver.navigate().refresh();
         Thread.sleep(2000);
-        System.out.println("Working Wallet:  " + preWallet);
+        System.out.println("Working Wallet:  " + senderWallet);
 
-        if (preWallet.contains("USD")) {
+        if (senderWallet.contains("USD")) {
             accpage.usdWalletClick();
-        } else if (preWallet.contains("EUR")) {
+        } else if (senderWallet.contains("EUR")) {
             accpage.euroWalletClick();
-        } else if (preWallet.contains("GBP")) {
+        } else if (senderWallet.contains("GBP")) {
             accpage.gbpWalletClick();
-        } else if (preWallet.contains("JPY")) {
+        } else if (senderWallet.contains("JPY")) {
             accpage.jpyWalletClick();
-        } else if (preWallet.contains("CNY")) {
+        } else if (senderWallet.contains("CNY")) {
             accpage.cnyWalletClick();
         } else {
             System.out.println("Wallet doesn't matched!!");
@@ -395,26 +394,25 @@ public class Accounts_Step {
         Thread.sleep(2000);
         accpage.transactionsTabClick();
         waitload();
-        Assert.assertTrue("Latest transaction data is not available in " + preWallet + " wallet transaction of tab! ", accpage.transDateCheck());
+        Assert.assertTrue("Latest transaction data is not available in " + senderWallet + " wallet transaction of tab! ", accpage.transDateCheck());
         Assert.assertTrue("Transaction data didn't match as expected!", accpage.depositTransectionCheck());
         waitload();
     }
 
-    @Then("user should see post transaction balance after move is equal to available balance")
-    public void user_should_see_post_transaction_balance_after_move_is_equal_to_available_balance() throws InterruptedException {
+    @Then("user should see sender post transaction balance after move is equal to available balance")
+    public void user_should_see_sender_post_transaction_balance_after_move_is_equal_to_available_balance() throws InterruptedException {
         driver.navigate().refresh();
         Thread.sleep(2000);
-        System.out.println("Working Wallet:  " + preWallet);
-
-        if (preWallet.contains("USD")) {
+        System.out.println("Working Wallet:  " + senderWallet);
+        if (senderWallet.contains("USD")) {
             accpage.usdWalletClick();
-        } else if (preWallet.contains("EUR")) {
+        } else if (senderWallet.contains("EUR")) {
             accpage.euroWalletClick();
-        } else if (preWallet.contains("GBP")) {
+        } else if (senderWallet.contains("GBP")) {
             accpage.gbpWalletClick();
-        } else if (preWallet.contains("JPY")) {
+        } else if (senderWallet.contains("JPY")) {
             accpage.jpyWalletClick();
-        } else if (preWallet.contains("CNY")) {
+        } else if (senderWallet.contains("CNY")) {
             accpage.cnyWalletClick();
         } else {
             System.out.println("Wallet doesn't matched!!");
@@ -424,8 +422,37 @@ public class Accounts_Step {
         accpage.transactionsTabClick();
         waitload();
         Thread.sleep(2500);
-        Assert.assertTrue("Latest transaction data is not available in " + preWallet + " wallet transaction of tab! ", accpage.transDateCheck());
-        Assert.assertTrue("Transaction data didn't match as expected!", accpage.moveTransectionCheck());
+        Assert.assertTrue("Latest transaction data is not available in " + senderWallet + " wallet transaction of tab! ", accpage.transDateCheck());
+        Assert.assertTrue("Transaction data didn't match as expected!", accpage.moveSenderTransectionCheck());
+        waitload();
+    }
+
+    @Then("user should see receiver post transaction balance after move is equal to available balance")
+    public void user_should_see_receiver_post_transaction_balance_after_move_is_equal_to_available_balance() throws InterruptedException {
+        driver.navigate().refresh();
+        Thread.sleep(2000);
+        System.out.println("Reciever Wallet:  " + receiverWallet);
+
+        if (receiverWallet.contains("USD")) {
+            accpage.usdWalletClick();
+        } else if (receiverWallet.contains("EUR")) {
+            accpage.euroWalletClick();
+        } else if (receiverWallet.contains("GBP")) {
+            accpage.gbpWalletClick();
+        } else if (receiverWallet.contains("JPY")) {
+            accpage.jpyWalletClick();
+        } else if (receiverWallet.contains("CNY")) {
+            accpage.cnyWalletClick();
+        } else {
+            System.out.println("Wallet doesn't matched!!");
+        }
+        waitload();
+        Thread.sleep(2500);
+        accpage.transactionsTabClick();
+        waitload();
+        Thread.sleep(2500);
+        Assert.assertTrue("Latest transaction data is not available in " + receiverWallet + " wallet transaction of tab! ", accpage.transDateCheck());
+        Assert.assertTrue("Transaction data didn't match as expected!", accpage.moveRecieverTransectionCheck());
         waitload();
     }
 
@@ -728,7 +755,6 @@ public class Accounts_Step {
             accpage.accMenuClick();
             waitload();
         }
-
     }
 
     @Then("statement should be downloaded")
@@ -745,7 +771,6 @@ public class Accounts_Step {
         waitload();
         accpage.withdrawTabClick();
         waitload();
-
     }
 
     @And("user add personal account")

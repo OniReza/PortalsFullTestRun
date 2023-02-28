@@ -3,12 +3,12 @@ package Utility;
 public class UserProfile {
     public static String environment = null;
     public static String planName = null;
-  // public static String planCurrency = "USD";
-    public static String planCurrency = "EUR";
+   public static String planCurrency = "USD";
+   // public static String planCurrency = "EUR";
 //    public static String planCurrency = "GBP";
 
     public static class cardLoad {
-        public static double clRate = 0.0200;
+        public static double clRate = 0.01980;
         public static double clMin = 0;
         public static double clMax = 0;
     }

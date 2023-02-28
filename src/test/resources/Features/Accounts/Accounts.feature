@@ -8,7 +8,7 @@ Feature: Test Accounts Functionality
     And user clicks on deposit
     And user expend from dropdown
     And user selects debit or credit card
-    And user enters amount to deposit "1000"
+    And user enters amount to deposit "5000"
     And user clicks agreement
     And deposit summary should appear
     And clicks confirm
@@ -22,7 +22,7 @@ Feature: Test Accounts Functionality
     And user clicks on deposit
     And user expend from dropdown
     And user selects debit or credit card
-    And user enters amount to deposit "1000"
+    And user enters amount to deposit "5000"
     And user clicks agreement
     And deposit summary should appear
     And clicks confirm
@@ -31,7 +31,7 @@ Feature: Test Accounts Functionality
     Then user should see post transaction balance is equal to available balance
 
   @usd_move @move @usd_all_features_us @usd_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
-  Scenario: Verify USD Wallet to GBP Wallet Move
+  Scenario: Verify USD Wallet to GBP Wallet Move(Sender's End)
     When user clicks on USD wallet
     And user clicks on move tab
     And user clicks on select beneficiary dropdown
@@ -43,8 +43,22 @@ Feature: Test Accounts Functionality
     And user clicks confirm again
     And transfer successfully completed message is shown
     And user clicks on ok
-    Then user should see post transaction balance after move is equal to available balance
+    Then user should see sender post transaction balance after move is equal to available balance
 
+  @usd_move @move @usd_all_features_us @usd_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
+  Scenario: Verify USD Wallet to GBP Wallet Move(Receiver's End)
+    When user clicks on USD wallet
+    And user clicks on move tab
+    And user clicks on select beneficiary dropdown
+    And user selects GBP wallet
+    And enter amount on sending amount box "200"
+    And move summary should appear
+    And user clicks confirm
+    And user enters secret code
+    And user clicks confirm again
+    And transfer successfully completed message is shown
+    And user clicks on ok
+    Then user should see receiver post transaction balance after move is equal to available balance
 
   @usd_us_bank @usd_all_features_us @all_wallet_features_us @all_us
   Scenario: Deposit: Verify Local(US Bank) Deposit to USD Wallet
@@ -178,7 +192,7 @@ Feature: Test Accounts Functionality
     And user clicks on deposit
     And user expend from dropdown
     And user selects debit or credit card
-    And user enters amount to deposit "1000"
+    And user enters amount to deposit "5000"
     And user clicks agreement
     And deposit summary should appear
     And clicks confirm
@@ -192,7 +206,7 @@ Feature: Test Accounts Functionality
     And user clicks on deposit
     And user expend from dropdown
     And user selects debit or credit card
-    And user enters amount to deposit "1000"
+    And user enters amount to deposit "5000"
     And user clicks agreement
     And deposit summary should appear
     And clicks confirm
@@ -202,7 +216,7 @@ Feature: Test Accounts Functionality
 
 
   @euro_move @move @euro_all_features_us @euro_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
-  Scenario: Verify Euro Wallet to USD Wallet Move
+  Scenario: Verify Euro Wallet to USD Wallet Move(Sender's End)
     When user clicks on EURO wallet
     And user clicks on move tab
     And user clicks on select beneficiary dropdown
@@ -214,7 +228,22 @@ Feature: Test Accounts Functionality
     And user clicks confirm again
     And transfer successfully completed message is shown
     And user clicks on ok
-    Then user should see post transaction balance after move is equal to available balance
+    Then user should see sender post transaction balance after move is equal to available balance
+
+  @euro_move @move @euro_all_features_us @euro_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
+  Scenario: Verify Euro Wallet to USD Wallet Move(Receiver's End)
+    When user clicks on EURO wallet
+    And user clicks on move tab
+    And user clicks on select beneficiary dropdown
+    And user selects USD wallet
+    And enter amount on sending amount box "200"
+    And move summary should appear
+    And user clicks confirm
+    And user enters secret code
+    And user clicks confirm again
+    And transfer successfully completed message is shown
+    And user clicks on ok
+    Then user should see receiver post transaction balance after move is equal to available balance
 
   @euro_us_bank @euro_all_features_us @all_wallet_features_us @all_us
   Scenario: Deposit: Verify Local(US Bank) Deposit to Euro Wallet
@@ -349,7 +378,7 @@ Feature: Test Accounts Functionality
     And user clicks on deposit
     And user expend from dropdown
     And user selects debit or credit card
-    And user enters amount to deposit "1000"
+    And user enters amount to deposit "5000"
     And user clicks agreement
     And deposit summary should appear
     And clicks confirm
@@ -363,7 +392,7 @@ Feature: Test Accounts Functionality
     And user clicks on deposit
     And user expend from dropdown
     And user selects debit or credit card
-    And user enters amount to deposit "1000"
+    And user enters amount to deposit "5000"
     And user clicks agreement
     And deposit summary should appear
     And clicks confirm
@@ -373,7 +402,7 @@ Feature: Test Accounts Functionality
 
 
   @gbp_move @move @gbp_all_features_us @gbp_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
-  Scenario: Verify GBP Wallet to EURO Wallet Move
+  Scenario: Verify GBP Wallet to EURO Wallet Move(Sender's end)
     When user clicks on GBP wallet
     And user clicks on move tab
     And user clicks on select beneficiary dropdown
@@ -385,7 +414,22 @@ Feature: Test Accounts Functionality
     And user clicks confirm again
     And transfer successfully completed message is shown
     And user clicks on ok
-    Then user should see post transaction balance after move is equal to available balance
+    Then user should see sender post transaction balance after move is equal to available balance
+
+  @gbp_move @move @gbp_all_features_us @gbp_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
+  Scenario: Verify GBP Wallet to EURO Wallet Move(Receiver's end)
+    When user clicks on GBP wallet
+    And user clicks on move tab
+    And user clicks on select beneficiary dropdown
+    And user selects EUR wallet
+    And enter amount on sending amount box "200"
+    And move summary should appear
+    And user clicks confirm
+    And user enters secret code
+    And user clicks confirm again
+    And transfer successfully completed message is shown
+    And user clicks on ok
+    Then user should see receiver post transaction balance after move is equal to available balance
 
   @gbp_us_bank @gbp_all_features_us @all_wallet_features_us @all_us
   Scenario: Deposit: Verify Local(US Bank) Deposit to GBP Wallet
@@ -519,7 +563,7 @@ Feature: Test Accounts Functionality
     And user clicks on deposit
     And user expend from dropdown
     And user selects debit or credit card
-    And user enters amount to deposit "5000"
+    And user enters amount to deposit "20000"
     And user clicks agreement
     And deposit summary should appear
     And clicks confirm
@@ -527,13 +571,14 @@ Feature: Test Accounts Functionality
     And user checks confirmation message and press ok
     Then user should see post transaction balance is equal to available balance
 
+    #add money in JPY wallet
   @jpy_move @jpy_all_features_non_us @all_non_us @all_wallet_features_non_us
   Scenario: Verify USD Wallet to JPY Wallet Move
     When user clicks on USD wallet
     And user clicks on move tab
     And user clicks on select beneficiary dropdown
     And user selects JPY wallet
-    And enter amount on sending amount box "1000"
+    And enter amount on sending amount box "2000"
     And move summary should appear
     And user clicks confirm
     And user enters secret code
@@ -542,7 +587,7 @@ Feature: Test Accounts Functionality
 
 
   @jpy_move @move @jpy_all_features_us @jpy_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
-  Scenario: Verify JPY Wallet to GBP Wallet Move
+  Scenario: Verify JPY Wallet to GBP Wallet Move(Sender's end)
     When user clicks on JPY wallet
     And user clicks on move tab
     And user clicks on select beneficiary dropdown
@@ -554,7 +599,22 @@ Feature: Test Accounts Functionality
     And user clicks confirm again
     And transfer successfully completed message is shown
     And user clicks on ok
-    Then user should see post transaction balance after move is equal to available balance
+    Then user should see sender post transaction balance after move is equal to available balance
+
+  @jpy_move @move @jpy_all_features_us @jpy_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
+  Scenario: Verify JPY Wallet to GBP Wallet Move(Receiver's end)
+    When user clicks on JPY wallet
+    And user clicks on move tab
+    And user clicks on select beneficiary dropdown
+    And user selects GBP wallet
+    And enter amount on sending amount box "2000"
+    And move summary should appear
+    And user clicks confirm
+    And user enters secret code
+    And user clicks confirm again
+    And transfer successfully completed message is shown
+    And user clicks on ok
+    Then user should see receiver post transaction balance after move is equal to available balance
 
   @jpy_us_bank @jpy_all_features_us @all_wallet_features_us @all_us
   Scenario: Deposit: Verify Local(US Bank) Deposit to JPY Wallet
@@ -687,7 +747,7 @@ Feature: Test Accounts Functionality
     And user clicks on deposit
     And user expend from dropdown
     And user selects debit or credit card
-    And user enters amount to deposit "5000"
+    And user enters amount to deposit "10000"
     And user clicks agreement
     And deposit summary should appear
     And clicks confirm
@@ -695,13 +755,14 @@ Feature: Test Accounts Functionality
     And user checks confirmation message and press ok
     Then user should see post transaction balance is equal to available balance
 
+     #add money in CNY wallet
   @cny_move @cny_all_features_non_us @all_non_us @all_wallet_features_non_us
   Scenario: Verify USD Wallet to CNY Wallet Move
     When user clicks on USD wallet
     And user clicks on move tab
     And user clicks on select beneficiary dropdown
     And user selects CNY wallet
-    And enter amount on sending amount box "1000"
+    And enter amount on sending amount box "2000"
     And move summary should appear
     And user clicks confirm
     And user enters secret code
@@ -709,7 +770,7 @@ Feature: Test Accounts Functionality
     Then transfer successfully completed message should appear
 
   @cny_move @move @cny_all_features_us @cny_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
-  Scenario: Verify CNY Wallet to USD Wallet Move
+  Scenario: Verify CNY Wallet to USD Wallet Move(Sender's end)
     When user clicks on CNY wallet
     And user clicks on move tab
     And user clicks on select beneficiary dropdown
@@ -721,7 +782,22 @@ Feature: Test Accounts Functionality
     And user clicks confirm again
     And transfer successfully completed message is shown
     And user clicks on ok
-    Then user should see post transaction balance after move is equal to available balance
+    Then user should see sender post transaction balance after move is equal to available balance
+
+  @cny_move @move @cny_all_features_us @cny_all_features_non_us @all_wallet_features_us @all_us @all_non_us @all_wallet_features_non_us
+  Scenario: Verify CNY Wallet to USD Wallet Move(Receiver's end)
+    When user clicks on CNY wallet
+    And user clicks on move tab
+    And user clicks on select beneficiary dropdown
+    And user selects USD wallet
+    And enter amount on sending amount box "500"
+    And move summary should appear
+    And user clicks confirm
+    And user enters secret code
+    And user clicks confirm again
+    And transfer successfully completed message is shown
+    And user clicks on ok
+    Then user should see receiver post transaction balance after move is equal to available balance
 
   @cny_us_bank @cny_all_features_us @all_wallet_features_us @all_us
   Scenario: Deposit: Verify Local(US Bank) Deposit to CNY Wallet
@@ -846,6 +922,8 @@ Feature: Test Accounts Functionality
     And user clicks on statements tab
     And if any statement available user clicks on download button
     Then statement should be downloaded
+
+
 
 
 
