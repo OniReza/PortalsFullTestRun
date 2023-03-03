@@ -50,14 +50,11 @@ public class Cards_Step {
     public void user_clicks_on_physical_card() throws InterruptedException {
         waitload();
         cardspage.physicalCardClick();
-        //Assert.assertTrue("We are not in details tab", cardspage.detailsTabCheck());
         waitload();
     }
 
     @And("user clicks on statements Tab")
     public void user_is_in_details_tab_user_clicks_on_statements_tab() throws InterruptedException {
-//        clicks_on_virtual_card_tab_from_card_page();
-//        user_clicks_on_first_virtual_card();
         waitload();
         cardspage.statementTabClick();
         waitload();
@@ -81,8 +78,6 @@ public class Cards_Step {
 
     @When("user clicks on transaction tab")
     public void user_clicks_on_transaction_tab() throws InterruptedException {
-//        clicks_on_virtual_card_tab_from_card_page();
-//        user_clicks_on_first_virtual_card();
         waitload();
         cardspage.transactionTabClick();
         waitload();
@@ -107,6 +102,16 @@ public class Cards_Step {
         waitload();
         cardspage.loadTabClick();
         waitload();
+        cardspage.getLoadWalletCurrencies();
+    }
+
+    @And("user clicks on unload tab")
+    public void user_clicks_on_unload_tab() throws InterruptedException {
+        waitload();
+        cardspage.unloadTabClick();
+        waitload();
+        cardspage.getUnloadWalletCurrencies();
+        waitload();
     }
 
     @When("user enters amount to load {string}")
@@ -116,10 +121,22 @@ public class Cards_Step {
         waitload();
     }
 
-    @When("user checks overview")
-    public void user_checks_overview() throws InterruptedException {
+    @When("user checks load summary")
+    public void user_checks_load_summary() throws InterruptedException {
         waitload();
-        Assert.assertTrue("Overview didn't appeared", cardspage.overviewCheck());
+        cardspage.getLoadSummaryData();
+        waitload();
+        Assert.assertTrue("Debit summary doesn't appeared as expected", cardspage.loadDebitSummaryCheck());
+        Assert.assertTrue("Credit summary doesn't appeared as expected", cardspage.loadCreditSummaryCheck());
+        waitload();
+    }
+    @When("user checks unload summary")
+    public void user_checks_unload_summary() throws InterruptedException {
+        waitload();
+        cardspage.getUnloadSummaryData();
+        waitload();
+       Assert.assertTrue("Debit summary doesn't appeared as expected", cardspage.unloadDebitSummaryCheck());
+       Assert.assertTrue("Credit summary doesn't appeared as expected", cardspage.unloadCreditSummaryCheck());
         waitload();
     }
 
@@ -186,25 +203,15 @@ public class Cards_Step {
         System.out.println("Back to Physical card");
     }
 
-    @And("user clicks on unload tab")
-    public void user_clicks_on_unload_tab() throws InterruptedException {
-//        user_clicks_on_Cards_on_side_menu();
-//        user_clicks_on_physical_card();
-        waitload();
-        cardspage.unloadTabClick();
-        waitload();
-    }
 
-    @And("user enters amount to unload")
-    public void user_enters_amount_to_unload() throws InterruptedException {
-        cardspage.enterUnloadAmount();
+    @And("user enters amount to unload {string}")
+    public void user_enters_amount_to_unload(String amount) throws InterruptedException {
+        cardspage.enterUnloadAmount(amount);
         waitload();
     }
 
     @And("user clicks on topup tab")
     public void user_clicks_on_topup_tab() throws InterruptedException {
-//        clicks_on_virtual_card_tab_from_card_page();
-//        user_clicks_on_first_virtual_card();
         waitload();
         cardspage.topUpTabClick();
         waitload();
@@ -229,7 +236,6 @@ public class Cards_Step {
     @When("user checks summary")
     public void user_checks_summary() throws Exception {
         waitload();
-//        Assert.assertTrue("Topup Summary didn't appear", cardspage.summaryCheck());
         Accounts_Step ac = new Accounts_Step();
         ac.deposit_summary_should_appear();
         Thread.sleep(1000);

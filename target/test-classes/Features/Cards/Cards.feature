@@ -3,25 +3,25 @@ Feature: Test functionality of Card page
     Given user has logged into the portal
 
 
-  @phy_card_load @all_phy_card_feature @all_card_features @all_us @all_non_us
+  @phy_card_load @all_phy_card_feature @all_card_features @all_us @all_non_us @card_load
   Scenario: Verify Load Functionality of Physical Card
     When user clicks on cards on side menu
     And user clicks on physical card
     And user clicks on load tab
     And user enters amount to load "180"
-    And user checks overview
+    And user checks load summary
     And user clicks confirm button
     And user provides otp and clicks confirm button again
     And user checks transfer success message and press ok button
     Then user should redirect back to physical card page
 
-  @phy_card_unload @all_phy_card_feature @all_card_features @all_us @all_non_us
+  @phy_card_unload @all_phy_card_feature @all_card_features @all_us @all_non_us @card_unload
   Scenario: Verify Unload Functionality of Physical Card
     When user clicks on cards on side menu
     And user clicks on physical card
     And user clicks on unload tab
-    And user enters amount to unload
-    And user checks overview
+    And user enters amount to unload "90"
+    And user checks unload summary
     And user clicks confirm button
     And user provides otp and clicks confirm button again
     And user checks transfer success message and press ok button
@@ -90,25 +90,25 @@ Feature: Test functionality of Card page
     Then user should be able to export transactions as pdf and csv
 
 ##++++++++++++++++++++++++++++++++++++++++++++++++++++ First Virtual Card ++++++++++++++++++++++++++++++++++++++++++++++
-  @first_Vcard_load @all_first_Vcard_feature @all_card_features @all_Vcard_features @all_us @all_non_us
+  @first_Vcard_load @all_first_Vcard_feature @all_card_features @all_Vcard_features @all_us @all_non_us @card_load
   Scenario: Verify Load Functionality of First Virtual Card
     When clicks on virtual card tab from card page
     And user clicks on first virtual card
     And user clicks on load tab
     And user enters amount to load "550"
-    And user checks overview
+    And user checks load summary
     And user clicks confirm button
     And user provides otp and clicks confirm button again
     And user checks transfer success message and press ok button
     Then user should redirect back to physical card page
 
-  @first_Vcard_unload @all_first_Vcard_feature @all_card_features @all_Vcard_features @all_us @all_non_us
+  @first_Vcard_unload @all_first_Vcard_feature @all_card_features @all_Vcard_features @all_us @all_non_us @card_unload
   Scenario: Verify UnLoad Functionality of First Virtual Card
     When clicks on virtual card tab from card page
     And user clicks on first virtual card
     When user clicks on unload tab
-    And user enters amount to unload
-    And user checks overview
+    And user enters amount to unload "90"
+    And user checks unload summary
     And user clicks confirm button
     And user provides otp and clicks confirm button again
     And user checks transfer success message and press ok button
@@ -176,25 +176,25 @@ Feature: Test functionality of Card page
     Then a statement will be downloaded
 
 ##++++++++++++++++++++++++++++++++++++++++++++++++++++ Second Virtual Card +++++++++++++++++++++++++++++++++++++++++++++
-  @second_Vcard_load @all_second_Vcard_feature @all_card_features @all_Vcard_features @all_us @all_non_us
+  @second_Vcard_load @all_second_Vcard_feature @all_card_features @all_Vcard_features @all_us @all_non_us @card_load
   Scenario: Verify Load Functionality of Second Virtual Card
     When clicks on virtual card tab from card page
     And user clicks on second virtual card
     And user clicks on load tab
     And user enters amount to load "350"
-    And user checks overview
+    And user checks load summary
     And user clicks confirm button
     And user provides otp and clicks confirm button again
     And user checks transfer success message and press ok button
     Then user should redirect back to physical card page
 
-  @second_Vcard_unload @all_second_Vcard_feature @all_card_features @all_Vcard_features @all_us @all_non_us
+  @second_Vcard_unload @all_second_Vcard_feature @all_card_features @all_Vcard_features @all_us @all_non_us @card_unload
   Scenario: Verify UnLoad Functionality of Second Virtual Card
     When clicks on virtual card tab from card page
     And user clicks on second virtual card
     When user clicks on unload tab
-    And user enters amount to unload
-    And user checks overview
+    And user enters amount to unload "90"
+    And user checks unload summary
     And user clicks confirm button
     And user provides otp and clicks confirm button again
     And user checks transfer success message and press ok button
@@ -263,25 +263,25 @@ Feature: Test functionality of Card page
     Then a statement will be downloaded
 
     ##++++++++++++++++++++++++++++++++++++++++++++++++++++ Third Virtual Card +++++++++++++++++++++++++++++++++++++++++++++
-  @third_Vcard_load @all_third_Vcard_feature @all_card_features @all_Vcard_features @all_us @all_non_us
+  @third_Vcard_load @all_third_Vcard_feature @all_card_features @all_Vcard_features @all_us @all_non_us @card_load
   Scenario: Verify Load Functionality of Third Virtual Card
     When clicks on virtual card tab from card page
     And user clicks on third virtual card
     And user clicks on load tab
     And user enters amount to load "150"
-    And user checks overview
+    And user checks load summary
     And user clicks confirm button
     And user provides otp and clicks confirm button again
     And user checks transfer success message and press ok button
     Then user should redirect back to physical card page
 
-  @third_Vcard_unload @all_third_Vcard_feature @all_card_features @all_Vcard_features @all_us @all_non_us
+  @third_Vcard_unload @all_third_Vcard_feature @all_card_features @all_Vcard_features @all_us @all_non_us @card_unload
   Scenario: Verify UnLoad Functionality of Third Virtual Card
     When clicks on virtual card tab from card page
     And user clicks on third virtual card
     When user clicks on unload tab
-    And user enters amount to unload
-    And user checks overview
+    And user enters amount to unload "90"
+    And user checks unload summary
     And user clicks confirm button
     And user provides otp and clicks confirm button again
     And user checks transfer success message and press ok button

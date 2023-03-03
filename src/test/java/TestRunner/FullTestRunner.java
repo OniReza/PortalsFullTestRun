@@ -7,7 +7,7 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(features = "src/test/resources/Features",glue = "StepDefinations",
 
-        tags = " @move",
+        tags = "@card_load or @card_unload",
         plugin ={"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"},
         monochrome = true)
 

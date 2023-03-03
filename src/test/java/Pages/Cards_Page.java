@@ -7,8 +7,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.math.RoundingMode;
 import java.text.DateFormat;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 
@@ -66,7 +69,24 @@ public class Cards_Page extends CommonPageMethods {
     public WebElement topupSummary;
     @FindBy(xpath = "//button[contains(text(),'Confirm')]")
     public WebElement topupConfirmBtn;
-
+    @FindBy(xpath = "//span[contains(text(),'view')]/../../div[2]")
+    public WebElement dbtLabel;
+    @FindBy(xpath = "//span[contains(text(),'view')]/../../div[4]")
+    public WebElement receLabel;
+    @FindBy(xpath = "//span[contains(text(),'view')]/../../div[3]")
+    public WebElement dbtAmt;
+    @FindBy(xpath = "//span[contains(text(),'view')]/../../div[5]")
+    public WebElement recAmt;
+    @FindBy(xpath = "//span[contains(text(),'Rate')]/../../div[2]")
+    public WebElement convRate;
+    @FindBy(xpath = "(//div/button/span/span)[2]")
+    public WebElement sednerWallCurr;
+    @FindBy(xpath = "(//div/button/span/span)[4]")
+    public WebElement reciverCardCurr;
+    @FindBy(xpath = "(//div/button/span/span)[3]")
+    public WebElement reciverWalletCurr;
+    @FindBy(xpath = "(//div/input)[2]")
+    public WebElement recivingAmt;
     //++++++++++++++++++++++++++++++++++++++PIN+++++++++++++++++++++++++++++++++++++++++
     @FindBy(xpath = "//span[contains(text(),'Pin')]")
     public WebElement pinTab;
@@ -88,6 +108,11 @@ public class Cards_Page extends CommonPageMethods {
     public WebElement secondVCard;
     @FindBy(xpath = "(//p[contains(text(),'Available Balance')])[3]")
     public WebElement thirdVCard;
+    DecimalFormat df = new DecimalFormat("#.0");
+    String loadAmt, unloadAmt;
+    String senderWalletCurrency, receiverCardCurrency;
+    String senderCardCurrency, receiverWalletCurrency;
+    String amtDebetLabel, amtReceiveLabel, debtAmt, receiveAmt, conversionRate, calculatedReceiveAmt;
     @FindBy(name = "reEnterPassword")
     WebElement pinPassword;
     @FindBy(xpath = "//span[contains(text(),'SUBMIT') or contains(text(),'submit')]")
@@ -132,9 +157,6 @@ public class Cards_Page extends CommonPageMethods {
         statementTab.click();
     }
 
-    //    public boolean availableStatement() {
-//        return downloadBtn.isDisplayed();
-//    }
     public Boolean isStatementAvailable() {
         return AssertPageStatement.isDisplayed();
     }
@@ -148,11 +170,13 @@ public class Cards_Page extends CommonPageMethods {
     }
 
     public void enterLoadAmount(String amt) {
+        loadAmt = amt;
         loadAmount.sendKeys(amt);
     }
 
-    public void enterUnloadAmount() {
-        unLoadAmount.sendKeys("35");
+    public void enterUnloadAmount(String amt) {
+        unloadAmt = amt;
+        unLoadAmount.sendKeys(unloadAmt);
     }
 
     public boolean overviewCheck() {
@@ -163,7 +187,7 @@ public class Cards_Page extends CommonPageMethods {
         confirmBtn.click();
     }
 
-    public void enterOtp()throws Exception {
+    public void enterOtp() throws Exception {
         otpInput.sendKeys(BaseData.BaseOtp());
     }
 
@@ -232,7 +256,7 @@ public class Cards_Page extends CommonPageMethods {
         pinTab.click();
     }
 
-    public void enterPinPass()throws Exception {
+    public void enterPinPass() throws Exception {
         pinPassword.sendKeys(BaseData.BasePassword());
     }
 
@@ -249,7 +273,7 @@ public class Cards_Page extends CommonPageMethods {
         click(digitalCardTab);
     }
 
-    public void enterOtpDigitalCard()throws Exception {
+    public void enterOtpDigitalCard() throws Exception {
         otp.sendKeys(BaseData.BaseOtp());
     }
 
@@ -303,5 +327,412 @@ public class Cards_Page extends CommonPageMethods {
     public void thirdVCardClick() {
         thirdVCard.click();
     }
+
+    public void getLoadWalletCurrencies() {
+        senderWalletCurrency = sednerWallCurr.getText().trim();
+        receiverCardCurrency = reciverCardCurr.getText().trim();
+        System.out.println("Sender's wallet Currency: " + senderWalletCurrency);
+        System.out.println("Receiver card Currency: " + receiverCardCurrency);
+    }
+
+    public void getUnloadWalletCurrencies() {
+        senderCardCurrency = sednerWallCurr.getText().trim();
+        receiverWalletCurrency = reciverWalletCurr.getText().trim();
+        System.out.println("Sender's Card Currency: " + senderCardCurrency);
+        System.out.println("Receiver wallet Currency: " + receiverWalletCurrency);
+    }
+
+    public void getLoadSummaryData() {
+        amtDebetLabel = dbtLabel.getText();
+        amtReceiveLabel = receLabel.getText();
+        debtAmt = dbtAmt.getText();
+        receiveAmt = recAmt.getText().replaceAll("\\,", "");
+        conversionRate = convRate.getText();
+        //calculation
+        double calReceiveAmt = Double.valueOf(loadAmt) * Double.valueOf(conversionRate.replaceAll("\\s", "").substring(4));
+        df.setRoundingMode(RoundingMode.DOWN);
+        double calculatedRecAmount = Double.parseDouble(df.format(calReceiveAmt));
+        calculatedReceiveAmt = String.valueOf(calculatedRecAmount);
+        System.out.println("Calculated receive amt: " + calculatedRecAmount);
+        System.out.println("Send Amt: " + debtAmt);
+        System.out.println("Receive Amt: " + receiveAmt);
+        System.out.println("Conv Rate: " + conversionRate);
+
+    }
+
+    public void getUnloadSummaryData() {
+        amtDebetLabel = dbtLabel.getText();
+        amtReceiveLabel = receLabel.getText();
+        debtAmt = dbtAmt.getText();
+        receiveAmt = recAmt.getText().replaceAll("\\,", "");
+        conversionRate = convRate.getText();
+        //calculation
+        double calReceiveAmt = Double.valueOf(unloadAmt) * Double.valueOf(conversionRate.replaceAll("\\s", "").substring(4));
+        df.setRoundingMode(RoundingMode.DOWN);
+        double calculatedRecAmount = Double.parseDouble(df.format(calReceiveAmt));
+        calculatedReceiveAmt = String.valueOf(calculatedRecAmount);
+        System.out.println("Calculated receive amt: " + calculatedRecAmount);
+        System.out.println("Send Amt: " + debtAmt);
+        System.out.println("Receive Amt: " + receiveAmt);
+        System.out.println("Conv Rate: " + conversionRate);
+
+    }
+
+    public boolean loadDebitSummaryCheck() {
+        if (senderWalletCurrency.equals("USD")) {
+            boolean a = amtDebetLabel.contains("Total to be debited");
+            boolean b = debtAmt.contains("$");
+            boolean c = debtAmt.contains(loadAmt);
+            boolean d = conversionRate.replaceAll("\\s", "").substring(0, 1).contains("$");
+            System.out.println("Total to be debited: " + a);
+            System.out.println("Total to be debited Currency: " + b);
+            System.out.println("Total to be debited Amount: " + c);
+            System.out.println("Conversion Currency: " + d);
+            System.out.println("Debit wallet Currency: " + conversionRate.replaceAll("\\s", "").substring(0, 1));
+
+            if (amtDebetLabel.contains("Total to be debited") && debtAmt.contains("$") && debtAmt.contains(loadAmt) &&
+                    conversionRate.replaceAll("\\s", "").substring(0, 1).contains("$"))
+                return true;
+            else
+                return false;
+
+        } else if (senderWalletCurrency.equals("EUR")) {
+            boolean a = amtDebetLabel.contains("Total to be debited");
+            boolean b = debtAmt.contains("€");
+            boolean c = debtAmt.contains(loadAmt);
+            boolean d = conversionRate.replaceAll("\\s", "").substring(0, 1).contains("€");
+            System.out.println("Total to be debited: " + a);
+            System.out.println("Total to be debited Currency: " + b);
+            System.out.println("Total to be debited Amount: " + c);
+            System.out.println("Conversion Currency: " + d);
+            System.out.println("Debit wallet Currency: " + conversionRate.replaceAll("\\s", "").substring(0, 1));
+
+            if (amtDebetLabel.contains("Total to be debited") && debtAmt.contains("€") && debtAmt.contains(loadAmt) &&
+                    conversionRate.replaceAll("\\s", "").substring(0, 1).contains("€"))
+                return true;
+            else
+                return false;
+
+        } else if (senderWalletCurrency.equals("GBP")) {
+            boolean a = amtDebetLabel.contains("Total to be debited");
+            boolean b = debtAmt.contains("£");
+            boolean c = debtAmt.contains(loadAmt);
+            boolean d = conversionRate.replaceAll("\\s", "").substring(0, 1).contains("£");
+            System.out.println("Total to be debited: " + a);
+            System.out.println("Total to be debited Currency: " + b);
+            System.out.println("Total to be debited Amount: " + c);
+            System.out.println("Conversion Currency: " + d);
+            System.out.println("Debit wallet Currency: " + conversionRate.replaceAll("\\s", "").substring(0, 1));
+
+            if (amtDebetLabel.contains("Total to be debited") && debtAmt.contains("£") && debtAmt.contains(loadAmt) &&
+                    conversionRate.replaceAll("\\s", "").substring(0, 1).contains("£"))
+                return true;
+            else
+                return false;
+
+        } else if (senderWalletCurrency.equals("JPY")) {
+            boolean a = amtDebetLabel.contains("Total to be debited");
+            boolean b = debtAmt.contains("¥");
+            boolean c = debtAmt.contains(loadAmt);
+            boolean d = conversionRate.replaceAll("\\s", "").substring(0, 1).contains("円");
+            System.out.println("Total to be debited: " + a);
+            System.out.println("Total to be debited Currency: " + b);
+            System.out.println("Total to be debited Amount: " + c);
+            System.out.println("Conversion Currency: " + d);
+            System.out.println("Debit wallet Currency: " + conversionRate.replaceAll("\\s", "").substring(0, 1));
+
+            if (amtDebetLabel.contains("Total to be debited") && debtAmt.contains("¥") && debtAmt.contains(loadAmt) &&
+                    conversionRate.replaceAll("\\s", "").substring(0, 1).contains("円"))
+                return true;
+            else
+                return false;
+
+        } else if (senderWalletCurrency.equals("CNY")) {
+            boolean a = amtDebetLabel.contains("Total to be debited");
+            boolean b = debtAmt.contains("¥");
+            boolean c = debtAmt.contains(loadAmt);
+            boolean d = conversionRate.replaceAll("\\s", "").substring(0, 1).contains("¥");
+            System.out.println("Total to be debited: " + a);
+            System.out.println("Total to be debited Currency: " + b);
+            System.out.println("Total to be debited Amount: " + c);
+            System.out.println("Conversion Currency: " + d);
+            System.out.println("Debit wallet Currency: " + conversionRate.replaceAll("\\s", "").substring(0, 1));
+
+            if (amtDebetLabel.contains("Total to be debited") && debtAmt.contains("¥") && debtAmt.contains(loadAmt) &&
+                    conversionRate.replaceAll("\\s", "").substring(0, 1).contains("¥"))
+                return true;
+            else
+                return false;
+        }
+        return false;
+    }
+
+    public boolean loadCreditSummaryCheck() {
+        if (receiverCardCurrency.equals("USD")) {
+            boolean a = amtReceiveLabel.contains("Total to be received");
+            boolean b = receiveAmt.contains("$");
+            boolean c = Double.valueOf(receiveAmt.replaceAll("[^\\.\\d]", "")) - Double.valueOf(calculatedReceiveAmt) < .5;
+            boolean d = conversionRate.replaceAll("\\s", "").substring(3, 4).contains("$");
+            System.out.println("Total to be received: " + a);
+            System.out.println("Total to be received Currency: " + b);
+            System.out.println("Total to be received Amount: " + c);
+            System.out.println("Conversion Currency: " + d);
+            System.out.println("Credit wallet Currency: " + conversionRate.replaceAll("\\s", "").substring(3, 4));
+            System.out.println("Calcualtion Difference: " + (Double.valueOf(receiveAmt.replaceAll("[^\\.\\d]", "")) - Double.valueOf(calculatedReceiveAmt)));
+
+            if (amtReceiveLabel.contains("Total to be received") && receiveAmt.contains("$") && Double.valueOf(receiveAmt.replaceAll("[^\\.\\d]", "")) - Double.valueOf(calculatedReceiveAmt) < .5 &&
+                    conversionRate.replaceAll("\\s", "").substring(3, 4).contains("$"))
+                return true;
+            else
+                return false;
+
+        } else if (receiverCardCurrency.equals("EUR")) {
+            boolean a = amtReceiveLabel.contains("Total to be received");
+            boolean b = receiveAmt.contains("€");
+            boolean c = Double.valueOf(receiveAmt.replaceAll("[^\\.\\d]", "")) - Double.valueOf(calculatedReceiveAmt) < .5;
+            boolean d = conversionRate.replaceAll("\\s", "").substring(3, 4).contains("€");
+            System.out.println("Total to be received: " + a);
+            System.out.println("Total to be received Currency: " + b);
+            System.out.println("Total to be received Amount: " + c);
+            System.out.println("Conversion Currency: " + d);
+            System.out.println("Credit wallet Currency: " + conversionRate.replaceAll("\\s", "").substring(3, 4));
+            System.out.println("Calcualtion Difference: " + (Double.valueOf(receiveAmt.replaceAll("[^\\.\\d]", "")) - Double.valueOf(calculatedReceiveAmt)));
+
+            if (amtReceiveLabel.contains("Total to be received") && receiveAmt.contains("€") && Double.valueOf(receiveAmt.replaceAll("[^\\.\\d]", "")) - Double.valueOf(calculatedReceiveAmt) < .5 &&
+                    conversionRate.replaceAll("\\s", "").substring(3, 4).contains("€"))
+                return true;
+            else
+                return false;
+
+        } else if (receiverCardCurrency.equals("GBP")) {
+            boolean a = amtReceiveLabel.contains("Total to be received");
+            boolean b = receiveAmt.contains("£");
+            boolean c = Double.valueOf(receiveAmt.replaceAll("[^\\.\\d]", "")) - Double.valueOf(calculatedReceiveAmt) < .5;
+            boolean d = conversionRate.replaceAll("\\s", "").substring(3, 4).contains("£");
+            System.out.println("Total to be received: " + a);
+            System.out.println("Total to be received Currency: " + b);
+            System.out.println("Total to be received Amount: " + c);
+            System.out.println("Conversion Currency: " + d);
+            System.out.println("Credit wallet Currency: " + conversionRate.replaceAll("\\s", "").substring(3, 4));
+            System.out.println("Calcualtion Difference: " + (Double.valueOf(receiveAmt.replaceAll("[^\\.\\d]", "")) - Double.valueOf(calculatedReceiveAmt)));
+
+            if (amtReceiveLabel.contains("Total to be received") && receiveAmt.contains("£") && Double.valueOf(receiveAmt.replaceAll("[^\\.\\d]", "")) - Double.valueOf(calculatedReceiveAmt) < .5 &&
+                    conversionRate.replaceAll("\\s", "").substring(3, 4).contains("£"))
+                return true;
+            else
+                return false;
+
+        } else if (receiverCardCurrency.equals("JPY")) {
+            boolean a = amtReceiveLabel.contains("Total to be received");
+            boolean b = receiveAmt.contains("¥");
+            boolean c = Double.valueOf(receiveAmt.replaceAll("[^\\.\\d]", "")) - Double.valueOf(calculatedReceiveAmt) < 1;
+            boolean d = conversionRate.replaceAll("\\s", "").substring(3, 4).contains("円");
+            System.out.println("Total to be received: " + a);
+            System.out.println("Total to be received Currency: " + b);
+            System.out.println("Total to be received Amount: " + c);
+            System.out.println("Conversion Currency: " + d);
+            System.out.println("Credit wallet Currency: " + conversionRate.replaceAll("\\s", "").substring(3, 4));
+
+            if (amtReceiveLabel.contains("Total to be received") && receiveAmt.contains("¥") && Double.valueOf(receiveAmt.replaceAll("[^\\.\\d]", "")) - Double.valueOf(calculatedReceiveAmt) < 1 &&
+                    conversionRate.replaceAll("\\s", "").substring(3, 4).contains("円"))
+                return true;
+            else
+                return false;
+
+        } else if (receiverCardCurrency.equals("CNY")) {
+            boolean a = amtReceiveLabel.contains("Total to be received");
+            boolean b = receiveAmt.contains("¥");
+            boolean c = Double.valueOf(receiveAmt.replaceAll("[^\\.\\d]", "")) - Double.valueOf(calculatedReceiveAmt) < .5;
+            boolean d = conversionRate.replaceAll("\\s", "").substring(3, 4).contains("¥");
+            System.out.println("Total to be received: " + a);
+            System.out.println("Total to be received Currency: " + b);
+            System.out.println("Total to be received Amount: " + c);
+            System.out.println("Conversion Currency: " + d);
+            System.out.println("Credit wallet Currency: " + conversionRate.replaceAll("\\s", "").substring(3, 4));
+            System.out.println("Calcualtion Difference: " + (Double.valueOf(receiveAmt.replaceAll("[^\\.\\d]", "")) - Double.valueOf(calculatedReceiveAmt)));
+
+            if (amtReceiveLabel.contains("Total to be received") && receiveAmt.contains("¥") && Double.valueOf(receiveAmt.replaceAll("[^\\.\\d]", "")) - Double.valueOf(calculatedReceiveAmt) < .5 &&
+                    conversionRate.replaceAll("\\s", "").substring(3, 4).contains("¥"))
+                return true;
+            else
+                return false;
+        }
+        return false;
+    }
+
+    public boolean unloadDebitSummaryCheck() {
+        if (senderCardCurrency.equals("USD")) {
+            boolean a = amtDebetLabel.contains("Total to be debited");
+            boolean b = debtAmt.contains("$");
+            boolean c = debtAmt.contains(unloadAmt);
+            boolean d = conversionRate.contains("$");
+            System.out.println("Total to be debited: " + a);
+            System.out.println("Total to be debited Currency: " + b);
+            System.out.println("Total to be debited Amount: " + c);
+            System.out.println("Conversion Currency: " + d);
+
+            if (amtDebetLabel.contains("Total to be debited") && debtAmt.contains("$") && debtAmt.contains(unloadAmt) &&
+                    conversionRate.contains("$"))
+                return true;
+            else
+                return false;
+
+        } else if (senderCardCurrency.equals("EUR")) {
+            boolean a = amtDebetLabel.contains("Total to be debited");
+            boolean b = debtAmt.contains("€");
+            boolean c = debtAmt.contains(unloadAmt);
+            boolean d = conversionRate.contains("€");
+            System.out.println("Total to be debited: " + a);
+            System.out.println("Total to be debited Currency: " + b);
+            System.out.println("Total to be debited Amount: " + c);
+            System.out.println("Conversion Currency: " + d);
+
+            if (amtDebetLabel.contains("Total to be debited") && debtAmt.contains("€") && debtAmt.contains(unloadAmt) &&
+                    conversionRate.contains("€"))
+                return true;
+            else
+                return false;
+
+        } else if (senderCardCurrency.equals("GBP")) {
+            boolean a = amtDebetLabel.contains("Total to be debited");
+            boolean b = debtAmt.contains("£");
+            boolean c = debtAmt.contains(unloadAmt);
+            boolean d = conversionRate.contains("£");
+            System.out.println("Total to be debited: " + a);
+            System.out.println("Total to be debited Currency: " + b);
+            System.out.println("Total to be debited Amount: " + c);
+            System.out.println("Conversion Currency: " + d);
+
+            if (amtDebetLabel.contains("Total to be debited") && debtAmt.contains("£") && debtAmt.contains(unloadAmt) &&
+                    conversionRate.contains("£"))
+                return true;
+            else
+                return false;
+
+        } else if (senderCardCurrency.equals("JPY")) {
+            boolean a = amtDebetLabel.contains("Total to be debited");
+            boolean b = debtAmt.contains("¥");
+            boolean c = debtAmt.contains(unloadAmt);
+            boolean d = conversionRate.contains("円");
+            System.out.println("Total to be debited: " + a);
+            System.out.println("Total to be debited Currency: " + b);
+            System.out.println("Total to be debited Amount: " + c);
+            System.out.println("Conversion Currency: " + d);
+
+            if (amtDebetLabel.contains("Total to be debited") && debtAmt.contains("¥") && debtAmt.contains(unloadAmt) &&
+                    conversionRate.contains("円"))
+                return true;
+            else
+                return false;
+
+        } else if (senderCardCurrency.equals("CNY")) {
+            boolean a = amtDebetLabel.contains("Total to be debited");
+            boolean b = debtAmt.contains("¥");
+            boolean c = debtAmt.contains(unloadAmt);
+            boolean d = conversionRate.contains("¥");
+            System.out.println("Total to be debited: " + a);
+            System.out.println("Total to be debited Currency: " + b);
+            System.out.println("Total to be debited Amount: " + c);
+            System.out.println("Conversion Currency: " + d);
+
+            if (amtDebetLabel.contains("Total to be debited") && debtAmt.contains("¥") && debtAmt.contains(unloadAmt) &&
+                    conversionRate.contains("¥"))
+                return true;
+            else
+                return false;
+        }
+        return false;
+    }
+
+    public boolean unloadCreditSummaryCheck() {
+        if (receiverWalletCurrency.equals("USD")) {
+            boolean a = amtReceiveLabel.contains("Total to be received");
+            boolean b = receiveAmt.contains("$");
+            boolean c = Double.valueOf(receiveAmt.replaceAll("[^\\.\\d]", "")) - Double.valueOf(calculatedReceiveAmt) < .5;
+            boolean d = conversionRate.contains("$");
+            System.out.println("Total to be received: " + a);
+            System.out.println("Total to be received Currency: " + b);
+            System.out.println("Total to be received Amount: " + c);
+            System.out.println("Conversion Currency: " + d);
+            System.out.println("Calcualtion Difference: " + (Double.valueOf(receiveAmt.replaceAll("[^\\.\\d]", "")) - Double.valueOf(calculatedReceiveAmt)));
+
+            if (amtReceiveLabel.contains("Total to be received") && receiveAmt.contains("$") && Double.valueOf(receiveAmt.replaceAll("[^\\.\\d]", "")) - Double.valueOf(calculatedReceiveAmt) < .5 &&
+                    conversionRate.contains("$"))
+                return true;
+            else
+                return false;
+
+        } else if (receiverWalletCurrency.equals("EUR")) {
+            boolean a = amtReceiveLabel.contains("Total to be received");
+            boolean b = receiveAmt.contains("€");
+            boolean c = Double.valueOf(receiveAmt.replaceAll("[^\\.\\d]", "")) - Double.valueOf(calculatedReceiveAmt) < .5;
+            boolean d = conversionRate.contains("€");
+            System.out.println("Total to be received: " + a);
+            System.out.println("Total to be received Currency: " + b);
+            System.out.println("Total to be received Amount: " + c);
+            System.out.println("Conversion Currency: " + d);
+            System.out.println("Calcualtion Difference: " + (Double.valueOf(receiveAmt.replaceAll("[^\\.\\d]", "")) - Double.valueOf(calculatedReceiveAmt)));
+
+            if (amtReceiveLabel.contains("Total to be received") && receiveAmt.contains("€") && Double.valueOf(receiveAmt.replaceAll("[^\\.\\d]", "")) - Double.valueOf(calculatedReceiveAmt) < .5 &&
+                    conversionRate.contains("€"))
+                return true;
+            else
+                return false;
+
+        } else if (receiverWalletCurrency.equals("GBP")) {
+            boolean a = amtReceiveLabel.contains("Total to be received");
+            boolean b = receiveAmt.contains("£");
+            boolean c = Double.valueOf(receiveAmt.replaceAll("[^\\.\\d]", "")) - Double.valueOf(calculatedReceiveAmt) < .5;
+            boolean d = conversionRate.contains("£");
+            System.out.println("Total to be received: " + a);
+            System.out.println("Total to be received Currency: " + b);
+            System.out.println("Total to be received Amount: " + c);
+            System.out.println("Conversion Currency: " + d);
+            System.out.println("Calcualtion Difference: " + (Double.valueOf(receiveAmt.replaceAll("[^\\.\\d]", "")) - Double.valueOf(calculatedReceiveAmt)));
+
+            if (amtReceiveLabel.contains("Total to be received") && receiveAmt.contains("£") && Double.valueOf(receiveAmt.replaceAll("[^\\.\\d]", "")) - Double.valueOf(calculatedReceiveAmt) < .5 &&
+                    conversionRate.contains("£"))
+                return true;
+            else
+                return false;
+
+        } else if (receiverWalletCurrency.equals("JPY")) {
+            boolean a = amtReceiveLabel.contains("Total to be received");
+            boolean b = receiveAmt.contains("¥");
+            boolean c = Double.valueOf(receiveAmt.replaceAll("[^\\.\\d]", "")) - Double.valueOf(calculatedReceiveAmt) < .5;
+            boolean d = conversionRate.contains("円");
+            System.out.println("Total to be received: " + a);
+            System.out.println("Total to be received Currency: " + b);
+            System.out.println("Total to be received Amount: " + c);
+            System.out.println("Conversion Currency: " + d);
+            System.out.println("Calcualtion Difference: " + (Double.valueOf(receiveAmt.replaceAll("[^\\.\\d]", "")) - Double.valueOf(calculatedReceiveAmt)));
+
+            if (amtReceiveLabel.contains("Total to be received") && receiveAmt.contains("¥") &&
+                    Double.valueOf(receiveAmt.replaceAll("[^\\.\\d]", "")) - Double.valueOf(calculatedReceiveAmt) < .5 &&
+                    conversionRate.contains("円"))
+                return true;
+            else
+                return false;
+
+        } else if (receiverWalletCurrency.equals("CNY")) {
+            boolean a = amtReceiveLabel.contains("Total to be received");
+            boolean b = receiveAmt.contains("¥");
+            boolean c = Double.valueOf(receiveAmt.replaceAll("[^\\.\\d]", "")) - Double.valueOf(calculatedReceiveAmt) < .5;
+            boolean d = conversionRate.contains("¥");
+            System.out.println("Total to be received: " + a);
+            System.out.println("Total to be received Currency: " + b);
+            System.out.println("Total to be received Amount: " + c);
+            System.out.println("Conversion Currency: " + d);
+            System.out.println("Calcualtion Difference: " + (Double.valueOf(receiveAmt.replaceAll("[^\\.\\d]", "")) - Double.valueOf(calculatedReceiveAmt)));
+
+            if (amtReceiveLabel.contains("Total to be received") && receiveAmt.contains("¥") && Double.valueOf(receiveAmt.replaceAll("[^\\.\\d]", "")) - Double.valueOf(calculatedReceiveAmt) < .5 &&
+                    conversionRate.contains("¥"))
+                return true;
+            else
+                return false;
+        }
+        return false;
+    }
+
 
 }
